@@ -1,0 +1,76 @@
+name: Wrong graph
+description: srcatlas missed, invented, or mis-linked something
+title: "[wrong graph] "
+labels: ["wrong-graph", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. A minimal repository is the most useful thing you can attach. Do not paste private source code; a reduced example is enough.
+  - type: input
+    id: version
+    attributes:
+      label: srcatlas version
+      placeholder: "0.1.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What is wrong
+      options:
+        - Missing node
+        - Missing edge
+        - Extra node (does not exist)
+        - Extra edge (does not exist)
+        - Wrong route path or method
+        - Wrong module or package
+        - Wrong confidence level
+        - Something reported as unresolved that should resolve
+    validations:
+      required: true
+  - type: input
+    id: framework
+    attributes:
+      label: Framework and version
+      placeholder: "NestJS 11.0.0, @nestjs/bullmq 11.0.0"
+    validations:
+      required: true
+  - type: input
+    id: pattern
+    attributes:
+      label: Pattern ID, if you know it
+      description: From the extractor docs, e.g. N-P4.
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected
+      description: Node or edge IDs you expected (format in docs/schema.md section 5).
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual
+      description: What srcatlas produced instead, as IDs or an excerpt of the graph.
+    validations:
+      required: true
+  - type: textarea
+    id: report
+    attributes:
+      label: Contents of srcatlas.report.json (relevant entries)
+      render: json
+  - type: textarea
+    id: repro
+    attributes:
+      label: Minimal reproduction
+      description: Link to a repository or the smallest set of files that shows it.
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirmation
+      options:
+        - label: The reproduction contains no private or proprietary code
+          required: true

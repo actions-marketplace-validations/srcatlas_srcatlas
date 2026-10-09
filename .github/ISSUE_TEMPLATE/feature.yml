@@ -1,0 +1,28 @@
+name: Feature or extractor request
+description: Propose a feature, a new framework, or a new pattern
+title: "[feature] "
+labels: ["enhancement", "triage"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What question about your architecture can you not answer today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behaviour
+      description: For an extractor pattern, list what is matched, what nodes and edges are emitted, and a small code example.
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you considered
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope check
+      options:
+        - label: This can be answered by static analysis (no running application)
+        - label: I would be willing to help test it

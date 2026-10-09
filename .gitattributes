@@ -1,0 +1,6 @@
+# Graph files and fixtures must be byte-stable across operating systems.
+* text=auto eol=lf
+*.json text eol=lf
+*.ts text eol=lf
+*.md text eol=lf
+*.png binary

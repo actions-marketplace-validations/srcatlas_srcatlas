@@ -1,0 +1,988 @@
+{
+  "labels": {
+    "area:core": "1d76db",
+    "area:analyzer": "1d76db",
+    "area:cli": "1d76db",
+    "area:nestjs": "0e8a16",
+    "area:prisma": "0e8a16",
+    "area:nextjs": "0e8a16",
+    "area:viewer": "5319e7",
+    "area:differ": "fbca04",
+    "area:action": "fbca04",
+    "area:bench": "d93f0b",
+    "area:docs": "0075ca",
+    "area:infra": "6e7781",
+    "gate": "b60205",
+    "manual": "c5def5",
+    "good first issue": "7057ff",
+    "wrong-graph": "d93f0b",
+    "triage": "ededed",
+    "P0": "b60205",
+    "P1": "d93f0b",
+    "P2": "fbca04"
+  },
+  "milestones": [
+    {
+      "title": "Pre-work",
+      "description": "Before M0: name, spike, repo settings",
+      "due_on": "2026-10-18T23:59:59Z"
+    },
+    {
+      "title": "M0 Foundations",
+      "description": "Monorepo, CI, schema v1 in code",
+      "due_on": "2026-10-25T23:59:59Z"
+    },
+    {
+      "title": "M1 NestJS + Prisma",
+      "description": "Analyzer pipeline, NestJS and Prisma extractors, init and analyze",
+      "due_on": "2026-11-15T23:59:59Z"
+    },
+    {
+      "title": "M2 Next.js + accuracy",
+      "description": "Next.js extractor, link pass, accuracy harness",
+      "due_on": "2026-11-29T23:59:59Z"
+    },
+    {
+      "title": "M3 Viewer MVP",
+      "description": "Viewer with benchmark gate",
+      "due_on": "2026-12-13T23:59:59Z"
+    },
+    {
+      "title": "M4 Diff + Action",
+      "description": "Differ, Mermaid, GitHub Action, minimal rules",
+      "due_on": "2026-12-27T23:59:59Z"
+    },
+    {
+      "title": "M5 Embeds + docs",
+      "description": "SVG embeds, docs site, launch checklist",
+      "due_on": "2027-01-10T23:59:59Z"
+    },
+    {
+      "title": "v1.1",
+      "description": "After launch: MCP, query, agent export",
+      "due_on": "2027-03-31T23:59:59Z"
+    }
+  ],
+  "issues": [
+    {
+      "milestone": "Pre-work",
+      "title": "Reserve names: npm placeholder, GitHub repo, domain, Marketplace listing",
+      "labels": [
+        "manual",
+        "P0"
+      ],
+      "refs": "docs/research/landscape.md; ADR 0007",
+      "done": [
+        "`srcatlas` published on npm as a 0.0.0 placeholder",
+        "Repository exists under the chosen account",
+        "Domain registered or decision recorded to skip it",
+        "GitHub Marketplace name checked for the Action"
+      ]
+    },
+    {
+      "milestone": "Pre-work",
+      "title": "DI feasibility spike: ts-morph on a real NestJS app (go/no-go)",
+      "labels": [
+        "area:nestjs",
+        "gate",
+        "P0"
+      ],
+      "refs": "docs/extractors/nestjs.md section 3; docs/accuracy.md section 7; ADR 0001",
+      "done": [
+        "Provisional extractor resolves modules and providers of one real NestJS app",
+        "Module and provider recall at least 0.90 against the runtime oracle (ModulesContainer)",
+        "Notes written to docs/research/di-spike.md: what was hard, what was unresolved, time spent",
+        "Decision recorded: proceed, narrow scope, or stop (new ADR if the approach changes)"
+      ]
+    },
+    {
+      "milestone": "Pre-work",
+      "title": "Repository settings: private vulnerability reporting, branch protection, DCO check, conduct contact",
+      "labels": [
+        "manual",
+        "area:infra",
+        "P0"
+      ],
+      "refs": "SECURITY.md; CODE_OF_CONDUCT.md; CONTRIBUTING.md",
+      "done": [
+        "Private vulnerability reporting enabled",
+        "main protected: pull request required, status checks required",
+        "DCO enforcement in place, or the rule removed from CONTRIBUTING.md",
+        "Contact address set in CODE_OF_CONDUCT.md"
+      ]
+    },
+    {
+      "milestone": "Pre-work",
+      "title": "Choose the config loader library (ADR 0008)",
+      "labels": [
+        "area:cli",
+        "area:docs",
+        "P1"
+      ],
+      "refs": "ADR 0006; docs/config.md section 6",
+      "done": [
+        "Compare jiti, c12, unconfig on Windows support, ESM/CJS, size, maintenance",
+        "ADR 0008 written and linked from the ADR index"
+      ]
+    },
+    {
+      "milestone": "Pre-work",
+      "title": "Review spec sections 3, 4, 12, 13, 18 against docs/ for contradictions",
+      "labels": [
+        "area:docs",
+        "P1"
+      ],
+      "refs": "spec; docs/schema.md; docs/accuracy.md",
+      "done": [
+        "Contradictions listed and fixed in the spec",
+        "docs/ remains source of truth where they differ"
+      ]
+    },
+    {
+      "milestone": "M0 Foundations",
+      "title": "Scaffold pnpm + Turborepo monorepo with package skeletons",
+      "labels": [
+        "area:infra",
+        "P0"
+      ],
+      "refs": "spec section 8 and 19; CLAUDE.md section 3",
+      "done": [
+        "Packages created: core, analyzer, extractor-nestjs, extractor-prisma, extractor-nextjs, differ, rules, renderer, cli, viewer, action",
+        "pnpm build runs across the workspace",
+        "Dependency direction enforced (core depends on nothing; consumers never import analyzer)"
+      ]
+    },
+    {
+      "milestone": "M0 Foundations",
+      "title": "Tooling: TypeScript strict base config, Biome, Vitest",
+      "labels": [
+        "area:infra",
+        "P0"
+      ],
+      "refs": "CLAUDE.md sections 4, 5, 7",
+      "done": [
+        "pnpm lint, typecheck, test run from the root",
+        "Biome config committed; no any policy documented"
+      ]
+    },
+    {
+      "milestone": "M0 Foundations",
+      "title": "CI: lint, typecheck, test on Linux, macOS, Windows; Node 20 and 22",
+      "labels": [
+        "area:infra",
+        "P0"
+      ],
+      "refs": "spec section 16",
+      "done": [
+        "Matrix green on all six combinations",
+        "Windows path and line-ending tests included"
+      ]
+    },
+    {
+      "milestone": "M0 Foundations",
+      "title": "core: Zod schema v1 matching docs/schema.md, exported as JSON Schema",
+      "labels": [
+        "area:core",
+        "P0"
+      ],
+      "refs": "docs/schema.md sections 2-7",
+      "done": [
+        "Node, Edge, GraphFile schemas with the kind matrix and required meta",
+        "JSON Schema generated and shipped",
+        "Worked example from docs/schema.md validates in a test"
+      ]
+    },
+    {
+      "milestone": "M0 Foundations",
+      "title": "core: ID rules, collision suffix, route path normalisation",
+      "labels": [
+        "area:core",
+        "P0"
+      ],
+      "refs": "docs/schema.md section 5",
+      "done": [
+        "ID builders per kind",
+        "Collision suffix @<dir> implemented",
+        "Route normalisation table covered by unit tests"
+      ]
+    },
+    {
+      "milestone": "M0 Foundations",
+      "title": "core: GraphBuilder with validation invariants and canonical ordering",
+      "labels": [
+        "area:core",
+        "P0"
+      ],
+      "refs": "docs/schema.md sections 9, 10",
+      "done": [
+        "Ten validation invariants enforced",
+        "Code-unit sorting; no Map/Set insertion-order dependence",
+        "Builder is the only way to create nodes and edges"
+      ]
+    },
+    {
+      "milestone": "M0 Foundations",
+      "title": "Golden-file test harness and fixture scaffolds",
+      "labels": [
+        "area:infra",
+        "area:core",
+        "P0"
+      ],
+      "refs": "docs/extractors/nestjs.md section 6; CLAUDE.md section 8",
+      "done": [
+        "fixtures/<name>/ with expected.graph.json read by a shared test helper",
+        "No snapshot testing; golden files hand-written",
+        "Determinism test: analyse from two working directories, byte-compare"
+      ]
+    },
+    {
+      "milestone": "M0 Foundations",
+      "title": "Changesets and release workflow with npm provenance; publish a pre-release",
+      "labels": [
+        "area:infra",
+        "P1"
+      ],
+      "refs": "spec section 9",
+      "done": [
+        "Release workflow publishes with provenance",
+        "A 0.0.x pre-release installs with npx srcatlas --version"
+      ]
+    },
+    {
+      "milestone": "M0 Foundations",
+      "title": "CLI skeleton: command routing, global flags, exit codes, config discovery",
+      "labels": [
+        "area:cli",
+        "P0"
+      ],
+      "refs": "docs/cli.md sections 1, 2; docs/config.md section 1",
+      "done": [
+        "srcatlas --version and --help work",
+        "Exit codes 0/1/2/3 as specified",
+        "Config loaded and validated with Zod; unknown keys are errors"
+      ]
+    },
+    {
+      "milestone": "M1 NestJS + Prisma",
+      "title": "analyzer: package detection, workspace discovery, ts-morph project per package",
+      "labels": [
+        "area:analyzer",
+        "P0"
+      ],
+      "refs": "docs/config.md section 2.2; ADR 0002",
+      "done": [
+        "Packages found from workspaces or root",
+        "tsconfig resolved per package; path aliases work"
+      ]
+    },
+    {
+      "milestone": "M1 NestJS + Prisma",
+      "title": "analyzer: worker pool and extractor runner interface",
+      "labels": [
+        "area:analyzer",
+        "P0"
+      ],
+      "refs": "ADR 0002, 0003; spec section 11",
+      "done": [
+        "Extractors run in parallel per package",
+        "One failing file or extractor never aborts analysis"
+      ]
+    },
+    {
+      "milestone": "M1 NestJS + Prisma",
+      "title": "analyzer: report file and report-code registry",
+      "labels": [
+        "area:analyzer",
+        "P0"
+      ],
+      "refs": "docs/extractors/nestjs.md section 5; docs/schema.md section 11",
+      "done": [
+        "srcatlas.report.json written with parse errors, unresolved entries, timings",
+        "Codes are constants shared with docs"
+      ]
+    },
+    {
+      "milestone": "M1 NestJS + Prisma",
+      "title": "cli: analyze (summary, --json, --strict, atomic writes)",
+      "labels": [
+        "area:cli",
+        "P0"
+      ],
+      "refs": "docs/cli.md section 3.2",
+      "done": [
+        "Output files written atomically",
+        "--strict exits 1 on parse errors or unresolved",
+        "Unknown framework falls back to file-level import graph"
+      ]
+    },
+    {
+      "milestone": "M1 NestJS + Prisma",
+      "title": "cli: init (detect frameworks, write config, optional workflow)",
+      "labels": [
+        "area:cli",
+        "P0"
+      ],
+      "refs": "docs/cli.md section 3.1",
+      "done": [
+        "Detects NestJS, Next.js, Prisma by dependencies",
+        "Never overwrites without --force"
+      ]
+    },
+    {
+      "milestone": "M1 NestJS + Prisma",
+      "title": "nestjs: static value evaluation and token resolution",
+      "labels": [
+        "area:nestjs",
+        "P0"
+      ],
+      "refs": "docs/extractors/nestjs.md sections 2, 3",
+      "done": [
+        "Literals, consts, enums, template strings, simple concatenation evaluated",
+        "Resolution order own module, imported, global, anywhere; ambiguity reported"
+      ]
+    },
+    {
+      "milestone": "M1 NestJS + Prisma",
+      "title": "nestjs: modules N-M1 to N-M4, N-M8, N-M9 (fixtures nest-basic, nest-modules)",
+      "labels": [
+        "area:nestjs",
+        "P0"
+      ],
+      "refs": "docs/extractors/nestjs.md section 4",
+      "done": [
+        "Fixtures pass with hand-written golden files",
+        "Decoys produce nothing"
+      ]
+    },
+    {
+      "milestone": "M1 NestJS + Prisma",
+      "title": "nestjs: dynamic modules N-M5 to N-M7 (fixture nest-dynamic)",
+      "labels": [
+        "area:nestjs",
+        "P0"
+      ],
+      "refs": "docs/extractors/nestjs.md section 4",
+      "done": [
+        "forRoot/register style modules, global: true, forwardRef handled",
+        "Unresolvable cases reported"
+      ]
+    },
+    {
+      "milestone": "M1 NestJS + Prisma",
+      "title": "nestjs: providers and DI N-P1 to N-P8, N-P11 (fixture nest-di-custom)",
+      "labels": [
+        "area:nestjs",
+        "P0"
+      ],
+      "refs": "docs/extractors/nestjs.md section 4",
+      "done": [
+        "Class, value, factory, existing providers and injection tokens",
+        "@Inject, @Optional, scope metadata"
+      ]
+    },
+    {
+      "milestone": "M1 NestJS + Prisma",
+      "title": "nestjs: controllers and routes N-R1 to N-R5, N-R8 to N-R10 (fixture nest-routing)",
+      "labels": [
+        "area:nestjs",
+        "P0"
+      ],
+      "refs": "docs/extractors/nestjs.md section 4",
+      "done": [
+        "Controller prefix, method decorators, global prefix, route normalisation"
+      ]
+    },
+    {
+      "milestone": "M1 NestJS + Prisma",
+      "title": "nestjs: decoys fixture (nest-decoys)",
+      "labels": [
+        "area:nestjs",
+        "P0"
+      ],
+      "refs": "docs/extractors/nestjs.md section 6",
+      "done": [
+        "Look-alike decorators from other packages produce only the package node"
+      ]
+    },
+    {
+      "milestone": "M1 NestJS + Prisma",
+      "title": "prisma extractor: models, relations, enums from schema.prisma",
+      "labels": [
+        "area:prisma",
+        "P0"
+      ],
+      "refs": "docs/schema.md section 4; spec section 6.2",
+      "done": [
+        "Model nodes with fieldCount and schemaFile",
+        "Multi-file schema supported"
+      ]
+    },
+    {
+      "milestone": "M1 NestJS + Prisma",
+      "title": "prisma extractor: client calls to reads/writes edges",
+      "labels": [
+        "area:prisma",
+        "P0"
+      ],
+      "refs": "docs/schema.md section 6; config.md section 2.3",
+      "done": [
+        "Operation names collected in edge meta",
+        "No calls edge to PrismaService",
+        "Type-based client detection; name heuristic only as inferred"
+      ]
+    },
+    {
+      "milestone": "M1 NestJS + Prisma",
+      "title": "Runtime oracle v0 for NestJS (bench/oracles)",
+      "labels": [
+        "area:bench",
+        "P0"
+      ],
+      "refs": "docs/accuracy.md section 2",
+      "done": [
+        "Script boots a fixture app and exports modules/providers/injects in srcatlas schema",
+        "Used by the DI spike and M1 exit"
+      ]
+    },
+    {
+      "milestone": "M1 NestJS + Prisma",
+      "title": "M1 exit check: first real app against the oracle; determinism on 3 OS in CI",
+      "labels": [
+        "area:bench",
+        "gate",
+        "P0"
+      ],
+      "refs": "spec section 17; docs/accuracy.md section 7",
+      "done": [
+        "Module and provider recall at least 0.90 on one real app",
+        "Byte-identical graph across OS"
+      ]
+    },
+    {
+      "milestone": "M2 Next.js + accuracy",
+      "title": "nextjs: App Router routes (page, route handlers, route groups, dynamic segments)",
+      "labels": [
+        "area:nextjs",
+        "P0"
+      ],
+      "refs": "docs/schema.md section 5 (route normalisation)",
+      "done": [
+        "Next.js route nodes with correct normalised paths",
+        "Fixture with hand-written golden file"
+      ]
+    },
+    {
+      "milestone": "M2 Next.js + accuracy",
+      "title": "nextjs: server actions",
+      "labels": [
+        "area:nextjs",
+        "P0"
+      ],
+      "refs": "docs/schema.md section 4 (action)",
+      "done": [
+        "use server functions become action nodes",
+        "Calls from components produce edges where statically resolvable"
+      ]
+    },
+    {
+      "milestone": "M2 Next.js + accuracy",
+      "title": "analyzer: link pass across packages and extractors, depends_on edges",
+      "labels": [
+        "area:analyzer",
+        "P0"
+      ],
+      "refs": "docs/schema.md section 6; spec section 11",
+      "done": [
+        "Cross-package imports and depends_on edges",
+        "Provider to Prisma model links across extractors"
+      ]
+    },
+    {
+      "milestone": "M2 Next.js + accuracy",
+      "title": "analyzer: monorepo detection (pnpm, npm, yarn, Turborepo, Nx)",
+      "labels": [
+        "area:analyzer",
+        "P0"
+      ],
+      "refs": "spec section 6.2",
+      "done": [
+        "Workspaces detected; fixture nest-monorepo passes"
+      ]
+    },
+    {
+      "milestone": "M2 Next.js + accuracy",
+      "title": "nestjs: versioning N-R6, N-R7 (fixture nest-versioning)",
+      "labels": [
+        "area:nestjs",
+        "P1",
+        "good first issue"
+      ],
+      "refs": "docs/extractors/nestjs.md",
+      "done": [
+        "URI versioning prefix, VERSION_NEUTRAL, @Version"
+      ]
+    },
+    {
+      "milestone": "M2 Next.js + accuracy",
+      "title": "nestjs: calls N-C1 to N-C5 (fixture nest-calls)",
+      "labels": [
+        "area:nestjs",
+        "P1"
+      ],
+      "refs": "docs/extractors/nestjs.md",
+      "done": [
+        "Calls edges between providers with method names in meta"
+      ]
+    },
+    {
+      "milestone": "M2 Next.js + accuracy",
+      "title": "nestjs: gateways N-G1 to N-G5 (fixture nest-gateway)",
+      "labels": [
+        "area:nestjs",
+        "P1"
+      ],
+      "refs": "docs/extractors/nestjs.md",
+      "done": [
+        "Gateway, event emits/listens with namespaces"
+      ]
+    },
+    {
+      "milestone": "M2 Next.js + accuracy",
+      "title": "bullmq: queues N-Q1 to N-Q4 (fixture nest-bullmq)",
+      "labels": [
+        "area:nestjs",
+        "P1"
+      ],
+      "refs": "docs/extractors/nestjs.md; ADR 0001",
+      "done": [
+        "WorkerHost processors; job names from the switch on job.name in process()",
+        "enqueues and consumes edges with jobNames meta"
+      ]
+    },
+    {
+      "milestone": "M2 Next.js + accuracy",
+      "title": "bull legacy: N-Q5 (fixture nest-bull-legacy)",
+      "labels": [
+        "area:nestjs",
+        "P1",
+        "good first issue"
+      ],
+      "refs": "docs/extractors/nestjs.md",
+      "done": [
+        "@nestjs/bull @Process(name) handled; legacy only"
+      ]
+    },
+    {
+      "milestone": "M2 Next.js + accuracy",
+      "title": "bench: scorer, metrics, unit tests with hand-built graphs",
+      "labels": [
+        "area:bench",
+        "P0"
+      ],
+      "refs": "docs/accuracy.md sections 4, 6",
+      "done": [
+        "pnpm bench computes precision, recall, F1, coverage, calibration",
+        "Scorer tested on perfect, empty, all-wrong, partial graphs"
+      ]
+    },
+    {
+      "milestone": "M2 Next.js + accuracy",
+      "title": "bench: declared oracles (Prisma schema parser, Next.js build manifests)",
+      "labels": [
+        "area:bench",
+        "P0"
+      ],
+      "refs": "docs/accuracy.md section 2",
+      "done": [
+        "Oracle outputs converted to srcatlas schema"
+      ]
+    },
+    {
+      "milestone": "M2 Next.js + accuracy",
+      "title": "bench: select tier B corpus per written rules (SELECTION.md)",
+      "labels": [
+        "area:bench",
+        "manual",
+        "P0"
+      ],
+      "refs": "docs/accuracy.md section 3",
+      "done": [
+        "Rules and search query committed before running the tool",
+        "10 repositories pinned by URL and SHA; 2 the author has not read"
+      ]
+    },
+    {
+      "milestone": "M2 Next.js + accuracy",
+      "title": "bench: label tier B (hand labels for edges without an oracle); decide second labeller",
+      "labels": [
+        "area:bench",
+        "manual",
+        "P0"
+      ],
+      "refs": "docs/accuracy.md sections 2, 3, 10",
+      "done": [
+        "Labels committed before the first scored run",
+        "Second-labeller decision recorded"
+      ]
+    },
+    {
+      "milestone": "M2 Next.js + accuracy",
+      "title": "Performance: 500 files under 20 s on 4 cores; memory budget",
+      "labels": [
+        "area:analyzer",
+        "gate",
+        "P0"
+      ],
+      "refs": "spec section 15; ADR 0002",
+      "done": [
+        "Benchmark in CI; results recorded in bench/results"
+      ]
+    },
+    {
+      "milestone": "M2 Next.js + accuracy",
+      "title": "M2 exit check: tier B accuracy gates",
+      "labels": [
+        "area:bench",
+        "gate",
+        "P0"
+      ],
+      "refs": "docs/accuracy.md section 7",
+      "done": [
+        "NestJS precision 0.95 / recall 0.85; Prisma and Next.js 0.98 / 0.95, or the lower measured numbers recorded and the plan changed"
+      ]
+    },
+    {
+      "milestone": "M3 Viewer MVP",
+      "title": "Viewer benchmark gate: React Flow at 60 fps with 300 visible nodes",
+      "labels": [
+        "area:viewer",
+        "gate",
+        "P0"
+      ],
+      "refs": "ADR 0005",
+      "done": [
+        "Benchmark page and result recorded",
+        "If failed: ADR 0005 superseded, Canvas renderer planned"
+      ]
+    },
+    {
+      "milestone": "M3 Viewer MVP",
+      "title": "viewer: app scaffold (Vite, React, Tailwind, shadcn/ui, Zustand), graph loading, version check",
+      "labels": [
+        "area:viewer",
+        "P0"
+      ],
+      "refs": "spec section 12",
+      "done": [
+        "Loads a graph file; clear message on schemaVersion mismatch"
+      ]
+    },
+    {
+      "milestone": "M3 Viewer MVP",
+      "title": "viewer: ELK layout in a worker, collapsed modules, aggregated weighted edges",
+      "labels": [
+        "area:viewer",
+        "P0"
+      ],
+      "refs": "ADR 0005",
+      "done": [
+        "Initial view collapsed; layout deterministic for same graph and state"
+      ]
+    },
+    {
+      "milestone": "M3 Viewer MVP",
+      "title": "viewer: search and filters (kind, module, confidence)",
+      "labels": [
+        "area:viewer",
+        "P0"
+      ],
+      "refs": "spec section 6.3",
+      "done": [
+        "Keyboard shortcut to focus search"
+      ]
+    },
+    {
+      "milestone": "M3 Viewer MVP",
+      "title": "viewer: focus mode and trace mode",
+      "labels": [
+        "area:viewer",
+        "P0"
+      ],
+      "refs": "spec section 6.3; flow B",
+      "done": [
+        "N-hop dimming; downstream path of a route highlighted"
+      ]
+    },
+    {
+      "milestone": "M3 Viewer MVP",
+      "title": "viewer: detail panel with source links and edge lists",
+      "labels": [
+        "area:viewer",
+        "P0"
+      ],
+      "refs": "spec section 6.3",
+      "done": [
+        "File and line links built from repository config"
+      ]
+    },
+    {
+      "milestone": "M3 Viewer MVP",
+      "title": "cli: serve (localhost only, port selection, --open, --watch)",
+      "labels": [
+        "area:cli",
+        "P0"
+      ],
+      "refs": "docs/cli.md section 3.3",
+      "done": [
+        "Binds 127.0.0.1; ports tried in order"
+      ]
+    },
+    {
+      "milestone": "M3 Viewer MVP",
+      "title": "viewer: Playwright end-to-end tests",
+      "labels": [
+        "area:viewer",
+        "P0"
+      ],
+      "refs": "spec section 16",
+      "done": [
+        "Search, filter, focus, trace, detail panel covered"
+      ]
+    },
+    {
+      "milestone": "M4 Diff + Action",
+      "title": "differ: node/edge diff, moves, changed detection, summary line",
+      "labels": [
+        "area:differ",
+        "P0"
+      ],
+      "refs": "docs/schema.md section 13; docs/cli.md section 3.4",
+      "done": [
+        "Summary format fixed",
+        "Moves detected per v1 rule"
+      ]
+    },
+    {
+      "milestone": "M4 Diff + Action",
+      "title": "differ: cycle detection and new cross-module edges",
+      "labels": [
+        "area:differ",
+        "P0"
+      ],
+      "refs": "docs/schema.md section 13",
+      "done": [
+        "SCC over module imports and package depends_on, base vs head"
+      ]
+    },
+    {
+      "milestone": "M4 Diff + Action",
+      "title": "renderer: Mermaid mini-graph of the changed neighbourhood (--max-nodes)",
+      "labels": [
+        "area:differ",
+        "P0"
+      ],
+      "refs": "docs/cli.md section 3.4",
+      "done": [
+        "Renders natively in a GitHub comment"
+      ]
+    },
+    {
+      "milestone": "M4 Diff + Action",
+      "title": "cli: diff with git refs, WORKTREE and graph-file inputs; graph cache",
+      "labels": [
+        "area:cli",
+        "P0"
+      ],
+      "refs": "docs/cli.md section 3.4",
+      "done": [
+        "Temporary worktree created and removed; cache keyed by SHA, version, config hash"
+      ]
+    },
+    {
+      "milestone": "M4 Diff + Action",
+      "title": "action: baseline lookup, comment upsert, fork fallback, config from base branch for forks",
+      "labels": [
+        "area:action",
+        "P0"
+      ],
+      "refs": "spec section 13; ADR 0006; SECURITY.md",
+      "done": [
+        "One comment per PR updated in place",
+        "Fork PR uses job summary fallback",
+        "Config for fork PRs loaded from base, not head"
+      ]
+    },
+    {
+      "milestone": "M4 Diff + Action",
+      "title": "viewer: diff mode (added green, removed red, changed amber)",
+      "labels": [
+        "area:viewer",
+        "P0"
+      ],
+      "refs": "spec section 12",
+      "done": [
+        "Next/previous change navigation"
+      ]
+    },
+    {
+      "milestone": "M4 Diff + Action",
+      "title": "rules engine minimal subset and cli: check",
+      "labels": [
+        "area:differ",
+        "area:cli",
+        "P1"
+      ],
+      "refs": "docs/config.md section 2.4; docs/cli.md section 3.5",
+      "done": [
+        "forbidden-edge and no-cycles; github annotation format"
+      ]
+    },
+    {
+      "milestone": "M4 Diff + Action",
+      "title": "Pilot: Action on a sandbox repository and 3 pilot repositories with permission",
+      "labels": [
+        "area:action",
+        "manual",
+        "P0"
+      ],
+      "refs": "spec section 17",
+      "done": [
+        "End-to-end PR comment within 90 s on all four"
+      ]
+    },
+    {
+      "milestone": "M5 Embeds + docs",
+      "title": "renderer: SVG export (self-contained, light/dark, deterministic) and PNG via resvg",
+      "labels": [
+        "area:differ",
+        "P0"
+      ],
+      "refs": "docs/cli.md section 3.6; spec section 14",
+      "done": [
+        "Byte-identical SVG for same input; title per node"
+      ]
+    },
+    {
+      "milestone": "M5 Embeds + docs",
+      "title": "cli: export (svg, png, mermaid, dot; scopes all, module, trace)",
+      "labels": [
+        "area:cli",
+        "P1"
+      ],
+      "refs": "docs/cli.md section 3.6",
+      "done": [
+        "Scope options work"
+      ]
+    },
+    {
+      "milestone": "M5 Embeds + docs",
+      "title": "action: regenerate and commit docs/architecture.svg on default branch pushes",
+      "labels": [
+        "area:action",
+        "P0"
+      ],
+      "refs": "spec flow D",
+      "done": [
+        "No commit when architecture is unchanged"
+      ]
+    },
+    {
+      "milestone": "M5 Embeds + docs",
+      "title": "Docs site (Next.js + Fumadocs) with live demo on a real open-source NestJS app",
+      "labels": [
+        "area:docs",
+        "P0"
+      ],
+      "refs": "spec section 14",
+      "done": [
+        "Demo graph generated by the tool"
+      ]
+    },
+    {
+      "milestone": "M5 Embeds + docs",
+      "title": "README GIF, accuracy numbers generated from bench/results, quickstart under 5 minutes",
+      "labels": [
+        "area:docs",
+        "P0"
+      ],
+      "refs": "docs/accuracy.md section 8",
+      "done": [
+        "No hand-typed accuracy numbers",
+        "Quickstart verified on Linux, macOS, Windows"
+      ]
+    },
+    {
+      "milestone": "M5 Embeds + docs",
+      "title": "Prepare 10 good first issues (extractor patterns)",
+      "labels": [
+        "area:docs",
+        "P0"
+      ],
+      "refs": "spec section 19",
+      "done": [
+        "Each has pattern ID, fixture name, acceptance criteria"
+      ]
+    },
+    {
+      "milestone": "M5 Embeds + docs",
+      "title": "Pre-launch checklist and blog post draft",
+      "labels": [
+        "area:docs",
+        "manual",
+        "P0"
+      ],
+      "refs": "spec section 19",
+      "done": [
+        "Checklist complete; post covers the technique, not only the tool"
+      ]
+    },
+    {
+      "milestone": "v1.1",
+      "title": "packages/query and cli: explain",
+      "labels": [
+        "area:cli",
+        "P2"
+      ],
+      "refs": "docs/cli.md section 3.7",
+      "done": [
+        "Neighbours and shortest paths; shared with MCP"
+      ]
+    },
+    {
+      "milestone": "v1.1",
+      "title": "MCP server over packages/query",
+      "labels": [
+        "area:cli",
+        "P2"
+      ],
+      "refs": "spec section 20",
+      "done": [
+        "Read-only tools over the graph file"
+      ]
+    },
+    {
+      "milestone": "v1.1",
+      "title": "export --format agents-md",
+      "labels": [
+        "area:cli",
+        "P2"
+      ],
+      "refs": "spec section 20",
+      "done": [
+        "Compact structure file for coding agents"
+      ]
+    },
+    {
+      "milestone": "v1.1",
+      "title": "Opt-in incremental analysis cache",
+      "labels": [
+        "area:analyzer",
+        "P2"
+      ],
+      "refs": "spec section 6.2",
+      "done": [
+        "Re-analysis after a one-file change under 3 s"
+      ]
+    }
+  ]
+}
