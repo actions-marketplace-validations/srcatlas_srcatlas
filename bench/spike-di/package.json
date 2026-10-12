@@ -1,0 +1,7 @@
+{
+  "name": "srcatlas-spike-di",
+  "private": true,
+  "type": "module",
+  "description": "Throwaway DI feasibility spike (docs/research/di-spike.md). Not part of the product.",
+  "dependencies": { "ts-morph": "^26.0.0" }
+}
