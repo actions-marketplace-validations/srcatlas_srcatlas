@@ -23,7 +23,7 @@ Configuration is `srcatlas.config.ts` with a default export from `defineConfig`.
 - Bad: a JSON Schema for editors must be generated from the Zod schema.
 
 ## Open question
-For pull requests from forks, the Action should load the config from the base branch, not the PR head, to avoid running PR-supplied code. Decide with the Action design in M4.
+For pull requests from forks, the Action should load the config from the base branch, not the PR head, to avoid running PR-supplied code. Decide with the Action design in M2.
 
 ## Revisit when
 - A security report, or the Action design shows the base-branch rule is insufficient.
