@@ -52,31 +52,58 @@ Analyzer pipeline, NestJS and Prisma extractors, init and analyze
 | 14 | Runtime oracle v0 for NestJS (bench/oracles) | P0 | area:bench |
 | 15 | M1 exit check: first real app against the oracle; determinism on 3 OS in CI | P0 | area:bench, gate |
 
-## M2 Next.js + accuracy (due 2026-11-29)
+## M2 Diff + Action (due 2026-11-29)
 
-Next.js extractor, link pass, accuracy harness
+Link pass, differ, Mermaid, GitHub Action, rules and ratchet: first shareable result (NestJS + Prisma)
+
+| # | Issue | Priority | Labels |
+|---|---|---|---|
+| 1 | analyzer: link pass across packages and extractors, depends_on edges | P0 | area:analyzer |
+| 2 | differ: node/edge diff, moves, changed detection, summary line | P0 | area:differ |
+| 3 | differ: cycle detection and new cross-module edges | P0 | area:differ |
+| 4 | renderer: Mermaid mini-graph of the changed neighbourhood (--max-nodes) | P0 | area:differ |
+| 5 | cli: diff with git refs, WORKTREE and graph-file inputs; graph cache | P0 | area:cli |
+| 6 | action: baseline lookup, comment upsert, fork fallback, config from base branch for forks | P0 | area:action |
+| 7 | rules engine minimal subset and cli: check | P0 | area:differ, area:cli |
+| 8 | rules: accepted-violations file (ratchet) so adoption on existing repos fails only on new violations | P0 | area:differ, area:cli |
+| 9 | Pilot: Action on a sandbox repository and 3 pilot repositories with permission | P0 | area:action, manual |
+
+## M3 NestJS accuracy + launch (due 2026-12-13)
+
+Tier B NestJS accuracy, performance gate, README, blog post, first public release
+
+| # | Issue | Priority | Labels |
+|---|---|---|---|
+| 1 | bench: scorer, metrics, unit tests with hand-built graphs | P0 | area:bench |
+| 2 | bench: select tier B corpus per written rules (SELECTION.md), stage 1: 5 NestJS repositories | P0 | area:bench, manual |
+| 3 | bench: label tier B stage 1 (hand labels for edges without an oracle); decide second labeller | P0 | area:bench, manual |
+| 4 | Performance: 500 files under 20 s on 4 cores; memory budget | P0 | area:analyzer, gate |
+| 5 | M3 exit check: NestJS tier B accuracy gate | P0 | area:bench, gate |
+| 6 | README GIF, accuracy numbers generated from bench/results, quickstart under 5 minutes | P0 | area:docs |
+| 7 | Prepare 10 good first issues (extractor patterns) | P0 | area:docs |
+| 8 | Pre-launch checklist and blog post draft | P0 | area:docs, manual |
+
+## M4 Next.js + breadth (due 2027-01-10)
+
+Next.js extractor, monorepo detection, remaining NestJS patterns, Next.js and Prisma accuracy
 
 | # | Issue | Priority | Labels |
 |---|---|---|---|
 | 1 | nextjs: App Router routes (page, route handlers, route groups, dynamic segments) | P0 | area:nextjs |
 | 2 | nextjs: server actions | P0 | area:nextjs |
-| 3 | analyzer: link pass across packages and extractors, depends_on edges | P0 | area:analyzer |
-| 4 | analyzer: monorepo detection (pnpm, npm, yarn, Turborepo, Nx) | P0 | area:analyzer |
-| 5 | nestjs: versioning N-R6, N-R7 (fixture nest-versioning) | P1 | area:nestjs, good first issue |
-| 6 | nestjs: calls N-C1 to N-C5 (fixture nest-calls) | P1 | area:nestjs |
-| 7 | nestjs: gateways N-G1 to N-G5 (fixture nest-gateway) | P1 | area:nestjs |
-| 8 | bullmq: queues N-Q1 to N-Q4 (fixture nest-bullmq) | P1 | area:nestjs |
-| 9 | bull legacy: N-Q5 (fixture nest-bull-legacy) | P1 | area:nestjs, good first issue |
-| 10 | bench: scorer, metrics, unit tests with hand-built graphs | P0 | area:bench |
-| 11 | bench: declared oracles (Prisma schema parser, Next.js build manifests) | P0 | area:bench |
-| 12 | bench: select tier B corpus per written rules (SELECTION.md) | P0 | area:bench, manual |
-| 13 | bench: label tier B (hand labels for edges without an oracle); decide second labeller | P0 | area:bench, manual |
-| 14 | Performance: 500 files under 20 s on 4 cores; memory budget | P0 | area:analyzer, gate |
-| 15 | M2 exit check: tier B accuracy gates | P0 | area:bench, gate |
+| 3 | analyzer: monorepo detection (pnpm, npm, yarn, Turborepo, Nx) | P0 | area:analyzer |
+| 4 | nestjs: versioning N-R6, N-R7 (fixture nest-versioning) | P1 | area:nestjs, good first issue |
+| 5 | nestjs: calls N-C1 to N-C5 (fixture nest-calls) | P1 | area:nestjs |
+| 6 | nestjs: gateways N-G1 to N-G5 (fixture nest-gateway) | P1 | area:nestjs |
+| 7 | bullmq: queues N-Q1 to N-Q4 (fixture nest-bullmq) | P1 | area:nestjs |
+| 8 | bull legacy: N-Q5 (fixture nest-bull-legacy) | P1 | area:nestjs, good first issue |
+| 9 | bench: declared oracles (Prisma schema parser, Next.js build manifests) | P0 | area:bench |
+| 10 | bench: select and label tier B stage 2 (3 Next.js App Router, 2 full-stack) | P0 | area:bench, manual |
+| 11 | M4 exit check: Next.js and Prisma tier B accuracy gates | P0 | area:bench, gate |
 
-## M3 Viewer MVP (due 2026-12-13)
+## M5 Viewer + embeds (due 2027-02-07)
 
-Viewer with benchmark gate
+Viewer with benchmark gate, SVG export, docs site
 
 | # | Issue | Priority | Labels |
 |---|---|---|---|
@@ -88,35 +115,11 @@ Viewer with benchmark gate
 | 6 | viewer: detail panel with source links and edge lists | P0 | area:viewer |
 | 7 | cli: serve (localhost only, port selection, --open, --watch) | P0 | area:cli |
 | 8 | viewer: Playwright end-to-end tests | P0 | area:viewer |
-
-## M4 Diff + Action (due 2026-12-27)
-
-Differ, Mermaid, GitHub Action, minimal rules
-
-| # | Issue | Priority | Labels |
-|---|---|---|---|
-| 1 | differ: node/edge diff, moves, changed detection, summary line | P0 | area:differ |
-| 2 | differ: cycle detection and new cross-module edges | P0 | area:differ |
-| 3 | renderer: Mermaid mini-graph of the changed neighbourhood (--max-nodes) | P0 | area:differ |
-| 4 | cli: diff with git refs, WORKTREE and graph-file inputs; graph cache | P0 | area:cli |
-| 5 | action: baseline lookup, comment upsert, fork fallback, config from base branch for forks | P0 | area:action |
-| 6 | viewer: diff mode (added green, removed red, changed amber) | P0 | area:viewer |
-| 7 | rules engine minimal subset and cli: check | P1 | area:differ, area:cli |
-| 8 | Pilot: Action on a sandbox repository and 3 pilot repositories with permission | P0 | area:action, manual |
-
-## M5 Embeds + docs (due 2027-01-10)
-
-SVG embeds, docs site, launch checklist
-
-| # | Issue | Priority | Labels |
-|---|---|---|---|
-| 1 | renderer: SVG export (self-contained, light/dark, deterministic) and PNG via resvg | P0 | area:differ |
-| 2 | cli: export (svg, png, mermaid, dot; scopes all, module, trace) | P1 | area:cli |
-| 3 | action: regenerate and commit docs/architecture.svg on default branch pushes | P0 | area:action |
-| 4 | Docs site (Next.js + Fumadocs) with live demo on a real open-source NestJS app | P0 | area:docs |
-| 5 | README GIF, accuracy numbers generated from bench/results, quickstart under 5 minutes | P0 | area:docs |
-| 6 | Prepare 10 good first issues (extractor patterns) | P0 | area:docs |
-| 7 | Pre-launch checklist and blog post draft | P0 | area:docs, manual |
+| 9 | viewer: diff mode (added green, removed red, changed amber) | P0 | area:viewer |
+| 10 | renderer: SVG export (self-contained, light/dark, deterministic) and PNG via resvg | P0 | area:differ |
+| 11 | cli: export (svg, png, mermaid, dot; scopes all, module, trace) | P1 | area:cli |
+| 12 | action: regenerate and commit docs/architecture.svg on default branch pushes | P0 | area:action |
+| 13 | Docs site (Next.js + Fumadocs) with live demo on a real open-source NestJS app | P0 | area:docs |
 
 ## v1.1 (due 2027-03-31)
 
@@ -129,4 +132,4 @@ After launch: MCP, query, agent export
 | 3 | export --format agents-md | P2 | area:cli |
 | 4 | Opt-in incremental analysis cache | P2 | area:analyzer |
 
-Total: 71 issues.
+Total: 74 issues.
