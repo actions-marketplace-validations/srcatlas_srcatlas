@@ -13,7 +13,7 @@ Gate from `docs/accuracy.md` section 7 and ADR 0009. Status: started, nothing sc
 ## Pass bar (fixed before scoring)
 
 - Module recall >= 0.90 and provider recall >= 0.90 against the runtime oracle (`ModulesContainer`).
-- `injects` edge recall threshold: **TBD by the maintainer, must be written here before any scoring.**
+- `injects` edge recall >= 0.80 (set by the maintainer before scoring).
 
 ## Plan
 
