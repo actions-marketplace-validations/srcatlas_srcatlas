@@ -11,7 +11,7 @@ One file per decision that is expensive to reverse. Format: `docs/adr/_template.
 | [0005](0005-viewer-rendering-react-flow-with-gate.md) | React Flow and ELK for the viewer, with a benchmark gate | Accepted |
 | [0006](0006-executable-typescript-config.md) | Configuration is an executable TypeScript file | Accepted (loader library: proposed) |
 | [0007](0007-mit-licence-and-local-first.md) | MIT licence, local-first, no hosted dependency | Accepted |
-| [0009](0009-portfolio-first-scope-and-order.md) | Portfolio first: scope, order of work, definition of done | Proposed |
+| [0009](0009-portfolio-first-scope-and-order.md) | Portfolio first: scope, order of work, definition of done | Accepted |
 
 0008 is reserved for the config loader decision (backlog, Pre-work).
 

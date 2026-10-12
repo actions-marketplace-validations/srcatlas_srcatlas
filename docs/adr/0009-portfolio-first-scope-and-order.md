@@ -1,6 +1,6 @@
 # ADR 0009: Portfolio first: scope, order of work, definition of done
 
-- Status: Proposed
+- Status: Accepted
 - Date: 2026-10-12
 - Deciders: Tunya
 
