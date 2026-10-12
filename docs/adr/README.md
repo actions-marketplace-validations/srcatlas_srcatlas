@@ -9,9 +9,9 @@ One file per decision that is expensive to reverse. Format: `docs/adr/_template.
 | [0003](0003-graph-file-as-the-only-contract.md) | One graph file is the only contract between components | Accepted |
 | [0004](0004-deterministic-identity-and-output.md) | Deterministic node identity and byte-stable output | Accepted |
 | [0005](0005-viewer-rendering-react-flow-with-gate.md) | React Flow and ELK for the viewer, with a benchmark gate | Accepted |
-| [0006](0006-executable-typescript-config.md) | Configuration is an executable TypeScript file | Accepted (loader library: proposed) |
+| [0006](0006-executable-typescript-config.md) | Configuration is an executable TypeScript file | Accepted |
 | [0007](0007-mit-licence-and-local-first.md) | MIT licence, local-first, no hosted dependency | Accepted |
-| [0008](0008-config-loader-jiti.md) | Load `srcatlas.config.ts` with jiti | Proposed |
+| [0008](0008-config-loader-jiti.md) | Load `srcatlas.config.ts` with jiti | Accepted |
 | [0009](0009-portfolio-first-scope-and-order.md) | Portfolio first: scope, order of work, definition of done | Accepted |
 | [0010](0010-agent-assisted-working-agreement.md) | Working agreement for agent-assisted development | Proposed |
 

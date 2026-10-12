@@ -1,6 +1,6 @@
 # ADR 0006: Configuration is an executable TypeScript file
 
-- Status: Accepted (loader library: proposed)
+- Status: Accepted (loader library decided in [ADR 0008](0008-config-loader-jiti.md))
 - Date: 2026-10-09
 - Deciders: Tunya
 
@@ -8,7 +8,7 @@
 Users need typed, commented configuration with globs and architecture rules. The target audience already uses `vite.config.ts`, `next.config.ts` and similar. `docs/config.md` defines the options.
 
 ## Decision
-Configuration is `srcatlas.config.ts` with a default export from `defineConfig`. It is executed once at start and validated with Zod; unknown keys are errors. Executing the config file is documented as the same trust level as any build config. The analyser never executes the repository's application code (ADR 0001). The loader library (`jiti`, `c12` or `unconfig`) is chosen in the M0 scaffold by these criteria: Windows support, ESM and CJS handling, install size, maintenance activity.
+Configuration is `srcatlas.config.ts` with a default export from `defineConfig`. It is executed once at start and validated with Zod; unknown keys are errors. Executing the config file is documented as the same trust level as any build config. The analyser never executes the repository's application code (ADR 0001). The loader library is `jiti`, chosen in [ADR 0008](0008-config-loader-jiti.md) on Windows support, ESM and CJS handling, install size and maintenance activity.
 
 ## Alternatives considered
 | Option | Why not |

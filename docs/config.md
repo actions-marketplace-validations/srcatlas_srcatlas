@@ -220,7 +220,7 @@ Auto-detection never happens silently for rules or annotations; those exist only
 
 ## 6. Open questions
 
-1. Config loader: use `jiti`, `c12`, or `unconfig`? Decide in an ADR; criteria are Windows support, ESM/CJS handling, and dependency size.
+1. ~~Config loader~~ Decided: `jiti`, see ADR 0008.
 2. `annotations` edges with confidence `certain`: the schema has no "declared by user" level. Proposal: keep `certain`, mark with `extractor: "config"`. Add to `docs/schema.md` open questions before M2.
 3. In-code `// srcatlas: ignore` / `// srcatlas: edge ...` comments (spec 6.2). Cost: a second parse path and ambiguity with decoys. Proposal: post-launch, only after config annotations prove insufficient.
 4. `rules.except` matches by ID, which breaks on renames. Is a glob form needed? Proposal: no in v1.

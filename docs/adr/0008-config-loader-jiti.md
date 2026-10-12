@@ -1,6 +1,6 @@
 # ADR 0008: Load `srcatlas.config.ts` with jiti
 
-- Status: Proposed
+- Status: Accepted
 - Date: 2026-10-12
 - Deciders: Tunya
 
@@ -42,7 +42,7 @@ We will load the config with `jiti` directly, through `createJiti(...).import(pa
 - Bad: jiti is about 1.7 MB unpacked, larger than `c12` 4.x alone.
 - Bad: the config still runs arbitrary code (ADR 0006); this decision does not change that.
 - Needs work in M0: a test that loads a config on Linux, macOS and Windows in CI (CLAUDE.md section 8), and a check that the cache is really off.
-- New dependency (CLAUDE.md section 1, item 7): `jiti`, justified above. The dependency list is protected, so adding it needs maintainer approval at M0.
+- New dependency (CLAUDE.md section 1, item 7): `jiti`, justified above. The maintainer approved adding it on 2026-10-12; it is added when the CLI package is scaffolded in M0.
 
 ## Revisit when
 - CI shows a platform-specific jiti failure on Windows, macOS or Linux.
