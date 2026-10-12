@@ -1,6 +1,6 @@
 # DI feasibility spike: ts-morph on a real NestJS app
 
-Gate from `docs/accuracy.md` section 7 and ADR 0009. Status: started, nothing scored yet.
+Gate from `docs/accuracy.md` section 7 and ADR 0009. Status: oracle, extractor and scorer built; first score recorded below. Decision pending.
 
 ## Target
 
@@ -30,7 +30,12 @@ Gate from `docs/accuracy.md` section 7 and ADR 0009. Status: started, nothing sc
 | What was unresolved | |
 | Oracle bootable without external services? | Yes. `bench/oracles/nestjs-runtime/dump.cjs` boots `AppModule` with `NestFactory.create(..., { preview: true })` from `dist/app.module.js` (not `main.js`, which bootstraps on require). No Postgres or Redis needed. Output is byte-identical across three runs after normalising BullMQ random-id class names and `APP_*` UUID suffixes (first version was not deterministic). Needs `pnpm build` first. |
 | Raw oracle counts (all modules incl. library ones) | 42 modules, 204 providers, 23 controllers, 18 injectables, 133 provider deps. Scoring must restrict to app-owned modules and drop framework internals (ModuleRef, the module class itself and similar). |
-| Module recall / provider recall / injects recall | |
+| Module recall / provider recall / injects recall | 22/22 = 1.00, 33/33 = 1.00, 98/107 = 0.916 (bar 0.90, 0.90, 0.80). Controllers 23/23. Measured once on crwsync `030ebf2`; one app, tier C. |
+| Injects misses (9) | `@InjectQueue` (4, bullmq decorator not handled, extractor wrongly emitted `-> Queue` instead); guards used only via `@UseGuards` are never in a providers array (4: HasPendingInviteGuard, IsMemberGuard x2, WorkspaceRolesGuard); `JwtAuthGuard -> AuthModuleOptions` comes from the inherited passport `AuthGuard` mixin (N-P9). |
+| Scorer changes after first run (disclosed) | First run gave provider recall 0.60 because Nest adds `ApplicationConfig` to every module; it is now treated as framework-internal like `ModuleRef`. `APP_GUARD:X` oracle entries are now scored as class `X`. Neither touches the extractor. |
+| Extractor | `bench/spike-di/extract.mjs` (ts-morph 26, isolated `package.json`, not wired into any workspace). Decorators matched by import origin. ~8 s on the backend, deterministic. 0 unresolved entries. |
+| Scorer | `bench/spike-di/score.mjs`. App-owned = class declared under `src/` by plain-text grep. |
+| Caveats | Providers recall counts only providers in app-owned modules; library modules (Bull, Jwt, Mailer, ...) are excluded by that rule. The oracle ran on a build of the same commit. |
 
 ## Decision
 
