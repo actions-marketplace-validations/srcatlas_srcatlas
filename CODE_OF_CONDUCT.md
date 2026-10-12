@@ -25,7 +25,7 @@ This applies in all project spaces (issues, pull requests, discussions, reviews)
 
 Maintainers may remove, edit or reject comments, commits, issues and other contributions that violate this code, and may temporarily or permanently ban a person from the project.
 
-Report violations privately to: **lenard.tunya@outlook.com**. Reports are handled confidentially. The maintainer who receives a report will not take part in deciding about it if they are the subject of it, and will ask another maintainer or an external reviewer to do so.
+Report violations privately to: **<lenard.tunya@outlook.com>**. Reports are handled confidentially. The maintainer who receives a report will not take part in deciding about it if they are the subject of it, and will ask another maintainer or an external reviewer to do so.
 
 ## Attribution
 
