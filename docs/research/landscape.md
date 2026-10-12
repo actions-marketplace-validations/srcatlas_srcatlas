@@ -21,6 +21,8 @@ Star counts were read from GitHub pages on 2026-10-09 and move over time. Releas
 | Import graphs | dependency-cruiser (7.2k stars, MIT) | File/folder import graph, rule validation | None (imports only) | Rule violations, no graph diff | MIT |
 | Import graphs | Madge (10.2k stars, MIT) | Module dependency graph, circular imports | None (imports only) | No | MIT; stale since Aug 2024 |
 | Visual understanding | CodeSee | Code maps, PR review maps | Generic | Yes | Acquired by GitKraken in May 2024; no longer an independent product |
+| Agent context | Aider repo map (49.5k stars, Apache-2.0) | Per-session map of files and key symbols, ranked by a file-dependency graph | Generic | No | Apache-2.0 |
+| Code intelligence | Sourcegraph (SCIP indexer) | Precise definition and reference index | Generic (symbol level) | No | Commercial owner; the SCIP protocol is open |
 
 Sources:
 - NestJS Devtools CI/CD: https://docs.nestjs.com/devtools/ci-cd-integration
@@ -29,6 +31,9 @@ Sources:
 - dependency-cruiser: https://github.com/sverweij/dependency-cruiser
 - Madge: https://github.com/pahen/madge
 - CodeSee / GitKraken: acquisition noted May 2024 (from earlier research in this project; re-check the primary announcement before citing publicly).
+- Aider repo map: https://aider.chat/docs/repomap.html
+- Sourcegraph SCIP: https://sourcegraph.com/blog/announcing-scip
+- Rule tools and agent repo-map tools in detail: `docs/research/rule-tools.md`.
 
 ## 3. Competitor notes
 
@@ -38,7 +43,7 @@ Sources:
 - PR reports compare against the base graph on the registry. Graph replay colours changes green, white, red.
 - CI/CD integration is Enterprise-plan only.
 - NestJS only. Nothing for Next.js routes, Prisma models, queues, or sockets beyond what Nest itself models.
-- Not established from the docs: whether the graph is built statically or from the live DI container. Treat it as runtime-derived until proven otherwise.
+- Checked 2026-10-12 (`docs/research/rule-tools.md` section 5): the graph is runtime-derived. Nest collects metadata during bootstrap (`snapshot: true`); a saved graph is still produced from an initialised app.
 
 ### DeepWiki and clones
 - Output is LLM-generated prose and diagrams. Cheap to start, but not reproducible: two runs can differ, and a diagram can contain invented edges.
@@ -85,7 +90,7 @@ Primary audience for v1: NestJS + Next.js + Prisma teams and solo developers. Se
 | Static analysis cannot match runtime DI accuracy | Medium / high | The DI feasibility spike is a gate before M1. Report `unresolved` edges honestly instead of guessing. |
 | Small open-source clones appear | High / low | Ship earlier on quality: fixtures, measured precision/recall, working Action. |
 | "Diagram tool" is a vitamin, not a painkiller | Medium / medium | The painkiller is the PR check: unreviewed changes to guards, global modules, queue consumers. Build rules around that. |
-| Existing architecture-rule tools already cover part of the "check" pitch | Medium / medium | Not researched yet (section 8). Hypothesis to verify: srcatlas rules work on framework concepts (a controller reading a model), which import-level boundary rules cannot express. If that is false, the rules angle needs a different claim. |
+| Existing architecture-rule tools already cover part of the "check" pitch | Medium / medium | Confirmed in part (`docs/research/rule-tools.md`): rule tools match files, folders, tags and imports, and naming conventions let them approximate controller and service layering. Lead with the diff and with framework-level facts; do not claim layering enforcement as unique. |
 
 ## 7. Decision
 
@@ -98,13 +103,11 @@ Proceed as specified. Changes to make:
 
 ## 8. Not verified
 
-- Whether NestJS Devtools builds its graph statically or at runtime.
 - Exact Devtools pricing beyond "Enterprise".
 - DeepWiki (Devin) pricing and limits.
 - Primary source for the CodeSee/GitKraken date.
 - Structurizr/C4 tooling, Sourcegraph, Backstage, draw.io and Mermaid ecosystems were not researched. They are modelling or portal tools rather than extractors, but this is an assumption.
 - Star counts and release dates are a snapshot from 2026-10-09; release dates were not retrievable.
 - The same-name repository you found earlier has not been reviewed.
-- Architecture-rule tools were not researched: ESLint boundary plugins, Nx module-boundary rules, and ArchUnit-style libraries for TypeScript. Check what they can express, how they are adopted, and whether any works on framework concepts.
-- Tools that give coding agents a repository map or code graph (for example over MCP) were not researched. Relevant only if the agent audience (v1.1) is pursued.
+- Architecture-rule tools and agent repo-map tools were researched on 2026-10-12 (`docs/research/rule-tools.md`). Remaining unknowns are listed in its section 8.
 - Whether enough developers want PR-time architecture checks is unvalidated (ADR 0009 defers user interviews).
