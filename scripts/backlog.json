@@ -1054,6 +1054,21 @@
     },
     {
       "milestone": "v1.1",
+      "title": "Measure whether the graph helps coding agents (with and without the graph file)",
+      "labels": [
+        "area:bench",
+        "manual",
+        "P1"
+      ],
+      "refs": "docs/research/rule-tools.md section 7; ADR 0009",
+      "done": [
+        "About ten structural questions put to a coding agent on one real repository, once with and once without srcatlas.graph.json",
+        "Answer accuracy and token use compared and recorded in docs/research/agent-test.md",
+        "Decision recorded: build the MCP server and agent export as planned, change their scope, or drop them"
+      ]
+    },
+    {
+      "milestone": "v1.1",
       "title": "packages/query and cli: explain",
       "labels": [
         "area:cli",
