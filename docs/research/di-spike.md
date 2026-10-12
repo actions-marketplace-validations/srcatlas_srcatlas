@@ -1,6 +1,6 @@
 # DI feasibility spike: ts-morph on a real NestJS app
 
-Gate from `docs/accuracy.md` section 7 and ADR 0009. Status: oracle, extractor and scorer built; first score recorded below. Decision pending.
+Gate from `docs/accuracy.md` section 7 and ADR 0009. Status: oracle, extractor and scorer built; first score recorded below. Decision: proceed.
 
 ## Target
 
@@ -39,4 +39,10 @@ Gate from `docs/accuracy.md` section 7 and ADR 0009. Status: oracle, extractor a
 
 ## Decision
 
-Proceed / narrow scope (Prisma models + route-level graph) / stop. Not decided.
+**Proceed** with the NestJS + Prisma extractor as planned in ADR 0009; scope is not narrowed. No new ADR: the approach (static analysis with ts-morph, ADR 0001) is unchanged.
+
+On one real app (crwsync `apps/backend`, `030ebf2`) the provisional extractor reached module recall 1.00 and provider recall 1.00 against the runtime oracle, and `injects` recall 0.916 against the 0.80 threshold set before scoring. All three gates passed. The runtime oracle boots in preview mode without Postgres or Redis, which settles the first open question in `docs/accuracy.md` section 10 for this app (other apps are untested).
+
+What this does not show: it is a single app, it is the maintainer's own (tier C, not part of any published number), and the extractor was shaped around what that app uses. The 9 missed `injects` edges are known and map to documented patterns: `@InjectQueue` (N-Q2), guards reachable only through `@UseGuards`, and inheritance of constructor injection (N-P9). M1 must handle them, and the tier B gates in `docs/accuracy.md` section 7 still apply to other apps.
+
+Dependency: `ts-morph` approved by the maintainer for the spike (`bench/spike-di`) and for the analyser, as named in CLAUDE.md section 4.
