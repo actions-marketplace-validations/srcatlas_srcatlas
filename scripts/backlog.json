@@ -280,7 +280,23 @@
       "refs": "docs/config.md section 2.2; ADR 0002",
       "done": [
         "Packages found from workspaces or root",
-        "tsconfig resolved per package; path aliases work"
+        "tsconfig resolved per package; path aliases work",
+        "Test files excluded by default; analysis.includeTests re-includes them (docs/config.md sections 2.1, 2.7)"
+      ]
+    },
+    {
+      "milestone": "M1 NestJS + Prisma",
+      "title": "ADR: extractors emit access facts that the link pass turns into edges",
+      "labels": [
+        "area:analyzer",
+        "area:docs",
+        "P0"
+      ],
+      "refs": "docs/extractors/prisma.md sections 1.2, 3 and 8 (question 1); ADR 0003",
+      "done": [
+        "Decision recorded in a new ADR: whether extractors emit access facts and the link pass builds the edges",
+        "Fact format defined (fields in docs/extractors/prisma.md section 3) and used by the extractor runner interface",
+        "Graph file format unchanged"
       ]
     },
     {
@@ -414,29 +430,32 @@
     },
     {
       "milestone": "M1 NestJS + Prisma",
-      "title": "prisma extractor: models, relations, enums from schema.prisma",
+      "title": "prisma extractor: models from schema files (PR-S1 to PR-S7; fixtures prisma-schema, prisma-schema-errors)",
       "labels": [
         "area:prisma",
         "P0"
       ],
-      "refs": "docs/schema.md section 4; spec section 6.2",
+      "refs": "docs/extractors/prisma.md sections 2 and 4.1; docs/schema.md section 4",
       "done": [
-        "Model nodes with fieldCount and schemaFile",
-        "Multi-file schema supported"
+        "Model nodes with fieldCount and schemaFile; multi-file schema supported",
+        "Fixtures pass with hand-written golden files; decoys (comments, strings, other blocks) produce nothing",
+        "Malformed and duplicate models are reported, not guessed"
       ]
     },
     {
       "milestone": "M1 NestJS + Prisma",
-      "title": "prisma extractor: client calls to reads/writes edges",
+      "title": "prisma extractor: client calls to access facts and reads/writes edges (PR-C1 to PR-C8; fixtures prisma-client, prisma-client-decoys)",
       "labels": [
         "area:prisma",
         "P0"
       ],
-      "refs": "docs/schema.md section 6; config.md section 2.3",
+      "refs": "docs/extractors/prisma.md sections 3 and 4.2; docs/schema.md section 6; docs/config.md section 2.3",
       "done": [
         "Operation names collected in edge meta",
         "No calls edge to PrismaService",
-        "Type-based client detection; name heuristic only as inferred"
+        "Type-based client detection; name heuristic only as inferred",
+        "A local fake PrismaClient and non-Prisma look-alikes produce nothing",
+        "Open questions 4 and 6 of docs/extractors/prisma.md answered against a generated client and recorded"
       ]
     },
     {
@@ -819,6 +838,21 @@
       "refs": "docs/extractors/nestjs.md",
       "done": [
         "@nestjs/bull @Process(name) handled; legacy only"
+      ]
+    },
+    {
+      "milestone": "M4 Next.js + breadth",
+      "title": "Decide how Prisma relations and enums appear in the graph",
+      "labels": [
+        "area:core",
+        "area:docs",
+        "area:prisma",
+        "P2"
+      ],
+      "refs": "docs/extractors/prisma.md section 8 (question 2); docs/schema.md section 12",
+      "done": [
+        "Decision recorded in an ADR: an additive edge kind, prefixed meta keys, or left out",
+        "If kept: docs/schema.md and the Zod schema change in the same commit"
       ]
     },
     {

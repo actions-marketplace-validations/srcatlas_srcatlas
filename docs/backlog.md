@@ -38,20 +38,21 @@ Analyzer pipeline, NestJS and Prisma extractors, init and analyze
 | # | Issue | Priority | Labels |
 |---|---|---|---|
 | 1 | analyzer: package detection, workspace discovery, ts-morph project per package | P0 | area:analyzer |
-| 2 | analyzer: worker pool and extractor runner interface | P0 | area:analyzer |
-| 3 | analyzer: report file and report-code registry | P0 | area:analyzer |
-| 4 | cli: analyze (summary, --json, --strict, atomic writes) | P0 | area:cli |
-| 5 | cli: init (detect frameworks, write config, optional workflow) | P0 | area:cli |
-| 6 | nestjs: static value evaluation and token resolution | P0 | area:nestjs |
-| 7 | nestjs: modules N-M1 to N-M4, N-M8, N-M9 (fixtures nest-basic, nest-modules) | P0 | area:nestjs |
-| 8 | nestjs: dynamic modules N-M5 to N-M7 (fixture nest-dynamic) | P0 | area:nestjs |
-| 9 | nestjs: providers and DI N-P1 to N-P8, N-P11 (fixture nest-di-custom) | P0 | area:nestjs |
-| 10 | nestjs: controllers and routes N-R1 to N-R5, N-R8 to N-R10 (fixture nest-routing) | P0 | area:nestjs |
-| 11 | nestjs: decoys fixture (nest-decoys) | P0 | area:nestjs |
-| 12 | prisma extractor: models, relations, enums from schema.prisma | P0 | area:prisma |
-| 13 | prisma extractor: client calls to reads/writes edges | P0 | area:prisma |
-| 14 | Runtime oracle v0 for NestJS (bench/oracles) | P0 | area:bench |
-| 15 | M1 exit check: first real app against the oracle; determinism on 3 OS in CI | P0 | area:bench, gate |
+| 2 | ADR: extractors emit access facts that the link pass turns into edges | P0 | area:analyzer, area:docs |
+| 3 | analyzer: worker pool and extractor runner interface | P0 | area:analyzer |
+| 4 | analyzer: report file and report-code registry | P0 | area:analyzer |
+| 5 | cli: analyze (summary, --json, --strict, atomic writes) | P0 | area:cli |
+| 6 | cli: init (detect frameworks, write config, optional workflow) | P0 | area:cli |
+| 7 | nestjs: static value evaluation and token resolution | P0 | area:nestjs |
+| 8 | nestjs: modules N-M1 to N-M4, N-M8, N-M9 (fixtures nest-basic, nest-modules) | P0 | area:nestjs |
+| 9 | nestjs: dynamic modules N-M5 to N-M7 (fixture nest-dynamic) | P0 | area:nestjs |
+| 10 | nestjs: providers and DI N-P1 to N-P8, N-P11 (fixture nest-di-custom) | P0 | area:nestjs |
+| 11 | nestjs: controllers and routes N-R1 to N-R5, N-R8 to N-R10 (fixture nest-routing) | P0 | area:nestjs |
+| 12 | nestjs: decoys fixture (nest-decoys) | P0 | area:nestjs |
+| 13 | prisma extractor: models from schema files (PR-S1 to PR-S7; fixtures prisma-schema, prisma-schema-errors) | P0 | area:prisma |
+| 14 | prisma extractor: client calls to access facts and reads/writes edges (PR-C1 to PR-C8; fixtures prisma-client, prisma-client-decoys) | P0 | area:prisma |
+| 15 | Runtime oracle v0 for NestJS (bench/oracles) | P0 | area:bench |
+| 16 | M1 exit check: first real app against the oracle; determinism on 3 OS in CI | P0 | area:bench, gate |
 
 ## M2 Diff + Action
 
@@ -100,9 +101,10 @@ Not committed; ordered by priority after M3. Next.js extractor, monorepo detecti
 | 6 | nestjs: gateways N-G1 to N-G5 (fixture nest-gateway) | P1 | area:nestjs |
 | 7 | bullmq: queues N-Q1 to N-Q4 (fixture nest-bullmq) | P1 | area:nestjs |
 | 8 | bull legacy: N-Q5 (fixture nest-bull-legacy) | P1 | area:nestjs, good first issue |
-| 9 | bench: declared oracles (Prisma schema parser, Next.js build manifests) | P0 | area:bench |
-| 10 | bench: select and label tier B stage 2 (3 Next.js App Router, 2 full-stack) | P0 | area:bench, manual |
-| 11 | M4 exit check: Next.js and Prisma tier B accuracy gates | P0 | area:bench, gate |
+| 9 | Decide how Prisma relations and enums appear in the graph | P2 | area:core, area:docs, area:prisma |
+| 10 | bench: declared oracles (Prisma schema parser, Next.js build manifests) | P0 | area:bench |
+| 11 | bench: select and label tier B stage 2 (3 Next.js App Router, 2 full-stack) | P0 | area:bench, manual |
+| 12 | M4 exit check: Next.js and Prisma tier B accuracy gates | P0 | area:bench, gate |
 
 ## M5 Viewer + embeds
 
@@ -135,4 +137,4 @@ Coding-agent adaptation; starts once the M3 exit gate is met: query, MCP, agent 
 | 3 | export --format agents-md | P1 | area:cli |
 | 4 | Opt-in incremental analysis cache | P2 | area:analyzer |
 
-Total: 77 issues.
+Total: 79 issues.

@@ -33,7 +33,7 @@ Access facts are an internal interface between the extractor and the analyzer. T
 2. **Names are a fallback, never a proof.** Name-based matching (`clientNames` in `docs/config.md` section 2.3) applies only when the receiver's type cannot be resolved, and the result is `inferred`.
 3. **No code execution.** The extractor never runs `prisma generate`, never loads the Prisma engines and never connects to a database. It reads text and types only.
 4. **Never guess a model.** A delegate that matches no model in a visible schema produces no edge and a report entry.
-5. **Test and build files** follow the `include` and `exclude` settings in `docs/config.md` section 2.1 (see open question 6).
+5. **Test and build files** are excluded by default and follow the `include`, `exclude` and `analysis.includeTests` settings in `docs/config.md` sections 2.1 and 2.7.
 6. **Stable ordering is the core's job.** The extractor emits in any order; `packages/core` sorts.
 
 ### 1.4 Detection
@@ -315,5 +315,4 @@ Record answers as decisions in `docs/adr/`.
 3. **Hand-written schema parser or a library.** The proposal is a small parser (section 2). Reasons: the data needed is tiny, line numbers come for free, there is no new runtime dependency (CLAUDE.md section 1.7), and the declared oracle for Prisma models (`docs/accuracy.md` section 2) uses the official parser, so the extractor should not share it. Revisit if the parser proves fragile on real schemas.
 4. **Proof without `prisma generate`.** Can the type checker prove that a receiver is a `PrismaClient` (PR-C1 rules 1 and 2) when `@prisma/client` is installed but its client has not been generated, or is not installed at all? If not, rule 3 and the name-based fallback carry more of the load. Check in the DI spike or the first real-repository run. Also check how the generator `output` option changes where `PrismaClient` is imported from in current Prisma versions.
 5. **Views.** Prisma `view` blocks can be queried like models. Should they be `model` nodes? This draft says no (PR-S4), so access to a view gives `prisma.unknown-model-access`.
-6. **Test files by default.** `docs/extractors/nestjs.md` section 1.2 rule 4 says test and build files are excluded by default; `docs/config.md` section 2.1 says test files are not excluded by default. These two disagree. Decide one and fix the other. Prisma follows the config document until then.
-7. **Name of the delegate.** The rule "model name with the first letter lower-cased" matches how Prisma names client properties as far as this draft's author knows. Confirm against a generated client in the first fixture run before relying on it.
+6. **Name of the delegate.** The rule "model name with the first letter lower-cased" matches how Prisma names client properties as far as this draft's author knows. Confirm against a generated client in the first fixture run before relying on it.
