@@ -21,7 +21,7 @@ Priorities: **P0** = needed for the first release. **P1** = planned for the firs
 1. **Decorators are matched by origin, not by name.** `@Get()` counts only if the identifier resolves, through the type checker, to an export of `@nestjs/common` (or another package named in the pattern). A local function called `Get`, or a decorator from another library with the same name, must not produce output. Every fixture set includes decoys for this.
 2. **Static evaluation is limited and explicit.** See section 2. Anything outside it is `unresolved` and reported, never guessed.
 3. **No code execution.** The extractor reads syntax and types only.
-4. **Test and build files are excluded by default** (`**/*.spec.ts`, `**/*.test.ts`, `**/__tests__/**`, `**/dist/**`, `**/node_modules/**`). Config may re-include them.
+4. **Test and build files are excluded by default** (the list is in `docs/config.md` section 2.1). `analysis.includeTests: true` re-includes test files.
 5. **One node per class.** A class registered in several modules is one node. `node.module` is `null` and each module has a `contains` edge (schema section 3).
 6. **Stable ordering is the core's job.** The extractor emits in any order; `packages/core` sorts.
 

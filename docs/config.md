@@ -32,7 +32,7 @@ export default defineConfig({
     { path: 'apps/api', name: 'api', extractors: ['nestjs', 'prisma'] },
     { path: 'apps/web', name: 'web', extractors: ['nextjs'] },
   ],
-  exclude: ['**/*.spec.ts', '**/__mocks__/**'],
+  exclude: ['**/__mocks__/**', 'src/generated/**'],
   extractors: {
     nestjs: { globalPrefix: 'api', versioning: { type: 'uri', defaultVersion: '1' } },
   },
@@ -72,7 +72,7 @@ Types are shown in TypeScript notation. "Default" is what applies when the optio
 | `embed` | `EmbedConfig` | none | README embed settings (section 2.6). |
 | `analysis` | `AnalysisConfig` | defaults | Performance and strictness (section 2.7). |
 
-Default excludes (always applied): `**/node_modules/**`, `**/dist/**`, `**/build/**`, `**/.next/**`, `**/coverage/**`, `**/*.d.ts`, `**/.srcatlas/**`. Test files are *not* excluded by default; add them with `exclude` if tests contain framework decorators that create decoys.
+Default excludes (always applied): `**/node_modules/**`, `**/dist/**`, `**/build/**`, `**/.next/**`, `**/coverage/**`, `**/*.d.ts`, `**/.srcatlas/**`. Test files are also excluded by default: `**/*.spec.ts`, `**/*.spec.tsx`, `**/*.test.ts`, `**/*.test.tsx`, `**/__tests__/**`. Mock classes and fixtures in tests carry framework decorators and would create nodes that are not part of the application. Set `analysis.includeTests: true` to analyse them (section 2.7).
 
 ### 2.2 `PackageConfig`
 
@@ -192,6 +192,7 @@ Rules:
 | `strict` | `boolean` | `false` | Same as `--strict` on `analyze`. |
 | `maxFileSizeKb` | `number` | `1024` | Files larger than this are skipped and reported (`core.file-too-large`). Guards against generated bundles. |
 | `followSymlinks` | `boolean` | `false` | Whether to traverse symlinked directories. |
+| `includeTests` | `boolean` | `false` | Analyse the test files that are excluded by default (section 2.1). |
 
 ## 3. Defaults summary and precedence
 

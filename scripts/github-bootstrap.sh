@@ -16,6 +16,10 @@ if [ "$DRY" != "1" ]; then
   gh auth status >/dev/null 2>&1 || { echo "gh is not authenticated: run 'gh auth login'" >&2; exit 2; }
 fi
 
+# jq.exe on Windows prints CRLF line endings, which breaks values read in this script.
+# Strip carriage returns from every jq (and gh) result.
+jq() { command jq "$@" | tr -d '\r'; }
+
 run() { if [ "$DRY" = "1" ]; then printf 'DRY: %s\n' "$*"; else "$@" >/dev/null; fi; }
 
 echo "== labels"
@@ -25,18 +29,20 @@ done
 
 echo "== milestones"
 existing_ms=""
-[ "$DRY" = "1" ] || existing_ms=$(gh api "repos/{owner}/{repo}/milestones?state=all&per_page=100" --jq '.[].title')
+[ "$DRY" = "1" ] || existing_ms=$(gh api "repos/{owner}/{repo}/milestones?state=all&per_page=100" --jq '.[].title' | tr -d '\r')
 jq -c '.milestones[]' "$FILE" | while read -r m; do
   title=$(jq -r .title <<<"$m")
   if grep -Fxq "$title" <<<"$existing_ms"; then echo "skip milestone: $title"; continue; fi
-  desc=$(jq -r .description <<<"$m"); due=$(jq -r .due_on <<<"$m")
-  run gh api "repos/{owner}/{repo}/milestones" -f title="$title" -f description="$desc" -f due_on="$due"
+  desc=$(jq -r .description <<<"$m"); due=$(jq -r '.due_on // empty' <<<"$m")
+  ms_args=(-f title="$title" -f description="$desc")
+  [ -n "$due" ] && ms_args+=(-f due_on="$due")
+  run gh api "repos/{owner}/{repo}/milestones" "${ms_args[@]}"
   echo "milestone: $title"
 done
 
 echo "== issues"
 existing_is=""
-[ "$DRY" = "1" ] || existing_is=$(gh issue list --state all --limit 1000 --json title --jq '.[].title')
+[ "$DRY" = "1" ] || existing_is=$(gh issue list --state all --limit 1000 --json title --jq '.[].title' | tr -d '\r')
 jq -c '.issues[]' "$FILE" | while read -r i; do
   title=$(jq -r .title <<<"$i")
   if grep -Fxq "$title" <<<"$existing_is"; then echo "skip issue: $title"; continue; fi
@@ -46,5 +52,6 @@ jq -c '.issues[]' "$FILE" | while read -r i; do
   while IFS= read -r l; do args+=(--label "$l"); done < <(jq -r '.labels[]' <<<"$i")
   run gh issue create "${args[@]}"
   echo "issue: $title"
+  [ "$DRY" = "1" ] || sleep 2   # stay under GitHub secondary rate limits
 done
 echo "done"
