@@ -24,43 +24,35 @@
   "milestones": [
     {
       "title": "Pre-work",
-      "description": "Before M0: name, spike, repo settings",
-      "due_on": "2026-10-18T23:59:59Z"
+      "description": "Before M0: name, spike, repo settings"
     },
     {
       "title": "M0 Foundations",
-      "description": "Monorepo, CI, schema v1 in code",
-      "due_on": "2026-10-25T23:59:59Z"
+      "description": "Monorepo, CI, schema v1 in code"
     },
     {
       "title": "M1 NestJS + Prisma",
-      "description": "Analyzer pipeline, NestJS and Prisma extractors, init and analyze",
-      "due_on": "2026-11-15T23:59:59Z"
+      "description": "Analyzer pipeline, NestJS and Prisma extractors, init and analyze"
     },
     {
       "title": "M2 Diff + Action",
-      "description": "Link pass, differ, Mermaid, GitHub Action, rules and ratchet: first shareable result (NestJS + Prisma)",
-      "due_on": "2026-11-29T23:59:59Z"
+      "description": "Link pass, differ, Mermaid, GitHub Action, rules and ratchet: first shareable result (NestJS + Prisma)"
     },
     {
       "title": "M3 NestJS accuracy + launch",
-      "description": "Tier B NestJS accuracy, performance gate, README, blog post, first public release",
-      "due_on": "2026-12-13T23:59:59Z"
+      "description": "Tier B NestJS accuracy, performance gate, README, blog post, first public release"
     },
     {
       "title": "M4 Next.js + breadth",
-      "description": "Next.js extractor, monorepo detection, remaining NestJS patterns, Next.js and Prisma accuracy",
-      "due_on": "2027-01-10T23:59:59Z"
+      "description": "Not committed; ordered by priority after M3. Next.js extractor, monorepo detection, remaining NestJS patterns, Next.js and Prisma accuracy"
     },
     {
       "title": "M5 Viewer + embeds",
-      "description": "Viewer with benchmark gate, SVG export, docs site",
-      "due_on": "2027-02-07T23:59:59Z"
+      "description": "Not committed; ordered by priority after M3. Viewer with benchmark gate, SVG export, docs site"
     },
     {
       "title": "v1.1",
-      "description": "After launch: MCP, query, agent export",
-      "due_on": "2027-03-31T23:59:59Z"
+      "description": "Coding-agent adaptation; starts once the M3 exit gate is met: query, MCP, agent export"
     }
   ],
   "issues": [
@@ -90,9 +82,25 @@
       "refs": "docs/extractors/nestjs.md section 3; docs/accuracy.md section 7; ADR 0001",
       "done": [
         "Provisional extractor resolves modules and providers of one real NestJS app",
-        "Module and provider recall at least 0.90 against the runtime oracle (ModulesContainer)",
+        "Module and provider recall at least 0.90 against the runtime oracle (ModulesContainer); injects-edge recall scored too, with its threshold written in docs/research/di-spike.md before scoring",
         "Notes written to docs/research/di-spike.md: what was hard, what was unresolved, time spent",
-        "Decision recorded: proceed, narrow scope, or stop (new ADR if the approach changes)"
+        "Decision recorded: proceed, narrow scope (fallback: Prisma models and a route-level graph), or stop with a write-up of what was learned (new ADR if the approach changes)"
+      ]
+    },
+    {
+      "milestone": "Pre-work",
+      "title": "Research architecture-rule tools and agent repo-map tools; zero-outreach demand check",
+      "labels": [
+        "area:docs",
+        "manual",
+        "P0"
+      ],
+      "refs": "docs/research/landscape.md section 8; ADR 0009",
+      "done": [
+        "Notes in docs/research/rule-tools.md: what ESLint boundary plugins, Nx module-boundary rules and ArchUnit-style TypeScript libraries can express, and whether any works on framework concepts",
+        "Notes on tools that give coding agents a repository map or code graph",
+        "GitHub code search for NestJS repositories that already use boundary or architecture tests; count and examples recorded",
+        "landscape.md section 8 updated; decision recorded: framing unchanged, or the check pitch changes (new ADR if so)"
       ]
     },
     {
@@ -454,7 +462,7 @@
       ],
       "refs": "spec section 17; docs/accuracy.md section 7",
       "done": [
-        "Module and provider recall at least 0.90 on one real app",
+        "Module and provider recall at least 0.90 and injects-edge recall at the threshold set in docs/research/di-spike.md, on one real app",
         "Byte-identical graph across OS"
       ]
     },
@@ -574,7 +582,8 @@
       ],
       "refs": "spec section 17",
       "done": [
-        "End-to-end PR comment within 90 s on all four"
+        "End-to-end PR comment within 90 s on all four",
+        "The author's own crwsync is one dogfood repository (demo only; excluded from the published accuracy number, docs/accuracy.md section 3)"
       ]
     },
     {
@@ -655,7 +664,8 @@
       "done": [
         "No hand-typed accuracy numbers",
         "Quickstart verified on Linux, macOS, Windows",
-        "README shows a real PR comment from the pilot"
+        "README shows a real PR comment from the pilot",
+        "README opens with the one-sentence pitch, the PR comment screenshot and the accuracy table"
       ]
     },
     {
@@ -681,6 +691,33 @@
       "refs": "spec section 19",
       "done": [
         "Checklist complete; post covers the technique, not only the tool"
+      ]
+    },
+    {
+      "milestone": "M3 NestJS accuracy + launch",
+      "title": "Document Action permissions, fork behaviour and a maintenance policy",
+      "labels": [
+        "area:docs",
+        "P1"
+      ],
+      "refs": "SECURITY.md; docs/cli.md; ADR 0007",
+      "done": [
+        "Permissions the Action needs and why, and what happens on fork PRs",
+        "Maintenance policy: how reports are triaged, which framework versions are supported, the graph schema compatibility promise"
+      ]
+    },
+    {
+      "milestone": "M3 NestJS accuracy + launch",
+      "title": "Portfolio: add srcatlas to lenardtunya.com (screenshot, accuracy table, link)",
+      "labels": [
+        "area:docs",
+        "manual",
+        "P1"
+      ],
+      "refs": "ADR 0009",
+      "done": [
+        "Project page leads with the one-sentence pitch and a real PR comment screenshot",
+        "Links to the repository and the accuracy table"
       ]
     },
     {
@@ -986,7 +1023,7 @@
       "title": "packages/query and cli: explain",
       "labels": [
         "area:cli",
-        "P2"
+        "P1"
       ],
       "refs": "docs/cli.md section 3.7",
       "done": [
@@ -998,7 +1035,7 @@
       "title": "MCP server over packages/query",
       "labels": [
         "area:cli",
-        "P2"
+        "P1"
       ],
       "refs": "spec section 20",
       "done": [
@@ -1010,7 +1047,7 @@
       "title": "export --format agents-md",
       "labels": [
         "area:cli",
-        "P2"
+        "P1"
       ],
       "refs": "spec section 20",
       "done": [

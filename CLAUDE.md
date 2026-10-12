@@ -112,4 +112,4 @@ Do not, without being asked: add frameworks beyond the docs, add AI/LLM calls to
 
 ## 12. Current status
 
-Pre-implementation. Order of work (ADR 0009, `scripts/backlog.json`): pre-work, including the DI feasibility spike on a real NestJS app as the go/no-go gate → M0 scaffold → M1 NestJS + Prisma → M2 diff + Action → M3 NestJS accuracy + launch → M4 Next.js → M5 viewer. Do not start a later milestone's package before its milestone. Update this section as milestones close.
+Pre-implementation. Order of work (ADR 0009, `scripts/backlog.json`): pre-work, including the DI feasibility spike on a real NestJS app as the go/no-go gate → M0 scaffold → M1 NestJS + Prisma → M2 diff + Action → M3 NestJS accuracy + launch. Coding-agent work, M4 (Next.js) and M5 (viewer) follow by priority once the M3 gate is met. Milestones carry no dates. Do not start a later milestone's package before its milestone. Update this section as milestones close.

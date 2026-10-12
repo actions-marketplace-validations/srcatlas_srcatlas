@@ -96,7 +96,7 @@ Calibration requirement: precision of `certain` > precision of `inferred` on tie
 | Gate | When | Threshold |
 |---|---|---|
 | Fixture suite | Every PR | 100% pass |
-| DI feasibility spike | Before M1 starts | On one real NestJS app: module and provider recall at least 0.90 against the runtime oracle, using the provisional extractor. If not reached, stop and rethink the approach before building more. |
+| DI feasibility spike | Before M1 starts | On one real NestJS app: module and provider recall at least 0.90 against the runtime oracle, using the provisional extractor. Recall of `injects` edges is scored with the same oracle; its threshold is written in `docs/research/di-spike.md` before scoring. If either is not reached, narrow scope (fallback: Prisma models and a route-level graph) or stop and rethink before building more. The result is recorded as measured. |
 | Tier B, NestJS, `certain` edges | v1.0 release | Precision at least 0.95, recall at least 0.85 |
 | Tier B, Next.js routes and Prisma models | v1.0 release | Precision at least 0.98, recall at least 0.95 (both have declared oracles and simpler rules) |
 | Determinism | Every release | Byte-identical |

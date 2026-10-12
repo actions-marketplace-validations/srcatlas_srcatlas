@@ -82,7 +82,7 @@ Primary audience for v1: NestJS + Next.js + Prisma teams and solo developers. Se
 |---|---|---|
 | NestJS adds free CI diffs | Low-medium / high for Nest-only users | Lead with the multi-framework graph; Nest is one extractor, not the pitch. |
 | DeepWiki adds PR diffs | Medium / medium | Accuracy and determinism are the moat; keep `docs/accuracy.md` published and current. |
-| Static analysis cannot match runtime DI accuracy | Medium / high | The 1-2 day DI feasibility spike is a gate before M1. Report `unresolved` edges honestly instead of guessing. |
+| Static analysis cannot match runtime DI accuracy | Medium / high | The DI feasibility spike is a gate before M1. Report `unresolved` edges honestly instead of guessing. |
 | Small open-source clones appear | High / low | Ship earlier on quality: fixtures, measured precision/recall, working Action. |
 | "Diagram tool" is a vitamin, not a painkiller | Medium / medium | The painkiller is the PR check: unreviewed changes to guards, global modules, queue consumers. Build rules around that. |
 | Existing architecture-rule tools already cover part of the "check" pitch | Medium / medium | Not researched yet (section 8). Hypothesis to verify: srcatlas rules work on framework concepts (a controller reading a model), which import-level boundary rules cannot express. If that is false, the rules angle needs a different claim. |

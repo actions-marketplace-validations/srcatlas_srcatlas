@@ -33,8 +33,10 @@ existing_ms=""
 jq -c '.milestones[]' "$FILE" | while read -r m; do
   title=$(jq -r .title <<<"$m")
   if grep -Fxq "$title" <<<"$existing_ms"; then echo "skip milestone: $title"; continue; fi
-  desc=$(jq -r .description <<<"$m"); due=$(jq -r .due_on <<<"$m")
-  run gh api "repos/{owner}/{repo}/milestones" -f title="$title" -f description="$desc" -f due_on="$due"
+  desc=$(jq -r .description <<<"$m"); due=$(jq -r '.due_on // empty' <<<"$m")
+  ms_args=(-f title="$title" -f description="$desc")
+  [ -n "$due" ] && ms_args+=(-f due_on="$due")
+  run gh api "repos/{owner}/{repo}/milestones" "${ms_args[@]}"
   echo "milestone: $title"
 done
 
