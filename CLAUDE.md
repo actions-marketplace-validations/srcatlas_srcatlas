@@ -75,6 +75,10 @@ Run `pnpm lint && pnpm typecheck && pnpm test` before declaring work done.
 - **Decoys matter.** For every pattern add a case that looks similar and must produce nothing.
 - **Do not widen scope.** If you find a gap in a doc, add it to that doc's "Open questions" and continue with the documented behaviour. Do not invent behaviour.
 - **Ask when blocked.** Ambiguity in the schema or a pattern: ask. Do not resolve it by guessing.
+- **Extractor patterns are two commits** (ADR 0010). First the fixture, the hand-written golden file and a failing test, for the maintainer to approve; then the implementation.
+- **Never weaken a check to pass.** Do not edit golden files, expected reports, thresholds or gates to turn a run green. If you think the specification or the golden file is wrong, stop and say so. A legitimate change is its own commit with the pattern ID and the reason.
+- **Report what you ran.** End every task with the exact commands run and their results. Say "not run" for anything skipped. Do not call work done on your own word; CI, the determinism check and the oracle decide.
+- **Protected without approval:** `docs/schema.md` and the Zod schema, `docs/adr/`, this file, CI and release configuration, the licence, and the dependency list.
 
 ## 7. Code conventions
 
