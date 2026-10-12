@@ -22,6 +22,7 @@ Read this file first. Then read the doc that matches your task (section 2). If a
 | NestJS extractor | `docs/extractors/nestjs.md` (pattern IDs N-M1 and so on, report codes, fixture plan) |
 | Accuracy, benchmarks, README numbers | `docs/accuracy.md` |
 | Why the product exists, what not to claim | `docs/research/landscape.md` |
+| Project goals, order of work, what "done" means | `docs/adr/0009-portfolio-first-scope-and-order.md`, `scripts/backlog.json` |
 | Product scope, milestones | the spec (Claude Docs, "srcatlas: Technical Specification"). Where it differs from `docs/`, the `docs/` files win. |
 
 Planned and not written yet: Prisma, Next.js extractor docs, `docs/cli.md`, `docs/config.md`, `docs/adr/`. If your task needs one, write it first or ask.
@@ -111,4 +112,4 @@ Do not, without being asked: add frameworks beyond the docs, add AI/LLM calls to
 
 ## 12. Current status
 
-Pre-implementation. Order of work: repo scaffold (M0) → DI feasibility spike on a real NestJS app → M1. Update this section as milestones close.
+Pre-implementation. Order of work (ADR 0009, `scripts/backlog.json`): pre-work, including the DI feasibility spike on a real NestJS app as the go/no-go gate → M0 scaffold → M1 NestJS + Prisma → M2 diff + Action → M3 NestJS accuracy + launch → M4 Next.js → M5 viewer. Do not start a later milestone's package before its milestone. Update this section as milestones close.

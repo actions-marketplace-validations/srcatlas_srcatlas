@@ -49,6 +49,8 @@ Tier B selection rules (decided before running the tool, recorded in `bench/corp
 
 Tier B repositories are chosen from what exists at selection time. This file does not name any, because none has been selected.
 
+Selection happens in two stages so that a first release can follow the NestJS gate: stage 1 is the 5 NestJS repositories, stage 2 the 3 Next.js and 2 full-stack repositories. The selection rules apply to each stage and are committed before the tool is run on that stage.
+
 Labelling cost is the limiting factor. Budget: hand labels cover only the edge kinds with no oracle, and only the first 60 files of each repository by a fixed order (sorted path) when a repository is larger. The sampling rule is recorded so the number is reproducible.
 
 ## 4. Metrics
@@ -101,6 +103,8 @@ Calibration requirement: precision of `certain` > precision of `inferred` on tie
 | Regression | Every PR touching an extractor | Tier B F1 per framework must not drop by more than 0.01 against the last released result |
 
 If a v1.0 gate is missed, the options are: ship with the lower measured number printed, or delay. Printing a target that was not met is not an option.
+
+Staged releases: a pre-1.0 release may print NestJS tier B numbers once the NestJS row has been measured. Next.js and Prisma numbers are printed only after their own rows have been measured. Section 8 applies to every number.
 
 ## 8. Claim rules for README and marketing
 

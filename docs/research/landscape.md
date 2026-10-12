@@ -85,6 +85,7 @@ Primary audience for v1: NestJS + Next.js + Prisma teams and solo developers. Se
 | Static analysis cannot match runtime DI accuracy | Medium / high | The 1-2 day DI feasibility spike is a gate before M1. Report `unresolved` edges honestly instead of guessing. |
 | Small open-source clones appear | High / low | Ship earlier on quality: fixtures, measured precision/recall, working Action. |
 | "Diagram tool" is a vitamin, not a painkiller | Medium / medium | The painkiller is the PR check: unreviewed changes to guards, global modules, queue consumers. Build rules around that. |
+| Existing architecture-rule tools already cover part of the "check" pitch | Medium / medium | Not researched yet (section 8). Hypothesis to verify: srcatlas rules work on framework concepts (a controller reading a model), which import-level boundary rules cannot express. If that is false, the rules angle needs a different claim. |
 
 ## 7. Decision
 
@@ -93,6 +94,7 @@ Proceed as specified. Changes to make:
 2. Make the accuracy claim a first-class deliverable (`docs/accuracy.md`) and put the number in the README.
 3. Do not market against Nx or dependency-cruiser. Position as complementary.
 4. Keep the DI feasibility spike as the go/no-go gate.
+5. Scope and order of work follow `docs/adr/0009-portfolio-first-scope-and-order.md`: portfolio first, traction second, demand validation with users deferred.
 
 ## 8. Not verified
 
@@ -103,3 +105,6 @@ Proceed as specified. Changes to make:
 - Structurizr/C4 tooling, Sourcegraph, Backstage, draw.io and Mermaid ecosystems were not researched. They are modelling or portal tools rather than extractors, but this is an assumption.
 - Star counts and release dates are a snapshot from 2026-10-09; release dates were not retrievable.
 - The same-name repository you found earlier has not been reviewed.
+- Architecture-rule tools were not researched: ESLint boundary plugins, Nx module-boundary rules, and ArchUnit-style libraries for TypeScript. Check what they can express, how they are adopted, and whether any works on framework concepts.
+- Tools that give coding agents a repository map or code graph (for example over MCP) were not researched. Relevant only if the agent audience (v1.1) is pursued.
+- Whether enough developers want PR-time architecture checks is unvalidated (ADR 0009 defers user interviews).
