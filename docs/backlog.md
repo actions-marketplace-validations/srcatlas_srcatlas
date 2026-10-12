@@ -132,9 +132,10 @@ Coding-agent adaptation; starts once the M3 exit gate is met: query, MCP, agent 
 
 | # | Issue | Priority | Labels |
 |---|---|---|---|
-| 1 | packages/query and cli: explain | P1 | area:cli |
-| 2 | MCP server over packages/query | P1 | area:cli |
-| 3 | export --format agents-md | P1 | area:cli |
-| 4 | Opt-in incremental analysis cache | P2 | area:analyzer |
+| 1 | Measure whether the graph helps coding agents (with and without the graph file) | P1 | area:bench, manual |
+| 2 | packages/query and cli: explain | P1 | area:cli |
+| 3 | MCP server over packages/query | P1 | area:cli |
+| 4 | export --format agents-md | P1 | area:cli |
+| 5 | Opt-in incremental analysis cache | P2 | area:analyzer |
 
-Total: 79 issues.
+Total: 80 issues.

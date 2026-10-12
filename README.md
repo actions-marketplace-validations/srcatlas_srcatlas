@@ -9,7 +9,7 @@ srcatlas reads a repository without running it and writes `srcatlas.graph.json`:
 ## What it will do
 
 - **Review:** `srcatlas diff main WORKTREE` and the GitHub Action report added and removed routes, models, queues and cross-module edges, and new dependency cycles.
-- **Check:** `srcatlas check` enforces rules such as "controllers must not touch models directly". On an existing repository it can accept today's violations and fail only on new ones.
+- **Check:** `srcatlas check` enforces rules over the architecture graph, such as no import cycles between modules or "module X must not write model Y". On an existing repository it can accept today's violations and fail only on new ones.
 - **Map:** `srcatlas analyze` writes a deterministic graph file. Same commit, same bytes.
 - **Show:** `srcatlas serve` opens an interactive viewer; `srcatlas export` writes SVG, PNG, Mermaid or DOT for your README. The viewer and exports come after the first release.
 

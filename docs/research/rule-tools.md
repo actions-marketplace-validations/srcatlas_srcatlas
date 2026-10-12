@@ -81,11 +81,11 @@ File-level and symbol-level context for agents is a crowded space. No tool read 
 ## 7. Conclusions for the plan
 
 1. The direction in ADR 0009 holds: lead with what changed in a pull request. No tool read here produces a PR-time diff of framework-level architecture.
-2. The example "a controller must not read or write a model directly" is the weakest claim. Import rules approximate it in projects that follow naming conventions (section 3). Recommended for a maintainer decision, not made here:
-   - reword the README "Check" bullet and ADR 0009 item 5 to give examples that need framework knowledge, such as a new route without a guard, a new global module, a new queue consumer, a module import cycle, or a provider outside module X writing model Y;
-   - keep the rules engine and the ratchet as a complement to the diff, not as the pitch.
+2. The example "a controller must not read or write a model directly" is the weakest claim. Import rules approximate it in projects that follow naming conventions (section 3). Decided 2026-10-12:
+   - ADR 0009 item 5 and the README "Check" bullet now give examples that need framework knowledge (module import cycles, "module X must not write model Y", new global modules, new queue consumers);
+   - the rules engine and the ratchet stay as a complement to the diff, not as the pitch.
 3. Do not claim layering enforcement as a unique feature (`landscape.md` section 5, "Do not claim").
-4. The agent angle stays after the M3 gate (ADR 0009). Add a small test first: put about ten structural questions to a coding agent on a real repository with and without the graph file, and compare answers and tokens. Proposed backlog task, not yet created.
+4. The agent angle stays after the M3 gate (ADR 0009). A small test comes first: put about ten structural questions to a coding agent on a real repository with and without the graph file, and compare answers and tokens. It is the first issue in the v1.1 milestone.
 
 ## 8. Open questions
 

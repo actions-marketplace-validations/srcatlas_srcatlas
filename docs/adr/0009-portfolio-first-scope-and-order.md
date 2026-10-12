@@ -1,6 +1,6 @@
 # ADR 0009: Portfolio first: scope, order of work, definition of done
 
-- Status: Accepted
+- Status: Accepted (item 5 amended 2026-10-12 after `docs/research/rule-tools.md`)
 - Date: 2026-10-12
 - Deciders: Tunya
 
@@ -18,7 +18,7 @@
 2. **No dates.** Milestones carry no due dates, hours budget or kill date. Stop and narrow decisions are gate-based (item 8).
 3. **Technical gates stay.** The DI spike and the tier B gates in `docs/accuracy.md` section 7 still apply. If a gate is missed, print the lower measured number or narrow scope; never print a target.
 4. **Order of work.** Pre-work, M0 Foundations, M1 NestJS + Prisma, M2 Diff + Action, M3 NestJS accuracy + launch. After the M3 gate is met, coding-agent adaptation (query, MCP, agent export) starts and is a priority. M4 (Next.js and remaining NestJS patterns) and M5 (viewer, SVG export, docs site) are not committed: they are ordered by priority after M3, alongside agent work. `scripts/backlog.json` is the source of truth for issues.
-5. **Framing.** Lead with the pull request check: what changed in the architecture, and rules such as "a controller must not read or write a model directly". The map and the viewer are secondary.
+5. **Framing.** Lead with what changed in a pull request: the diff of the architecture (new routes, queues, cross-module edges, module import cycles, new global modules). Rules are a complement, not the pitch, and are shown with examples that need framework knowledge, such as no import cycles between modules or "module X must not write model Y". Import-level layering (a controller importing the database client) is already served by existing rule tools (`docs/research/rule-tools.md`), so it is not claimed as unique. The map and the viewer are secondary.
 6. **Adoption on existing repositories.** Rules support an accepted-violations file (a ratchet), so a new install fails only on new violations. The Action posts nothing when the diff has no architectural change.
 7. **Scope discipline.** Package skeletons are created when their milestone starts, not all in M0. Frameworks are added one at a time, each with its own extractor document first (CLAUDE.md sections 6 and 11).
 8. **Minimum finish and stop rules.**
