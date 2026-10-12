@@ -25,7 +25,7 @@ Read this file first. Then read the doc that matches your task (section 2). If a
 | Project goals, order of work, what "done" means | `docs/adr/0009-portfolio-first-scope-and-order.md`, `scripts/backlog.json` |
 | Product scope, milestones | the spec (Claude Docs, "srcatlas: Technical Specification"). Where it differs from `docs/`, the `docs/` files win. |
 
-Planned and not written yet: Prisma, Next.js extractor docs, `docs/cli.md`, `docs/config.md`, `docs/adr/`. If your task needs one, write it first or ask.
+Planned and not written yet: Next.js, BullMQ and Socket.IO extractor docs. If your task needs one, write it first or ask.
 
 ## 3. Repository layout
 

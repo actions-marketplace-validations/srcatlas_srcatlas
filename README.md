@@ -34,6 +34,7 @@ npx srcatlas serve
 |---|---|
 | [`docs/schema.md`](docs/schema.md) | Graph file format |
 | [`docs/extractors/nestjs.md`](docs/extractors/nestjs.md) | NestJS pattern catalogue |
+| [`docs/extractors/prisma.md`](docs/extractors/prisma.md) | Prisma pattern catalogue |
 | [`docs/cli.md`](docs/cli.md) | Commands, flags, exit codes |
 | [`docs/config.md`](docs/config.md) | `srcatlas.config.ts` reference |
 | [`docs/accuracy.md`](docs/accuracy.md) | How accuracy is measured and what may be claimed |
