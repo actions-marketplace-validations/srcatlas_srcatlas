@@ -20,13 +20,21 @@ const { ModulesContainer } = req("@nestjs/core");
 
 const name = (t) =>
   t == null ? "undefined"
-  : typeof t === "function" ? t.name || "anonymous-fn"
+  : typeof t === "function" ? (/^[0-9a-f]{21}$/.test(t.name) ? "<random-id>" : t.name || "anonymous-fn")
   : typeof t === "symbol" ? t.toString()
-  : typeof t === "string" ? t
+  : typeof t === "string" ? (/^[0-9a-f]{21}$/.test(t) ? "<random-id>" : t)
   : (t.provide ? name(t.provide) : "object");
 
 const kind = (w) =>
   w.isAlias ? "existing" : w.metatype && w.inject ? "factory" : w.metatype ? "class" : "value";
+
+// APP_GUARD & co. get a random UUID suffix per registration; key them by the class they provide.
+function stable(w) {
+  const t = name(w.token);
+  const m = /^(APP_\w+) \(UUID/.exec(t);
+  if (m) return `${m[1]}:${name(w.metatype)}`;
+  return t === "<random-id>" ? `<random-id>:${name(w.metatype)}` : t;
+}
 
 function deps(w) {
   const m = w.metatype;
@@ -60,7 +68,7 @@ function deps(w) {
     const n = m.metatype ? m.metatype.name : String(token);
     if (n === "InternalCoreModule") continue;
     const list = (map) =>
-      [...map.values()].map((w) => ({ token: name(w.token), kind: kind(w), ...deps(w) }));
+      [...map.values()].map((w) => ({ token: stable(w), kind: kind(w), ...deps(w) }));
     out.push({
       module: n,
       dynamic: !!m.distance && token !== n && !!m.dynamicMetadata,
@@ -71,7 +79,9 @@ function deps(w) {
       injectables: list(m.injectables),
     });
   }
-  const sortBy = (k) => (a, b) => (a[k] < b[k] ? -1 : a[k] > b[k] ? 1 : 0);
+  // Tie-break on content so equal tokens (e.g. several random-id providers) order stably.
+  const key = (x) => x.token + JSON.stringify([x.ctor, x.props]);
+  const sortBy = (k) => (a, b) => ((k === "token" ? key(a) : a[k]) < (k === "token" ? key(b) : b[k]) ? -1 : (k === "token" ? key(a) : a[k]) > (k === "token" ? key(b) : b[k]) ? 1 : 0);
   out.sort(sortBy("module"));
   for (const m of out) for (const k of ["providers", "controllers", "injectables"]) m[k].sort(sortBy("token"));
   process.stdout.write(JSON.stringify({ modules: out }, null, 2) + "\n");

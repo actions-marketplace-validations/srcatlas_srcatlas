@@ -28,7 +28,7 @@ Gate from `docs/accuracy.md` section 7 and ADR 0009. Status: started, nothing sc
 | Time spent | |
 | What was hard | |
 | What was unresolved | |
-| Oracle bootable without external services? | Yes. `bench/oracles/nestjs-runtime/dump.cjs` boots `AppModule` with `NestFactory.create(..., { preview: true })` from `dist/app.module.js` (not `main.js`, which bootstraps on require). No Postgres or Redis needed. Output is byte-identical across two runs. Needs `pnpm build` first. |
+| Oracle bootable without external services? | Yes. `bench/oracles/nestjs-runtime/dump.cjs` boots `AppModule` with `NestFactory.create(..., { preview: true })` from `dist/app.module.js` (not `main.js`, which bootstraps on require). No Postgres or Redis needed. Output is byte-identical across three runs after normalising BullMQ random-id class names and `APP_*` UUID suffixes (first version was not deterministic). Needs `pnpm build` first. |
 | Raw oracle counts (all modules incl. library ones) | 42 modules, 204 providers, 23 controllers, 18 injectables, 133 provider deps. Scoring must restrict to app-owned modules and drop framework internals (ModuleRef, the module class itself and similar). |
 | Module recall / provider recall / injects recall | |
 
