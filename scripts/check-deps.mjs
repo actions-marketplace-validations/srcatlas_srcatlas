@@ -3,7 +3,12 @@
 // checking package.json is enough.
 import { readdirSync, readFileSync } from "node:fs";
 
-const FIELDS = ["dependencies", "devDependencies", "peerDependencies", "optionalDependencies"];
+const FIELDS = [
+  "dependencies",
+  "devDependencies",
+  "peerDependencies",
+  "optionalDependencies",
+];
 const pkgs = readdirSync("packages").map((dir) =>
   JSON.parse(readFileSync(`packages/${dir}/package.json`, "utf8")),
 );
@@ -14,9 +19,12 @@ for (const pkg of pkgs) {
     for (const dep of Object.keys(pkg[field] ?? {})) {
       if (!dep.startsWith("@srcatlas/")) continue;
       const name = dep.slice("@srcatlas/".length);
-      if (pkg.name === "@srcatlas/core") errors.push(`core must not depend on ${dep}`);
+      if (pkg.name === "@srcatlas/core")
+        errors.push(`core must not depend on ${dep}`);
       else if (pkg.name.startsWith("@srcatlas/extractor-") && name !== "core")
-        errors.push(`${pkg.name} may only depend on @srcatlas/core, found ${dep}`);
+        errors.push(
+          `${pkg.name} may only depend on @srcatlas/core, found ${dep}`,
+        );
       else if (name === "analyzer" && pkg.name !== "srcatlas")
         errors.push(`${pkg.name} must not depend on @srcatlas/analyzer`);
     }

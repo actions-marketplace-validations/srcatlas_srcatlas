@@ -1,0 +1,40 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.5.15/schema.json",
+  "vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
+  "files": {
+    "ignoreUnknown": true,
+    // Spike code, the npm placeholder and the issue-seeding data predate the tooling.
+    "includes": [
+      "**",
+      "!bench",
+      "!srcatlas-placeholder",
+      "!scripts/backlog.json"
+    ]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf"
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "preset": "recommended",
+      // CLAUDE.md section 7: no `any` (use `unknown` and narrow); no non-null assertions outside tests.
+      "suspicious": { "noExplicitAny": "error" },
+      "style": { "noNonNullAssertion": "error" }
+    }
+  },
+  "overrides": [
+    {
+      "includes": ["**/*.test.ts", "**/*.spec.ts"],
+      "linter": { "rules": { "style": { "noNonNullAssertion": "off" } } }
+    }
+  ],
+  "javascript": { "formatter": { "quoteStyle": "double" } },
+  "assist": {
+    "enabled": true,
+    "actions": { "source": { "organizeImports": "on" } }
+  }
+}
