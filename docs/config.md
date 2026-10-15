@@ -117,7 +117,7 @@ These map to the report codes and patterns in `docs/extractors/nestjs.md`. Confi
 
 Extractor options for BullMQ and Socket.IO are defined with their extractor docs (P1).
 
-### 2.4 `rules` (P1)
+### 2.4 `rules` (P0)
 
 Each rule has `id` (unique, kebab-case), `severity` (`'error' | 'warn'`, default `'error'`), optional `message`, optional `minConfidence` (default `'inferred'`: `unresolved` elements never cause violations), and a `type`.
 
