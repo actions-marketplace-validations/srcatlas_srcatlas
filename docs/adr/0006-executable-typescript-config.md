@@ -19,11 +19,11 @@ Configuration is `srcatlas.config.ts` with a default export from `defineConfig`.
 
 ## Consequences
 - Good: autocomplete and type checking in editors; shared helpers possible.
-- Bad: the config can run arbitrary code, so running `srcatlas` on an untrusted repository executes that repository's config. Mitigation: documented; the GitHub Action runs with a read-only token on fork PRs and a mode that ignores the config file from the PR head is planned (see open question below).
+- Bad: the config can run arbitrary code, so running `srcatlas` on an untrusted repository executes that repository's config. Mitigation: documented; the GitHub Action runs with a read-only token on fork PRs and a mode that ignores the config file from the PR head is the rule (see resolved question below).
 - Bad: a JSON Schema for editors must be generated from the Zod schema.
 
-## Open question
-For pull requests from forks, the Action should load the config from the base branch, not the PR head, to avoid running PR-supplied code. Decide with the Action design in M2.
+## Resolved question
+For pull requests from forks, the Action loads the config from the base branch, never from the PR head, in both the default mode and the `pull_request_target` pattern, so PR-supplied code is never executed (decided 2026-10-15 during the spec review, issue #5; spec section 13; backlog M2 item 6).
 
 ## Revisit when
 - A security report, or the Action design shows the base-branch rule is insufficient.

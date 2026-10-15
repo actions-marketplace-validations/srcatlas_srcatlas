@@ -120,7 +120,7 @@ Semantics are in `docs/schema.md` section 13 (moves, cycles, cross-module edges)
 
 Errors (exit 2): unknown ref, ref not reachable (shallow clone: message tells the user to use `fetch-depth: 0` or pass a graph file), `schemaVersion` mismatch between files.
 
-### 3.5 `srcatlas check [graph]` (P1)
+### 3.5 `srcatlas check [graph]` (P0)
 
 Evaluates the rules from config against a graph (default: analyses first).
 
@@ -167,7 +167,7 @@ No variable enables telemetry. There is none.
 
 ## 6. Out of scope for this document
 
-- GitHub Action inputs and outputs (to be written with `packages/action`, M4).
+- GitHub Action inputs and outputs (to be written with `packages/action`, M2).
 - Publishing (`srcatlas publish`), MCP server (`srcatlas mcp`), and the agent-facing export (`srcatlas export --format agents-md`): v1.1, specified separately.
 
 ## 7. Open questions
