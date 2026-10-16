@@ -1,4 +1,5 @@
 import { type Edge, type GraphFile, Node, SCHEMA_VERSION } from "./schema.js";
+import { type Json, sortKeys } from "./serialize.js";
 import {
   cmp,
   compareEdges,
@@ -7,8 +8,6 @@ import {
   type Violation,
   validateGraph,
 } from "./validate.js";
-
-type Json = Edge["meta"][string];
 
 /** A node or edge handed to the builder is malformed, or two edges disagree. A programmer mistake. */
 export class GraphBuildError extends Error {}
@@ -22,15 +21,6 @@ export class GraphValidationError extends Error {
         .join("\n")}`,
     );
   }
-}
-
-/** Object keys in code-unit order at every depth (section 9). Arrays keep their order. */
-function sortKeys(v: Json): Json {
-  if (Array.isArray(v)) return v.map(sortKeys);
-  if (v === null || typeof v !== "object") return v;
-  const out: Record<string, Json> = {};
-  for (const k of Object.keys(v).sort(cmp)) out[k] = sortKeys(v[k] as Json);
-  return out;
 }
 
 const RANK = { certain: 2, inferred: 1, unresolved: 0 } as const;
