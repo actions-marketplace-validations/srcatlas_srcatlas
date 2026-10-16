@@ -23,6 +23,8 @@ jobs:
           node-version: 22
           cache: pnpm
           registry-url: https://registry.npmjs.org
+      # Trusted publishing (OIDC) needs npm 11.5.1 or newer; Node 22 bundles an older one.
+      - run: npm install -g npm@latest
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
       - run: pnpm test
@@ -32,6 +34,6 @@ jobs:
           publish: pnpm changeset publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # No npm token: npm authenticates with the id-token permission, using the
+          # trusted publisher registered for release.yml on npmjs.com.
           NPM_CONFIG_PROVENANCE: "true"
-          # Delete this line once npm trusted publishing is configured for the package.
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
