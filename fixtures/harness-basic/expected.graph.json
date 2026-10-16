@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "generator": { "name": "srcatlas", "version": "0.0.0" },
+  "repo": {},
+  "nodes": [
+    {
+      "id": "package:harness-basic",
+      "kind": "package",
+      "name": "harness-basic",
+      "language": "typescript",
+      "framework": "none",
+      "package": "package:harness-basic",
+      "module": null,
+      "source": { "file": "package.json", "line": 1 },
+      "extractor": "harness-test",
+      "confidence": "certain",
+      "meta": { "root": ".", "version": "1.0.0" }
+    }
+  ],
+  "edges": []
+}
