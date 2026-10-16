@@ -18,7 +18,11 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
+    "@srcatlas/analyzer": "workspace:*",
     "@srcatlas/core": "workspace:*",
-    "@srcatlas/analyzer": "workspace:*"
+    "jiti": "2.7.0"
+  },
+  "bin": {
+    "srcatlas": "./dist/bin.js"
   }
 }
