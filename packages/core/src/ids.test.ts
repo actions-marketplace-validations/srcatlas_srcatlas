@@ -84,6 +84,8 @@ describe("route normalisation (5.3)", () => {
       path: "/about",
       optionalCatchAll: false,
     });
+    expect(nextRoutePath(["feed", "(.)photo", "[id]"])).toBeNull();
+    expect(nextRoutePath(["(..)(..)x"])).toBeNull();
     expect(nextRoutePath([])).toEqual({ path: "/", optionalCatchAll: false });
   });
 });

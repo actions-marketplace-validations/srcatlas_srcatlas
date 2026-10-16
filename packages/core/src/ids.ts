@@ -65,15 +65,18 @@ export function normalizeRoutePath(...pieces: string[]): string {
 /**
  * Section 5.3 for Next.js: file-system segments to a normalised path.
  * `[id]` -> `:id`, `[...s]` -> `*s`, `[[...s]]` -> `*s` with optionalCatchAll,
- * `(group)` and `@slot` dropped.
+ * `(group)` and `@slot` dropped. Returns null for intercepting routes
+ * (`(.)x`, `(..)x`, `(...)x`): the schema does not define them, so the caller
+ * must report instead of emitting a guessed path.
  */
 export function nextRoutePath(segments: readonly string[]): {
   path: string;
   optionalCatchAll: boolean;
-} {
+} | null {
   let optionalCatchAll = false;
   const out: string[] = [];
   for (const s of segments) {
+    if (/^\(\.{1,3}\)/.test(s)) return null;
     if (/^\(.*\)$/.test(s) || s.startsWith("@")) continue;
     if (/^\[\[\.\.\..+\]\]$/.test(s)) optionalCatchAll = true;
     out.push(
