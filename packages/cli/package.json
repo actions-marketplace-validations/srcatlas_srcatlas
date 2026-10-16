@@ -1,28 +1,43 @@
 {
   "name": "srcatlas",
   "version": "0.0.0",
-  "private": true,
+  "description": "Architecture maps for TypeScript repositories.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/srcatlas/srcatlas.git",
+    "directory": "packages/cli"
+  },
+  "engines": {
+    "node": ">=20"
+  },
   "type": "module",
+  "bin": {
+    "srcatlas": "./dist/bin.mjs"
+  },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
     }
   },
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "tsdown",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@srcatlas/analyzer": "workspace:*",
-    "@srcatlas/core": "workspace:*",
-    "jiti": "2.7.0"
+    "jiti": "2.7.0",
+    "zod": "4.6.7"
   },
-  "bin": {
-    "srcatlas": "./dist/bin.js"
+  "devDependencies": {
+    "@srcatlas/core": "workspace:*",
+    "@srcatlas/analyzer": "workspace:*"
   }
 }
