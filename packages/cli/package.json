@@ -13,12 +13,12 @@
   },
   "type": "module",
   "bin": {
-    "srcatlas": "./dist/bin.mjs"
+    "srcatlas": "./dist/bin.js"
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.mts",
-      "default": "./dist/index.mjs"
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
     }
   },
   "files": [
@@ -29,7 +29,7 @@
     "provenance": true
   },
   "scripts": {
-    "build": "tsdown",
+    "build": "tsup",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {

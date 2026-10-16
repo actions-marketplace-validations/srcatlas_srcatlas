@@ -1,4 +1,4 @@
-import { defineConfig } from "tsdown";
+import { defineConfig } from "tsup";
 
 // The workspace packages are private, so they are bundled into the one
 // published package. Real dependencies (jiti, zod) stay external.
@@ -9,5 +9,5 @@ export default defineConfig({
   target: "node20",
   dts: true,
   clean: true,
-  deps: { alwaysBundle: [/^@srcatlas\//] },
+  noExternal: [/^@srcatlas\//],
 });
