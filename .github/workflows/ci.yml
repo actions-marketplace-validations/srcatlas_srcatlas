@@ -34,3 +34,13 @@ jobs:
       - run: pnpm typecheck
       - run: pnpm test
       - run: pnpm check:deps
+      # The published package must install and run on its own: the workspace
+      # packages are bundled into it, so a missing bundle shows up only here.
+      - name: Packed CLI runs from a clean directory
+        if: runner.os == 'Linux'
+        run: |
+          pnpm --filter srcatlas pack --pack-destination "$RUNNER_TEMP/pack"
+          mkdir "$RUNNER_TEMP/clean" && cd "$RUNNER_TEMP/clean"
+          npm init -y >/dev/null
+          npm install "$RUNNER_TEMP"/pack/srcatlas-*.tgz
+          npx srcatlas --version
