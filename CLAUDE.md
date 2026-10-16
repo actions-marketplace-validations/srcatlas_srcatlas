@@ -52,7 +52,7 @@ TypeScript strict, Node 20+, ESM. pnpm workspaces + Turborepo. `ts-morph` for an
 
 ## 5. Commands
 
-Fill in exact scripts when M0 lands. Expected:
+Available now:
 
 ```
 pnpm install
@@ -60,6 +60,12 @@ pnpm build            # turbo run build
 pnpm test             # vitest, all packages
 pnpm lint             # biome check
 pnpm typecheck
+pnpm check:deps       # dependency direction (non-negotiable 5)
+```
+
+Not yet defined (arrive with their milestones):
+
+```
 pnpm bench            # accuracy scorer (docs/accuracy.md)
 pnpm srcatlas analyze fixtures/nest-basic   # run the CLI from source
 ```
@@ -116,4 +122,6 @@ Do not, without being asked: add frameworks beyond the docs, add AI/LLM calls to
 
 ## 12. Current status
 
-Pre-work is partly done: the DI feasibility spike passed on one app (see `docs/research/di-spike.md`; decision: proceed). Order of work (ADR 0009, `scripts/backlog.json`): remaining pre-work (manual items: names, repo settings) → M0 scaffold → M1 NestJS + Prisma → M2 diff + Action → M3 NestJS accuracy + launch. Coding-agent work, M4 (Next.js) and M5 (viewer) follow by priority once the M3 gate is met. Milestones carry no dates. Do not start a later milestone's package before its milestone. Update this section as milestones close.
+Pre-work and M0 are closed. M0 delivered: the monorepo, tooling and CI matrix; the Zod schema, ID rules, `GraphBuilder` and `validateGraph`; the golden-file harness (`@srcatlas/core/testing`); the CLI skeleton (`--version`, `--help`, config loading, exit codes; the six commands exit 3 "not implemented yet"); and Changesets with an npm release that publishes with provenance through trusted publishing (`srcatlas@0.0.1`). The workspace packages are private and bundled into the one published package, `srcatlas`.
+
+Next is M1, NestJS + Prisma (the issues in the "M1 NestJS + Prisma" milestone, starting with the analyzer pipeline). Order of work (ADR 0009, `scripts/backlog.json`): M1 NestJS + Prisma → M2 diff + Action → M3 NestJS accuracy + launch. Coding-agent work, M4 (Next.js) and M5 (viewer) follow by priority once the M3 gate is met. Milestones carry no dates. Do not start a later milestone's package before its milestone. Update this section as milestones close.
