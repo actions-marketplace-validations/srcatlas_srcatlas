@@ -23,6 +23,7 @@ interface Base {
 export type Evaluated =
   | (Base & { kind: "string"; value: string })
   | (Base & { kind: "number"; value: number })
+  | (Base & { kind: "boolean"; value: boolean })
   | (Base & { kind: "array"; items: Result[] })
   | (Base & { kind: "object"; props: Record<string, Result> })
   /** A `const X = Symbol('...')` token; `name` is the identifier `X`. */
@@ -97,7 +98,7 @@ function isSymbolCall(call: Node): boolean {
 }
 
 /** Looks through parentheses and type-only wrappers (`as const`, `satisfies`, `!`). */
-function unwrap(node: Node): Node {
+export function unwrap(node: Node): Node {
   let n = node;
   while (
     Node.isParenthesizedExpression(n) ||
@@ -132,6 +133,9 @@ function evInner(node: Node, ctx: EvalContext, seen: Set<Node>): Result {
   }
   if (Node.isNumericLiteral(node)) {
     return { kind: "number", value: node.getLiteralValue(), node };
+  }
+  if (Node.isTrueLiteral(node) || Node.isFalseLiteral(node)) {
+    return { kind: "boolean", value: Node.isTrueLiteral(node), node };
   }
   if (Node.isTemplateExpression(node)) {
     let value = node.getHead().getLiteralText();

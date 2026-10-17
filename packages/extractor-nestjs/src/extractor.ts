@@ -9,7 +9,12 @@ import {
   withCollisionSuffix,
 } from "@srcatlas/core";
 import type { Project } from "ts-morph";
-import { isThirdPartyCall, type ModuleInfo, readModules } from "./modules.js";
+import {
+  followModuleCall,
+  isThirdPartyCall,
+  type ModuleInfo,
+  readModules,
+} from "./modules.js";
 
 const NAME = "nestjs";
 const DEPENDENCIES = ["dependencies", "devDependencies", "peerDependencies"];
@@ -59,7 +64,12 @@ function extract(ctx: ExtractorContext<Project>): ExtractorResult {
     const reexports = new Set<string>();
 
     for (const ref of m.imports) {
-      const r = ref.result;
+      // N-M5: a call to a static factory of a module class stands for that class.
+      const followed =
+        ref.result.kind === "unresolved"
+          ? followModuleCall(ref.result.node, ctx)
+          : ref.result;
+      const r = followed.kind === "class" ? followed : ref.result;
       if (r.kind === "class") {
         const to = idOf.get(`${r.file}#${r.name}`);
         // A class without @Module is not a module: nothing to point at.
@@ -111,7 +121,7 @@ function extract(ctx: ExtractorContext<Project>): ExtractorResult {
       extractor: NAME,
       confidence: unresolved ? "unresolved" : "certain",
       meta: {
-        dynamic: false,
+        dynamic: m.dynamic,
         global: m.global,
         ...(reexports.size > 0
           ? { "nestjs.reexports": [...reexports].sort(byCodeUnit) }
