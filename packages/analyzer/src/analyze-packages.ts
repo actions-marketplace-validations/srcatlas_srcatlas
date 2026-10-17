@@ -10,6 +10,8 @@ import { type PoolResult, runInPool } from "./worker-pool.js";
 export interface AnalyzeOptions {
   /** Pool size. Default: CPU count - 1, at least 1 (docs/config.md 2.7). */
   workers?: number;
+  /** Run only these extractors (`--only`). The file-level fallback is then not used. */
+  only?: string[];
   /** Replaces the worker pool; tests use it to run in-process. */
   run?: (task: PackageTask) => Promise<PackageResult>;
 }
@@ -71,14 +73,21 @@ export async function analyzePackages(
   packages: PackageInfo[],
   opts: AnalyzeOptions = {},
 ): Promise<PackageResult[]> {
+  const workspace = packages.map((p) => ({ name: p.name, root: p.root }));
   const tasks: PackageTask[] = packages.map((pkg) => {
     const json = packageJson(root, pkg);
+    const wanted =
+      pkg.extractors ??
+      builtinExtractors.filter((x) => x.detect(json)).map((x) => x.name);
+    const extractors = opts.only
+      ? wanted.filter((n) => opts.only?.includes(n))
+      : wanted;
     return {
       root,
       package: pkg,
-      extractors:
-        pkg.extractors ??
-        builtinExtractors.filter((x) => x.detect(json)).map((x) => x.name),
+      extractors,
+      fallback: extractors.length === 0 && !opts.only,
+      workspace,
     };
   });
 

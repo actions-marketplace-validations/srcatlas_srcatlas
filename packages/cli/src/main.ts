@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { parseArgs } from "node:util";
+import { analyzeCommand } from "./analyze.js";
 import { NotImplementedError, UsageError } from "./errors.js";
 import { loadConfig } from "./load-config.js";
 
@@ -10,6 +11,14 @@ const HELP = `srcatlas <command> [path] [flags]
 
 Commands:
   ${COMMANDS.join(", ")}
+
+analyze flags:
+  -o, --out <file>  graph output path, or - for stdout
+  --report <file>   report output path
+  --strict          exit 1 on parse errors or unresolved constructs
+  --workers <n>     worker pool size (env SRCATLAS_WORKERS)
+  --only <name>     run only this extractor (repeatable)
+  --json            print the summary as JSON on stdout
 
 Global flags:
   --config <file>   config file (default: srcatlas.config.ts in the root)
@@ -28,6 +37,8 @@ export interface Io {
   cwd: string;
   out: (s: string) => void;
   err: (s: string) => void;
+  /** Environment variables (docs/cli.md section 4). Absent means none are set. */
+  env?: Record<string, string | undefined>;
 }
 
 const version = (): string =>
@@ -51,6 +62,12 @@ export async function run(argv: string[], io: Io): Promise<number> {
       strict: true,
       options: {
         config: { type: "string" },
+        out: { type: "string", short: "o" },
+        report: { type: "string" },
+        strict: { type: "boolean" },
+        workers: { type: "string" },
+        only: { type: "string", multiple: true },
+        json: { type: "boolean" },
         quiet: { type: "boolean" },
         verbose: { type: "boolean" },
         "no-color": { type: "boolean" },
@@ -73,7 +90,20 @@ export async function run(argv: string[], io: Io): Promise<number> {
       throw new UsageError(`unknown command "${command}"\n\n${HELP}`);
     }
     // Every command builds on the validated config, so an invalid one is exit 2 for all.
-    await loadConfig(resolve(io.cwd, path), values.config);
+    const root = resolve(io.cwd, path);
+    const config = await loadConfig(
+      root,
+      values.config ?? io.env?.SRCATLAS_CONFIG,
+    );
+    if (command === "analyze") {
+      return await analyzeCommand(
+        root,
+        config,
+        { ...values, quiet: values.quiet },
+        version(),
+        io,
+      );
+    }
     throw new NotImplementedError(`srcatlas ${command}: not implemented yet`);
   } catch (e) {
     if (e instanceof UsageError || isParseArgsError(e)) {

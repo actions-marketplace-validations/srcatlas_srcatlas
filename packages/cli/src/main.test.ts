@@ -54,7 +54,7 @@ describe("srcatlas CLI", () => {
   });
 
   it("exit 3 for a known command that is not built yet, with no config present", async () => {
-    const r = await cli("analyze");
+    const r = await cli("serve");
     expect(r.code).toBe(3);
     expect(r.err).toContain("not implemented");
   });
@@ -78,7 +78,7 @@ describe("srcatlas CLI", () => {
       join(dir, "srcatlas.config.ts"),
       "import { pkgs } from './shared';\nexport default { packages: pkgs };\n",
     );
-    expect((await cli("analyze")).code).toBe(3); // valid config, command not built
+    expect((await cli("serve")).code).toBe(3); // valid config, command not built
   });
 
   it("exit 2 when --config points at a missing file or the config throws", async () => {
@@ -104,7 +104,7 @@ describe("srcatlas CLI", () => {
   it("loading a config writes nothing into the repository (jiti cache off, ADR 0008)", async () => {
     writeFileSync(join(dir, "srcatlas.config.ts"), "export default {};\n");
     const before = readdirSync(dir, { recursive: true }).sort();
-    await cli("analyze");
+    await cli("serve");
     expect(readdirSync(dir, { recursive: true }).sort()).toEqual(before);
   });
 });
