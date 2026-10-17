@@ -28,7 +28,7 @@ interface ReportFile {
 
 Codes are constants in `packages/core/src/report.ts` (`REPORT_CODES`). A test compares them with the tables in this file and in every `docs/extractors/*.md` section "Report codes": a code in one place and not the other fails the build. Codes are stable; changing a code's meaning needs an ADR; new codes may be added.
 
-Codes marked **unresolved** in the registry count towards `counts.unresolved`: the construct was noticed but could not be named or followed. Today these are the `*.unresolved-*` codes of the NestJS extractor.
+Codes marked **unresolved** in the registry count towards `counts.unresolved`: the construct was noticed but could not be named or followed. Today these are the `*.unresolved-*` codes of the NestJS extractor and the Prisma codes for an access whose target model cannot be named: `prisma.unknown-model-access` and `prisma.dynamic-model-access`. Ambiguity (`*.ambiguous-*`) is not unresolved: the element is emitted as `inferred`.
 
 ### Core codes
 
@@ -41,7 +41,3 @@ Codes marked **unresolved** in the registry count towards `counts.unresolved`: t
 | `core.unknown-extractor` | warning | An extractor named in `packages[].extractors` is not available |
 
 Extractor codes are in `docs/extractors/nestjs.md` and `docs/extractors/prisma.md`, section "Report codes".
-
-## 3. Open questions
-
-1. Whether `prisma.unknown-model-access` and `prisma.dynamic-model-access` should count as unresolved constructs for `--strict`. This draft says no: only the `unresolved-` codes do. Decide with the first real-repository run.

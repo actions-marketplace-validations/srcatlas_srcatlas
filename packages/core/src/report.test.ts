@@ -38,14 +38,19 @@ describe("REPORT_CODES", () => {
     expect(registry).toEqual(documentedCodes());
   });
 
-  it("marks only the nest.unresolved-* codes as unresolved constructs", () => {
+  it("marks the *.unresolved-* codes and the Prisma unnameable-model codes as unresolved constructs", () => {
     const marked = Object.entries(REPORT_CODES)
       .filter(([, v]) => "unresolved" in v && v.unresolved)
       .map(([code]) => code)
       .sort();
     expect(marked).toEqual(
       Object.keys(REPORT_CODES)
-        .filter((c) => c.startsWith("nest.unresolved-"))
+        .filter(
+          (c) =>
+            c.startsWith("nest.unresolved-") ||
+            c === "prisma.unknown-model-access" ||
+            c === "prisma.dynamic-model-access",
+        )
         .sort(),
     );
     expect(marked.length).toBeGreaterThan(0);
