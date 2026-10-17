@@ -1,6 +1,6 @@
 # ADR 0011: Extractors emit facts; the link pass turns them into edges
 
-- Status: Proposed
+- Status: Accepted
 - Date: 2026-10-17
 - Deciders: Tunya
 
