@@ -1,4 +1,5 @@
 export { type AnalyzeOptions, analyzePackages } from "./analyze-packages.js";
+export { analyzeRepo } from "./analyze-repo.js";
 export { createProject } from "./create-project.js";
 export {
   type DiscoveryReportEntry,
@@ -14,4 +15,5 @@ export {
   runPackage,
 } from "./run-package.js";
 export { type PoolResult, runInPool } from "./worker-pool.js";
+export { type OutputFile, writeOutputs } from "./write-outputs.js";
 export { collectReport, writeReportFile } from "./write-report.js";

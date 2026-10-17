@@ -9,6 +9,7 @@ import {
 import type { Project } from "ts-morph";
 import { createProject } from "./create-project.js";
 import type { PackageInfo } from "./discover-packages.js";
+import { fileGraph, type WorkspacePackage } from "./file-graph.js";
 
 export interface PackageTask {
   /** Absolute repository root. */
@@ -16,12 +17,18 @@ export interface PackageTask {
   package: PackageInfo;
   /** Names of the extractors to run. */
   extractors: string[];
+  /** No extractor applies: build the file-level import graph instead. */
+  fallback?: boolean;
+  /** All packages of the run, to attribute imported files to their package. Default: this package only. */
+  workspace?: WorkspacePackage[];
 }
 
 export interface PackageResult extends ExtractorResult {
   package: string;
   /** Milliseconds per extractor. Report file only: it is not deterministic. */
   timings: Record<string, number>;
+  /** The package was analysed with the file-level import graph. */
+  fallback?: true;
 }
 
 const messageOf = (e: unknown): string =>
@@ -68,7 +75,23 @@ export async function runPackage(
     facts: [],
     report: dropUnparsable(project, rel),
     timings: {},
+    ...(task.fallback ? { fallback: true as const } : {}),
   };
+
+  if (task.fallback) {
+    const own = [{ name: task.package.name, root: task.package.root }];
+    const out = fileGraph(
+      {
+        root: task.root,
+        package: task.package,
+        project,
+        relative: rel,
+      },
+      task.workspace ?? own,
+    );
+    result.nodes.push(...out.nodes);
+    result.edges.push(...out.edges);
+  }
 
   for (const name of task.extractors) {
     const extractor = available.find((x) => x.name === name);

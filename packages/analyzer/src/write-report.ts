@@ -1,8 +1,7 @@
-import { mkdirSync, writeFileSync } from "node:fs";
-import { dirname } from "node:path";
 import { buildReport, type ReportEntry, type ReportFile } from "@srcatlas/core";
 import type { DiscoveryReportEntry } from "./discover-packages.js";
 import type { PackageResult } from "./run-package.js";
+import { writeOutputs } from "./write-outputs.js";
 
 /** Merges package results and discovery entries into the report (docs/report.md). */
 export function collectReport(
@@ -25,8 +24,13 @@ export function collectReport(
   return buildReport(entries, timings);
 }
 
-/** Writes the report, creating the directory. Atomic replacement is the CLI's job (docs/cli.md). */
+/** Writes the report atomically, creating the directory. */
 export function writeReportFile(path: string, report: ReportFile): void {
-  mkdirSync(dirname(path), { recursive: true });
-  writeFileSync(path, `${JSON.stringify(report, null, 2)}\n`);
+  writeOutputs([
+    {
+      path,
+      content: `${JSON.stringify(report, null, 2)}
+`,
+    },
+  ]);
 }
