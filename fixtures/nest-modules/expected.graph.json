@@ -1,0 +1,324 @@
+{
+  "schemaVersion": 1,
+  "generator": {
+    "name": "srcatlas",
+    "version": "0.0.0"
+  },
+  "repo": {},
+  "nodes": [
+    {
+      "id": "module:mods/AccountsModule",
+      "kind": "module",
+      "name": "AccountsModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:mods",
+      "module": null,
+      "source": {
+        "file": "src/accounts/accounts.module.ts",
+        "line": 4
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false,
+        "nestjs.reexports": ["module:mods/UsersModule"]
+      }
+    },
+    {
+      "id": "module:mods/AppConfigModule",
+      "kind": "module",
+      "name": "AppConfigModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:mods",
+      "module": null,
+      "source": {
+        "file": "src/config/app-config.module.ts",
+        "line": 4
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": true
+      }
+    },
+    {
+      "id": "module:mods/AuthModule",
+      "kind": "module",
+      "name": "AuthModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:mods",
+      "module": null,
+      "source": {
+        "file": "src/auth/auth.module.ts",
+        "line": 4
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "module:mods/MetaModule",
+      "kind": "module",
+      "name": "MetaModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:mods",
+      "module": null,
+      "source": {
+        "file": "src/meta/meta.module.ts",
+        "line": 6
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "module:mods/PlainGlobalModule",
+      "kind": "module",
+      "name": "PlainGlobalModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:mods",
+      "module": null,
+      "source": {
+        "file": "src/decoys/plain-global.module.ts",
+        "line": 8
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "module:mods/RootModule",
+      "kind": "module",
+      "name": "RootModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:mods",
+      "module": null,
+      "source": {
+        "file": "src/root.module.ts",
+        "line": 12
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "module:mods/SpreadModule",
+      "kind": "module",
+      "name": "SpreadModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:mods",
+      "module": null,
+      "source": {
+        "file": "src/spread/spread.module.ts",
+        "line": 8
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "module:mods/UsersModule",
+      "kind": "module",
+      "name": "UsersModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:mods",
+      "module": null,
+      "source": {
+        "file": "src/users/users.module.ts",
+        "line": 4
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "package:mods",
+      "kind": "package",
+      "name": "mods",
+      "language": "typescript",
+      "framework": "node",
+      "package": "package:mods",
+      "module": null,
+      "source": {
+        "file": "package.json",
+        "line": 1
+      },
+      "extractor": "core",
+      "confidence": "certain",
+      "meta": {
+        "root": ".",
+        "version": "1.0.0"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "module:mods/AccountsModule",
+      "kind": "imports",
+      "to": "module:mods/UsersModule",
+      "sites": [
+        {
+          "file": "src/accounts/accounts.module.ts",
+          "line": 5
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:mods/AuthModule",
+      "kind": "imports",
+      "to": "module:mods/UsersModule",
+      "sites": [
+        {
+          "file": "src/auth/auth.module.ts",
+          "line": 5
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:mods/MetaModule",
+      "kind": "imports",
+      "to": "module:mods/AccountsModule",
+      "sites": [
+        {
+          "file": "src/meta/meta.module.ts",
+          "line": 4
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:mods/RootModule",
+      "kind": "imports",
+      "to": "module:mods/AccountsModule",
+      "sites": [
+        {
+          "file": "src/root.module.ts",
+          "line": 15
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:mods/RootModule",
+      "kind": "imports",
+      "to": "module:mods/AppConfigModule",
+      "sites": [
+        {
+          "file": "src/root.module.ts",
+          "line": 16
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:mods/RootModule",
+      "kind": "imports",
+      "to": "module:mods/AuthModule",
+      "sites": [
+        {
+          "file": "src/root.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:mods/RootModule",
+      "kind": "imports",
+      "to": "module:mods/MetaModule",
+      "sites": [
+        {
+          "file": "src/root.module.ts",
+          "line": 18
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:mods/RootModule",
+      "kind": "imports",
+      "to": "module:mods/SpreadModule",
+      "sites": [
+        {
+          "file": "src/root.module.ts",
+          "line": 17
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:mods/SpreadModule",
+      "kind": "imports",
+      "to": "module:mods/UsersModule",
+      "sites": [
+        {
+          "file": "src/spread/spread.module.ts",
+          "line": 9
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:mods/UsersModule",
+      "kind": "imports",
+      "to": "module:mods/AuthModule",
+      "sites": [
+        {
+          "file": "src/users/users.module.ts",
+          "line": 5
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    }
+  ]
+}

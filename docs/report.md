@@ -15,6 +15,7 @@ interface ReportFile {
     unresolved: number;   // entries whose code is marked "unresolved construct" (section 2)
   };
   entries: ReportEntry[]; // shape in docs/schema.md section 11
+  summary: Record<string, number>; // counters, section 3; keys in code-unit order, empty when none
   timings: Record<string, Record<string, number>>; // package name -> extractor name -> milliseconds
 }
 ```
@@ -41,3 +42,11 @@ Codes marked **unresolved** in the registry count towards `counts.unresolved`: t
 | `core.unknown-extractor` | warning | An extractor named in `packages[].extractors` is not available |
 
 Extractor codes are in `docs/extractors/nestjs.md` and `docs/extractors/prisma.md`, section "Report codes".
+
+## 3. Summary counters
+
+Some things are noticed on purpose and not worth an entry each. They are counted, and the totals over all packages appear in `summary`. A counter that is zero is absent.
+
+| Key | Counts |
+|---|---|
+| `nest.ignored-third-party-modules` | Items of a NestJS `imports` array that are third-party modules (`ConfigModule.forRoot()`, `HttpModule`), which have no node in v1 (N-M9) |

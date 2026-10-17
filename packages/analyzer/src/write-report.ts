@@ -21,7 +21,17 @@ export function collectReport(
   }
   const timings: ReportFile["timings"] = {};
   for (const r of results) timings[r.package] = r.timings;
-  return buildReport(entries, timings);
+  const summary: Record<string, number> = {};
+  for (const r of results) {
+    for (const [key, n] of Object.entries(r.summary ?? {})) {
+      summary[key] = (summary[key] ?? 0) + n;
+    }
+  }
+  // Keys in code-unit order, so the file is the same whatever order packages finished in.
+  const sorted = Object.fromEntries(
+    Object.entries(summary).sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0)),
+  );
+  return buildReport(entries, timings, sorted);
 }
 
 /** Writes the report atomically, creating the directory. */
