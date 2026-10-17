@@ -14,3 +14,4 @@ export {
   runPackage,
 } from "./run-package.js";
 export { type PoolResult, runInPool } from "./worker-pool.js";
+export { collectReport, writeReportFile } from "./write-report.js";

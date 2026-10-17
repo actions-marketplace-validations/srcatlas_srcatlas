@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { availableParallelism } from "node:os";
 import { join } from "node:path";
+import type { ReportCode } from "@srcatlas/core";
 import type { PackageInfo } from "./discover-packages.js";
 import { builtinExtractors } from "./registry.js";
 import type { PackageResult, PackageTask } from "./run-package.js";
@@ -40,7 +41,7 @@ const failed = (name: string, error: string): PackageResult => ({
   report: [
     {
       level: "error",
-      code: "core.package-failed",
+      code: "core.package-failed" satisfies ReportCode,
       message: `analysis of package "${name}" failed: ${error}`,
       extractor: "core",
     },
