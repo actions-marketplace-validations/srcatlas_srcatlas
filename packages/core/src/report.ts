@@ -78,6 +78,7 @@ export const ReportFile = z.strictObject({
       site: Site.optional(),
     }),
   ),
+  summary: z.record(z.string(), z.number()),
   timings: z.record(z.string(), z.record(z.string(), z.number())),
 });
 export type ReportFile = z.infer<typeof ReportFile>;
@@ -101,6 +102,7 @@ function compareEntries(a: ReportEntry, b: ReportEntry): number {
 export function buildReport(
   entries: ReportEntry[],
   timings: Record<string, Record<string, number>>,
+  summary: Record<string, number> = {},
 ): ReportFile {
   const counts = {
     errors: 0,
@@ -120,6 +122,7 @@ export function buildReport(
     reportVersion: 1,
     counts,
     entries: [...entries].sort(compareEntries),
+    summary,
     timings,
   };
 }

@@ -29,6 +29,8 @@ export interface ExtractorResult {
   edges: Edge[];
   facts: Fact[];
   report: ReportEntry[];
+  /** Counters for things noticed and deliberately not reported one by one (docs/report.md). */
+  summary?: Record<string, number>;
 }
 
 /** The package an extractor is run on. Paths are repository-relative with `/` separators. */

@@ -68,6 +68,7 @@ export async function runPackage(
   const rel = (abs: string): string =>
     relative(task.root, abs).replaceAll("\\", "/");
   const project = createProject(task.root, task.package);
+  const summary: Record<string, number> = {};
   const result: PackageResult = {
     package: task.package.name,
     nodes: [],
@@ -118,6 +119,9 @@ export async function runPackage(
       result.edges.push(...out.edges);
       result.facts.push(...facts);
       result.report.push(...out.report);
+      for (const [key, n] of Object.entries(out.summary ?? {})) {
+        summary[key] = (summary[key] ?? 0) + n;
+      }
     } catch (e) {
       result.report.push({
         level: "error",
@@ -128,5 +132,6 @@ export async function runPackage(
     }
     result.timings[name] = Math.round(performance.now() - started);
   }
+  if (Object.keys(summary).length > 0) result.summary = summary;
   return result;
 }
