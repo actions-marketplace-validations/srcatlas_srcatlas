@@ -20,6 +20,11 @@
   "dependencies": {
     "@srcatlas/core": "workspace:*",
     "@srcatlas/extractor-nestjs": "workspace:*",
-    "@srcatlas/extractor-prisma": "workspace:*"
+    "@srcatlas/extractor-prisma": "workspace:*",
+    "picomatch": "4.0.7",
+    "ts-morph": "28.0.0"
+  },
+  "devDependencies": {
+    "@types/picomatch": "4.0.3"
   }
 }

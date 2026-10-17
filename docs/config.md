@@ -79,8 +79,8 @@ Default excludes (always applied): `**/node_modules/**`, `**/dist/**`, `**/build
 | Option | Type | Default | Meaning |
 |---|---|---|---|
 | `path` | `string` | required | Directory containing `package.json`, relative to the root. |
-| `name` | `string` | `name` from its `package.json`, scope removed | Used in node IDs (`provider:<name>/OrdersService`). Must be unique across packages; duplicates are a config error. Valid characters are those allowed by schema ID rules. |
-| `tsconfig` | `string` | `tsconfig.json` in the package, else `tsconfig.base.json` at root | The TypeScript project used for type resolution. |
+| `name` | `string` | `name` from its `package.json`, scope kept (`@acme/api`), else the directory name | Used in node IDs (`provider:<name>/OrdersService`). Must be unique across packages; duplicates are a config error. Valid characters are those allowed by schema ID rules. |
+| `tsconfig` | `string` | `tsconfig.json` in the package, else `tsconfig.base.json` at root | The TypeScript project used for type resolution. Relative to the repository root, like `path`. |
 | `extractors` | `string[]` | auto-detected by dependencies | Extractors to run on this package. Names: `nestjs`, `prisma`, `nextjs` (v1); `bullmq`, `socketio` (P1). |
 | `include` / `exclude` | `string[]` | inherit top level | Per-package overrides. `exclude` adds to the inherited list. |
 
