@@ -90,3 +90,27 @@ export class A {}
     expect(nestjsExtractor.detect(null)).toBe(false);
   });
 });
+
+describe("nestjs extractor: calls in imports", () => {
+  it("N-M7: a plain function call is unresolved even when the function comes from a library", () => {
+    const out = run(`import { Module } from '@nestjs/common';
+import { buildModule } from 'external-lib';
+@Module({ imports: [buildModule()] })
+export class A {}
+`);
+    expect(out.nodes[0]?.confidence).toBe("unresolved");
+    expect(out.report).toHaveLength(1);
+    expect(out.summary).toBeUndefined();
+  });
+
+  it("N-M9: Receiver.method() from a library is counted, not reported", () => {
+    const out = run(`import { Module } from '@nestjs/common';
+import { Ext } from 'external-lib';
+@Module({ imports: [Ext.forRoot()] })
+export class A {}
+`);
+    expect(out.nodes[0]?.confidence).toBe("certain");
+    expect(out.report).toEqual([]);
+    expect(out.summary).toEqual({ "nest.ignored-third-party-modules": 1 });
+  });
+});

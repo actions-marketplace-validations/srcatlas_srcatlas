@@ -9,6 +9,7 @@ export {
 } from "./evaluate.js";
 export { nestjsExtractor } from "./extractor.js";
 export {
+  followModuleCall,
   isThirdPartyCall,
   type ModuleInfo,
   type ModuleRef,

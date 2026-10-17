@@ -35,7 +35,7 @@ Many patterns need a value from an expression: a route path, a queue name, a tok
 
 | Allowed | Example |
 | --- | --- |
-| String and numeric literals | `'orders'`, `3000` |
+| String, numeric and boolean literals | `'orders'`, `3000`, `true` |
 | No-substitution and static template literals | `` `orders` ``, `` `${PREFIX}/x` `` when `PREFIX` is allowed |
 | Concatenation of allowed strings | `BASE + '/orders'` |
 | `const` variables initialised with an allowed expression | `const QUEUE = 'email'` |
@@ -631,5 +631,7 @@ Record answers as decisions in `docs/adr/`.
 1. N-P3: should an alias or `useClass` custom provider be one node or two? The catalogue says one node per token plus an `injects` edge to the class. Check this against how the viewer reads for the common `{ provide: X, useClass: Y }` case.
 2. N-R5: should `NestFactory.create` also be searched in files outside `src/main.ts` by default? Currently yes, excluding tests.
 3. Section 3: is step (b) enough, or should visibility through `exports` and re-exports (N-M8) be applied? Cheap to start without; revisit if the fixtures show false matches.
-4. Section 2: `true`, `false`, `null` and `undefined` are not in the list of allowed forms, so the evaluator treats them as unresolved (`unsupported`). Check whether any pattern needs them (for example an object-literal flag); if so, add booleans to section 2 and to the evaluator together.
+4. Section 2: `null` and `undefined` are not allowed forms and stay unresolved. Booleans were added to section 2 because N-M5 reads `global: true` from a returned literal. Check whether any pattern needs `null`.
 5. Section 2 and step 5 of section 3 tell a third-party class (`ConfigService`, a valid token with no node) from a third-party constant (not allowed). When the package is not installed, both are only a name imported from a module, so the evaluator returns a third-party reference for both; with the package's types available, a constant or function is `unresolved`. Decide whether a fixture without `node_modules` is enough, or whether the benchmark corpus must install dependencies.
+6. N-M5: a module class can have several static factories (`forRoot`, `forFeature`). It is one node, so the extractor takes the union: `dynamic` is true if any static method qualifies, `global` is true if the decorator or any returned literal says so, and the registrations of all of them are merged. A call to a factory that does not qualify is unresolved at the call site. Check this against real repositories whose factories differ in `global`.
+7. N-M5: a static method qualifies when it has exactly one `return` (nested functions ignored) whose value is an object literal with `module:` naming the same class, written there, held by a `const` in the function, or returned by a helper function of the repository at most two calls away. A literal naming a different class is unresolved. A plain repository function used directly in `imports` (`imports: [makeModule()]`) is not followed and is reported as N-M7; only `Class.method()` is.
