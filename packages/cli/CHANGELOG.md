@@ -1,5 +1,11 @@
 # srcatlas
 
+## 0.3.0
+
+### Minor Changes
+
+- 0718782: The NestJS extractor reads providers: class, value, factory and existing providers with their tokens, constructor and property injection resolved by module, scope and role, and the `contains` and `exports` edges from modules.
+
 ## 0.2.1
 
 ### Patch Changes
