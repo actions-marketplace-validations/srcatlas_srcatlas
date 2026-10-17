@@ -78,12 +78,17 @@ describe("evaluate: literals, templates, concatenation", () => {
 
   it("evaluates a template whose substitutions are allowed", () => {
     const header = "const PREFIX = 'api'; const V = 2;";
+    // biome-ignore lint/suspicious/noTemplateCurlyInString: the string is TypeScript source under test
     expect(show(ev("`${PREFIX}/x`", header))).toBe("api/x");
+    // biome-ignore lint/suspicious/noTemplateCurlyInString: the string is TypeScript source under test
     expect(show(ev("`v${V}`", header))).toBe("v2");
   });
 
   it("a template with an unevaluable substitution is unresolved", () => {
-    expect(show(ev("`${process.env.P}/x`"))).toEqual({ unresolved: "env" });
+    // biome-ignore lint/suspicious/noTemplateCurlyInString: the string is TypeScript source under test
+    expect(show(ev("`${process.env.P}/x`"))).toEqual({
+      unresolved: "env",
+    });
   });
 
   it("concatenates strings, and strings with numbers", () => {
