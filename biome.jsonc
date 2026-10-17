@@ -32,6 +32,11 @@
     {
       "includes": ["**/*.test.ts", "**/*.spec.ts"],
       "linter": { "rules": { "style": { "noNonNullAssertion": "off" } } }
+    },
+    {
+      // Fixtures copy real NestJS code, where dynamic modules are classes with only static methods.
+      "includes": ["fixtures/**"],
+      "linter": { "rules": { "complexity": { "noStaticOnlyClass": "off" } } }
     }
   ],
   "javascript": { "formatter": { "quoteStyle": "double" } },

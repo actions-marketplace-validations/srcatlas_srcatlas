@@ -42,6 +42,7 @@ function show(r: Result): unknown {
   switch (r.kind) {
     case "string":
     case "number":
+    case "boolean":
       return r.value;
     case "array":
       return r.items.map(show);
@@ -106,6 +107,26 @@ describe("evaluate: literals, templates, concatenation", () => {
     expect(show(ev("('a' as string)"))).toBe("a");
     expect(show(ev("'a' satisfies string"))).toBe("a");
     expect(show(ev("({ a: 'x' } as const).a"))).toBe("x");
+  });
+});
+
+describe("evaluate: boolean literals", () => {
+  it("evaluates true and false, also through a const", () => {
+    expect(show(ev("true"))).toBe(true);
+    expect(show(ev("false"))).toBe(false);
+    expect(show(ev("FLAG", "const FLAG = true;"))).toBe(true);
+    expect(show(ev("{ global: true }"))).toEqual({ global: true });
+  });
+
+  it("a boolean is not a string or a number: no concatenation, no template substitution", () => {
+    // biome-ignore lint/suspicious/noTemplateCurlyInString: the string is TypeScript source under test
+    expect(show(ev("`x${true}`"))).toEqual({ unresolved: "unsupported" });
+    expect(show(ev("'a' + true"))).toEqual({ unresolved: "unsupported" });
+  });
+
+  it("null and undefined stay unresolved", () => {
+    expect(show(ev("null"))).toEqual({ unresolved: "unsupported" });
+    expect(show(ev("undefined"))).toEqual({ unresolved: "unknown" });
   });
 });
 

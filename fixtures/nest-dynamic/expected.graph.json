@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 1,
+  "generator": {
+    "name": "srcatlas",
+    "version": "0.0.0"
+  },
+  "repo": {},
+  "nodes": [
+    {
+      "id": "module:dyn/AuditModule",
+      "kind": "module",
+      "name": "AuditModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:dyn",
+      "module": null,
+      "source": {
+        "file": "src/audit/audit.module.ts",
+        "line": 4
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": true,
+        "global": false
+      }
+    },
+    {
+      "id": "module:dyn/CacheModule",
+      "kind": "module",
+      "name": "CacheModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:dyn",
+      "module": null,
+      "source": {
+        "file": "src/cache/cache.module.ts",
+        "line": 5
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": true,
+        "global": true
+      }
+    },
+    {
+      "id": "module:dyn/DeepModule",
+      "kind": "module",
+      "name": "DeepModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:dyn",
+      "module": null,
+      "source": {
+        "file": "src/deep/deep.module.ts",
+        "line": 16
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "module:dyn/DynRootModule",
+      "kind": "module",
+      "name": "DynRootModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:dyn",
+      "module": null,
+      "source": {
+        "file": "src/root.module.ts",
+        "line": 12
+      },
+      "extractor": "nestjs",
+      "confidence": "unresolved",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "module:dyn/MetricsModule",
+      "kind": "module",
+      "name": "MetricsModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:dyn",
+      "module": null,
+      "source": {
+        "file": "src/metrics/metrics.module.ts",
+        "line": 12
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": true,
+        "global": true
+      }
+    },
+    {
+      "id": "module:dyn/PlainStaticModule",
+      "kind": "module",
+      "name": "PlainStaticModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:dyn",
+      "module": null,
+      "source": {
+        "file": "src/decoys/plain-static.module.ts",
+        "line": 4
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "module:dyn/QueueModule",
+      "kind": "module",
+      "name": "QueueModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:dyn",
+      "module": null,
+      "source": {
+        "file": "src/queue/queue.module.ts",
+        "line": 5
+      },
+      "extractor": "nestjs",
+      "confidence": "unresolved",
+      "meta": {
+        "dynamic": true,
+        "global": false
+      }
+    },
+    {
+      "id": "package:dyn",
+      "kind": "package",
+      "name": "dyn",
+      "language": "typescript",
+      "framework": "node",
+      "package": "package:dyn",
+      "module": null,
+      "source": {
+        "file": "package.json",
+        "line": 1
+      },
+      "extractor": "core",
+      "confidence": "certain",
+      "meta": {
+        "root": ".",
+        "version": "1.0.0"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "module:dyn/AuditModule",
+      "kind": "imports",
+      "to": "module:dyn/CacheModule",
+      "sites": [
+        {
+          "file": "src/audit/audit.module.ts",
+          "line": 9
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:dyn/DynRootModule",
+      "kind": "imports",
+      "to": "module:dyn/AuditModule",
+      "sites": [
+        {
+          "file": "src/root.module.ts",
+          "line": 17
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:dyn/DynRootModule",
+      "kind": "imports",
+      "to": "module:dyn/CacheModule",
+      "sites": [
+        {
+          "file": "src/root.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:dyn/DynRootModule",
+      "kind": "imports",
+      "to": "module:dyn/MetricsModule",
+      "sites": [
+        {
+          "file": "src/root.module.ts",
+          "line": 16
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:dyn/DynRootModule",
+      "kind": "imports",
+      "to": "module:dyn/QueueModule",
+      "sites": [
+        {
+          "file": "src/root.module.ts",
+          "line": 15
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    }
+  ]
+}

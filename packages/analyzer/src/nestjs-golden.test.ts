@@ -9,7 +9,7 @@ import { runPackage } from "./run-package.js";
 // CLAUDE.md section 8: golden files are written by hand from docs/extractors/nestjs.md and
 // reviewed, never regenerated from extractor output. Decoys in each fixture must produce nothing.
 
-const FIXTURES = ["nest-basic", "nest-modules"];
+const FIXTURES = ["nest-basic", "nest-modules", "nest-dynamic"];
 
 // Runs in this thread: the worker file only exists after a build.
 const run = (task: Parameters<typeof runPackage>[0]) =>

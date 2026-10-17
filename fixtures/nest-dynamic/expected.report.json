@@ -1,0 +1,29 @@
+{
+  "entries": [
+    {
+      "code": "nest.unresolved-dynamic-module",
+      "level": "warning",
+      "site": {
+        "file": "src/queue/queue.module.ts",
+        "line": 14
+      }
+    },
+    {
+      "code": "nest.unresolved-dynamic-module",
+      "level": "warning",
+      "site": {
+        "file": "src/root.module.ts",
+        "line": 18
+      }
+    },
+    {
+      "code": "nest.unresolved-dynamic-module",
+      "level": "warning",
+      "site": {
+        "file": "src/root.module.ts",
+        "line": 19
+      }
+    }
+  ],
+  "summary": {}
+}
