@@ -607,10 +607,11 @@ Each fixture is a small, self-contained NestJS application under `fixtures/<name
 
 | Fixture | Patterns covered | Priority | Milestone |
 | --- | --- | --- | --- |
-| `nest-basic` | N-M1, N-P1, N-P2, N-R1, N-C1, N-C5 (with a minimal Prisma schema) | P0 | M1 |
+| `nest-basic` | N-M1, N-P1, N-P2, N-R1, N-C1, N-C5 (with a minimal Prisma schema; the provider patterns are in the golden file since #23) | P0 | M1 |
 | `nest-modules` | N-M2, N-M3, N-M4, N-M8, N-M9 | P0 | M1 |
 | `nest-dynamic` | N-M5, N-M6, N-M7 | P0 | M1 |
-| `nest-di-custom` | N-P3, N-P4, N-P5, N-P6, N-P7, N-P8, N-P11, token resolution order and ambiguity (section 3) | P0 | M1 |
+| `nest-di-custom` | N-P3, N-P4, N-P5, N-P6, N-P7, N-P8, N-P11, roles (N-P1) | P0 | M1 |
+| `nest-di-resolution` | Token resolution order, ambiguity and the three outcomes without a candidate (section 3) | P0 | M1 |
 | `nest-routing` | N-R2, N-R3, N-R4, N-R5, N-R8, N-R9, N-R10 | P0 | M1 |
 | `nest-versioning` | N-R6, N-R7 | P1 | M2 |
 | `nest-calls` | N-C2, N-C3, N-C4, N-P9 | P1 | M2 |
