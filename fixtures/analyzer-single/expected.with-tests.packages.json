@@ -1,0 +1,16 @@
+{
+  "packages": [
+    {
+      "name": "solo",
+      "root": ".",
+      "tsconfig": "tsconfig.json",
+      "files": [
+        "prisma/schema.prisma",
+        "src/__tests__/helper.ts",
+        "src/main.spec.ts",
+        "src/main.ts"
+      ]
+    }
+  ],
+  "report": []
+}
