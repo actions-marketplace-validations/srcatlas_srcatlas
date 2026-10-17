@@ -1,0 +1,17 @@
+{
+  "packages": [
+    {
+      "name": "@acme/api",
+      "root": "apps/api",
+      "tsconfig": "apps/api/tsconfig.json",
+      "files": ["apps/api/src/main.ts"]
+    },
+    {
+      "name": "@acme/shared",
+      "root": "libs/shared",
+      "tsconfig": "tsconfig.base.json",
+      "files": ["libs/shared/src/greet.ts"]
+    }
+  ],
+  "report": []
+}

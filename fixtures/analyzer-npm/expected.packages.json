@@ -1,0 +1,17 @@
+{
+  "packages": [
+    {
+      "name": "a",
+      "root": "packages/a",
+      "tsconfig": null,
+      "files": ["packages/a/index.tsx"]
+    },
+    {
+      "name": "b",
+      "root": "packages/b",
+      "tsconfig": null,
+      "files": ["packages/b/index.ts"]
+    }
+  ],
+  "report": []
+}

@@ -1,0 +1,11 @@
+{
+  "packages": [
+    {
+      "name": "@acme/shared",
+      "root": "libs/shared",
+      "tsconfig": "tsconfig.base.json",
+      "files": ["libs/shared/src/greet.ts"]
+    }
+  ],
+  "report": []
+}
