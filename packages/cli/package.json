@@ -1,6 +1,6 @@
 {
   "name": "srcatlas",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Architecture maps for TypeScript repositories.",
   "license": "MIT",
   "repository": {
