@@ -48,11 +48,11 @@ export const REPORT_CODES = {
   "prisma.schema-parse-error": e("error"),
   "prisma.duplicate-model": e("error"),
   "prisma.no-schema-found": e("info"),
-  "prisma.unknown-model-access": e("warning"),
+  "prisma.unknown-model-access": e("warning", true),
   "prisma.ambiguous-model": e("warning"),
   "prisma.unknown-operation": e("info"),
   "prisma.raw-query": e("info"),
-  "prisma.dynamic-model-access": e("warning"),
+  "prisma.dynamic-model-access": e("warning", true),
   "prisma.access-outside-node": e("info"),
 } as const;
 
