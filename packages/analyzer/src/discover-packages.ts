@@ -12,6 +12,8 @@ export interface PackageInfo {
   tsconfig: string | null;
   /** Repo-relative, sorted by code unit. */
   files: string[];
+  /** Extractors named in the config; absent means detect them from package.json. */
+  extractors?: string[];
 }
 
 export interface DiscoveryReportEntry {
@@ -30,6 +32,7 @@ interface PackageEntry {
   tsconfig?: string | undefined;
   include?: string[] | undefined;
   exclude?: string[] | undefined;
+  extractors?: string[] | undefined;
 }
 
 export class DuplicatePackageNameError extends Error {
@@ -263,7 +266,13 @@ export function discoverPackages(
       },
       report,
     );
-    packages.push({ name, root: pkgRoot, tsconfig, files });
+    packages.push({
+      name,
+      root: pkgRoot,
+      tsconfig,
+      files,
+      ...(p.extractors ? { extractors: p.extractors } : {}),
+    });
   }
 
   packages.sort((a, b) => byCodeUnit(a.name, b.name));

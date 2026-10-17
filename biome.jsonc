@@ -8,7 +8,9 @@
       "**",
       "!bench",
       "!srcatlas-placeholder",
-      "!scripts/backlog.json"
+      "!scripts/backlog.json",
+      // Deliberately unparsable: the fixture for core.parse-error.
+      "!fixtures/analyzer-parse-error/src/broken.ts"
     ]
   },
   "formatter": {
