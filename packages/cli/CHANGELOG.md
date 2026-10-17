@@ -1,5 +1,11 @@
 # srcatlas
 
+## 0.2.1
+
+### Patch Changes
+
+- 44bb6ba: The NestJS extractor follows dynamic modules (`forRoot`, `forRootAsync`, `register`) and reads `global: true` from the returned literal.
+
 ## 0.2.0
 
 ### Minor Changes
