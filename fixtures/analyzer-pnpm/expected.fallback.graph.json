@@ -1,0 +1,70 @@
+{
+  "edges": [
+    {
+      "confidence": "certain",
+      "extractor": "core",
+      "from": "file:@acme/api/src/main.ts",
+      "kind": "imports",
+      "meta": {},
+      "sites": [{ "file": "apps/api/src/main.ts", "line": 1 }],
+      "to": "file:@acme/shared/src/greet.ts"
+    }
+  ],
+  "generator": { "name": "srcatlas", "version": "VERSION" },
+  "nodes": [
+    {
+      "confidence": "certain",
+      "extractor": "core",
+      "framework": "node",
+      "id": "file:@acme/api/src/main.ts",
+      "kind": "file",
+      "language": "typescript",
+      "meta": { "path": "apps/api/src/main.ts" },
+      "module": null,
+      "name": "src/main.ts",
+      "package": "package:@acme/api",
+      "source": { "file": "apps/api/src/main.ts", "line": 1 }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "core",
+      "framework": "node",
+      "id": "file:@acme/shared/src/greet.ts",
+      "kind": "file",
+      "language": "typescript",
+      "meta": { "path": "libs/shared/src/greet.ts" },
+      "module": null,
+      "name": "src/greet.ts",
+      "package": "package:@acme/shared",
+      "source": { "file": "libs/shared/src/greet.ts", "line": 1 }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "core",
+      "framework": "node",
+      "id": "package:@acme/api",
+      "kind": "package",
+      "language": "typescript",
+      "meta": { "root": "apps/api", "version": "1.0.0" },
+      "module": null,
+      "name": "@acme/api",
+      "package": "package:@acme/api",
+      "source": { "file": "apps/api/package.json", "line": 1 }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "core",
+      "framework": "node",
+      "id": "package:@acme/shared",
+      "kind": "package",
+      "language": "typescript",
+      "meta": { "root": "libs/shared", "version": "1.0.0" },
+      "module": null,
+      "name": "@acme/shared",
+      "package": "package:@acme/shared",
+      "source": { "file": "libs/shared/package.json", "line": 1 }
+    }
+  ],
+  "repo": {},
+  "schemaVersion": 1
+}
