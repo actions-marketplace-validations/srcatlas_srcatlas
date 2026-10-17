@@ -1,4 +1,5 @@
 import { z } from "zod";
+import type { ReportEntry } from "./report.js";
 import { type Edge, type Node, Site } from "./schema.js";
 
 /**
@@ -22,16 +23,6 @@ export type AccessFact = z.infer<typeof AccessFact>;
 /** One variant today; add others to this union. */
 export const Fact = AccessFact;
 export type Fact = AccessFact;
-
-/** docs/schema.md section 11. */
-export interface ReportEntry {
-  level: "error" | "warning" | "info";
-  /** Stable machine-readable code, catalogued in the extractor's document. */
-  code: string;
-  message: string;
-  extractor: string;
-  site?: Site;
-}
 
 export interface ExtractorResult {
   nodes: Node[];

@@ -2,6 +2,7 @@ export * from "./builder.js";
 export * from "./config.js";
 export * from "./extractor.js";
 export * from "./ids.js";
+export * from "./report.js";
 export * from "./schema.js";
 export * from "./serialize.js";
 export * from "./validate.js";

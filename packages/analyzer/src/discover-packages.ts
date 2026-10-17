@@ -1,6 +1,7 @@
 import { type Dirent, readdirSync, readFileSync, statSync } from "node:fs";
 import { basename, join } from "node:path";
-import type { Config } from "@srcatlas/core";
+
+import type { Config, ReportCode } from "@srcatlas/core";
 import picomatch from "picomatch";
 
 /** A package to analyse. Paths are repository-relative with `/` separators. */
@@ -17,7 +18,7 @@ export interface PackageInfo {
 }
 
 export interface DiscoveryReportEntry {
-  code: "core.file-too-large";
+  code: Extract<ReportCode, "core.file-too-large">;
   file: string;
 }
 

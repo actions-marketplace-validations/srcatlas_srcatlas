@@ -3,6 +3,7 @@ import {
   type Extractor,
   type ExtractorResult,
   Fact,
+  type ReportCode,
   type ReportEntry,
 } from "@srcatlas/core";
 import type { Project } from "ts-morph";
@@ -39,7 +40,7 @@ function dropUnparsable(
     const text = first.getMessageText();
     report.push({
       level: "error",
-      code: "core.parse-error",
+      code: "core.parse-error" satisfies ReportCode,
       message: typeof text === "string" ? text : text.getMessageText(),
       extractor: "core",
       site: { file: rel(sf.getFilePath()), line: first.getLineNumber() ?? 1 },
@@ -74,7 +75,7 @@ export async function runPackage(
     if (!extractor) {
       result.report.push({
         level: "warning",
-        code: "core.unknown-extractor",
+        code: "core.unknown-extractor" satisfies ReportCode,
         message: `extractor "${name}" is not available`,
         extractor: "core",
       });
@@ -97,7 +98,7 @@ export async function runPackage(
     } catch (e) {
       result.report.push({
         level: "error",
-        code: "core.extractor-failed",
+        code: "core.extractor-failed" satisfies ReportCode,
         message: `extractor failed: ${messageOf(e)}`,
         extractor: name,
       });
