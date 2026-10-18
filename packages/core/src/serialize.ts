@@ -1,3 +1,4 @@
+import type { DiffFile } from "./diff-schema.js";
 import type { GraphFile } from "./schema.js";
 import { cmp } from "./validate.js";
 
@@ -21,4 +22,10 @@ export function sortKeys(v: Json): Json {
 /** The canonical graph file bytes: sorted keys, 2-space indent, `\n`, one trailing newline. */
 export function serializeGraph(graph: GraphFile): string {
   return `${JSON.stringify(sortKeys(graph as unknown as Json), null, 2)}\n`;
+}
+
+/** The canonical diff file bytes, same rules as `serializeGraph`. */
+export function serializeDiff(diff: DiffFile): string {
+  return `${JSON.stringify(sortKeys(diff as unknown as Json), null, 2)}
+`;
 }
