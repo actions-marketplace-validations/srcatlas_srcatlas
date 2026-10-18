@@ -16,6 +16,7 @@ import {
   readModules,
 } from "./modules.js";
 import { buildProviders } from "./provider-graph.js";
+import { buildRoutes } from "./routes.js";
 
 const NAME = "nestjs";
 const DEPENDENCIES = ["dependencies", "devDependencies", "peerDependencies"];
@@ -148,6 +149,17 @@ function extract(ctx: ExtractorContext<Project>): ExtractorResult {
   nodes.push(...providers.nodes);
   edges.push(...providers.edges);
   report.push(...providers.report);
+
+  const routes = buildRoutes({
+    pkg,
+    project: ctx.project,
+    ctx,
+    modules,
+    moduleIds: ids,
+  });
+  nodes.push(...routes.nodes);
+  edges.push(...routes.edges);
+  report.push(...routes.report);
 
   const summary: Record<string, number> = { ...providers.summary };
   if (thirdParty > 0) summary["nest.ignored-third-party-modules"] = thirdParty;
