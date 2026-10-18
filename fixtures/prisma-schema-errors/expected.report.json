@@ -1,0 +1,29 @@
+{
+  "entries": [
+    {
+      "code": "prisma.duplicate-model",
+      "level": "error",
+      "site": {
+        "file": "prisma/schema/b-extra.prisma",
+        "line": 1
+      }
+    },
+    {
+      "code": "prisma.schema-parse-error",
+      "level": "error",
+      "site": {
+        "file": "prisma/schema/a-core.prisma",
+        "line": 7
+      }
+    },
+    {
+      "code": "prisma.schema-parse-error",
+      "level": "error",
+      "site": {
+        "file": "prisma/schema/b-extra.prisma",
+        "line": 5
+      }
+    }
+  ],
+  "summary": {}
+}

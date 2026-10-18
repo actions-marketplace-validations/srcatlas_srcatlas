@@ -6,7 +6,7 @@ import { analyzeRepo } from "./analyze-repo.js";
 import { builtinExtractors } from "./registry.js";
 import { runPackage } from "./run-package.js";
 
-// CLAUDE.md section 8: golden files are written by hand from docs/extractors/nestjs.md and
+// CLAUDE.md section 8: golden files are written by hand from docs/extractors/ and
 // reviewed, never regenerated from extractor output. Decoys in each fixture must produce nothing.
 
 const FIXTURES = [
@@ -19,6 +19,8 @@ const FIXTURES = [
   "nest-routing-prefix-env",
   "nest-routing-two-apps",
   "nest-decoys",
+  "prisma-schema",
+  "prisma-schema-errors",
 ];
 
 // Runs in this thread: the worker file only exists after a build.

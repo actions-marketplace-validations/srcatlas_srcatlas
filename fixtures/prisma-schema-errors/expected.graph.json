@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "generator": {
+    "name": "srcatlas",
+    "version": "0.0.0"
+  },
+  "repo": {},
+  "nodes": [
+    {
+      "id": "model:shipping/Healthy",
+      "kind": "model",
+      "name": "Healthy",
+      "language": "prisma",
+      "framework": "prisma",
+      "package": "package:shipping",
+      "module": null,
+      "source": {
+        "file": "prisma/schema/a-core.prisma",
+        "line": 11
+      },
+      "extractor": "prisma",
+      "confidence": "certain",
+      "meta": {
+        "fieldCount": 2,
+        "schemaFile": "prisma/schema/a-core.prisma"
+      }
+    },
+    {
+      "id": "model:shipping/Shipment",
+      "kind": "model",
+      "name": "Shipment",
+      "language": "prisma",
+      "framework": "prisma",
+      "package": "package:shipping",
+      "module": null,
+      "source": {
+        "file": "prisma/schema/a-core.prisma",
+        "line": 1
+      },
+      "extractor": "prisma",
+      "confidence": "certain",
+      "meta": {
+        "fieldCount": 3,
+        "schemaFile": "prisma/schema/a-core.prisma"
+      }
+    },
+    {
+      "id": "package:shipping",
+      "kind": "package",
+      "name": "shipping",
+      "language": "typescript",
+      "framework": "node",
+      "package": "package:shipping",
+      "module": null,
+      "source": {
+        "file": "package.json",
+        "line": 1
+      },
+      "extractor": "core",
+      "confidence": "certain",
+      "meta": {
+        "root": ".",
+        "version": "1.0.0"
+      }
+    }
+  ],
+  "edges": []
+}

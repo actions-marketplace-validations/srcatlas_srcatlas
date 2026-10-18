@@ -1,0 +1,14 @@
+model Shipment {
+  id     Int    @id
+  label  String
+  weight Int
+}
+
+model Broken {
+  id    Int    @id
+  label String
+
+model Healthy {
+  id   Int    @id
+  note String
+}

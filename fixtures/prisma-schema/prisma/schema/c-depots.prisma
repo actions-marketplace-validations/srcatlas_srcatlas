@@ -1,0 +1,6 @@
+// model Ghost {
+/// model Phantom { }
+model Depot {
+  id   Int    @id
+  note String @default("} model Fake {") // trailing { comment
+}

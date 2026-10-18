@@ -1,0 +1,7 @@
+model Shipment {
+  id Int @id
+}
+
+model Truncated {
+  id    Int    @id
+  label String

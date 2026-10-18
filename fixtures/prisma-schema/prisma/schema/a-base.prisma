@@ -1,0 +1,19 @@
+// Generator, datasource, enum and composite type blocks produce no node.
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ParcelStatus {
+  PENDING
+  SHIPPED
+}
+
+type Address {
+  street String
+  city   String
+}
