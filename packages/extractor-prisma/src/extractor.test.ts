@@ -1,6 +1,7 @@
 import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { Project } from "ts-morph";
 import { describe, expect, it } from "vitest";
 import { prismaExtractor } from "./extractor.js";
 import { parseSchema } from "./parse-schema.js";
@@ -17,7 +18,7 @@ function run(files: Record<string, string>, packageRoot = ".") {
     return prismaExtractor.extract({
       root,
       package: { name: "p", root: packageRoot, tsconfig: null, files: [] },
-      project: undefined,
+      project: new Project({ useInMemoryFileSystem: true }),
       relative: (p) => p,
     }) as import("@srcatlas/core").ExtractorResult;
   } finally {

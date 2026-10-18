@@ -8,6 +8,8 @@ export interface Block {
   line: number;
   /** Field lines of the block (meaningful for `model`). */
   fieldCount: number;
+  /** The `output` string of a `generator` block, as written (PR-S4, read for PR-C1). */
+  output?: string;
 }
 
 export interface ParsedSchema {
@@ -68,6 +70,7 @@ export function parseSchema(text: string): ParsedSchema {
   const blocks: Block[] = [];
   const malformed: ParsedSchema["malformed"] = [];
   let open: (Block & { depth: number }) | undefined;
+  const raw = text.split(/\r?\n/);
 
   const abandon = () => {
     if (open) {
@@ -101,6 +104,11 @@ export function parseSchema(text: string): ParsedSchema {
         return;
       }
       if (!open) return;
+      if (open.kind === "generator" && /^\s*output\s*=\s*"/.test(line)) {
+        // The value was masked; the original line still has it.
+        const value = /^\s*output\s*=\s*"([^"]*)"/.exec(raw[index] ?? "");
+        if (value?.[1] !== undefined) open.output = value[1];
+      }
       open.depth += count(line, "{") - count(line, "}");
       if (open.depth <= 0) {
         blocks.push({
@@ -108,6 +116,7 @@ export function parseSchema(text: string): ParsedSchema {
           name: open.name,
           line: open.line,
           fieldCount: open.fieldCount,
+          ...(open.output === undefined ? {} : { output: open.output }),
         });
         open = undefined;
       } else if (isField(line)) open.fieldCount++;
