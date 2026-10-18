@@ -1,0 +1,22 @@
+model Parcel {
+  id        Int      @id @default(autoincrement())
+  weight    Decimal
+  createdAt DateTime @default(now())
+  courier   Courier  @relation(fields: [courierId], references: [id])
+  courierId Int
+
+  @@index([courierId])
+}
+
+model Courier {
+  id      Int      @id
+  name    String
+  parcels Parcel[]
+
+  @@map("couriers")
+}
+
+view CourierStats {
+  courierId Int @unique
+  total     Int
+}

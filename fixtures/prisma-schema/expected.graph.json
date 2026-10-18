@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "generator": {
+    "name": "srcatlas",
+    "version": "0.0.0"
+  },
+  "repo": {},
+  "nodes": [
+    {
+      "id": "model:parcels/Courier",
+      "kind": "model",
+      "name": "Courier",
+      "language": "prisma",
+      "framework": "prisma",
+      "package": "package:parcels",
+      "module": null,
+      "source": {
+        "file": "prisma/schema/b-parcels.prisma",
+        "line": 11
+      },
+      "extractor": "prisma",
+      "confidence": "certain",
+      "meta": {
+        "fieldCount": 3,
+        "schemaFile": "prisma/schema/b-parcels.prisma"
+      }
+    },
+    {
+      "id": "model:parcels/Depot",
+      "kind": "model",
+      "name": "Depot",
+      "language": "prisma",
+      "framework": "prisma",
+      "package": "package:parcels",
+      "module": null,
+      "source": {
+        "file": "prisma/schema/c-depots.prisma",
+        "line": 3
+      },
+      "extractor": "prisma",
+      "confidence": "certain",
+      "meta": {
+        "fieldCount": 2,
+        "schemaFile": "prisma/schema/c-depots.prisma"
+      }
+    },
+    {
+      "id": "model:parcels/Parcel",
+      "kind": "model",
+      "name": "Parcel",
+      "language": "prisma",
+      "framework": "prisma",
+      "package": "package:parcels",
+      "module": null,
+      "source": {
+        "file": "prisma/schema/b-parcels.prisma",
+        "line": 1
+      },
+      "extractor": "prisma",
+      "confidence": "certain",
+      "meta": {
+        "fieldCount": 5,
+        "schemaFile": "prisma/schema/b-parcels.prisma"
+      }
+    },
+    {
+      "id": "package:parcels",
+      "kind": "package",
+      "name": "parcels",
+      "language": "typescript",
+      "framework": "node",
+      "package": "package:parcels",
+      "module": null,
+      "source": {
+        "file": "package.json",
+        "line": 1
+      },
+      "extractor": "core",
+      "confidence": "certain",
+      "meta": {
+        "root": ".",
+        "version": "1.0.0"
+      }
+    }
+  ],
+  "edges": []
+}
