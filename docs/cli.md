@@ -173,6 +173,22 @@ Output lists each violation with rule id, severity, message, and `file:line` of 
 - **`github`.** One workflow command per site: `::error file=<file>,line=<line>,title=<rule>::<message>` (`::warning ...` for `warn`). A violation with no site prints the command without `file` and `line`. Values are escaped as GitHub requires: `%`, CR and LF in messages; also `:` and `,` in properties.
 - **Warnings.** Stale exceptions and rules that are not evaluated yet go to stderr in every format, one per line, prefixed `warning: `; `--quiet` suppresses them.
 
+#### 3.5.2 Accepted violations (the ratchet)
+
+So that a repository with existing violations can adopt rules: `check` can read a committed file of accepted violations and fail only on the others.
+
+| Flag | Default | Meaning |
+|---|---|---|
+| `--accepted <file>` | `srcatlas.accepted.json` | The accepted-violations file, relative to the root. |
+| `--accept` | off | Write the file (below). |
+| `--add` | off | With `--accept`: also record violations that are not in an existing file. |
+
+- **File.** JSON, canonical key order, 2-space indent, one trailing newline: `{ "version": 1, "violations": [...] }`. An entry is a violation without `severity`, `message` and `sites`: `{ "rule", "from", "edgeKind", "to" }`, or for a cycle `{ "rule", "over", "members" }`. Entries are sorted by rule ID, then by `from`, `edgeKind`, `to` (or by the members) in code-unit order. Unknown keys and a `version` other than 1 are exit 2, as is a file that is not JSON.
+- **Identity.** A violation is accepted when an entry has the same rule and the same `from`, `edgeKind` and `to` (or the same `over` and `members`). Sites do not take part, so a line moving does not un-accept it. A cycle that gains or loses a member is a different violation.
+- **Plain `check`.** If the file exists, accepted violations are left out of the output and of the exit code, and `check` says `<n> accepted violation(s) not shown` on stderr. A violation not in the file is reported and fails as usual. An entry whose violation no longer occurs gets a warning `accepted violation no longer occurs: <rule> <from> <edgeKind> <to>` (members for a cycle) with a hint to run `check --accept`; it does not change the exit code. Plain `check` never writes the file. A file named with `--accepted` that does not exist is exit 2; the default file that does not exist is ignored.
+- **`--accept`.** Writes the file and then reports as a plain run against the new file, so a successful adoption exits 0. If the file does not exist, it is created with every current violation. If it exists, it keeps the entries whose violation still occurs and drops the others: the file shrinks. Violations that are not in it are **not** added, are reported as usual and keep the exit code at 1; `--add` records them too. After writing, stderr says `<path>: <n> added, <n> kept, <n> removed`, and, when it did not add, how many new violations it left out.
+- **Guard.** `--accept` with a `--min-confidence` other than `inferred` is exit 2, because a stricter level would make accepted violations look gone and remove them.
+
 ### 3.6 `srcatlas export [graph]` (P1)
 
 | Flag | Default | Meaning |

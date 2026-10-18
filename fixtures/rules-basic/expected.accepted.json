@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "violations": [
+    {
+      "rule": "certain-provider-db",
+      "from": "provider:api/OrdersService",
+      "edgeKind": "reads",
+      "to": "model:api/Order"
+    },
+    {
+      "rule": "controllers-not-direct-db",
+      "from": "controller:api/OrdersController",
+      "edgeKind": "reads",
+      "to": "model:api/Order"
+    },
+    {
+      "rule": "controllers-not-direct-db",
+      "from": "controller:api/OrdersController",
+      "edgeKind": "writes",
+      "to": "model:api/Order"
+    },
+    {
+      "rule": "no-module-cycles",
+      "over": "modules",
+      "members": ["module:api/OrdersModule", "module:api/UsersModule"]
+    },
+    {
+      "rule": "orders-services-not-mail",
+      "from": "provider:api/OrdersService",
+      "edgeKind": "calls",
+      "to": "provider:api/MailerService"
+    }
+  ]
+}
