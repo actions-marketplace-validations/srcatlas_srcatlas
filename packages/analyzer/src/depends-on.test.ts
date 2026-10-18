@@ -7,7 +7,7 @@ import { runPackage } from "./run-package.js";
 // docs/schema.md 6.1: `depends_on` means a package imports another workspace package.
 // Fixture analyzer-depends-on, by package:
 //   @acme/web  imports @acme/api by name with a subpath, and @acme/ui by name (an
-//              import, a type import and `export *`: one edge, sites at lines 2 and 8).
+//              import, a type import and `export *`: one edge, sites at lines 3 and 7).
 //              Decoys that must give no edge: `lodash` (not a workspace package),
 //              `@acme/api-client` (shares a prefix with @acme/api), `./util` (same package).
 //   @acme/api  imports @acme/shared through a tsconfig path alias, and `./client` (same package).
