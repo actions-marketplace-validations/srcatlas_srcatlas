@@ -1,0 +1,4861 @@
+{
+  "schemaVersion": 1,
+  "generator": {
+    "name": "srcatlas-oracle-nestjs-runtime",
+    "version": "0.0.0"
+  },
+  "repo": {},
+  "nodes": [
+    {
+      "id": "controller:@crwsync/backend/AiController",
+      "kind": "controller",
+      "name": "AiController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/AiModule",
+      "source": {
+        "file": "src/ai/ai.controller.ts",
+        "line": 12
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/workspaces/:workspaceId/ai"
+      }
+    },
+    {
+      "id": "controller:@crwsync/backend/AiStatusController",
+      "kind": "controller",
+      "name": "AiStatusController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/AiModule",
+      "source": {
+        "file": "src/ai/ai-status.controller.ts",
+        "line": 9
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/ai"
+      }
+    },
+    {
+      "id": "controller:@crwsync/backend/AppController",
+      "kind": "controller",
+      "name": "AppController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/AppModule",
+      "source": {
+        "file": "src/app.controller.ts",
+        "line": 5
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/"
+      }
+    },
+    {
+      "id": "controller:@crwsync/backend/AuthController",
+      "kind": "controller",
+      "name": "AuthController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/AuthModule",
+      "source": {
+        "file": "src/auth/auth.controller.ts",
+        "line": 15
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/auth"
+      }
+    },
+    {
+      "id": "controller:@crwsync/backend/AvatarsController",
+      "kind": "controller",
+      "name": "AvatarsController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/StorageModule",
+      "source": {
+        "file": "src/storage/avatars.controller.ts",
+        "line": 8
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/avatars"
+      }
+    },
+    {
+      "id": "controller:@crwsync/backend/BoardController",
+      "kind": "controller",
+      "name": "BoardController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/BoardModule",
+      "source": {
+        "file": "src/board/board.controller.ts",
+        "line": 42
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/workspaces/:workspaceId/boards"
+      }
+    },
+    {
+      "id": "controller:@crwsync/backend/ChatController",
+      "kind": "controller",
+      "name": "ChatController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/ChatModule",
+      "source": {
+        "file": "src/chat/chat.controller.ts",
+        "line": 24
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/workspaces/:workspaceId/chat"
+      }
+    },
+    {
+      "id": "controller:@crwsync/backend/ContactController",
+      "kind": "controller",
+      "name": "ContactController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/ContactModule",
+      "source": {
+        "file": "src/contact/contact.controller.ts",
+        "line": 8
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/contact"
+      }
+    },
+    {
+      "id": "controller:@crwsync/backend/DmController",
+      "kind": "controller",
+      "name": "DmController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/ChatModule",
+      "source": {
+        "file": "src/chat/dm.controller.ts",
+        "line": 12
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/workspaces/:workspaceId/dms"
+      }
+    },
+    {
+      "id": "controller:@crwsync/backend/EmailController",
+      "kind": "controller",
+      "name": "EmailController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/EmailModule",
+      "source": {
+        "file": "src/email/email.controller.ts",
+        "line": 8
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/email"
+      }
+    },
+    {
+      "id": "controller:@crwsync/backend/FilesController",
+      "kind": "controller",
+      "name": "FilesController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/FilesModule",
+      "source": {
+        "file": "src/files/files.controller.ts",
+        "line": 23
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/workspaces/:workspaceId/file-rooms"
+      }
+    },
+    {
+      "id": "controller:@crwsync/backend/HealthController",
+      "kind": "controller",
+      "name": "HealthController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/HealthModule",
+      "source": {
+        "file": "src/health/health.controller.ts",
+        "line": 6
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/health"
+      }
+    },
+    {
+      "id": "controller:@crwsync/backend/ModuleController",
+      "kind": "controller",
+      "name": "ModuleController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/BoardModule",
+      "source": {
+        "file": "src/board/board.controller.ts",
+        "line": 199
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/workspaces/:workspaceId/modules"
+      }
+    },
+    {
+      "id": "controller:@crwsync/backend/NotificationController",
+      "kind": "controller",
+      "name": "NotificationController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/NotificationModule",
+      "source": {
+        "file": "src/notification/notification.controller.ts",
+        "line": 6
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/users/:userId/notifications"
+      }
+    },
+    {
+      "id": "controller:@crwsync/backend/PasswordResetController",
+      "kind": "controller",
+      "name": "PasswordResetController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/PasswordResetModule",
+      "source": {
+        "file": "src/password-reset/password-reset.controller.ts",
+        "line": 15
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/password-resets"
+      }
+    },
+    {
+      "id": "controller:@crwsync/backend/ProjectController",
+      "kind": "controller",
+      "name": "ProjectController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/BoardModule",
+      "source": {
+        "file": "src/board/board.controller.ts",
+        "line": 257
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/workspaces/:workspaceId/projects"
+      }
+    },
+    {
+      "id": "controller:@crwsync/backend/SearchController",
+      "kind": "controller",
+      "name": "SearchController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/SearchModule",
+      "source": {
+        "file": "src/search/search.controller.ts",
+        "line": 11
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/workspaces/:workspaceId/search"
+      }
+    },
+    {
+      "id": "controller:@crwsync/backend/SessionController",
+      "kind": "controller",
+      "name": "SessionController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/SessionModule",
+      "source": {
+        "file": "src/session/session.controller.ts",
+        "line": 20
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/sessions"
+      }
+    },
+    {
+      "id": "controller:@crwsync/backend/StatisticsController",
+      "kind": "controller",
+      "name": "StatisticsController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/StatisticsModule",
+      "source": {
+        "file": "src/statistics/statistics.controller.ts",
+        "line": 20
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/workspaces/:workspaceId/statistics"
+      }
+    },
+    {
+      "id": "controller:@crwsync/backend/UserController",
+      "kind": "controller",
+      "name": "UserController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/UserModule",
+      "source": {
+        "file": "src/user/user.controller.ts",
+        "line": 20
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/users"
+      }
+    },
+    {
+      "id": "controller:@crwsync/backend/VerificationController",
+      "kind": "controller",
+      "name": "VerificationController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/VerificationModule",
+      "source": {
+        "file": "src/email-verification/email-verification.controller.ts",
+        "line": 14
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/email-verifications"
+      }
+    },
+    {
+      "id": "controller:@crwsync/backend/WaitlistController",
+      "kind": "controller",
+      "name": "WaitlistController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/WaitlistModule",
+      "source": {
+        "file": "src/waitlist/waitlist.controller.ts",
+        "line": 8
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/waitlist"
+      }
+    },
+    {
+      "id": "controller:@crwsync/backend/WorkspaceController",
+      "kind": "controller",
+      "name": "WorkspaceController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/WorkspaceModule",
+      "source": {
+        "file": "src/workspace/workspace.controller.ts",
+        "line": 28
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/workspaces"
+      }
+    },
+    {
+      "id": "module:@crwsync/backend/AiModule",
+      "kind": "module",
+      "name": "AiModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": null,
+      "source": {
+        "file": "src/ai/ai.module.ts",
+        "line": 27
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "module:@crwsync/backend/AppModule",
+      "kind": "module",
+      "name": "AppModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": null,
+      "source": {
+        "file": "src/app.module.ts",
+        "line": 93
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "module:@crwsync/backend/AuthModule",
+      "kind": "module",
+      "name": "AuthModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": null,
+      "source": {
+        "file": "src/auth/auth.module.ts",
+        "line": 44
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "module:@crwsync/backend/BoardModule",
+      "kind": "module",
+      "name": "BoardModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": null,
+      "source": {
+        "file": "src/board/board.module.ts",
+        "line": 14
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "module:@crwsync/backend/ChatModule",
+      "kind": "module",
+      "name": "ChatModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": null,
+      "source": {
+        "file": "src/chat/chat.module.ts",
+        "line": 40
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "module:@crwsync/backend/ContactModule",
+      "kind": "module",
+      "name": "ContactModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": null,
+      "source": {
+        "file": "src/contact/contact.module.ts",
+        "line": 11
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "module:@crwsync/backend/EmailModule",
+      "kind": "module",
+      "name": "EmailModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": null,
+      "source": {
+        "file": "src/email/email.module.ts",
+        "line": 27
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "module:@crwsync/backend/FilesModule",
+      "kind": "module",
+      "name": "FilesModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": null,
+      "source": {
+        "file": "src/files/files.module.ts",
+        "line": 14
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "module:@crwsync/backend/HealthModule",
+      "kind": "module",
+      "name": "HealthModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": null,
+      "source": {
+        "file": "src/health/health.module.ts",
+        "line": 8
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "module:@crwsync/backend/NotificationModule",
+      "kind": "module",
+      "name": "NotificationModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": null,
+      "source": {
+        "file": "src/notification/notification.module.ts",
+        "line": 12
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "module:@crwsync/backend/PasswordResetModule",
+      "kind": "module",
+      "name": "PasswordResetModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": null,
+      "source": {
+        "file": "src/password-reset/password-reset.module.ts",
+        "line": 14
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "module:@crwsync/backend/PrismaModule",
+      "kind": "module",
+      "name": "PrismaModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": null,
+      "source": {
+        "file": "src/prisma/prisma.module.ts",
+        "line": 9
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": true
+      }
+    },
+    {
+      "id": "module:@crwsync/backend/RedisModule",
+      "kind": "module",
+      "name": "RedisModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": null,
+      "source": {
+        "file": "src/redis/redis.module.ts",
+        "line": 11
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": true
+      }
+    },
+    {
+      "id": "module:@crwsync/backend/SearchModule",
+      "kind": "module",
+      "name": "SearchModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": null,
+      "source": {
+        "file": "src/search/search.module.ts",
+        "line": 11
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "module:@crwsync/backend/SessionModule",
+      "kind": "module",
+      "name": "SessionModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": null,
+      "source": {
+        "file": "src/session/session.module.ts",
+        "line": 11
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "module:@crwsync/backend/StatisticsModule",
+      "kind": "module",
+      "name": "StatisticsModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": null,
+      "source": {
+        "file": "src/statistics/statistics.module.ts",
+        "line": 13
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "module:@crwsync/backend/StatusModule",
+      "kind": "module",
+      "name": "StatusModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": null,
+      "source": {
+        "file": "src/status/status.module.ts",
+        "line": 22
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "module:@crwsync/backend/StorageModule",
+      "kind": "module",
+      "name": "StorageModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": null,
+      "source": {
+        "file": "src/storage/storage.module.ts",
+        "line": 11
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": true
+      }
+    },
+    {
+      "id": "module:@crwsync/backend/UserModule",
+      "kind": "module",
+      "name": "UserModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": null,
+      "source": {
+        "file": "src/user/user.module.ts",
+        "line": 13
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "module:@crwsync/backend/VerificationModule",
+      "kind": "module",
+      "name": "VerificationModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": null,
+      "source": {
+        "file": "src/email-verification/email-verification.module.ts",
+        "line": 12
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "module:@crwsync/backend/WaitlistModule",
+      "kind": "module",
+      "name": "WaitlistModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": null,
+      "source": {
+        "file": "src/waitlist/waitlist.module.ts",
+        "line": 9
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "module:@crwsync/backend/WorkspaceModule",
+      "kind": "module",
+      "name": "WorkspaceModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": null,
+      "source": {
+        "file": "src/workspace/workspace.module.ts",
+        "line": 14
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "package:@crwsync/backend",
+      "kind": "package",
+      "name": "@crwsync/backend",
+      "language": "typescript",
+      "framework": "node",
+      "package": "package:@crwsync/backend",
+      "module": null,
+      "source": {
+        "file": "package.json",
+        "line": 1
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "root": ".",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/AiClient",
+      "kind": "provider",
+      "name": "AiClient",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/AiModule",
+      "source": {
+        "file": "src/ai/ai.client.ts",
+        "line": 24
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/AiEnabledGuard",
+      "kind": "provider",
+      "name": "AiEnabledGuard",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/AiModule",
+      "source": {
+        "file": "src/ai/ai-enabled.guard.ts",
+        "line": 5
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "guard",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/AiProcessor",
+      "kind": "provider",
+      "name": "AiProcessor",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/AiModule",
+      "source": {
+        "file": "src/ai/ai.processor.ts",
+        "line": 25
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/AiService",
+      "kind": "provider",
+      "name": "AiService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/AiModule",
+      "source": {
+        "file": "src/ai/ai.service.ts",
+        "line": 16
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/AppService",
+      "kind": "provider",
+      "name": "AppService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/AppModule",
+      "source": {
+        "file": "src/app.service.ts",
+        "line": 4
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/AuthService",
+      "kind": "provider",
+      "name": "AuthService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/AuthModule",
+      "source": {
+        "file": "src/auth/auth.service.ts",
+        "line": 18
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/BoardService",
+      "kind": "provider",
+      "name": "BoardService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/BoardModule",
+      "source": {
+        "file": "src/board/board.service.ts",
+        "line": 27
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/CacheService",
+      "kind": "provider",
+      "name": "CacheService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/RedisModule",
+      "source": {
+        "file": "src/redis/cache.service.ts",
+        "line": 6
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/ChatGateway",
+      "kind": "provider",
+      "name": "ChatGateway",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/ChatModule",
+      "source": {
+        "file": "src/chat/chat.gateway.ts",
+        "line": 30
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/ChatProcessor",
+      "kind": "provider",
+      "name": "ChatProcessor",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/ChatModule",
+      "source": {
+        "file": "src/chat/chat.processor.ts",
+        "line": 18
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/ChatService",
+      "kind": "provider",
+      "name": "ChatService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/ChatModule",
+      "source": {
+        "file": "src/chat/chat.service.ts",
+        "line": 26
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/ContactService",
+      "kind": "provider",
+      "name": "ContactService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/ContactModule",
+      "source": {
+        "file": "src/contact/contact.service.ts",
+        "line": 6
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/EmailProcessor",
+      "kind": "provider",
+      "name": "EmailProcessor",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/EmailModule",
+      "source": {
+        "file": "src/email/email.processor.ts",
+        "line": 8
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/EmailService",
+      "kind": "provider",
+      "name": "EmailService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/EmailModule",
+      "source": {
+        "file": "src/email/email.service.ts",
+        "line": 6
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/FilesService",
+      "kind": "provider",
+      "name": "FilesService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/FilesModule",
+      "source": {
+        "file": "src/files/files.service.ts",
+        "line": 19
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/HasPendingInviteGuard",
+      "kind": "provider",
+      "name": "HasPendingInviteGuard",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": null,
+      "source": {
+        "file": "src/workspace/guards/ws-invite.guard.ts",
+        "line": 9
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "guard",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/IsMemberGuard",
+      "kind": "provider",
+      "name": "IsMemberGuard",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": null,
+      "source": {
+        "file": "src/workspace/guards/ws-member.guard.ts",
+        "line": 9
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "guard",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/JwtAuthGuard",
+      "kind": "provider",
+      "name": "JwtAuthGuard",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": null,
+      "source": {
+        "file": "src/common/guards/jwt-auth.guard.ts",
+        "line": 8
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "guard",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/JwtStrategy",
+      "kind": "provider",
+      "name": "JwtStrategy",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/AuthModule",
+      "source": {
+        "file": "src/auth/jwt.strategy.ts",
+        "line": 11
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/NotificationService",
+      "kind": "provider",
+      "name": "NotificationService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/NotificationModule",
+      "source": {
+        "file": "src/notification/notification.service.ts",
+        "line": 13
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/PasswordResetService",
+      "kind": "provider",
+      "name": "PasswordResetService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/PasswordResetModule",
+      "source": {
+        "file": "src/password-reset/password-reset.service.ts",
+        "line": 17
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/PrismaService",
+      "kind": "provider",
+      "name": "PrismaService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/PrismaModule",
+      "source": {
+        "file": "src/prisma/prisma.service.ts",
+        "line": 8
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/RolesGuard",
+      "kind": "provider",
+      "name": "RolesGuard",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": null,
+      "source": {
+        "file": "src/common/guards/roles.guard.ts",
+        "line": 8
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "guard",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/SearchService",
+      "kind": "provider",
+      "name": "SearchService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/SearchModule",
+      "source": {
+        "file": "src/search/search.service.ts",
+        "line": 47
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/SessionCleanupService",
+      "kind": "provider",
+      "name": "SessionCleanupService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/SessionModule",
+      "source": {
+        "file": "src/session/session.cleanup.service.ts",
+        "line": 8
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/SessionService",
+      "kind": "provider",
+      "name": "SessionService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/SessionModule",
+      "source": {
+        "file": "src/session/session.service.ts",
+        "line": 15
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/StatisticsService",
+      "kind": "provider",
+      "name": "StatisticsService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/StatisticsModule",
+      "source": {
+        "file": "src/statistics/statistics.service.ts",
+        "line": 21
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/StatusGateway",
+      "kind": "provider",
+      "name": "StatusGateway",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/StatusModule",
+      "source": {
+        "file": "src/status/status.gateway.ts",
+        "line": 16
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/StorageService",
+      "kind": "provider",
+      "name": "StorageService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/StorageModule",
+      "source": {
+        "file": "src/storage/storage.service.ts",
+        "line": 32
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/UserService",
+      "kind": "provider",
+      "name": "UserService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/UserModule",
+      "source": {
+        "file": "src/user/user.service.ts",
+        "line": 17
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/VerificationService",
+      "kind": "provider",
+      "name": "VerificationService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/VerificationModule",
+      "source": {
+        "file": "src/email-verification/email-verification.service.ts",
+        "line": 15
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/WaitlistService",
+      "kind": "provider",
+      "name": "WaitlistService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/WaitlistModule",
+      "source": {
+        "file": "src/waitlist/waitlist.service.ts",
+        "line": 7
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/WorkspaceRolesGuard",
+      "kind": "provider",
+      "name": "WorkspaceRolesGuard",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": null,
+      "source": {
+        "file": "src/workspace/guards/ws-roles.guard.ts",
+        "line": 7
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "guard",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:@crwsync/backend/WorkspaceService",
+      "kind": "provider",
+      "name": "WorkspaceService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:@crwsync/backend",
+      "module": "module:@crwsync/backend/WorkspaceModule",
+      "source": {
+        "file": "src/workspace/workspace.service.ts",
+        "line": 26
+      },
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "controller:@crwsync/backend/AiController",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/AiService",
+      "sites": [
+        {
+          "file": "src/ai/ai.controller.ts",
+          "line": 12
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:@crwsync/backend/AiStatusController",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/AiService",
+      "sites": [
+        {
+          "file": "src/ai/ai-status.controller.ts",
+          "line": 9
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:@crwsync/backend/AppController",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/AppService",
+      "sites": [
+        {
+          "file": "src/app.controller.ts",
+          "line": 5
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:@crwsync/backend/AuthController",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/AuthService",
+      "sites": [
+        {
+          "file": "src/auth/auth.controller.ts",
+          "line": 15
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:@crwsync/backend/AvatarsController",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/StorageService",
+      "sites": [
+        {
+          "file": "src/storage/avatars.controller.ts",
+          "line": 8
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:@crwsync/backend/BoardController",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/BoardService",
+      "sites": [
+        {
+          "file": "src/board/board.controller.ts",
+          "line": 42
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:@crwsync/backend/ChatController",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/ChatService",
+      "sites": [
+        {
+          "file": "src/chat/chat.controller.ts",
+          "line": 24
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:@crwsync/backend/ContactController",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/ContactService",
+      "sites": [
+        {
+          "file": "src/contact/contact.controller.ts",
+          "line": 8
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:@crwsync/backend/DmController",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/ChatService",
+      "sites": [
+        {
+          "file": "src/chat/dm.controller.ts",
+          "line": 12
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:@crwsync/backend/EmailController",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/EmailService",
+      "sites": [
+        {
+          "file": "src/email/email.controller.ts",
+          "line": 8
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:@crwsync/backend/FilesController",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/FilesService",
+      "sites": [
+        {
+          "file": "src/files/files.controller.ts",
+          "line": 23
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:@crwsync/backend/ModuleController",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/BoardService",
+      "sites": [
+        {
+          "file": "src/board/board.controller.ts",
+          "line": 199
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:@crwsync/backend/NotificationController",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/NotificationService",
+      "sites": [
+        {
+          "file": "src/notification/notification.controller.ts",
+          "line": 6
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:@crwsync/backend/PasswordResetController",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/PasswordResetService",
+      "sites": [
+        {
+          "file": "src/password-reset/password-reset.controller.ts",
+          "line": 15
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:@crwsync/backend/ProjectController",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/BoardService",
+      "sites": [
+        {
+          "file": "src/board/board.controller.ts",
+          "line": 257
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:@crwsync/backend/SearchController",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/SearchService",
+      "sites": [
+        {
+          "file": "src/search/search.controller.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:@crwsync/backend/SessionController",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/SessionService",
+      "sites": [
+        {
+          "file": "src/session/session.controller.ts",
+          "line": 20
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:@crwsync/backend/StatisticsController",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/StatisticsService",
+      "sites": [
+        {
+          "file": "src/statistics/statistics.controller.ts",
+          "line": 20
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:@crwsync/backend/UserController",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/SessionService",
+      "sites": [
+        {
+          "file": "src/user/user.controller.ts",
+          "line": 20
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:@crwsync/backend/UserController",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/StorageService",
+      "sites": [
+        {
+          "file": "src/user/user.controller.ts",
+          "line": 20
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:@crwsync/backend/UserController",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/UserService",
+      "sites": [
+        {
+          "file": "src/user/user.controller.ts",
+          "line": 20
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:@crwsync/backend/VerificationController",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/VerificationService",
+      "sites": [
+        {
+          "file": "src/email-verification/email-verification.controller.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:@crwsync/backend/WaitlistController",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/WaitlistService",
+      "sites": [
+        {
+          "file": "src/waitlist/waitlist.controller.ts",
+          "line": 8
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:@crwsync/backend/WorkspaceController",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/StorageService",
+      "sites": [
+        {
+          "file": "src/workspace/workspace.controller.ts",
+          "line": 28
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:@crwsync/backend/WorkspaceController",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/WorkspaceService",
+      "sites": [
+        {
+          "file": "src/workspace/workspace.controller.ts",
+          "line": 28
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AiModule",
+      "kind": "contains",
+      "to": "controller:@crwsync/backend/AiController",
+      "sites": [
+        {
+          "file": "src/ai/ai.module.ts",
+          "line": 27
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AiModule",
+      "kind": "contains",
+      "to": "controller:@crwsync/backend/AiStatusController",
+      "sites": [
+        {
+          "file": "src/ai/ai.module.ts",
+          "line": 27
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AiModule",
+      "kind": "contains",
+      "to": "provider:@crwsync/backend/AiClient",
+      "sites": [
+        {
+          "file": "src/ai/ai.module.ts",
+          "line": 27
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AiModule",
+      "kind": "contains",
+      "to": "provider:@crwsync/backend/AiEnabledGuard",
+      "sites": [
+        {
+          "file": "src/ai/ai.module.ts",
+          "line": 27
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AiModule",
+      "kind": "contains",
+      "to": "provider:@crwsync/backend/AiProcessor",
+      "sites": [
+        {
+          "file": "src/ai/ai.module.ts",
+          "line": 27
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AiModule",
+      "kind": "contains",
+      "to": "provider:@crwsync/backend/AiService",
+      "sites": [
+        {
+          "file": "src/ai/ai.module.ts",
+          "line": 27
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AiModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/ChatModule",
+      "sites": [
+        {
+          "file": "src/ai/ai.module.ts",
+          "line": 27
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AiModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/PrismaModule",
+      "sites": [
+        {
+          "file": "src/ai/ai.module.ts",
+          "line": 27
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AiModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/RedisModule",
+      "sites": [
+        {
+          "file": "src/ai/ai.module.ts",
+          "line": 27
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AiModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/StorageModule",
+      "sites": [
+        {
+          "file": "src/ai/ai.module.ts",
+          "line": 27
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AppModule",
+      "kind": "contains",
+      "to": "controller:@crwsync/backend/AppController",
+      "sites": [
+        {
+          "file": "src/app.module.ts",
+          "line": 93
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AppModule",
+      "kind": "contains",
+      "to": "provider:@crwsync/backend/AppService",
+      "sites": [
+        {
+          "file": "src/app.module.ts",
+          "line": 93
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AppModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/AiModule",
+      "sites": [
+        {
+          "file": "src/app.module.ts",
+          "line": 93
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AppModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/AuthModule",
+      "sites": [
+        {
+          "file": "src/app.module.ts",
+          "line": 93
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AppModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/BoardModule",
+      "sites": [
+        {
+          "file": "src/app.module.ts",
+          "line": 93
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AppModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/ChatModule",
+      "sites": [
+        {
+          "file": "src/app.module.ts",
+          "line": 93
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AppModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/ContactModule",
+      "sites": [
+        {
+          "file": "src/app.module.ts",
+          "line": 93
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AppModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/EmailModule",
+      "sites": [
+        {
+          "file": "src/app.module.ts",
+          "line": 93
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AppModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/FilesModule",
+      "sites": [
+        {
+          "file": "src/app.module.ts",
+          "line": 93
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AppModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/HealthModule",
+      "sites": [
+        {
+          "file": "src/app.module.ts",
+          "line": 93
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AppModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/NotificationModule",
+      "sites": [
+        {
+          "file": "src/app.module.ts",
+          "line": 93
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AppModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/PasswordResetModule",
+      "sites": [
+        {
+          "file": "src/app.module.ts",
+          "line": 93
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AppModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/PrismaModule",
+      "sites": [
+        {
+          "file": "src/app.module.ts",
+          "line": 93
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AppModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/RedisModule",
+      "sites": [
+        {
+          "file": "src/app.module.ts",
+          "line": 93
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AppModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/SearchModule",
+      "sites": [
+        {
+          "file": "src/app.module.ts",
+          "line": 93
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AppModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/SessionModule",
+      "sites": [
+        {
+          "file": "src/app.module.ts",
+          "line": 93
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AppModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/StatisticsModule",
+      "sites": [
+        {
+          "file": "src/app.module.ts",
+          "line": 93
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AppModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/StatusModule",
+      "sites": [
+        {
+          "file": "src/app.module.ts",
+          "line": 93
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AppModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/StorageModule",
+      "sites": [
+        {
+          "file": "src/app.module.ts",
+          "line": 93
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AppModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/UserModule",
+      "sites": [
+        {
+          "file": "src/app.module.ts",
+          "line": 93
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AppModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/VerificationModule",
+      "sites": [
+        {
+          "file": "src/app.module.ts",
+          "line": 93
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AppModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/WaitlistModule",
+      "sites": [
+        {
+          "file": "src/app.module.ts",
+          "line": 93
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AppModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/WorkspaceModule",
+      "sites": [
+        {
+          "file": "src/app.module.ts",
+          "line": 93
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AuthModule",
+      "kind": "contains",
+      "to": "controller:@crwsync/backend/AuthController",
+      "sites": [
+        {
+          "file": "src/auth/auth.module.ts",
+          "line": 44
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AuthModule",
+      "kind": "contains",
+      "to": "provider:@crwsync/backend/AuthService",
+      "sites": [
+        {
+          "file": "src/auth/auth.module.ts",
+          "line": 44
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AuthModule",
+      "kind": "contains",
+      "to": "provider:@crwsync/backend/JwtStrategy",
+      "sites": [
+        {
+          "file": "src/auth/auth.module.ts",
+          "line": 44
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AuthModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/EmailModule",
+      "sites": [
+        {
+          "file": "src/auth/auth.module.ts",
+          "line": 44
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AuthModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/PrismaModule",
+      "sites": [
+        {
+          "file": "src/auth/auth.module.ts",
+          "line": 44
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AuthModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/RedisModule",
+      "sites": [
+        {
+          "file": "src/auth/auth.module.ts",
+          "line": 44
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AuthModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/SessionModule",
+      "sites": [
+        {
+          "file": "src/auth/auth.module.ts",
+          "line": 44
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AuthModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/StorageModule",
+      "sites": [
+        {
+          "file": "src/auth/auth.module.ts",
+          "line": 44
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AuthModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/UserModule",
+      "sites": [
+        {
+          "file": "src/auth/auth.module.ts",
+          "line": 44
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/AuthModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/VerificationModule",
+      "sites": [
+        {
+          "file": "src/auth/auth.module.ts",
+          "line": 44
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/BoardModule",
+      "kind": "contains",
+      "to": "controller:@crwsync/backend/BoardController",
+      "sites": [
+        {
+          "file": "src/board/board.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/BoardModule",
+      "kind": "contains",
+      "to": "controller:@crwsync/backend/ModuleController",
+      "sites": [
+        {
+          "file": "src/board/board.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/BoardModule",
+      "kind": "contains",
+      "to": "controller:@crwsync/backend/ProjectController",
+      "sites": [
+        {
+          "file": "src/board/board.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/BoardModule",
+      "kind": "contains",
+      "to": "provider:@crwsync/backend/BoardService",
+      "sites": [
+        {
+          "file": "src/board/board.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/BoardModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/NotificationModule",
+      "sites": [
+        {
+          "file": "src/board/board.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/BoardModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/PrismaModule",
+      "sites": [
+        {
+          "file": "src/board/board.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/BoardModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/RedisModule",
+      "sites": [
+        {
+          "file": "src/board/board.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/BoardModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/StatusModule",
+      "sites": [
+        {
+          "file": "src/board/board.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/BoardModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/StorageModule",
+      "sites": [
+        {
+          "file": "src/board/board.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/ChatModule",
+      "kind": "contains",
+      "to": "controller:@crwsync/backend/ChatController",
+      "sites": [
+        {
+          "file": "src/chat/chat.module.ts",
+          "line": 40
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/ChatModule",
+      "kind": "contains",
+      "to": "controller:@crwsync/backend/DmController",
+      "sites": [
+        {
+          "file": "src/chat/chat.module.ts",
+          "line": 40
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/ChatModule",
+      "kind": "contains",
+      "to": "provider:@crwsync/backend/ChatGateway",
+      "sites": [
+        {
+          "file": "src/chat/chat.module.ts",
+          "line": 40
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/ChatModule",
+      "kind": "contains",
+      "to": "provider:@crwsync/backend/ChatProcessor",
+      "sites": [
+        {
+          "file": "src/chat/chat.module.ts",
+          "line": 40
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/ChatModule",
+      "kind": "contains",
+      "to": "provider:@crwsync/backend/ChatService",
+      "sites": [
+        {
+          "file": "src/chat/chat.module.ts",
+          "line": 40
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/ChatModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/NotificationModule",
+      "sites": [
+        {
+          "file": "src/chat/chat.module.ts",
+          "line": 40
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/ChatModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/PrismaModule",
+      "sites": [
+        {
+          "file": "src/chat/chat.module.ts",
+          "line": 40
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/ChatModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/RedisModule",
+      "sites": [
+        {
+          "file": "src/chat/chat.module.ts",
+          "line": 40
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/ChatModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/SessionModule",
+      "sites": [
+        {
+          "file": "src/chat/chat.module.ts",
+          "line": 40
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/ChatModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/StatusModule",
+      "sites": [
+        {
+          "file": "src/chat/chat.module.ts",
+          "line": 40
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/ChatModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/StorageModule",
+      "sites": [
+        {
+          "file": "src/chat/chat.module.ts",
+          "line": 40
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/ContactModule",
+      "kind": "contains",
+      "to": "controller:@crwsync/backend/ContactController",
+      "sites": [
+        {
+          "file": "src/contact/contact.module.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/ContactModule",
+      "kind": "contains",
+      "to": "provider:@crwsync/backend/ContactService",
+      "sites": [
+        {
+          "file": "src/contact/contact.module.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/ContactModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/EmailModule",
+      "sites": [
+        {
+          "file": "src/contact/contact.module.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/ContactModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/PrismaModule",
+      "sites": [
+        {
+          "file": "src/contact/contact.module.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/ContactModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/RedisModule",
+      "sites": [
+        {
+          "file": "src/contact/contact.module.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/ContactModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/StorageModule",
+      "sites": [
+        {
+          "file": "src/contact/contact.module.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/EmailModule",
+      "kind": "contains",
+      "to": "controller:@crwsync/backend/EmailController",
+      "sites": [
+        {
+          "file": "src/email/email.module.ts",
+          "line": 27
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/EmailModule",
+      "kind": "contains",
+      "to": "provider:@crwsync/backend/EmailProcessor",
+      "sites": [
+        {
+          "file": "src/email/email.module.ts",
+          "line": 27
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/EmailModule",
+      "kind": "contains",
+      "to": "provider:@crwsync/backend/EmailService",
+      "sites": [
+        {
+          "file": "src/email/email.module.ts",
+          "line": 27
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/EmailModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/PrismaModule",
+      "sites": [
+        {
+          "file": "src/email/email.module.ts",
+          "line": 27
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/EmailModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/RedisModule",
+      "sites": [
+        {
+          "file": "src/email/email.module.ts",
+          "line": 27
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/EmailModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/StorageModule",
+      "sites": [
+        {
+          "file": "src/email/email.module.ts",
+          "line": 27
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/FilesModule",
+      "kind": "contains",
+      "to": "controller:@crwsync/backend/FilesController",
+      "sites": [
+        {
+          "file": "src/files/files.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/FilesModule",
+      "kind": "contains",
+      "to": "provider:@crwsync/backend/FilesService",
+      "sites": [
+        {
+          "file": "src/files/files.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/FilesModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/PrismaModule",
+      "sites": [
+        {
+          "file": "src/files/files.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/FilesModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/RedisModule",
+      "sites": [
+        {
+          "file": "src/files/files.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/FilesModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/StatusModule",
+      "sites": [
+        {
+          "file": "src/files/files.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/FilesModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/StorageModule",
+      "sites": [
+        {
+          "file": "src/files/files.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/HealthModule",
+      "kind": "contains",
+      "to": "controller:@crwsync/backend/HealthController",
+      "sites": [
+        {
+          "file": "src/health/health.module.ts",
+          "line": 8
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/HealthModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/PrismaModule",
+      "sites": [
+        {
+          "file": "src/health/health.module.ts",
+          "line": 8
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/HealthModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/RedisModule",
+      "sites": [
+        {
+          "file": "src/health/health.module.ts",
+          "line": 8
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/HealthModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/StorageModule",
+      "sites": [
+        {
+          "file": "src/health/health.module.ts",
+          "line": 8
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/NotificationModule",
+      "kind": "contains",
+      "to": "controller:@crwsync/backend/NotificationController",
+      "sites": [
+        {
+          "file": "src/notification/notification.module.ts",
+          "line": 12
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/NotificationModule",
+      "kind": "contains",
+      "to": "provider:@crwsync/backend/NotificationService",
+      "sites": [
+        {
+          "file": "src/notification/notification.module.ts",
+          "line": 12
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/NotificationModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/PrismaModule",
+      "sites": [
+        {
+          "file": "src/notification/notification.module.ts",
+          "line": 12
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/NotificationModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/RedisModule",
+      "sites": [
+        {
+          "file": "src/notification/notification.module.ts",
+          "line": 12
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/NotificationModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/StatusModule",
+      "sites": [
+        {
+          "file": "src/notification/notification.module.ts",
+          "line": 12
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/NotificationModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/StorageModule",
+      "sites": [
+        {
+          "file": "src/notification/notification.module.ts",
+          "line": 12
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/PasswordResetModule",
+      "kind": "contains",
+      "to": "controller:@crwsync/backend/PasswordResetController",
+      "sites": [
+        {
+          "file": "src/password-reset/password-reset.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/PasswordResetModule",
+      "kind": "contains",
+      "to": "provider:@crwsync/backend/PasswordResetService",
+      "sites": [
+        {
+          "file": "src/password-reset/password-reset.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/PasswordResetModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/EmailModule",
+      "sites": [
+        {
+          "file": "src/password-reset/password-reset.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/PasswordResetModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/PrismaModule",
+      "sites": [
+        {
+          "file": "src/password-reset/password-reset.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/PasswordResetModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/RedisModule",
+      "sites": [
+        {
+          "file": "src/password-reset/password-reset.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/PasswordResetModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/SessionModule",
+      "sites": [
+        {
+          "file": "src/password-reset/password-reset.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/PasswordResetModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/StorageModule",
+      "sites": [
+        {
+          "file": "src/password-reset/password-reset.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/PrismaModule",
+      "kind": "contains",
+      "to": "provider:@crwsync/backend/PrismaService",
+      "sites": [
+        {
+          "file": "src/prisma/prisma.module.ts",
+          "line": 9
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/PrismaModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/RedisModule",
+      "sites": [
+        {
+          "file": "src/prisma/prisma.module.ts",
+          "line": 9
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/PrismaModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/StorageModule",
+      "sites": [
+        {
+          "file": "src/prisma/prisma.module.ts",
+          "line": 9
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/RedisModule",
+      "kind": "contains",
+      "to": "provider:@crwsync/backend/CacheService",
+      "sites": [
+        {
+          "file": "src/redis/redis.module.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/RedisModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/PrismaModule",
+      "sites": [
+        {
+          "file": "src/redis/redis.module.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/RedisModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/StorageModule",
+      "sites": [
+        {
+          "file": "src/redis/redis.module.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/SearchModule",
+      "kind": "contains",
+      "to": "controller:@crwsync/backend/SearchController",
+      "sites": [
+        {
+          "file": "src/search/search.module.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/SearchModule",
+      "kind": "contains",
+      "to": "provider:@crwsync/backend/SearchService",
+      "sites": [
+        {
+          "file": "src/search/search.module.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/SearchModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/PrismaModule",
+      "sites": [
+        {
+          "file": "src/search/search.module.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/SearchModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/RedisModule",
+      "sites": [
+        {
+          "file": "src/search/search.module.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/SearchModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/StorageModule",
+      "sites": [
+        {
+          "file": "src/search/search.module.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/SessionModule",
+      "kind": "contains",
+      "to": "controller:@crwsync/backend/SessionController",
+      "sites": [
+        {
+          "file": "src/session/session.module.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/SessionModule",
+      "kind": "contains",
+      "to": "provider:@crwsync/backend/SessionCleanupService",
+      "sites": [
+        {
+          "file": "src/session/session.module.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/SessionModule",
+      "kind": "contains",
+      "to": "provider:@crwsync/backend/SessionService",
+      "sites": [
+        {
+          "file": "src/session/session.module.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/SessionModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/PrismaModule",
+      "sites": [
+        {
+          "file": "src/session/session.module.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/SessionModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/RedisModule",
+      "sites": [
+        {
+          "file": "src/session/session.module.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/SessionModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/StorageModule",
+      "sites": [
+        {
+          "file": "src/session/session.module.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/StatisticsModule",
+      "kind": "contains",
+      "to": "controller:@crwsync/backend/StatisticsController",
+      "sites": [
+        {
+          "file": "src/statistics/statistics.module.ts",
+          "line": 13
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/StatisticsModule",
+      "kind": "contains",
+      "to": "provider:@crwsync/backend/StatisticsService",
+      "sites": [
+        {
+          "file": "src/statistics/statistics.module.ts",
+          "line": 13
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/StatisticsModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/PrismaModule",
+      "sites": [
+        {
+          "file": "src/statistics/statistics.module.ts",
+          "line": 13
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/StatisticsModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/RedisModule",
+      "sites": [
+        {
+          "file": "src/statistics/statistics.module.ts",
+          "line": 13
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/StatisticsModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/StorageModule",
+      "sites": [
+        {
+          "file": "src/statistics/statistics.module.ts",
+          "line": 13
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/StatusModule",
+      "kind": "contains",
+      "to": "provider:@crwsync/backend/StatusGateway",
+      "sites": [
+        {
+          "file": "src/status/status.module.ts",
+          "line": 22
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/StatusModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/PrismaModule",
+      "sites": [
+        {
+          "file": "src/status/status.module.ts",
+          "line": 22
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/StatusModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/RedisModule",
+      "sites": [
+        {
+          "file": "src/status/status.module.ts",
+          "line": 22
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/StatusModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/SessionModule",
+      "sites": [
+        {
+          "file": "src/status/status.module.ts",
+          "line": 22
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/StatusModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/StorageModule",
+      "sites": [
+        {
+          "file": "src/status/status.module.ts",
+          "line": 22
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/StorageModule",
+      "kind": "contains",
+      "to": "controller:@crwsync/backend/AvatarsController",
+      "sites": [
+        {
+          "file": "src/storage/storage.module.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/StorageModule",
+      "kind": "contains",
+      "to": "provider:@crwsync/backend/StorageService",
+      "sites": [
+        {
+          "file": "src/storage/storage.module.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/StorageModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/PrismaModule",
+      "sites": [
+        {
+          "file": "src/storage/storage.module.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/StorageModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/RedisModule",
+      "sites": [
+        {
+          "file": "src/storage/storage.module.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/UserModule",
+      "kind": "contains",
+      "to": "controller:@crwsync/backend/UserController",
+      "sites": [
+        {
+          "file": "src/user/user.module.ts",
+          "line": 13
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/UserModule",
+      "kind": "contains",
+      "to": "provider:@crwsync/backend/UserService",
+      "sites": [
+        {
+          "file": "src/user/user.module.ts",
+          "line": 13
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/UserModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/PrismaModule",
+      "sites": [
+        {
+          "file": "src/user/user.module.ts",
+          "line": 13
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/UserModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/RedisModule",
+      "sites": [
+        {
+          "file": "src/user/user.module.ts",
+          "line": 13
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/UserModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/SessionModule",
+      "sites": [
+        {
+          "file": "src/user/user.module.ts",
+          "line": 13
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/UserModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/StorageModule",
+      "sites": [
+        {
+          "file": "src/user/user.module.ts",
+          "line": 13
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/UserModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/VerificationModule",
+      "sites": [
+        {
+          "file": "src/user/user.module.ts",
+          "line": 13
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/VerificationModule",
+      "kind": "contains",
+      "to": "controller:@crwsync/backend/VerificationController",
+      "sites": [
+        {
+          "file": "src/email-verification/email-verification.module.ts",
+          "line": 12
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/VerificationModule",
+      "kind": "contains",
+      "to": "provider:@crwsync/backend/VerificationService",
+      "sites": [
+        {
+          "file": "src/email-verification/email-verification.module.ts",
+          "line": 12
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/VerificationModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/EmailModule",
+      "sites": [
+        {
+          "file": "src/email-verification/email-verification.module.ts",
+          "line": 12
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/VerificationModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/PrismaModule",
+      "sites": [
+        {
+          "file": "src/email-verification/email-verification.module.ts",
+          "line": 12
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/VerificationModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/RedisModule",
+      "sites": [
+        {
+          "file": "src/email-verification/email-verification.module.ts",
+          "line": 12
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/VerificationModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/StorageModule",
+      "sites": [
+        {
+          "file": "src/email-verification/email-verification.module.ts",
+          "line": 12
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/WaitlistModule",
+      "kind": "contains",
+      "to": "controller:@crwsync/backend/WaitlistController",
+      "sites": [
+        {
+          "file": "src/waitlist/waitlist.module.ts",
+          "line": 9
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/WaitlistModule",
+      "kind": "contains",
+      "to": "provider:@crwsync/backend/WaitlistService",
+      "sites": [
+        {
+          "file": "src/waitlist/waitlist.module.ts",
+          "line": 9
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/WaitlistModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/PrismaModule",
+      "sites": [
+        {
+          "file": "src/waitlist/waitlist.module.ts",
+          "line": 9
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/WaitlistModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/RedisModule",
+      "sites": [
+        {
+          "file": "src/waitlist/waitlist.module.ts",
+          "line": 9
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/WaitlistModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/StorageModule",
+      "sites": [
+        {
+          "file": "src/waitlist/waitlist.module.ts",
+          "line": 9
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/WorkspaceModule",
+      "kind": "contains",
+      "to": "controller:@crwsync/backend/WorkspaceController",
+      "sites": [
+        {
+          "file": "src/workspace/workspace.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/WorkspaceModule",
+      "kind": "contains",
+      "to": "provider:@crwsync/backend/WorkspaceService",
+      "sites": [
+        {
+          "file": "src/workspace/workspace.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/WorkspaceModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/NotificationModule",
+      "sites": [
+        {
+          "file": "src/workspace/workspace.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/WorkspaceModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/PrismaModule",
+      "sites": [
+        {
+          "file": "src/workspace/workspace.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/WorkspaceModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/RedisModule",
+      "sites": [
+        {
+          "file": "src/workspace/workspace.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/WorkspaceModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/StatusModule",
+      "sites": [
+        {
+          "file": "src/workspace/workspace.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:@crwsync/backend/WorkspaceModule",
+      "kind": "imports",
+      "to": "module:@crwsync/backend/StorageModule",
+      "sites": [
+        {
+          "file": "src/workspace/workspace.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/AiProcessor",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/AiClient",
+      "sites": [
+        {
+          "file": "src/ai/ai.processor.ts",
+          "line": 25
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/AiProcessor",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/PrismaService",
+      "sites": [
+        {
+          "file": "src/ai/ai.processor.ts",
+          "line": 25
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/AiService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/CacheService",
+      "sites": [
+        {
+          "file": "src/ai/ai.service.ts",
+          "line": 16
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/AiService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/ChatService",
+      "sites": [
+        {
+          "file": "src/ai/ai.service.ts",
+          "line": 16
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/AiService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/PrismaService",
+      "sites": [
+        {
+          "file": "src/ai/ai.service.ts",
+          "line": 16
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/AuthService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/SessionService",
+      "sites": [
+        {
+          "file": "src/auth/auth.service.ts",
+          "line": 18
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/AuthService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/UserService",
+      "sites": [
+        {
+          "file": "src/auth/auth.service.ts",
+          "line": 18
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/AuthService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/VerificationService",
+      "sites": [
+        {
+          "file": "src/auth/auth.service.ts",
+          "line": 18
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/BoardService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/CacheService",
+      "sites": [
+        {
+          "file": "src/board/board.service.ts",
+          "line": 27
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/BoardService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/NotificationService",
+      "sites": [
+        {
+          "file": "src/board/board.service.ts",
+          "line": 27
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/BoardService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/PrismaService",
+      "sites": [
+        {
+          "file": "src/board/board.service.ts",
+          "line": 27
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/BoardService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/StatusGateway",
+      "sites": [
+        {
+          "file": "src/board/board.service.ts",
+          "line": 27
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/ChatGateway",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/CacheService",
+      "sites": [
+        {
+          "file": "src/chat/chat.gateway.ts",
+          "line": 30
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/ChatGateway",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/ChatService",
+      "sites": [
+        {
+          "file": "src/chat/chat.gateway.ts",
+          "line": 30
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/ChatGateway",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/NotificationService",
+      "sites": [
+        {
+          "file": "src/chat/chat.gateway.ts",
+          "line": 30
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/ChatGateway",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/PrismaService",
+      "sites": [
+        {
+          "file": "src/chat/chat.gateway.ts",
+          "line": 30
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/ChatGateway",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/SessionService",
+      "sites": [
+        {
+          "file": "src/chat/chat.gateway.ts",
+          "line": 30
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/ChatGateway",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/StatusGateway",
+      "sites": [
+        {
+          "file": "src/chat/chat.gateway.ts",
+          "line": 30
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/ChatProcessor",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/ChatGateway",
+      "sites": [
+        {
+          "file": "src/chat/chat.processor.ts",
+          "line": 18
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/ChatProcessor",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/ChatService",
+      "sites": [
+        {
+          "file": "src/chat/chat.processor.ts",
+          "line": 18
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/ChatService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/PrismaService",
+      "sites": [
+        {
+          "file": "src/chat/chat.service.ts",
+          "line": 26
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/ChatService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/StatusGateway",
+      "sites": [
+        {
+          "file": "src/chat/chat.service.ts",
+          "line": 26
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/ChatService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/StorageService",
+      "sites": [
+        {
+          "file": "src/chat/chat.service.ts",
+          "line": 26
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/ContactService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/EmailService",
+      "sites": [
+        {
+          "file": "src/contact/contact.service.ts",
+          "line": 6
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/FilesService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/PrismaService",
+      "sites": [
+        {
+          "file": "src/files/files.service.ts",
+          "line": 19
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/FilesService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/StatusGateway",
+      "sites": [
+        {
+          "file": "src/files/files.service.ts",
+          "line": 19
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/FilesService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/StorageService",
+      "sites": [
+        {
+          "file": "src/files/files.service.ts",
+          "line": 19
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/HasPendingInviteGuard",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/PrismaService",
+      "sites": [
+        {
+          "file": "src/workspace/guards/ws-invite.guard.ts",
+          "line": 9
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/IsMemberGuard",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/CacheService",
+      "sites": [
+        {
+          "file": "src/workspace/guards/ws-member.guard.ts",
+          "line": 9
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/IsMemberGuard",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/PrismaService",
+      "sites": [
+        {
+          "file": "src/workspace/guards/ws-member.guard.ts",
+          "line": 9
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/JwtStrategy",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/SessionService",
+      "sites": [
+        {
+          "file": "src/auth/jwt.strategy.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/JwtStrategy",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/UserService",
+      "sites": [
+        {
+          "file": "src/auth/jwt.strategy.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/NotificationService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/PrismaService",
+      "sites": [
+        {
+          "file": "src/notification/notification.service.ts",
+          "line": 13
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/NotificationService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/StatusGateway",
+      "sites": [
+        {
+          "file": "src/notification/notification.service.ts",
+          "line": 13
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/PasswordResetService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/PrismaService",
+      "sites": [
+        {
+          "file": "src/password-reset/password-reset.service.ts",
+          "line": 17
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/PasswordResetService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/SessionService",
+      "sites": [
+        {
+          "file": "src/password-reset/password-reset.service.ts",
+          "line": 17
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/SearchService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/CacheService",
+      "sites": [
+        {
+          "file": "src/search/search.service.ts",
+          "line": 47
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/SearchService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/PrismaService",
+      "sites": [
+        {
+          "file": "src/search/search.service.ts",
+          "line": 47
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/SessionCleanupService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/SessionService",
+      "sites": [
+        {
+          "file": "src/session/session.cleanup.service.ts",
+          "line": 8
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/SessionService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/CacheService",
+      "sites": [
+        {
+          "file": "src/session/session.service.ts",
+          "line": 15
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/SessionService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/PrismaService",
+      "sites": [
+        {
+          "file": "src/session/session.service.ts",
+          "line": 15
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/StatisticsService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/CacheService",
+      "sites": [
+        {
+          "file": "src/statistics/statistics.service.ts",
+          "line": 21
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/StatisticsService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/PrismaService",
+      "sites": [
+        {
+          "file": "src/statistics/statistics.service.ts",
+          "line": 21
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/StatusGateway",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/PrismaService",
+      "sites": [
+        {
+          "file": "src/status/status.gateway.ts",
+          "line": 16
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/StatusGateway",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/SessionService",
+      "sites": [
+        {
+          "file": "src/status/status.gateway.ts",
+          "line": 16
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/UserService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/CacheService",
+      "sites": [
+        {
+          "file": "src/user/user.service.ts",
+          "line": 17
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/UserService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/PrismaService",
+      "sites": [
+        {
+          "file": "src/user/user.service.ts",
+          "line": 17
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/UserService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/SessionService",
+      "sites": [
+        {
+          "file": "src/user/user.service.ts",
+          "line": 17
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/UserService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/StorageService",
+      "sites": [
+        {
+          "file": "src/user/user.service.ts",
+          "line": 17
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/UserService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/VerificationService",
+      "sites": [
+        {
+          "file": "src/user/user.service.ts",
+          "line": 17
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/VerificationService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/CacheService",
+      "sites": [
+        {
+          "file": "src/email-verification/email-verification.service.ts",
+          "line": 15
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/VerificationService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/PrismaService",
+      "sites": [
+        {
+          "file": "src/email-verification/email-verification.service.ts",
+          "line": 15
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/WaitlistService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/PrismaService",
+      "sites": [
+        {
+          "file": "src/waitlist/waitlist.service.ts",
+          "line": 7
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/WorkspaceService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/CacheService",
+      "sites": [
+        {
+          "file": "src/workspace/workspace.service.ts",
+          "line": 26
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/WorkspaceService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/NotificationService",
+      "sites": [
+        {
+          "file": "src/workspace/workspace.service.ts",
+          "line": 26
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/WorkspaceService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/PrismaService",
+      "sites": [
+        {
+          "file": "src/workspace/workspace.service.ts",
+          "line": 26
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/WorkspaceService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/StatusGateway",
+      "sites": [
+        {
+          "file": "src/workspace/workspace.service.ts",
+          "line": 26
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:@crwsync/backend/WorkspaceService",
+      "kind": "injects",
+      "to": "provider:@crwsync/backend/StorageService",
+      "sites": [
+        {
+          "file": "src/workspace/workspace.service.ts",
+          "line": 26
+        }
+      ],
+      "extractor": "nestjs-runtime",
+      "confidence": "certain",
+      "meta": {}
+    }
+  ]
+}
