@@ -18,6 +18,7 @@ const FIXTURES = [
   "nest-routing",
   "nest-routing-prefix-env",
   "nest-routing-two-apps",
+  "nest-decoys",
 ];
 
 // Runs in this thread: the worker file only exists after a build.

@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "generator": {
+    "name": "srcatlas",
+    "version": "0.0.0"
+  },
+  "repo": {},
+  "nodes": [
+    {
+      "id": "package:decoys",
+      "kind": "package",
+      "name": "decoys",
+      "language": "typescript",
+      "framework": "node",
+      "package": "package:decoys",
+      "module": null,
+      "source": {
+        "file": "package.json",
+        "line": 1
+      },
+      "extractor": "core",
+      "confidence": "certain",
+      "meta": {
+        "root": ".",
+        "version": "1.0.0"
+      }
+    }
+  ],
+  "edges": []
+}
