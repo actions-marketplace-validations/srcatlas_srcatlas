@@ -80,7 +80,10 @@ describe("srcatlas analyze", () => {
     expect(r.code).toBe(0);
     expect(JSON.parse(r.out)).toEqual({
       schemaVersion: 1,
-      counts: { nodes: { file: 2, package: 2 }, edges: { imports: 1 } },
+      counts: {
+        nodes: { file: 2, package: 2 },
+        edges: { depends_on: 1, imports: 1 },
+      },
       report: { parseErrors: 0, unresolved: 0 },
       graphFile: ".srcatlas/srcatlas.graph.json",
     });

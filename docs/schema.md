@@ -164,6 +164,7 @@ Rules that follow from the table:
 - A call that resolves to a Prisma client model operation (`this.prisma.order.findMany()`) produces `reads` or `writes` to the model and **no** `calls` edge to the Prisma client provider. The client is infrastructure, not a collaborator.
 - `calls` is recorded at class granularity. A method call on an injected member produces one edge from the calling class to the class that owns the method, with the method name in `meta.methods`.
 - Route containment is expressed by `node.module`, not by `contains` edges.
+- `depends_on` comes from static `import` and `export … from` declarations, type-only ones included, in any analysed source file of the package. The declaration counts when its specifier is a workspace package's name or starts with that name and `/`, or when it resolves to a file inside another workspace package (a `tsconfig` path alias, for example). A prefix of a name does not count (`@acme/api-client` is not `@acme/api`). `require` and dynamic `import()` are not read, and a dependency declared in `package.json` but never imported gives no edge. `sites` are the import lines.
 
 ## 7. Confidence and provenance
 
