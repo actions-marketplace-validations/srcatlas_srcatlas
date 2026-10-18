@@ -1,0 +1,99 @@
+{
+  "base": {},
+  "crossModuleEdges": [
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "provider:api/PC",
+      "kind": "injects",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/pc.ts",
+          "line": 3
+        }
+      ],
+      "to": "provider:api/PB"
+    }
+  ],
+  "cycles": [],
+  "edges": {
+    "added": [
+      {
+        "confidence": "certain",
+        "extractor": "nestjs",
+        "from": "provider:api/PC",
+        "kind": "injects",
+        "meta": {},
+        "sites": [
+          {
+            "file": "src/pc.ts",
+            "line": 3
+          }
+        ],
+        "to": "provider:api/PB"
+      },
+      {
+        "confidence": "certain",
+        "extractor": "nestjs",
+        "from": "provider:api/PD",
+        "kind": "injects",
+        "meta": {},
+        "sites": [
+          {
+            "file": "src/pd.ts",
+            "line": 3
+          }
+        ],
+        "to": "provider:api/PB"
+      }
+    ],
+    "changed": [
+      {
+        "after": {
+          "confidence": "inferred",
+          "extractor": "nestjs",
+          "from": "provider:api/PA",
+          "kind": "injects",
+          "meta": {},
+          "sites": [
+            {
+              "file": "src/pa.ts",
+              "line": 3
+            }
+          ],
+          "to": "provider:api/PB"
+        },
+        "before": {
+          "confidence": "certain",
+          "extractor": "nestjs",
+          "from": "provider:api/PA",
+          "kind": "injects",
+          "meta": {},
+          "sites": [
+            {
+              "file": "src/pa.ts",
+              "line": 3
+            }
+          ],
+          "to": "provider:api/PB"
+        }
+      }
+    ],
+    "removed": []
+  },
+  "head": {},
+  "nodes": {
+    "added": [],
+    "changed": [],
+    "moved": [],
+    "removed": []
+  },
+  "schemaVersion": 1,
+  "summary": {
+    "crossModuleEdges": 1,
+    "modules": 0,
+    "newCycles": 0,
+    "routes": 0
+  }
+}

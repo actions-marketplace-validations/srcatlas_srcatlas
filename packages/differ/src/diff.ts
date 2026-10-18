@@ -11,6 +11,10 @@ import {
 
 export class DiffError extends Error {}
 
+const notImplemented = (): never => {
+  throw new Error("not implemented");
+};
+
 // Canonical text, so meta compares by value regardless of key order.
 const canon = (v: unknown): string => JSON.stringify(sortKeys(v as Json));
 
@@ -87,7 +91,12 @@ export function diffGraphs(base: GraphFile, head: GraphFile): DiffFile {
     schemaVersion: head.schemaVersion,
     base: { ...(base.repo.commit && { commit: base.repo.commit }) },
     head: { ...(head.repo.commit && { commit: head.repo.commit }) },
-    summary: { modules: net("module"), routes: net("route") },
+    summary: {
+      modules: net("module"),
+      routes: net("route"),
+      crossModuleEdges: notImplemented(),
+      newCycles: notImplemented(),
+    },
     nodes: {
       added: added.sort(compareNodes),
       removed: removed.sort(compareNodes),
@@ -110,5 +119,7 @@ export function diffGraphs(base: GraphFile, head: GraphFile): DiffFile {
         })
         .sort((a, b) => compareEdges(a.after, b.after)),
     },
+    crossModuleEdges: notImplemented(),
+    cycles: notImplemented(),
   };
 }

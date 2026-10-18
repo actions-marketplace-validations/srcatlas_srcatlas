@@ -1,0 +1,260 @@
+{
+  "edges": [
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "module:api/ModA",
+      "kind": "contains",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/a/a.module.ts",
+          "line": 2
+        }
+      ],
+      "to": "provider:api/PA"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "module:api/ModA",
+      "kind": "contains",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/a/a.module.ts",
+          "line": 2
+        }
+      ],
+      "to": "provider:api/PC"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "module:api/ModB",
+      "kind": "contains",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/b/b.module.ts",
+          "line": 2
+        }
+      ],
+      "to": "provider:api/PB"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "module:api/ModB",
+      "kind": "contains",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/b/b.module.ts",
+          "line": 2
+        }
+      ],
+      "to": "provider:api/PD"
+    },
+    {
+      "confidence": "inferred",
+      "extractor": "nestjs",
+      "from": "provider:api/PA",
+      "kind": "injects",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/pa.ts",
+          "line": 3
+        }
+      ],
+      "to": "provider:api/PB"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "provider:api/PA",
+      "kind": "injects",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/pa.ts",
+          "line": 3
+        }
+      ],
+      "to": "provider:api/PC"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "provider:api/PC",
+      "kind": "injects",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/pc.ts",
+          "line": 3
+        }
+      ],
+      "to": "provider:api/PB"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "provider:api/PD",
+      "kind": "injects",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/pd.ts",
+          "line": 3
+        }
+      ],
+      "to": "provider:api/PB"
+    }
+  ],
+  "generator": {
+    "name": "srcatlas",
+    "version": "0.1.0"
+  },
+  "nodes": [
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "module:api/ModA",
+      "kind": "module",
+      "language": "typescript",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      },
+      "module": null,
+      "name": "ModA",
+      "package": "package:api",
+      "source": {
+        "file": "src/a/a.module.ts",
+        "line": 1
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "module:api/ModB",
+      "kind": "module",
+      "language": "typescript",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      },
+      "module": null,
+      "name": "ModB",
+      "package": "package:api",
+      "source": {
+        "file": "src/b/b.module.ts",
+        "line": 1
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "core",
+      "framework": "node",
+      "id": "package:api",
+      "kind": "package",
+      "language": "typescript",
+      "meta": {
+        "root": "."
+      },
+      "module": null,
+      "name": "api",
+      "package": "package:api",
+      "source": {
+        "file": "package.json",
+        "line": 1
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "provider:api/PA",
+      "kind": "provider",
+      "language": "typescript",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      },
+      "module": "module:api/ModA",
+      "name": "PA",
+      "package": "package:api",
+      "source": {
+        "file": "src/a/pa.ts",
+        "line": 1
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "provider:api/PB",
+      "kind": "provider",
+      "language": "typescript",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      },
+      "module": "module:api/ModB",
+      "name": "PB",
+      "package": "package:api",
+      "source": {
+        "file": "src/b/pb.ts",
+        "line": 1
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "provider:api/PC",
+      "kind": "provider",
+      "language": "typescript",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      },
+      "module": "module:api/ModA",
+      "name": "PC",
+      "package": "package:api",
+      "source": {
+        "file": "src/a/pc.ts",
+        "line": 1
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "provider:api/PD",
+      "kind": "provider",
+      "language": "typescript",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      },
+      "module": "module:api/ModB",
+      "name": "PD",
+      "package": "package:api",
+      "source": {
+        "file": "src/b/pd.ts",
+        "line": 1
+      }
+    }
+  ],
+  "repo": {},
+  "schemaVersion": 1
+}

@@ -1,0 +1,315 @@
+{
+  "edges": [
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "file:api/src/x.ts",
+      "kind": "imports",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/x.ts",
+          "line": 1
+        }
+      ],
+      "to": "file:api/src/y.ts"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "module:api/A",
+      "kind": "imports",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/a.module.ts",
+          "line": 2
+        }
+      ],
+      "to": "module:api/B"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "module:api/C",
+      "kind": "imports",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/c.module.ts",
+          "line": 2
+        }
+      ],
+      "to": "module:api/D"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "module:api/D",
+      "kind": "imports",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/d.module.ts",
+          "line": 2
+        }
+      ],
+      "to": "module:api/C"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "module:api/H",
+      "kind": "imports",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/h.module.ts",
+          "line": 2
+        }
+      ],
+      "to": "module:api/I"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "module:api/I",
+      "kind": "imports",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/i.module.ts",
+          "line": 2
+        }
+      ],
+      "to": "module:api/H"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "package:web",
+      "kind": "depends_on",
+      "meta": {},
+      "sites": [
+        {
+          "file": "package.json",
+          "line": 1
+        }
+      ],
+      "to": "package:api"
+    }
+  ],
+  "generator": {
+    "name": "srcatlas",
+    "version": "0.1.0"
+  },
+  "nodes": [
+    {
+      "confidence": "certain",
+      "extractor": "core",
+      "framework": "nestjs",
+      "id": "file:api/src/x.ts",
+      "kind": "file",
+      "language": "typescript",
+      "meta": {
+        "path": "src/x.ts"
+      },
+      "module": null,
+      "name": "x",
+      "package": "package:api",
+      "source": {
+        "file": "src/x.ts",
+        "line": 1
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "core",
+      "framework": "nestjs",
+      "id": "file:api/src/y.ts",
+      "kind": "file",
+      "language": "typescript",
+      "meta": {
+        "path": "src/y.ts"
+      },
+      "module": null,
+      "name": "y",
+      "package": "package:api",
+      "source": {
+        "file": "src/y.ts",
+        "line": 1
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "module:api/A",
+      "kind": "module",
+      "language": "typescript",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      },
+      "module": null,
+      "name": "A",
+      "package": "package:api",
+      "source": {
+        "file": "src/a.module.ts",
+        "line": 1
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "module:api/B",
+      "kind": "module",
+      "language": "typescript",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      },
+      "module": null,
+      "name": "B",
+      "package": "package:api",
+      "source": {
+        "file": "src/b.module.ts",
+        "line": 1
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "module:api/C",
+      "kind": "module",
+      "language": "typescript",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      },
+      "module": null,
+      "name": "C",
+      "package": "package:api",
+      "source": {
+        "file": "src/c.module.ts",
+        "line": 1
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "module:api/D",
+      "kind": "module",
+      "language": "typescript",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      },
+      "module": null,
+      "name": "D",
+      "package": "package:api",
+      "source": {
+        "file": "src/d.module.ts",
+        "line": 1
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "module:api/E",
+      "kind": "module",
+      "language": "typescript",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      },
+      "module": null,
+      "name": "E",
+      "package": "package:api",
+      "source": {
+        "file": "src/e.module.ts",
+        "line": 1
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "module:api/H",
+      "kind": "module",
+      "language": "typescript",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      },
+      "module": null,
+      "name": "H",
+      "package": "package:api",
+      "source": {
+        "file": "src/h.module.ts",
+        "line": 1
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "module:api/I",
+      "kind": "module",
+      "language": "typescript",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      },
+      "module": null,
+      "name": "I",
+      "package": "package:api",
+      "source": {
+        "file": "src/i.module.ts",
+        "line": 1
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "core",
+      "framework": "node",
+      "id": "package:api",
+      "kind": "package",
+      "language": "typescript",
+      "meta": {
+        "root": "."
+      },
+      "module": null,
+      "name": "api",
+      "package": "package:api",
+      "source": {
+        "file": "package.json",
+        "line": 1
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "core",
+      "framework": "node",
+      "id": "package:web",
+      "kind": "package",
+      "language": "typescript",
+      "meta": {
+        "root": "."
+      },
+      "module": null,
+      "name": "web",
+      "package": "package:web",
+      "source": {
+        "file": "package.json",
+        "line": 1
+      }
+    }
+  ],
+  "repo": {},
+  "schemaVersion": 1
+}

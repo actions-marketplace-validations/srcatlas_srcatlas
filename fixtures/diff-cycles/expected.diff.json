@@ -1,0 +1,108 @@
+{
+  "base": {},
+  "crossModuleEdges": [],
+  "cycles": [
+    {
+      "kind": "modules",
+      "members": ["module:api/A", "module:api/B"]
+    },
+    {
+      "kind": "modules",
+      "members": ["module:api/C", "module:api/D", "module:api/E"]
+    },
+    {
+      "kind": "packages",
+      "members": ["package:api", "package:web"]
+    }
+  ],
+  "edges": {
+    "added": [
+      {
+        "confidence": "certain",
+        "extractor": "nestjs",
+        "from": "file:api/src/y.ts",
+        "kind": "imports",
+        "meta": {},
+        "sites": [
+          {
+            "file": "src/y.ts",
+            "line": 1
+          }
+        ],
+        "to": "file:api/src/x.ts"
+      },
+      {
+        "confidence": "certain",
+        "extractor": "nestjs",
+        "from": "module:api/B",
+        "kind": "imports",
+        "meta": {},
+        "sites": [
+          {
+            "file": "src/b.module.ts",
+            "line": 2
+          }
+        ],
+        "to": "module:api/A"
+      },
+      {
+        "confidence": "certain",
+        "extractor": "nestjs",
+        "from": "module:api/D",
+        "kind": "imports",
+        "meta": {},
+        "sites": [
+          {
+            "file": "src/d.module.ts",
+            "line": 2
+          }
+        ],
+        "to": "module:api/E"
+      },
+      {
+        "confidence": "certain",
+        "extractor": "nestjs",
+        "from": "module:api/E",
+        "kind": "imports",
+        "meta": {},
+        "sites": [
+          {
+            "file": "src/e.module.ts",
+            "line": 2
+          }
+        ],
+        "to": "module:api/C"
+      },
+      {
+        "confidence": "certain",
+        "extractor": "nestjs",
+        "from": "package:api",
+        "kind": "depends_on",
+        "meta": {},
+        "sites": [
+          {
+            "file": "package.json",
+            "line": 1
+          }
+        ],
+        "to": "package:web"
+      }
+    ],
+    "changed": [],
+    "removed": []
+  },
+  "head": {},
+  "nodes": {
+    "added": [],
+    "changed": [],
+    "moved": [],
+    "removed": []
+  },
+  "schemaVersion": 1,
+  "summary": {
+    "crossModuleEdges": 0,
+    "modules": 0,
+    "newCycles": 3,
+    "routes": 0
+  }
+}
