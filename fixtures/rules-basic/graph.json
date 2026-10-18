@@ -1,0 +1,455 @@
+{
+  "edges": [
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "controller:api/HealthController",
+      "kind": "reads",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/health/health.controller.ts",
+          "line": 9
+        }
+      ],
+      "to": "model:api/Order"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "controller:api/OrdersController",
+      "kind": "calls",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/orders/orders.controller.ts",
+          "line": 30
+        }
+      ],
+      "to": "provider:api/MailerService"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "controller:api/OrdersController",
+      "kind": "injects",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/orders/orders.controller.ts",
+          "line": 8
+        }
+      ],
+      "to": "provider:api/OrdersService"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "controller:api/OrdersController",
+      "kind": "reads",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/orders/orders.controller.ts",
+          "line": 21
+        }
+      ],
+      "to": "model:api/Order"
+    },
+    {
+      "confidence": "unresolved",
+      "extractor": "prisma",
+      "from": "controller:api/OrdersController",
+      "kind": "reads",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/orders/orders.controller.ts",
+          "line": 33
+        }
+      ],
+      "to": "model:api/User"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "controller:api/OrdersController",
+      "kind": "writes",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/orders/orders.controller.ts",
+          "line": 27
+        }
+      ],
+      "to": "model:api/Order"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "module:api/OrdersModule",
+      "kind": "imports",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/orders/orders.module.ts",
+          "line": 5
+        }
+      ],
+      "to": "module:api/UsersModule"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "module:api/UsersModule",
+      "kind": "imports",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/users/users.module.ts",
+          "line": 6
+        }
+      ],
+      "to": "module:api/OrdersModule"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "core",
+      "from": "package:web",
+      "kind": "depends_on",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/cache.ts",
+          "line": 1
+        }
+      ],
+      "to": "package:api"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "provider:api/OrdersService",
+      "kind": "calls",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/orders/orders.service.ts",
+          "line": 15
+        }
+      ],
+      "to": "provider:api/MailerService"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "provider:api/OrdersService",
+      "kind": "reads",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/orders/orders.service.ts",
+          "line": 11
+        }
+      ],
+      "to": "model:api/Order"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "provider:api/UsersService",
+      "kind": "calls",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/users/users.service.ts",
+          "line": 15
+        }
+      ],
+      "to": "provider:api/MailerService"
+    },
+    {
+      "confidence": "inferred",
+      "extractor": "prisma",
+      "from": "provider:api/UsersService",
+      "kind": "reads",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/users/users.service.ts",
+          "line": 12
+        }
+      ],
+      "to": "model:api/User"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "provider:web/WebCache",
+      "kind": "reads",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/cache.ts",
+          "line": 4
+        }
+      ],
+      "to": "model:api/Order"
+    }
+  ],
+  "generator": {
+    "name": "srcatlas",
+    "version": "0.1.0"
+  },
+  "nodes": [
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "controller:api/HealthController",
+      "kind": "controller",
+      "language": "typescript",
+      "meta": {
+        "basePath": "/"
+      },
+      "module": "module:api/HealthModule",
+      "name": "HealthController",
+      "package": "package:api",
+      "source": {
+        "file": "src/health/health.controller.ts",
+        "line": 4
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "controller:api/OrdersController",
+      "kind": "controller",
+      "language": "typescript",
+      "meta": {
+        "basePath": "/"
+      },
+      "module": "module:api/OrdersModule",
+      "name": "OrdersController",
+      "package": "package:api",
+      "source": {
+        "file": "src/orders/orders.controller.ts",
+        "line": 6
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "model:api/Order",
+      "kind": "model",
+      "language": "typescript",
+      "meta": {
+        "fieldCount": 3,
+        "schemaFile": "prisma/schema.prisma"
+      },
+      "module": null,
+      "name": "Order",
+      "package": "package:api",
+      "source": {
+        "file": "prisma/schema.prisma",
+        "line": 10
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "model:api/User",
+      "kind": "model",
+      "language": "typescript",
+      "meta": {
+        "fieldCount": 3,
+        "schemaFile": "prisma/schema.prisma"
+      },
+      "module": null,
+      "name": "User",
+      "package": "package:api",
+      "source": {
+        "file": "prisma/schema.prisma",
+        "line": 20
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "module:api/HealthModule",
+      "kind": "module",
+      "language": "typescript",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      },
+      "module": null,
+      "name": "HealthModule",
+      "package": "package:api",
+      "source": {
+        "file": "src/health/health.module.ts",
+        "line": 3
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "module:api/OrdersModule",
+      "kind": "module",
+      "language": "typescript",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      },
+      "module": null,
+      "name": "OrdersModule",
+      "package": "package:api",
+      "source": {
+        "file": "src/orders/orders.module.ts",
+        "line": 8
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "module:api/UsersModule",
+      "kind": "module",
+      "language": "typescript",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      },
+      "module": null,
+      "name": "UsersModule",
+      "package": "package:api",
+      "source": {
+        "file": "src/users/users.module.ts",
+        "line": 8
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "core",
+      "framework": "node",
+      "id": "package:api",
+      "kind": "package",
+      "language": "typescript",
+      "meta": {
+        "root": "."
+      },
+      "module": null,
+      "name": "api",
+      "package": "package:api",
+      "source": {
+        "file": "package.json",
+        "line": 1
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "core",
+      "framework": "node",
+      "id": "package:web",
+      "kind": "package",
+      "language": "typescript",
+      "meta": {
+        "root": "."
+      },
+      "module": null,
+      "name": "web",
+      "package": "package:web",
+      "source": {
+        "file": "package.json",
+        "line": 1
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "provider:api/MailerService",
+      "kind": "provider",
+      "language": "typescript",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      },
+      "module": null,
+      "name": "MailerService",
+      "package": "package:api",
+      "source": {
+        "file": "src/mail/mailer.service.ts",
+        "line": 3
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "provider:api/OrdersService",
+      "kind": "provider",
+      "language": "typescript",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      },
+      "module": "module:api/OrdersModule",
+      "name": "OrdersService",
+      "package": "package:api",
+      "source": {
+        "file": "src/orders/orders.service.ts",
+        "line": 6
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "provider:api/UsersService",
+      "kind": "provider",
+      "language": "typescript",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      },
+      "module": "module:api/UsersModule",
+      "name": "UsersService",
+      "package": "package:api",
+      "source": {
+        "file": "src/users/users.service.ts",
+        "line": 6
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "provider:web/WebCache",
+      "kind": "provider",
+      "language": "typescript",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      },
+      "module": null,
+      "name": "WebCache",
+      "package": "package:web",
+      "source": {
+        "file": "src/cache.ts",
+        "line": 2
+      }
+    }
+  ],
+  "repo": {},
+  "schemaVersion": 1
+}

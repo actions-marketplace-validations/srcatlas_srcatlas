@@ -140,11 +140,47 @@ type Selector = {
 | `max-fan-out` | `of: Selector`, `edgeKinds: EdgeKind[]`, `max: number` | A matching node has more than `max` outgoing edges of the listed kinds. |
 | `layering` | `layers: Selector[]` (top to bottom), `allowSkip?: boolean` (default `true`) | An edge goes from a lower layer to a higher layer. With `allowSkip: false`, an edge may only go to the next layer. Applies to edges of kinds `injects`, `calls`, `imports`. |
 
+**Selector semantics (v1).** A node matches a selector when every field that is set matches; an empty selector matches every node.
+
+- `kind`: the node's kind is the one given, or one of the list.
+- `package`: a glob against the package name (the part of the node's `package` ID after `package:`, scope kept), for example `@acme/*`.
+- `module`: a glob against the name of the module node in the node's `module` field. A node with `module: null`, module nodes included, does not match when this field is set.
+- `file`: a glob against `source.file`. A node without a `source` does not match when this field is set.
+- `role`: equals the provider's `meta.role`. A node without that key does not match.
+- Globs use picomatch syntax (`*` does not cross `/`, `**` does).
+
+**What counts as a violation.** An element takes part only if its confidence is at least the rule's `minConfidence`. For `forbidden-edge` that covers the edge and both of its nodes. The effective level is the higher of the rule's `minConfidence` and `check --min-confidence`. Violations come out in the order of the rules in the config, then by edge (`from`, `kind`, `to`) or, for cycles, by the first member.
+
+**`forbidden-edge`.** An `except` entry with `from`, `to` or both excuses an edge when each field it has equals the edge's endpoint ID. An entry with neither field excuses nothing. An entry is *stale* when it excused no edge that would otherwise be a violation; `check` then prints a warning (below) and the exit code is unaffected.
+
+**`no-cycles`.** The cycles are the strongly connected components with more than one member (`docs/schema.md` 13.1). The violation has `members` (node IDs, sorted) and `over` instead of `from`, `to` and `edgeKind`, and `sites` holds the sites of the edges inside the component, sorted by file and line.
+
+**Default messages.** `forbidden-edge`: `<from> <edgeKind> <to> is not allowed`. `no-cycles`: `cycle over <over>: <members, comma separated>`. A rule's own `message` replaces them.
+
+**Not evaluated yet.** `max-fan-out` and `layering` pass config validation but `check` does not evaluate them in v1.0; it prints `rule <id>: type <type> is not supported yet, skipped` as a warning. Stale exceptions print `rule <id>: stale exception <entry as JSON>`.
+
+Example, a controller must not read or write a Prisma model directly:
+
+```ts
+rules: [
+  {
+    id: 'controllers-not-direct-db',
+    type: 'forbidden-edge',
+    message: 'Controllers must go through a service.',
+    from: { kind: 'controller' },
+    to: { kind: 'model' },
+    edgeKinds: ['reads', 'writes'],
+  },
+],
+```
+
 Violation output (stable shape, used by `check --format json`):
 
 ```json
 { "rule": "controllers-not-direct-db", "severity": "error", "message": "Controllers must go through a service.", "from": "controller:api/OrdersController", "to": "model:api/Order", "edgeKind": "reads", "sites": [{ "file": "src/orders/orders.controller.ts", "line": 21 }] }
 ```
+
+A cycle violation: `{ "rule": "no-module-cycles", "severity": "error", "message": "...", "over": "modules", "members": ["module:api/A", "module:api/B"], "sites": [...] }`.
 
 Rules apply to the graph only. They do not read source files. A rule cannot be disabled inline in code in v1; to allow an exception, narrow the selector or add an `except` list:
 

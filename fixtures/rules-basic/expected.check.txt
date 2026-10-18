@@ -1,0 +1,12 @@
+error controllers-not-direct-db: Controllers must go through a service.
+  at src/orders/orders.controller.ts:21
+error controllers-not-direct-db: Controllers must go through a service.
+  at src/orders/orders.controller.ts:27
+warn orders-services-not-mail: provider:api/OrdersService calls provider:api/MailerService is not allowed
+  at src/orders/orders.service.ts:15
+error no-module-cycles: cycle over modules: module:api/OrdersModule, module:api/UsersModule
+  at src/orders/orders.module.ts:5
+  at src/users/users.module.ts:6
+error certain-provider-db: provider:api/OrdersService reads model:api/Order is not allowed
+  at src/orders/orders.service.ts:11
+4 errors, 1 warning

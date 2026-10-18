@@ -164,6 +164,15 @@ Evaluates the rules from config against a graph (default: analyses first).
 
 Output lists each violation with rule id, severity, message, and `file:line` of the offending edge site(s). Exit 1 if any `error`-severity violation; `warn` never changes the exit code.
 
+#### 3.5.1 `check` details (v1)
+
+- **Input.** `[graph]` is a graph file, read as in 3.4.2 (unsupported `schemaVersion` or an invalid graph is exit 2). Without it, `check` analyses the working directory in memory and writes no file. The rules come from the config; with no rules it prints `no rules configured` on stderr and exits 0. The root is the working directory.
+- **`--min-confidence`.** Combined with each rule's `minConfidence` as in `docs/config.md` 2.4.
+- **`json`.** The array of violations (shape in `docs/config.md` 2.4), canonical key order, 2-space indent, one trailing newline. Nothing else goes to stdout.
+- **`text`.** Per violation `<severity> <rule>: <message>` and one line `  at <file>:<line>` per site; then a line `<n> errors, <n> warnings` (singular for 1). `warn` is the severity word for `warn` rules.
+- **`github`.** One workflow command per site: `::error file=<file>,line=<line>,title=<rule>::<message>` (`::warning ...` for `warn`). A violation with no site prints the command without `file` and `line`. Values are escaped as GitHub requires: `%`, CR and LF in messages; also `:` and `,` in properties.
+- **Warnings.** Stale exceptions and rules that are not evaluated yet go to stderr in every format, one per line, prefixed `warning: `; `--quiet` suppresses them.
+
 ### 3.6 `srcatlas export [graph]` (P1)
 
 | Flag | Default | Meaning |

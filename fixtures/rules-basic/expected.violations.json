@@ -1,0 +1,75 @@
+[
+  {
+    "edgeKind": "reads",
+    "from": "controller:api/OrdersController",
+    "message": "Controllers must go through a service.",
+    "rule": "controllers-not-direct-db",
+    "severity": "error",
+    "sites": [
+      {
+        "file": "src/orders/orders.controller.ts",
+        "line": 21
+      }
+    ],
+    "to": "model:api/Order"
+  },
+  {
+    "edgeKind": "writes",
+    "from": "controller:api/OrdersController",
+    "message": "Controllers must go through a service.",
+    "rule": "controllers-not-direct-db",
+    "severity": "error",
+    "sites": [
+      {
+        "file": "src/orders/orders.controller.ts",
+        "line": 27
+      }
+    ],
+    "to": "model:api/Order"
+  },
+  {
+    "edgeKind": "calls",
+    "from": "provider:api/OrdersService",
+    "message": "provider:api/OrdersService calls provider:api/MailerService is not allowed",
+    "rule": "orders-services-not-mail",
+    "severity": "warn",
+    "sites": [
+      {
+        "file": "src/orders/orders.service.ts",
+        "line": 15
+      }
+    ],
+    "to": "provider:api/MailerService"
+  },
+  {
+    "members": ["module:api/OrdersModule", "module:api/UsersModule"],
+    "message": "cycle over modules: module:api/OrdersModule, module:api/UsersModule",
+    "over": "modules",
+    "rule": "no-module-cycles",
+    "severity": "error",
+    "sites": [
+      {
+        "file": "src/orders/orders.module.ts",
+        "line": 5
+      },
+      {
+        "file": "src/users/users.module.ts",
+        "line": 6
+      }
+    ]
+  },
+  {
+    "edgeKind": "reads",
+    "from": "provider:api/OrdersService",
+    "message": "provider:api/OrdersService reads model:api/Order is not allowed",
+    "rule": "certain-provider-db",
+    "severity": "error",
+    "sites": [
+      {
+        "file": "src/orders/orders.service.ts",
+        "line": 11
+      }
+    ],
+    "to": "model:api/Order"
+  }
+]
