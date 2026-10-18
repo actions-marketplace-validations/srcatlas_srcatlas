@@ -1,14 +1,6 @@
 {
   "entries": [
     {
-      "code": "nest.unregistered-controller",
-      "level": "warning",
-      "site": {
-        "file": "src/orphans/orphan.controller.ts",
-        "line": 4
-      }
-    },
-    {
       "code": "nest.duplicate-route",
       "level": "warning",
       "site": {
@@ -38,6 +30,14 @@
       "site": {
         "file": "src/reports/listener.controller.ts",
         "line": 8
+      }
+    },
+    {
+      "code": "nest.unregistered-controller",
+      "level": "warning",
+      "site": {
+        "file": "src/orphans/orphan.controller.ts",
+        "line": 4
       }
     },
     {
