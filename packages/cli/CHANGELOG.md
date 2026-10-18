@@ -1,5 +1,11 @@
 # srcatlas
 
+## 0.8.0
+
+### Minor Changes
+
+- 48651b8: `srcatlas init` detects NestJS and Prisma by dependencies and writes `srcatlas.config.ts`, with optional `.gitignore` and GitHub workflow files; it never overwrites without `--force`. A config that imports `defineConfig` from `srcatlas` now loads when srcatlas is run with npx and not installed in the project.
+
 ## 0.7.0
 
 ### Minor Changes
