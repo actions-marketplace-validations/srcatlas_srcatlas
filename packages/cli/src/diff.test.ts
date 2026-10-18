@@ -413,3 +413,93 @@ describe("srcatlas diff with git refs", () => {
     expect(readdirSync(join(dir, ".srcatlas", "cache"))).toHaveLength(2);
   });
 });
+
+// docs/cli.md 3.4.2 (--config-ref) and docs/action.md 4: for a pull request from a fork the
+// configuration comes from the base commit, and the working directory's is never executed.
+describe("srcatlas diff --config-ref", () => {
+  const BASE_CONFIG = 'export default { outDir: "base-out" };\n';
+
+  function repoWithRunningConfig(): string {
+    const dir = copyOf("nest-basic");
+    writeFileSync(join(dir, "srcatlas.config.mjs"), BASE_CONFIG);
+    git(dir, "init", "-b", "main");
+    git(dir, "add", "-A");
+    commit(dir, "one");
+    writeFileSync(join(dir, "src", "extra.module.ts"), EXTRA_MODULE);
+    writeFileSync(
+      join(dir, "srcatlas.config.mjs"),
+      `import { writeFileSync } from "node:fs";\nwriteFileSync(${JSON.stringify(join(dir, "ran.txt"))}, "ran");\nexport default { outDir: "head-out" };\n`,
+    );
+    git(dir, "add", "-A");
+    commit(dir, "two");
+    return dir;
+  }
+
+  it("uses the config of that commit and does not execute the working directory's", async () => {
+    const dir = repoWithRunningConfig();
+    const r = await cli(
+      dir,
+      "diff",
+      "HEAD~1",
+      "HEAD",
+      "--config-ref",
+      "HEAD~1",
+      "--format",
+      "json",
+    );
+    expect(r.code).toBe(0);
+    expect(DiffFile.parse(JSON.parse(r.out)).summary.modules).toBe(1);
+    expect(existsSync(join(dir, "base-out", "srcatlas.diff.json"))).toBe(true);
+    expect(existsSync(join(dir, "head-out"))).toBe(false);
+    expect(existsSync(join(dir, "ran.txt"))).toBe(false);
+    expect(worktrees(dir)).toHaveLength(1);
+  });
+
+  it("without the flag the working directory's config runs (the control)", async () => {
+    const dir = repoWithRunningConfig();
+    await cli(dir, "diff", "HEAD~1", "HEAD", "--format", "json");
+    expect(existsSync(join(dir, "ran.txt"))).toBe(true);
+  });
+
+  it("is exit 2 for an unknown ref, and together with --config", async () => {
+    const dir = repoWithRunningConfig();
+    const unknown = await cli(
+      dir,
+      "diff",
+      "HEAD~1",
+      "HEAD",
+      "--config-ref",
+      "nope",
+    );
+    expect(unknown.code).toBe(2);
+    expect(unknown.err).toContain("nope");
+    const both = await cli(
+      dir,
+      "diff",
+      "HEAD~1",
+      "HEAD",
+      "--config-ref",
+      "HEAD~1",
+      "--config",
+      "srcatlas.config.mjs",
+    );
+    expect(both.code).toBe(2);
+    expect(existsSync(join(dir, "ran.txt"))).toBe(false);
+  });
+
+  it("a commit without a config gives the defaults", async () => {
+    const dir = twoCommitRepo();
+    const r = await cli(
+      dir,
+      "diff",
+      "HEAD~1",
+      "HEAD",
+      "--config-ref",
+      "HEAD~1",
+      "--format",
+      "json",
+    );
+    expect(r.code).toBe(0);
+    expect(existsSync(join(dir, ".srcatlas", "srcatlas.diff.json"))).toBe(true);
+  });
+});

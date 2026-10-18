@@ -13,15 +13,19 @@ const CLASS_DEFS = [
   "classDef context fill:#f3f4f6,stroke:#9ca3af,color:#374151",
 ];
 
-// `#` first, so the entity codes written by the later replacements keep theirs.
+// A line break ends a Mermaid label, so it becomes a space. `#` goes first, so the entity
+// codes written by the later replacements keep theirs. The backtick cannot end a fenced
+// block once it is an entity code.
 const entityEscape = (s: string): string =>
   s
+    .replaceAll(/\r\n|\r|\n/g, " ")
     .replaceAll("#", "#35;")
     .replaceAll("&", "#amp;")
     .replaceAll('"', "#quot;")
     .replaceAll("<", "#lt;")
     .replaceAll(">", "#gt;")
-    .replaceAll("|", "#124;");
+    .replaceAll("|", "#124;")
+    .replaceAll("`", "#96;");
 
 interface Shown {
   label: string;

@@ -39,6 +39,12 @@ describe("renderMermaid", () => {
     );
   });
 
+  it("neutralises backticks and line breaks, so a name cannot end the fenced block", () => {
+    const text = renderMermaid(diffOf("mermaid-hostile", "input.diff.json"));
+    expect(text).toBe(read("mermaid-hostile", "expected.mmd"));
+    expect(text).not.toContain("`");
+  });
+
   it("renders nothing for a diff without changes", () => {
     const empty = diffOf("diff-basic", "expected.diff.json");
     empty.nodes = { added: [], removed: [], changed: [], moved: [] };

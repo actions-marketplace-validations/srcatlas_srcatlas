@@ -5,6 +5,7 @@ import { analyzeCommand } from "./analyze.js";
 import { checkCommand } from "./check.js";
 import { diffCommand } from "./diff.js";
 import { NotImplementedError, UsageError } from "./errors.js";
+import { loadConfigFromRef } from "./graph-source.js";
 import { initCommand } from "./init.js";
 import { loadConfig } from "./load-config.js";
 
@@ -34,6 +35,7 @@ diff flags (srcatlas diff <base> <head>; an input is a git ref, a graph file, or
   --fail-on <cond>      exit 1 on new-cycle, new-cross-module-edge, removed-node, any-change (repeatable)
   --min-confidence <c>  certain, inferred (default), unresolved
   --max-nodes <n>       cap on nodes in the Mermaid graph (default 40)
+  --config-ref <ref>    load the config from this git ref; the working directory's is not run
 
 check flags (srcatlas check [graph]; without a graph, analyses first):
   --format <f>          text (default), json, github
@@ -97,6 +99,7 @@ export async function run(argv: string[], io: Io): Promise<number> {
         "min-confidence": { type: "string" },
         "max-nodes": { type: "string" },
         accepted: { type: "string" },
+        "config-ref": { type: "string" },
         accept: { type: "boolean" },
         add: { type: "boolean" },
         yes: { type: "boolean", short: "y" },
@@ -143,10 +146,21 @@ export async function run(argv: string[], io: Io): Promise<number> {
       );
     }
     // Every other command builds on the validated config, so an invalid one is exit 2 for all.
-    const config = await loadConfig(
-      root,
-      values.config ?? io.env?.SRCATLAS_CONFIG,
-    );
+    const configRef = values["config-ref"];
+    if (configRef !== undefined) {
+      if (command !== "diff") {
+        throw new UsageError("--config-ref is only valid for diff");
+      }
+      if (values.config !== undefined) {
+        throw new UsageError(
+          "--config and --config-ref cannot be used together",
+        );
+      }
+    }
+    const config =
+      configRef !== undefined
+        ? await loadConfigFromRef(root, configRef)
+        : await loadConfig(root, values.config ?? io.env?.SRCATLAS_CONFIG);
     if (command === "analyze") {
       return await analyzeCommand(
         root,

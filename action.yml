@@ -1,0 +1,35 @@
+name: srcatlas
+description: Keep one pull request comment with the architecture changes of the pull request.
+author: srcatlas
+branding:
+  icon: map
+  color: blue
+
+inputs:
+  version:
+    description: The srcatlas npm version to run. Pin it for reproducible runs.
+    default: latest
+  fail-on:
+    description: Conditions for srcatlas diff --fail-on, one per line (new-cycle, new-cross-module-edge, removed-node, any-change).
+    default: ""
+  max-nodes:
+    description: Cap on nodes in the Mermaid graph.
+    default: "40"
+  comment:
+    description: Set to false to write the job summary only.
+    default: "true"
+  github-token:
+    description: Token for the pull request comment.
+    default: ${{ github.token }}
+
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: node "${{ github.action_path }}/packages/action/src/run.mjs"
+      env:
+        SRCATLAS_VERSION: ${{ inputs.version }}
+        SRCATLAS_FAIL_ON: ${{ inputs.fail-on }}
+        SRCATLAS_MAX_NODES: ${{ inputs.max-nodes }}
+        SRCATLAS_COMMENT: ${{ inputs.comment }}
+        GITHUB_TOKEN: ${{ inputs.github-token }}

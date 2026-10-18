@@ -24,6 +24,7 @@ import {
   validateGraph,
 } from "@srcatlas/core";
 import { UsageError } from "./errors.js";
+import { loadConfig } from "./load-config.js";
 
 export interface SourceEnv {
   /** Absolute repository root: the working directory. */
@@ -112,14 +113,15 @@ export function readGraphFile(file: string, input: string): GraphFile {
   return graph;
 }
 
-async function graphOfRef(ref: string, env: SourceEnv): Promise<GraphFile> {
-  if (gitOk(env.root, "rev-parse", "--is-inside-work-tree") !== "true") {
+/** The commit a ref names, or exit 2 (docs/cli.md 3.4.2). */
+function resolveCommit(root: string, ref: string, what: string): string {
+  if (gitOk(root, "rev-parse", "--is-inside-work-tree") !== "true") {
     throw new UsageError(
-      `"${ref}" is not a file, and ${env.root} is not inside a git work tree`,
+      `${what} "${ref}" needs a git work tree, and ${root} is not inside one`,
     );
   }
   const sha = gitOk(
-    env.root,
+    root,
     "rev-parse",
     "--verify",
     "--quiet",
@@ -127,12 +129,44 @@ async function graphOfRef(ref: string, env: SourceEnv): Promise<GraphFile> {
   );
   if (!sha) {
     const shallow =
-      gitOk(env.root, "rev-parse", "--is-shallow-repository") === "true"
+      gitOk(root, "rev-parse", "--is-shallow-repository") === "true"
         ? "; this is a shallow clone, so use fetch-depth: 0 or pass a graph file"
         : "";
     throw new UsageError(`unknown git ref "${ref}"${shallow}`);
   }
+  return sha;
+}
 
+/**
+ * Runs `fn` in a temporary worktree of `sha`, below the same sub-directory as `root`
+ * (the work tree can sit below the repository top level), and removes the worktree
+ * afterwards, also when `fn` throws.
+ */
+async function inWorktree<T>(
+  root: string,
+  sha: string,
+  fn: (dir: string) => Promise<T>,
+): Promise<T> {
+  const prefix = git(root, "rev-parse", "--show-prefix");
+  const tmp = mkdtempSync(join(tmpdir(), "srcatlas-wt-"));
+  const tree = join(tmp, "tree");
+  try {
+    git(root, "worktree", "add", "--detach", tree, sha);
+    return await fn(join(tree, prefix));
+  } finally {
+    gitOk(root, "worktree", "remove", "--force", tree);
+    rmSync(tmp, { recursive: true, force: true });
+    gitOk(root, "worktree", "prune");
+  }
+}
+
+async function graphOfRef(ref: string, env: SourceEnv): Promise<GraphFile> {
+  if (gitOk(env.root, "rev-parse", "--is-inside-work-tree") !== "true") {
+    throw new UsageError(
+      `"${ref}" is not a file, and ${env.root} is not inside a git work tree`,
+    );
+  }
+  const sha = resolveCommit(env.root, ref, "ref");
   const cacheFile = join(
     env.outDir,
     "cache",
@@ -142,22 +176,20 @@ async function graphOfRef(ref: string, env: SourceEnv): Promise<GraphFile> {
     const cached = parseGraph(readFileSync(cacheFile, "utf8"));
     if (cached) return cached;
   }
-
-  // The work tree can sit below the repository top level; analyse the same sub-directory.
-  const prefix = git(env.root, "rev-parse", "--show-prefix");
-  const tmp = mkdtempSync(join(tmpdir(), "srcatlas-wt-"));
-  const tree = join(tmp, "tree");
-  let graph: GraphFile;
-  try {
-    git(env.root, "worktree", "add", "--detach", tree, sha);
-    graph = await analyze(join(tree, prefix), env, sha);
-  } finally {
-    gitOk(env.root, "worktree", "remove", "--force", tree);
-    rmSync(tmp, { recursive: true, force: true });
-    gitOk(env.root, "worktree", "prune");
-  }
+  const graph = await inWorktree(env.root, sha, (dir) =>
+    analyze(dir, env, sha),
+  );
   writeOutputs([{ path: cacheFile, content: serializeGraph(graph) }]);
   return graph;
+}
+
+/**
+ * The configuration of a commit, loaded in a temporary worktree of it. The working
+ * directory's own configuration is not loaded (`--config-ref`, docs/cli.md 3.4.2).
+ */
+export function loadConfigFromRef(root: string, ref: string): Promise<Config> {
+  const sha = resolveCommit(root, ref, "--config-ref");
+  return inWorktree(root, sha, (dir) => loadConfig(dir));
 }
 
 /** The working directory analysed in place and not written anywhere (`check` without a graph). */
