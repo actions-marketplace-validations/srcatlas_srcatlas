@@ -356,6 +356,20 @@
     },
     {
       "from": "controller:ledger/InvoicesController",
+      "kind": "injects",
+      "to": "provider:ledger/LedgerDb",
+      "sites": [
+        {
+          "file": "src/invoices.controller.ts",
+          "line": 6
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:ledger/InvoicesController",
       "kind": "reads",
       "to": "model:ledger/Invoice",
       "sites": [
