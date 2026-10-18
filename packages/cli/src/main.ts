@@ -3,6 +3,7 @@ import { resolve } from "node:path";
 import { parseArgs } from "node:util";
 import { analyzeCommand } from "./analyze.js";
 import { NotImplementedError, UsageError } from "./errors.js";
+import { initCommand } from "./init.js";
 import { loadConfig } from "./load-config.js";
 
 const COMMANDS = ["init", "analyze", "serve", "diff", "check", "export"];
@@ -11,6 +12,11 @@ const HELP = `srcatlas <command> [path] [flags]
 
 Commands:
   ${COMMANDS.join(", ")}
+
+init flags:
+  -y, --yes         accept all prompts
+  --no-workflow     do not offer the GitHub workflow file
+  --force           overwrite an existing srcatlas.config.ts or workflow
 
 analyze flags:
   -o, --out <file>  graph output path, or - for stdout
@@ -39,6 +45,8 @@ export interface Io {
   err: (s: string) => void;
   /** Environment variables (docs/cli.md section 4). Absent means none are set. */
   env?: Record<string, string | undefined>;
+  /** Asks a yes/no question; absent when there is no terminal to ask on. */
+  ask?: (question: string) => Promise<boolean>;
 }
 
 const version = (): string =>
@@ -68,6 +76,9 @@ export async function run(argv: string[], io: Io): Promise<number> {
         workers: { type: "string" },
         only: { type: "string", multiple: true },
         json: { type: "boolean" },
+        yes: { type: "boolean", short: "y" },
+        "no-workflow": { type: "boolean" },
+        force: { type: "boolean" },
         quiet: { type: "boolean" },
         verbose: { type: "boolean" },
         "no-color": { type: "boolean" },
@@ -89,8 +100,22 @@ export async function run(argv: string[], io: Io): Promise<number> {
     if (!COMMANDS.includes(command)) {
       throw new UsageError(`unknown command "${command}"\n\n${HELP}`);
     }
-    // Every command builds on the validated config, so an invalid one is exit 2 for all.
     const root = resolve(io.cwd, path);
+    // init writes the config, so it must work when the existing one is broken (with --force).
+    if (command === "init") {
+      return await initCommand(
+        root,
+        {
+          yes: values.yes,
+          noWorkflow: values["no-workflow"],
+          force: values.force,
+          quiet: values.quiet,
+        },
+        version(),
+        { err: io.err, ask: io.ask },
+      );
+    }
+    // Every other command builds on the validated config, so an invalid one is exit 2 for all.
     const config = await loadConfig(
       root,
       values.config ?? io.env?.SRCATLAS_CONFIG,
