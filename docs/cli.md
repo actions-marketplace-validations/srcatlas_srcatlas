@@ -127,6 +127,20 @@ Semantics are in `docs/schema.md` section 13 (moves, cycles, cross-module edges)
 
 Errors (exit 2): unknown ref, ref not reachable (shallow clone: message tells the user to use `fetch-depth: 0` or pass a graph file), `schemaVersion` mismatch between files.
 
+#### 3.4.2 `diff` details (v1)
+
+- **Root.** `diff` takes no `[path]`: the repository root is the working directory. It must be inside a git work tree when either input is a git ref or `WORKTREE`.
+- **Resolving an input.** In this order: (1) `WORKTREE`, exact and upper case, is the working tree and is valid only as `<head>` (as `<base>` it is exit 2); (2) a string that names an existing file is a graph file; (3) anything else is a git ref. A file wins over a ref of the same name.
+- **Graph file.** Read as JSON. A `schemaVersion` other than the one this CLI supports, or a file that fails the graph schema, is exit 2.
+- **Git ref.** Resolved to a commit SHA with `git rev-parse --verify <ref>^{commit}`. A ref that does not resolve is exit 2; in a shallow clone the message says to use `fetch-depth: 0` or pass a graph file. The graph for that SHA comes from the cache if present. Otherwise the CLI runs `git worktree add --detach` into a new directory under the system temporary directory, analyses it, and removes the worktree and the directory afterwards, also when the analysis fails. The worktree is analysed with the configuration loaded for the current run, so both sides of a diff use the same settings. The worktree has no installed dependencies, which can change the graph (`docs/extractors/nestjs.md`, open question 5); to compare graphs analysed in the same environment, pass graph files.
+- **`WORKTREE`.** Analysed in place, uncommitted changes included, and never cached.
+- **Cache.** `<outDir>/cache/<key>.graph.json`, with key = SHA-256 (hex) of the commit SHA, the srcatlas version and the canonical JSON of the configuration, separated by NUL. Only git refs are cached. A cache file that is not a valid graph is ignored and replaced.
+- **`--min-confidence`.** Applied to both graphs before comparing: nodes and edges below the level are dropped, and so are edges whose endpoint was dropped. Order: `certain` > `inferred` > `unresolved`.
+- **Output.** The diff file is always written to `--out`. The chosen `--format` is printed to stdout: `json` is the diff file's bytes; `mermaid` is section 3.4.1; `text` and `markdown` below. Progress and warnings go to stderr.
+- **`text`.** First line is the summary line, then one line per added (`+`), removed (`-`), changed (`~`) and moved (`>`) node and edge, then new cross-module edges and new cycles. Not stable; scripts use `json`.
+- **`markdown`.** Empty when the diff has no node or edge entry, so the Action posts nothing. Otherwise: a heading, the summary line, a table of counts (added, removed, changed, moved) for nodes and edges, the new cycles and new cross-module edges as lists when there are any, and the Mermaid mini-graph in a fenced `mermaid` block. The "Moved" cell of the edges row is `-`.
+- **`--fail-on`.** Exit 1 when any given condition holds: `new-cycle` (`cycles` is not empty), `new-cross-module-edge` (`crossModuleEdges` is not empty), `removed-node` (`nodes.removed` is not empty; a move is not a removal), `any-change` (any node or edge entry). An unknown condition is exit 2.
+
 #### 3.4.1 Mermaid mini-graph
 
 `--format mermaid` prints, and `--format markdown` embeds in a fenced `mermaid` block, a flowchart of the **changed neighbourhood**. The renderer (`renderMermaid(diff, { maxNodes })` in `packages/renderer`) reads only the diff file.
