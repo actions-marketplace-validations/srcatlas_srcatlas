@@ -1,5 +1,6 @@
 import { existsSync } from "node:fs";
 import { resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import { type Config, parseConfig } from "@srcatlas/core";
 import { createJiti } from "jiti";
 import { UsageError } from "./errors.js";
@@ -28,9 +29,15 @@ export async function loadConfig(
   }
   if (!file) return {};
 
+  // `import { defineConfig } from "srcatlas"` must work when srcatlas was started with npx and is
+  // not installed in the project, which is what `srcatlas init` writes. Point it at this copy.
+  const self = ["./index.js", "./index.ts"]
+    .map((p) => fileURLToPath(new URL(p, import.meta.url)))
+    .find((p) => existsSync(p));
   const jiti = createJiti(import.meta.url, {
     fsCache: false,
     moduleCache: false,
+    ...(self ? { alias: { srcatlas: self } } : {}),
   });
   let value: unknown;
   try {

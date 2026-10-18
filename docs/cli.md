@@ -50,6 +50,13 @@ Behaviour:
 
 Refuses to overwrite files without `--force` (exit 2). With `--yes`, existing files are still never overwritten without `--force`.
 
+v1 details:
+- Nothing is written before every refusal has been checked: an existing `srcatlas.config.ts` or workflow file with no `--force` is exit 2 and leaves the directory as it was. `.gitignore` is only appended to, and not at all when it already ignores `.srcatlas`.
+- Questions are asked on a terminal. With no terminal and no `--yes`, `init` writes the config and skips the optional files, saying so.
+- Next.js is detected, but while its extractor is not available the package is listed without it and a comment says so.
+- Until the GitHub Action exists (M2), the workflow runs `npx srcatlas@<version> analyze` on pull requests and uploads `.srcatlas` as an artifact, with `contents: read` only. It is replaced by the PR comment workflow with the Action.
+- The config imports `defineConfig` from `srcatlas`; the config loader resolves that import to the running CLI, so it works when srcatlas is not installed in the project.
+
 ### 3.2 `srcatlas analyze [path]` (P0)
 
 Builds the graph.
