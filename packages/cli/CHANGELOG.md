@@ -1,5 +1,11 @@
 # srcatlas
 
+## 0.6.0
+
+### Minor Changes
+
+- 5311a92: The Prisma extractor finds client calls (`prisma.order.findMany()`, transactions, singletons, generator output paths) and the analyzer links them to `reads` and `writes` edges from the calling class to the model, with the operation names in `meta.operations`.
+
 ## 0.5.0
 
 ### Minor Changes
