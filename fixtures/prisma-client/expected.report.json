@@ -1,0 +1,47 @@
+{
+  "entries": [
+    {
+      "code": "prisma.dynamic-model-access",
+      "level": "warning",
+      "site": {
+        "file": "src/dynamic.service.ts",
+        "line": 11
+      }
+    },
+    {
+      "code": "prisma.raw-query",
+      "level": "info",
+      "site": {
+        "file": "src/raw.service.ts",
+        "line": 9
+      }
+    },
+    {
+      "code": "prisma.raw-query",
+      "level": "info",
+      "site": {
+        "file": "src/raw.service.ts",
+        "line": 10
+      }
+    },
+    {
+      "code": "prisma.unknown-model-access",
+      "level": "warning",
+      "site": {
+        "file": "src/dynamic.service.ts",
+        "line": 24
+      }
+    },
+    {
+      "code": "prisma.unknown-operation",
+      "level": "info",
+      "site": {
+        "file": "src/invoices.service.ts",
+        "line": 37
+      }
+    }
+  ],
+  "summary": {
+    "prisma.access-outside-node": 2
+  }
+}

@@ -7,8 +7,15 @@ import { writeOutputs } from "./write-outputs.js";
 export function collectReport(
   results: PackageResult[],
   discovery: DiscoveryReportEntry[],
+  link: { report: ReportEntry[]; summary: Record<string, number> } = {
+    report: [],
+    summary: {},
+  },
 ): ReportFile {
-  const entries: ReportEntry[] = results.flatMap((r) => r.report);
+  const entries: ReportEntry[] = [
+    ...results.flatMap((r) => r.report),
+    ...link.report,
+  ];
   for (const d of discovery) {
     entries.push({
       level: "warning",
@@ -22,8 +29,11 @@ export function collectReport(
   const timings: ReportFile["timings"] = {};
   for (const r of results) timings[r.package] = r.timings;
   const summary: Record<string, number> = {};
-  for (const r of results) {
-    for (const [key, n] of Object.entries(r.summary ?? {})) {
+  for (const counters of [
+    ...results.map((r) => r.summary ?? {}),
+    link.summary,
+  ]) {
+    for (const [key, n] of Object.entries(counters)) {
       summary[key] = (summary[key] ?? 0) + n;
     }
   }

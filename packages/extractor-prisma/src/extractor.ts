@@ -1,5 +1,5 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
-import { join } from "node:path";
+import { join, posix } from "node:path";
 import {
   classId,
   type Extractor,
@@ -8,6 +8,8 @@ import {
   type Node,
   type ReportEntry,
 } from "@srcatlas/core";
+import type { Project } from "ts-morph";
+import { readClientUsage } from "./client-usage.js";
 import { parseSchema } from "./parse-schema.js";
 
 const NAME = "prisma";
@@ -44,11 +46,12 @@ function schemaFiles(root: string, packageRoot: string): string[] {
   return files.filter((f) => existsSync(join(root, f))).sort(byCodeUnit);
 }
 
-function extract(ctx: ExtractorContext): ExtractorResult {
+function extract(ctx: ExtractorContext<Project>): ExtractorResult {
   const pkg = ctx.package.name;
   const nodes: Node[] = [];
   const report: ReportEntry[] = [];
   const seen = new Set<string>();
+  const outputs: string[] = [];
 
   for (const file of schemaFiles(ctx.root, ctx.package.root)) {
     const parsed = parseSchema(readFileSync(join(ctx.root, file), "utf8"));
@@ -62,6 +65,11 @@ function extract(ctx: ExtractorContext): ExtractorResult {
       });
     }
     for (const b of parsed.blocks) {
+      if (b.kind === "generator" && b.output !== undefined) {
+        outputs.push(
+          posix.normalize(posix.join(posix.dirname(file), b.output)),
+        );
+      }
       if (b.kind !== "model") continue; // PR-S4: other blocks produce no node
       if (seen.has(b.name)) {
         report.push({
@@ -89,7 +97,18 @@ function extract(ctx: ExtractorContext): ExtractorResult {
       });
     }
   }
-  return { nodes, edges: [], facts: [], report };
+  const usage = readClientUsage({
+    pkg,
+    project: ctx.project,
+    relative: ctx.relative,
+    outputs,
+  });
+  report.push(...usage.report);
+  return { nodes, edges: [], facts: usage.facts, report };
 }
 
-export const prismaExtractor: Extractor = { name: NAME, detect, extract };
+export const prismaExtractor: Extractor<Project> = {
+  name: NAME,
+  detect,
+  extract,
+};

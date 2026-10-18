@@ -1,0 +1,750 @@
+{
+  "schemaVersion": 1,
+  "generator": {
+    "name": "srcatlas",
+    "version": "0.0.0"
+  },
+  "repo": {},
+  "nodes": [
+    {
+      "id": "controller:ledger/InvoicesController",
+      "kind": "controller",
+      "name": "InvoicesController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:ledger",
+      "module": "module:ledger/LedgerModule",
+      "source": {
+        "file": "src/invoices.controller.ts",
+        "line": 4
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/invoices"
+      }
+    },
+    {
+      "id": "model:ledger/Customer",
+      "kind": "model",
+      "name": "Customer",
+      "language": "prisma",
+      "framework": "prisma",
+      "package": "package:ledger",
+      "module": null,
+      "source": {
+        "file": "prisma/schema.prisma",
+        "line": 25
+      },
+      "extractor": "prisma",
+      "confidence": "certain",
+      "meta": {
+        "fieldCount": 2,
+        "schemaFile": "prisma/schema.prisma"
+      }
+    },
+    {
+      "id": "model:ledger/Invoice",
+      "kind": "model",
+      "name": "Invoice",
+      "language": "prisma",
+      "framework": "prisma",
+      "package": "package:ledger",
+      "module": null,
+      "source": {
+        "file": "prisma/schema.prisma",
+        "line": 15
+      },
+      "extractor": "prisma",
+      "confidence": "certain",
+      "meta": {
+        "fieldCount": 2,
+        "schemaFile": "prisma/schema.prisma"
+      }
+    },
+    {
+      "id": "model:ledger/Payment",
+      "kind": "model",
+      "name": "Payment",
+      "language": "prisma",
+      "framework": "prisma",
+      "package": "package:ledger",
+      "module": null,
+      "source": {
+        "file": "prisma/schema.prisma",
+        "line": 20
+      },
+      "extractor": "prisma",
+      "confidence": "certain",
+      "meta": {
+        "fieldCount": 2,
+        "schemaFile": "prisma/schema.prisma"
+      }
+    },
+    {
+      "id": "model:ledger/Receipt",
+      "kind": "model",
+      "name": "Receipt",
+      "language": "prisma",
+      "framework": "prisma",
+      "package": "package:ledger",
+      "module": null,
+      "source": {
+        "file": "prisma/schema.prisma",
+        "line": 34
+      },
+      "extractor": "prisma",
+      "confidence": "certain",
+      "meta": {
+        "fieldCount": 1,
+        "schemaFile": "prisma/schema.prisma"
+      }
+    },
+    {
+      "id": "model:ledger/Refund",
+      "kind": "model",
+      "name": "Refund",
+      "language": "prisma",
+      "framework": "prisma",
+      "package": "package:ledger",
+      "module": null,
+      "source": {
+        "file": "prisma/schema.prisma",
+        "line": 30
+      },
+      "extractor": "prisma",
+      "confidence": "certain",
+      "meta": {
+        "fieldCount": 1,
+        "schemaFile": "prisma/schema.prisma"
+      }
+    },
+    {
+      "id": "module:ledger/LedgerModule",
+      "kind": "module",
+      "name": "LedgerModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:ledger",
+      "module": null,
+      "source": {
+        "file": "src/ledger.module.ts",
+        "line": 12
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "package:ledger",
+      "kind": "package",
+      "name": "ledger",
+      "language": "typescript",
+      "framework": "node",
+      "package": "package:ledger",
+      "module": null,
+      "source": {
+        "file": "package.json",
+        "line": 1
+      },
+      "extractor": "core",
+      "confidence": "certain",
+      "meta": {
+        "root": ".",
+        "version": "1.0.0"
+      }
+    },
+    {
+      "id": "provider:ledger/ArchiveDb",
+      "kind": "provider",
+      "name": "ArchiveDb",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:ledger",
+      "module": "module:ledger/LedgerModule",
+      "source": {
+        "file": "src/archive-db.ts",
+        "line": 5
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:ledger/CustomersService",
+      "kind": "provider",
+      "name": "CustomersService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:ledger",
+      "module": "module:ledger/LedgerModule",
+      "source": {
+        "file": "src/customers.service.ts",
+        "line": 5
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:ledger/DynamicService",
+      "kind": "provider",
+      "name": "DynamicService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:ledger",
+      "module": "module:ledger/LedgerModule",
+      "source": {
+        "file": "src/dynamic.service.ts",
+        "line": 6
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:ledger/InvoicesService",
+      "kind": "provider",
+      "name": "InvoicesService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:ledger",
+      "module": "module:ledger/LedgerModule",
+      "source": {
+        "file": "src/invoices.service.ts",
+        "line": 4
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:ledger/LedgerDb",
+      "kind": "provider",
+      "name": "LedgerDb",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:ledger",
+      "module": "module:ledger/LedgerModule",
+      "source": {
+        "file": "src/ledger-db.ts",
+        "line": 4
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:ledger/PaymentsService",
+      "kind": "provider",
+      "name": "PaymentsService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:ledger",
+      "module": "module:ledger/LedgerModule",
+      "source": {
+        "file": "src/payments.service.ts",
+        "line": 4
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:ledger/RawService",
+      "kind": "provider",
+      "name": "RawService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:ledger",
+      "module": "module:ledger/LedgerModule",
+      "source": {
+        "file": "src/raw.service.ts",
+        "line": 4
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:ledger/ReportsService",
+      "kind": "provider",
+      "name": "ReportsService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:ledger",
+      "module": "module:ledger/LedgerModule",
+      "source": {
+        "file": "src/reports.service.ts",
+        "line": 3
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "route:ledger/GET /invoices",
+      "kind": "route",
+      "name": "GET /invoices",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:ledger",
+      "module": "module:ledger/LedgerModule",
+      "source": {
+        "file": "src/invoices.controller.ts",
+        "line": 8
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "handlerName": "count",
+        "method": "GET",
+        "path": "/invoices",
+        "type": "handler"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "controller:ledger/InvoicesController",
+      "kind": "handles",
+      "to": "route:ledger/GET /invoices",
+      "sites": [
+        {
+          "file": "src/invoices.controller.ts",
+          "line": 8
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:ledger/InvoicesController",
+      "kind": "reads",
+      "to": "model:ledger/Invoice",
+      "sites": [
+        {
+          "file": "src/invoices.controller.ts",
+          "line": 9
+        }
+      ],
+      "extractor": "prisma",
+      "confidence": "certain",
+      "meta": {
+        "operations": ["count"]
+      }
+    },
+    {
+      "from": "module:ledger/LedgerModule",
+      "kind": "contains",
+      "to": "controller:ledger/InvoicesController",
+      "sites": [
+        {
+          "file": "src/ledger.module.ts",
+          "line": 13
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:ledger/LedgerModule",
+      "kind": "contains",
+      "to": "provider:ledger/ArchiveDb",
+      "sites": [
+        {
+          "file": "src/ledger.module.ts",
+          "line": 16
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:ledger/LedgerModule",
+      "kind": "contains",
+      "to": "provider:ledger/CustomersService",
+      "sites": [
+        {
+          "file": "src/ledger.module.ts",
+          "line": 19
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:ledger/LedgerModule",
+      "kind": "contains",
+      "to": "provider:ledger/DynamicService",
+      "sites": [
+        {
+          "file": "src/ledger.module.ts",
+          "line": 22
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:ledger/LedgerModule",
+      "kind": "contains",
+      "to": "provider:ledger/InvoicesService",
+      "sites": [
+        {
+          "file": "src/ledger.module.ts",
+          "line": 17
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:ledger/LedgerModule",
+      "kind": "contains",
+      "to": "provider:ledger/LedgerDb",
+      "sites": [
+        {
+          "file": "src/ledger.module.ts",
+          "line": 15
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:ledger/LedgerModule",
+      "kind": "contains",
+      "to": "provider:ledger/PaymentsService",
+      "sites": [
+        {
+          "file": "src/ledger.module.ts",
+          "line": 18
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:ledger/LedgerModule",
+      "kind": "contains",
+      "to": "provider:ledger/RawService",
+      "sites": [
+        {
+          "file": "src/ledger.module.ts",
+          "line": 21
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:ledger/LedgerModule",
+      "kind": "contains",
+      "to": "provider:ledger/ReportsService",
+      "sites": [
+        {
+          "file": "src/ledger.module.ts",
+          "line": 20
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:ledger/CustomersService",
+      "kind": "injects",
+      "to": "provider:ledger/ArchiveDb",
+      "sites": [
+        {
+          "file": "src/customers.service.ts",
+          "line": 7
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:ledger/CustomersService",
+      "kind": "reads",
+      "to": "model:ledger/Customer",
+      "sites": [
+        {
+          "file": "src/customers.service.ts",
+          "line": 10
+        }
+      ],
+      "extractor": "prisma",
+      "confidence": "certain",
+      "meta": {
+        "operations": ["findFirst"]
+      }
+    },
+    {
+      "from": "provider:ledger/CustomersService",
+      "kind": "reads",
+      "to": "model:ledger/Receipt",
+      "sites": [
+        {
+          "file": "src/customers.service.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "prisma",
+      "confidence": "certain",
+      "meta": {
+        "operations": ["findMany"]
+      }
+    },
+    {
+      "from": "provider:ledger/DynamicService",
+      "kind": "injects",
+      "to": "provider:ledger/LedgerDb",
+      "sites": [
+        {
+          "file": "src/dynamic.service.ts",
+          "line": 8
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:ledger/DynamicService",
+      "kind": "reads",
+      "to": "model:ledger/Customer",
+      "sites": [
+        {
+          "file": "src/dynamic.service.ts",
+          "line": 16
+        }
+      ],
+      "extractor": "prisma",
+      "confidence": "certain",
+      "meta": {
+        "operations": ["count"]
+      }
+    },
+    {
+      "from": "provider:ledger/DynamicService",
+      "kind": "reads",
+      "to": "model:ledger/Refund",
+      "sites": [
+        {
+          "file": "src/dynamic.service.ts",
+          "line": 20
+        }
+      ],
+      "extractor": "prisma",
+      "confidence": "certain",
+      "meta": {
+        "operations": ["count"]
+      }
+    },
+    {
+      "from": "provider:ledger/InvoicesService",
+      "kind": "injects",
+      "to": "provider:ledger/LedgerDb",
+      "sites": [
+        {
+          "file": "src/invoices.service.ts",
+          "line": 6
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:ledger/InvoicesService",
+      "kind": "reads",
+      "to": "model:ledger/Invoice",
+      "sites": [
+        {
+          "file": "src/invoices.service.ts",
+          "line": 9
+        },
+        {
+          "file": "src/invoices.service.ts",
+          "line": 13
+        },
+        {
+          "file": "src/invoices.service.ts",
+          "line": 17
+        }
+      ],
+      "extractor": "prisma",
+      "confidence": "certain",
+      "meta": {
+        "operations": ["aggregate", "findMany", "findUnique"]
+      }
+    },
+    {
+      "from": "provider:ledger/InvoicesService",
+      "kind": "writes",
+      "to": "model:ledger/Invoice",
+      "sites": [
+        {
+          "file": "src/invoices.service.ts",
+          "line": 21
+        },
+        {
+          "file": "src/invoices.service.ts",
+          "line": 25
+        },
+        {
+          "file": "src/invoices.service.ts",
+          "line": 33
+        }
+      ],
+      "extractor": "prisma",
+      "confidence": "certain",
+      "meta": {
+        "operations": ["create", "deleteMany", "upsert"]
+      }
+    },
+    {
+      "from": "provider:ledger/PaymentsService",
+      "kind": "injects",
+      "to": "provider:ledger/LedgerDb",
+      "sites": [
+        {
+          "file": "src/payments.service.ts",
+          "line": 6
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:ledger/PaymentsService",
+      "kind": "writes",
+      "to": "model:ledger/Invoice",
+      "sites": [
+        {
+          "file": "src/payments.service.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "prisma",
+      "confidence": "certain",
+      "meta": {
+        "operations": ["update"]
+      }
+    },
+    {
+      "from": "provider:ledger/PaymentsService",
+      "kind": "writes",
+      "to": "model:ledger/Payment",
+      "sites": [
+        {
+          "file": "src/payments.service.ts",
+          "line": 10
+        },
+        {
+          "file": "src/payments.service.ts",
+          "line": 17
+        }
+      ],
+      "extractor": "prisma",
+      "confidence": "certain",
+      "meta": {
+        "operations": ["create", "updateMany"]
+      }
+    },
+    {
+      "from": "provider:ledger/PaymentsService",
+      "kind": "writes",
+      "to": "model:ledger/Refund",
+      "sites": [
+        {
+          "file": "src/payments.service.ts",
+          "line": 18
+        }
+      ],
+      "extractor": "prisma",
+      "confidence": "certain",
+      "meta": {
+        "operations": ["create"]
+      }
+    },
+    {
+      "from": "provider:ledger/RawService",
+      "kind": "injects",
+      "to": "provider:ledger/LedgerDb",
+      "sites": [
+        {
+          "file": "src/raw.service.ts",
+          "line": 6
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "provider:ledger/ReportsService",
+      "kind": "reads",
+      "to": "model:ledger/Refund",
+      "sites": [
+        {
+          "file": "src/reports.service.ts",
+          "line": 9
+        }
+      ],
+      "extractor": "prisma",
+      "confidence": "inferred",
+      "meta": {
+        "operations": ["findMany"]
+      }
+    }
+  ]
+}

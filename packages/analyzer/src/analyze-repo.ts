@@ -8,6 +8,7 @@ import {
   type Node,
   type ReportFile,
 } from "@srcatlas/core";
+import { resolveAccessFacts } from "@srcatlas/extractor-prisma";
 import { type AnalyzeOptions, analyzePackages } from "./analyze-packages.js";
 import { discoverPackages, type PackageInfo } from "./discover-packages.js";
 import { collectReport } from "./write-report.js";
@@ -76,6 +77,13 @@ export async function analyzeRepo(
     edges.push(...r.edges);
   }
 
+  // ADR 0011: facts become edges once every extractor has finished.
+  const link = resolveAccessFacts(
+    results.flatMap((r) => r.facts),
+    nodes,
+  );
+  edges.push(...link.edges);
+
   // A file import whose target was excluded or not analysed has no node to point at.
   const ids = new Set(nodes.map((n) => n.id));
   const builder = new GraphBuilder();
@@ -90,7 +98,7 @@ export async function analyzeRepo(
       generatorVersion: opts.generatorVersion,
       ...(opts.commit ? { commit: opts.commit } : {}),
     }),
-    report: collectReport(results, discovered),
+    report: collectReport(results, discovered, link),
     fallbackPackages: results.filter((r) => r.fallback).map((r) => r.package),
   };
 }
