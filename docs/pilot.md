@@ -6,7 +6,9 @@ Issue #60. This is a procedure for the maintainer, not a contract. It is the fir
 
 - `srcatlas@latest` on npm is 0.12.0 or newer, which has `diff --config-ref` (checked 2026-10-18: 0.12.0 is published and contains it). The Action runs `npx srcatlas@latest`; pass `version: 0.12.0` in the pilot workflows to make the runs reproducible.
 - There is no release tag yet, so use the commit: `uses: srcatlas/srcatlas@<commit sha of main>`. A public repository can use an action from another public repository without a Marketplace listing.
-- Ask the owners of the pilot repositories other than crwsync for permission to open pull requests and add a workflow file. Agree that the comments may be seen by other contributors. Do not enable the Action on a repository without that.
+- Do not open pull requests on a project you do not own. Run the pilot on forks of open-source projects instead, in the `srcatlas` organisation, with the pull request from a branch of the fork to the fork's `main`. Nothing reaches the upstream project, so no permission is needed; check the licence of each repository first (both pilot forks are MIT). If you do want a pull request upstream, ask the owner before you enable anything.
+- crwsync is yours: run it in place, on a branch with the workflow file and one architecture change, as a pull request to `main` that is never merged.
+- Before you push a branch to any repository that has workflows of its own, read their `on:` blocks and any `if:` on build and deploy jobs. A job that runs on `push` to every branch, or on `pull_request` with deploy permissions, can deploy from the pilot branch. crwsync's `deploy.yml` runs only its test and scan jobs on a pull request and builds and deploys on a push to `main` (checked 2026-10-18).
 
 ## 2. The workflow
 
@@ -46,13 +48,23 @@ A private repository you own, so you can break it freely. Start from `fixtures/p
 | 5 | Change a comment or a README only | no comment at all |
 | 6 | Push a second commit to pull request 1 | the same comment is updated in place, not a second one |
 | 7 | Push a commit to pull request 1 that undoes the change | the comment says `No architectural change in the latest commit.` |
-| 8 | A pull request from a fork (a second GitHub account) | no comment; the diff is in the job summary; the fork's `srcatlas.config.ts`, with a line that writes a file, does not run (the base config is used) |
+| 8 | A pull request from a fork (a second GitHub account, or your own account for a fork of an organisation's repository) | no comment; the diff is in the job summary; the fork's `srcatlas.config.ts`, with a line that writes a file, does not run (the base config is used) |
 | 9 | A route path with a backtick and a line break in its decorator string | the comment renders normally; nothing after the Mermaid block is swallowed |
 | 10 | `permissions` without `pull-requests: write` | job summary fallback with a 403 note in the log, not a failed step |
 
 ## 4. The three pilot repositories
 
-One pull request each that changes the architecture a little (a new provider and a new dependency between modules). crwsync is one of the three. Choose the other two as NestJS, Prisma or both, with at least 30 source files, and prefer different shapes between the three: a single package, a monorepo, one without Prisma.
+One pull request each that changes the architecture a little: a new module with one provider that an existing provider injects, which should show as `+1 module` and one cross-module edge. Chosen on 2026-10-18 for different shapes:
+
+| Repository | Shape | Size |
+|---|---|---|
+| crwsync (`JustTunya/crwsync`) | pnpm monorepo, NestJS backend with Prisma | the author's own; demo only |
+| `srcatlas/pilot-ack-nestjs-boilerplate`, a fork of `andrechristikan/ack-nestjs-boilerplate` (MIT) | single package, NestJS 12 with Prisma | about 1,050 source files, 77 modules |
+| `srcatlas/pilot-brocoders-nestjs-boilerplate`, a fork of `brocoders/nestjs-boilerplate` (MIT) | single package, NestJS with TypeORM and Mongoose, no Prisma | about 185 source files, 26 modules |
+
+Set up a fork like this: fork into the organisation, check that Actions are on, commit the workflow from section 2 to the fork's `main`, and disable every workflow of the upstream project (they can run on that push, and some of them deploy). Forks hold no secrets, so a deploy cannot succeed, but do not rely on that.
+
+These repositories are used to look for bugs and to fix the extractor, so none of them goes into the tier B corpus of the published accuracy number (`docs/accuracy.md` section 3). Say so in `SELECTION.md` when it is written.
 
 ## 5. What to record
 
@@ -75,7 +87,12 @@ All of these:
 - Cases 5 to 8 and 10 in the sandbox behave as in the table, in particular one comment per pull request, none for a change without architecture, and no code of the fork run.
 - No comment shows a name that breaks the Markdown (case 9).
 
-## 7. After the pilot
+## 7. Notes from the first run (2026-10-18)
+
+- A private repository cannot be forked while the organisation forbids forking of private repositories, and a pull request from a fork of a private repository does not run workflows while the organisation forbids that. For case 8 make the sandbox public for the test and fork it afterwards: a fork made while the parent was private is detached when the parent becomes public.
+- Runs took 16 to 24 seconds in the sandbox, on ack-nestjs-boilerplate (about 1,050 files) and on crwsync. Local `analyze` on a clean clone of ack-nestjs-boilerplate took 11 s.
+
+## 8. After the pilot
 
 - Decide the `version` default (`latest` now) and write it in `docs/action.md`.
 - Tag the release and decide how `v1` moves with minor releases; the tag, the release and the Marketplace listing are maintainer steps (`CLAUDE.md` section 10). Publish to the Marketplace only after the pilot has passed.
