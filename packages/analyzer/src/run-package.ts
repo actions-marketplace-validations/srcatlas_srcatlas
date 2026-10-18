@@ -10,6 +10,7 @@ import type { Project } from "ts-morph";
 import { createProject } from "./create-project.js";
 import type { PackageInfo } from "./discover-packages.js";
 import { fileGraph, type WorkspacePackage } from "./file-graph.js";
+import { packageDependencies } from "./package-deps.js";
 
 export interface PackageTask {
   /** Absolute repository root. */
@@ -79,8 +80,15 @@ export async function runPackage(
     ...(task.fallback ? { fallback: true as const } : {}),
   };
 
+  const own = [{ name: task.package.name, root: task.package.root }];
+  result.edges.push(
+    ...packageDependencies(
+      { root: task.root, package: task.package, project, relative: rel },
+      task.workspace ?? own,
+    ),
+  );
+
   if (task.fallback) {
-    const own = [{ name: task.package.name, root: task.package.root }];
     const out = fileGraph(
       {
         root: task.root,

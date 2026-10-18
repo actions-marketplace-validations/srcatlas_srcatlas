@@ -8,6 +8,15 @@
       "meta": {},
       "sites": [{ "file": "apps/api/src/main.ts", "line": 1 }],
       "to": "file:@acme/shared/src/greet.ts"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "core",
+      "from": "package:@acme/api",
+      "kind": "depends_on",
+      "meta": {},
+      "sites": [{ "file": "apps/api/src/main.ts", "line": 1 }],
+      "to": "package:@acme/shared"
     }
   ],
   "generator": { "name": "srcatlas", "version": "VERSION" },
