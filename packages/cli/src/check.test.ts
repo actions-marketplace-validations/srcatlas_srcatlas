@@ -218,7 +218,10 @@ describe("srcatlas check, accepted violations", () => {
       from: string;
       kind: string;
       to: string;
-      sites: { line: number }[];
+      sites: { file: string; line: number }[];
+      extractor?: string;
+      confidence?: string;
+      meta?: object;
     }[];
   };
   const ACCEPTED = "srcatlas.accepted.json";
@@ -241,11 +244,11 @@ describe("srcatlas check, accepted violations", () => {
       from: "provider:api/UsersService",
       kind: "reads",
       to: "model:api/Order",
-      sites: [{ line: 20 }],
+      sites: [{ file: "src/users/users.service.ts", line: 20 }],
       extractor: "nestjs",
       confidence: "certain",
       meta: {},
-    } as G["edges"][number]);
+    });
   const withoutWrite = (g: G) => {
     g.edges = g.edges.filter(
       (e) => !(e.from.endsWith("OrdersController") && e.kind === "writes"),
