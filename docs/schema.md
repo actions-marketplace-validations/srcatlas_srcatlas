@@ -309,7 +309,12 @@ interface DiffFile {
   schemaVersion: number;                  // of the two graphs, which must be equal
   base: { commit?: string };              // copied from graph.repo
   head: { commit?: string };
-  summary: { modules: number; routes: number }; // added minus removed, by node kind
+  summary: {
+    modules: number;                      // added minus removed, by node kind
+    routes: number;
+    crossModuleEdges: number;             // crossModuleEdges.length
+    newCycles: number;                    // cycles.length
+  };
   nodes: {
     added: Node[];                        // sorted by id
     removed: Node[];                      // sorted by id
@@ -321,6 +326,11 @@ interface DiffFile {
     removed: Edge[];
     changed: { before: Edge; after: Edge }[];
   };
+  crossModuleEdges: Edge[];               // subset of edges.added; same order
+  cycles: {                               // cycles in head that are new; sorted by kind, then members[0]
+    kind: 'modules' | 'packages';
+    members: string[];                    // node IDs, sorted
+  }[];
 }
 ```
 
@@ -328,6 +338,8 @@ interface DiffFile {
 - A move needs exactly one removed and exactly one added node with the same `kind`, `name` and `package`. If more than one removed or more than one added node share that triple, the differ reports none of them as moved. It does not guess.
 - Edges are not rewritten for moves: edges of a moved node appear as removed (old ID) and added (new ID).
 - Two graphs with different `schemaVersion` values are an error, not a diff.
+- `crossModuleEdges` holds the added edges (by edge identity, so an edge that exists in base and only changed is not listed) whose two endpoints both have a non-null `module`, and those values differ. Module nodes have `module: null`, so `imports` edges between modules are never listed; the cycle check covers them.
+- A cycle is a strongly connected component with more than one member. For `modules` the edges are `imports` edges whose endpoints are both `module` nodes; for `packages` they are `depends_on` edges. Other kinds, such as `imports` between `file` nodes, are ignored. A head component is **new** unless all its members lie in one component of the base graph, so a cycle that grows is new and one that shrinks or stays the same is not.
 
 ### 13.2 Summary line
 
@@ -335,7 +347,6 @@ The summary line is fixed: `+1 module, +4 routes, +2 cross-module edges, 0 new c
 
 - Node counts are signed net counts (added minus removed): `+1 module`, `-2 routes`, `0 modules`. The noun is singular only for an absolute count of 1.
 - `cross-module edges` is the count of new cross-module edges, signed with `+` when above zero. `new cycles` is the count of new cycles, without a sign.
-- The cross-module and cycle segments are present only when the diff file carries those counts, which arrive with the cycle and cross-module issue. Until then the line has the first two segments.
 
 ## 14. Open questions
 

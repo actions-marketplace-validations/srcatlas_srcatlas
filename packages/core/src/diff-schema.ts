@@ -16,7 +16,12 @@ export const DiffFile = z.object({
   schemaVersion: z.literal(SCHEMA_VERSION),
   base: repoRef,
   head: repoRef,
-  summary: z.object({ modules: count, routes: count }),
+  summary: z.object({
+    modules: count,
+    routes: count,
+    crossModuleEdges: count,
+    newCycles: count,
+  }),
   nodes: z.object({
     added: z.array(Node),
     removed: z.array(Node),
@@ -28,5 +33,12 @@ export const DiffFile = z.object({
     removed: z.array(Edge),
     changed: z.array(z.object({ before: Edge, after: Edge })),
   }),
+  crossModuleEdges: z.array(Edge),
+  cycles: z.array(
+    z.object({
+      kind: z.enum(["modules", "packages"]),
+      members: z.array(z.string()),
+    }),
+  ),
 });
 export type DiffFile = z.infer<typeof DiffFile>;

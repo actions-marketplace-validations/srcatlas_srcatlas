@@ -1,5 +1,7 @@
 {
   "base": {},
+  "crossModuleEdges": [],
+  "cycles": [],
   "edges": {
     "added": [],
     "changed": [],
@@ -99,7 +101,9 @@
   },
   "schemaVersion": 1,
   "summary": {
+    "crossModuleEdges": 0,
     "modules": 0,
+    "newCycles": 0,
     "routes": 0
   }
 }

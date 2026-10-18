@@ -1,4 +1,5 @@
 import {
+  cmp,
   compareEdges,
   compareNodes,
   type DiffFile,
@@ -8,6 +9,8 @@ import {
   type Node,
   sortKeys,
 } from "@srcatlas/core";
+
+import { newCycles } from "./cycles.js";
 
 export class DiffError extends Error {}
 
@@ -79,6 +82,21 @@ export function diffGraphs(base: GraphFile, head: GraphFile): DiffFile {
   const baseEdges = new Map(base.edges.map((e) => [edgeKey(e), e]));
   const headEdges = new Map(head.edges.map((e) => [edgeKey(e), e]));
 
+  const nodeById = new Map(head.nodes.map((n) => [n.id, n]));
+  const addedEdges = head.edges
+    .filter((e) => !baseEdges.has(edgeKey(e)))
+    .sort(compareEdges);
+  // Section 13.1: both endpoints in a module, and not the same one.
+  const crossModuleEdges = addedEdges.filter((e) => {
+    const from = nodeById.get(e.from)?.module;
+    const to = nodeById.get(e.to)?.module;
+    return from != null && to != null && from !== to;
+  });
+  const cycles = newCycles(base, head).sort(
+    (a, b) =>
+      cmp(a.kind, b.kind) || cmp(a.members[0] ?? "", b.members[0] ?? ""),
+  );
+
   const net = (kind: string): number =>
     added.filter((n) => n.kind === kind).length -
     removed.filter((n) => n.kind === kind).length;
@@ -87,7 +105,12 @@ export function diffGraphs(base: GraphFile, head: GraphFile): DiffFile {
     schemaVersion: head.schemaVersion,
     base: { ...(base.repo.commit && { commit: base.repo.commit }) },
     head: { ...(head.repo.commit && { commit: head.repo.commit }) },
-    summary: { modules: net("module"), routes: net("route") },
+    summary: {
+      modules: net("module"),
+      routes: net("route"),
+      crossModuleEdges: crossModuleEdges.length,
+      newCycles: cycles.length,
+    },
     nodes: {
       added: added.sort(compareNodes),
       removed: removed.sort(compareNodes),
@@ -95,9 +118,7 @@ export function diffGraphs(base: GraphFile, head: GraphFile): DiffFile {
       moved: moved.sort((a, b) => compareNodes(a.to, b.to)),
     },
     edges: {
-      added: head.edges
-        .filter((e) => !baseEdges.has(edgeKey(e)))
-        .sort(compareEdges),
+      added: addedEdges,
       removed: base.edges
         .filter((e) => !headEdges.has(edgeKey(e)))
         .sort(compareEdges),
@@ -110,5 +131,7 @@ export function diffGraphs(base: GraphFile, head: GraphFile): DiffFile {
         })
         .sort((a, b) => compareEdges(a.after, b.after)),
     },
+    crossModuleEdges,
+    cycles,
   };
 }

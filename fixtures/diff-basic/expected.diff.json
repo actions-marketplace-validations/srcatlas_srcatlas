@@ -2,6 +2,8 @@
   "base": {
     "commit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
   },
+  "crossModuleEdges": [],
+  "cycles": [],
   "edges": {
     "added": [
       {
@@ -273,7 +275,9 @@
   },
   "schemaVersion": 1,
   "summary": {
+    "crossModuleEdges": 0,
     "modules": 1,
+    "newCycles": 0,
     "routes": 1
   }
 }
