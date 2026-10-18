@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "generator": {
+    "name": "srcatlas",
+    "version": "0.0.0"
+  },
+  "repo": {},
+  "nodes": [
+    {
+      "id": "controller:prefixenv/StockController",
+      "kind": "controller",
+      "name": "StockController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:prefixenv",
+      "module": "module:prefixenv/StockModule",
+      "source": {
+        "file": "src/stock.module.ts",
+        "line": 3
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/stock"
+      }
+    },
+    {
+      "id": "module:prefixenv/StockModule",
+      "kind": "module",
+      "name": "StockModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:prefixenv",
+      "module": null,
+      "source": {
+        "file": "src/stock.module.ts",
+        "line": 8
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "package:prefixenv",
+      "kind": "package",
+      "name": "prefixenv",
+      "language": "typescript",
+      "framework": "node",
+      "package": "package:prefixenv",
+      "module": null,
+      "source": {
+        "file": "package.json",
+        "line": 1
+      },
+      "extractor": "core",
+      "confidence": "certain",
+      "meta": {
+        "root": ".",
+        "version": "1.0.0"
+      }
+    },
+    {
+      "id": "route:prefixenv/GET /stock",
+      "kind": "route",
+      "name": "GET /stock",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:prefixenv",
+      "module": "module:prefixenv/StockModule",
+      "source": {
+        "file": "src/stock.module.ts",
+        "line": 5
+      },
+      "extractor": "nestjs",
+      "confidence": "inferred",
+      "meta": {
+        "handlerName": "list",
+        "method": "GET",
+        "path": "/stock",
+        "type": "handler"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "controller:prefixenv/StockController",
+      "kind": "handles",
+      "to": "route:prefixenv/GET /stock",
+      "sites": [
+        {
+          "file": "src/stock.module.ts",
+          "line": 5
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "inferred",
+      "meta": {}
+    },
+    {
+      "from": "module:prefixenv/StockModule",
+      "kind": "contains",
+      "to": "controller:prefixenv/StockController",
+      "sites": [
+        {
+          "file": "src/stock.module.ts",
+          "line": 8
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    }
+  ]
+}

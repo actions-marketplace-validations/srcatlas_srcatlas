@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "code": "nest.ambiguous-app",
+      "level": "warning",
+      "site": {
+        "file": "src/admin-main.ts",
+        "line": 5
+      }
+    }
+  ],
+  "summary": {}
+}

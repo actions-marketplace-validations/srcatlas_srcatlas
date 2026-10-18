@@ -7,6 +7,24 @@
   "repo": {},
   "nodes": [
     {
+      "id": "controller:api/OrdersController",
+      "kind": "controller",
+      "name": "OrdersController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:api",
+      "module": "module:api/OrdersModule",
+      "source": {
+        "file": "src/orders/orders.controller.ts",
+        "line": 3
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/orders"
+      }
+    },
+    {
       "id": "module:api/AppModule",
       "kind": "module",
       "name": "AppModule",
@@ -121,9 +139,219 @@
         "role": "service",
         "scope": "default"
       }
+    },
+    {
+      "id": "route:api/DELETE /orders/:id",
+      "kind": "route",
+      "name": "DELETE /orders/:id",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:api",
+      "module": "module:api/OrdersModule",
+      "source": {
+        "file": "src/orders/orders.controller.ts",
+        "line": 10
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "handlerName": "remove",
+        "method": "DELETE",
+        "path": "/orders/:id",
+        "type": "handler"
+      }
+    },
+    {
+      "id": "route:api/GET /orders",
+      "kind": "route",
+      "name": "GET /orders",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:api",
+      "module": "module:api/OrdersModule",
+      "source": {
+        "file": "src/orders/orders.controller.ts",
+        "line": 5
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "handlerName": "findAll",
+        "method": "GET",
+        "path": "/orders",
+        "type": "handler"
+      }
+    },
+    {
+      "id": "route:api/GET /orders/:id",
+      "kind": "route",
+      "name": "GET /orders/:id",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:api",
+      "module": "module:api/OrdersModule",
+      "source": {
+        "file": "src/orders/orders.controller.ts",
+        "line": 7
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "handlerName": "findOne",
+        "method": "GET",
+        "path": "/orders/:id",
+        "type": "handler"
+      }
+    },
+    {
+      "id": "route:api/PATCH /orders/:id",
+      "kind": "route",
+      "name": "PATCH /orders/:id",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:api",
+      "module": "module:api/OrdersModule",
+      "source": {
+        "file": "src/orders/orders.controller.ts",
+        "line": 9
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "handlerName": "update",
+        "method": "PATCH",
+        "path": "/orders/:id",
+        "type": "handler"
+      }
+    },
+    {
+      "id": "route:api/POST /orders",
+      "kind": "route",
+      "name": "POST /orders",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:api",
+      "module": "module:api/OrdersModule",
+      "source": {
+        "file": "src/orders/orders.controller.ts",
+        "line": 6
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "handlerName": "create",
+        "method": "POST",
+        "path": "/orders",
+        "type": "handler"
+      }
+    },
+    {
+      "id": "route:api/PUT /orders/:id",
+      "kind": "route",
+      "name": "PUT /orders/:id",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:api",
+      "module": "module:api/OrdersModule",
+      "source": {
+        "file": "src/orders/orders.controller.ts",
+        "line": 8
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "handlerName": "replace",
+        "method": "PUT",
+        "path": "/orders/:id",
+        "type": "handler"
+      }
     }
   ],
   "edges": [
+    {
+      "from": "controller:api/OrdersController",
+      "kind": "handles",
+      "to": "route:api/DELETE /orders/:id",
+      "sites": [
+        {
+          "file": "src/orders/orders.controller.ts",
+          "line": 10
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:api/OrdersController",
+      "kind": "handles",
+      "to": "route:api/GET /orders",
+      "sites": [
+        {
+          "file": "src/orders/orders.controller.ts",
+          "line": 5
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:api/OrdersController",
+      "kind": "handles",
+      "to": "route:api/GET /orders/:id",
+      "sites": [
+        {
+          "file": "src/orders/orders.controller.ts",
+          "line": 7
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:api/OrdersController",
+      "kind": "handles",
+      "to": "route:api/PATCH /orders/:id",
+      "sites": [
+        {
+          "file": "src/orders/orders.controller.ts",
+          "line": 9
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:api/OrdersController",
+      "kind": "handles",
+      "to": "route:api/POST /orders",
+      "sites": [
+        {
+          "file": "src/orders/orders.controller.ts",
+          "line": 6
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:api/OrdersController",
+      "kind": "handles",
+      "to": "route:api/PUT /orders/:id",
+      "sites": [
+        {
+          "file": "src/orders/orders.controller.ts",
+          "line": 8
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
     {
       "from": "module:api/AppModule",
       "kind": "imports",
@@ -132,6 +360,20 @@
         {
           "file": "src/app.module.ts",
           "line": 5
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:api/OrdersModule",
+      "kind": "contains",
+      "to": "controller:api/OrdersController",
+      "sites": [
+        {
+          "file": "src/orders/orders.module.ts",
+          "line": 8
         }
       ],
       "extractor": "nestjs",

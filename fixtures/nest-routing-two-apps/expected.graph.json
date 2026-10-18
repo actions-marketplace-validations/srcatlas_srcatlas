@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "generator": {
+    "name": "srcatlas",
+    "version": "0.0.0"
+  },
+  "repo": {},
+  "nodes": [
+    {
+      "id": "controller:twoapps/ShelfController",
+      "kind": "controller",
+      "name": "ShelfController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:twoapps",
+      "module": "module:twoapps/ShelfModule",
+      "source": {
+        "file": "src/shelf.module.ts",
+        "line": 3
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/shelf"
+      }
+    },
+    {
+      "id": "module:twoapps/ShelfModule",
+      "kind": "module",
+      "name": "ShelfModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:twoapps",
+      "module": null,
+      "source": {
+        "file": "src/shelf.module.ts",
+        "line": 8
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "package:twoapps",
+      "kind": "package",
+      "name": "twoapps",
+      "language": "typescript",
+      "framework": "node",
+      "package": "package:twoapps",
+      "module": null,
+      "source": {
+        "file": "package.json",
+        "line": 1
+      },
+      "extractor": "core",
+      "confidence": "certain",
+      "meta": {
+        "root": ".",
+        "version": "1.0.0"
+      }
+    },
+    {
+      "id": "route:twoapps/GET /shelf",
+      "kind": "route",
+      "name": "GET /shelf",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:twoapps",
+      "module": "module:twoapps/ShelfModule",
+      "source": {
+        "file": "src/shelf.module.ts",
+        "line": 5
+      },
+      "extractor": "nestjs",
+      "confidence": "inferred",
+      "meta": {
+        "handlerName": "list",
+        "method": "GET",
+        "path": "/shelf",
+        "type": "handler"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "controller:twoapps/ShelfController",
+      "kind": "handles",
+      "to": "route:twoapps/GET /shelf",
+      "sites": [
+        {
+          "file": "src/shelf.module.ts",
+          "line": 5
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "inferred",
+      "meta": {}
+    },
+    {
+      "from": "module:twoapps/ShelfModule",
+      "kind": "contains",
+      "to": "controller:twoapps/ShelfController",
+      "sites": [
+        {
+          "file": "src/shelf.module.ts",
+          "line": 8
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    }
+  ]
+}

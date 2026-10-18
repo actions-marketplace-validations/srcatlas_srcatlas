@@ -15,6 +15,9 @@ const FIXTURES = [
   "nest-dynamic",
   "nest-di-custom",
   "nest-di-resolution",
+  "nest-routing",
+  "nest-routing-prefix-env",
+  "nest-routing-two-apps",
 ];
 
 // Runs in this thread: the worker file only exists after a build.
