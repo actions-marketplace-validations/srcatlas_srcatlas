@@ -4,7 +4,7 @@ Gate: `docs/accuracy.md` section 7 ("DI feasibility spike" row and the M1 exit i
 
 ## Target
 
-- Repository: https://github.com/JustTunya/crwsync (public), commit `030ebf2e8f3288c019ebd1c5c827ebf026778304`.
+- Repository: <https://github.com/JustTunya/crwsync> (public), commit `030ebf2e8f3288c019ebd1c5c827ebf026778304`.
 - App: `apps/backend`, package name `@crwsync/backend`, NestJS 11.
 - Tier C (the maintainer's own project). The number is never printed as an accuracy figure (`docs/accuracy.md` sections 3 and 8). One app, one run: it shows the pipeline works on real code, not how accurate it is.
 
@@ -12,7 +12,7 @@ Gate: `docs/accuracy.md` section 7 ("DI feasibility spike" row and the M1 exit i
 
 Runtime oracle of `bench/oracles/nestjs-runtime` (v0), run on the built app:
 
-```
+```sh
 node bench/oracles/nestjs-runtime/dump.cjs <crwsync>/apps/backend dist/app.module.js AppModule > oracle.raw.json
 node bench/oracles/nestjs-runtime/convert.mjs oracle.raw.json <crwsync>/apps/backend @crwsync/backend --out oracle.graph.json
 ```
@@ -21,7 +21,7 @@ The build must be of the pinned commit with a clean working tree. What the oracl
 
 ## What is analysed
 
-```
+```sh
 srcatlas analyze <crwsync> --out actual.graph.json --report actual.report.json
 ```
 
@@ -29,7 +29,7 @@ of the whole repository, at the srcatlas commit recorded in the result file. Onl
 
 ## What is scored
 
-```
+```sh
 node bench/score/score.mjs oracle.graph.json actual.graph.json --package @crwsync/backend
 ```
 
@@ -42,7 +42,7 @@ node bench/score/score.mjs oracle.graph.json actual.graph.json --package @crwsyn
 ## Gate
 
 | Measure | Threshold | Source |
-|---|---|---|
+| --- | --- | --- |
 | Module recall | at least 0.90 | `docs/accuracy.md` section 7 |
 | Provider recall | at least 0.90 | `docs/accuracy.md` section 7 |
 | `injects` recall | at least 0.80 | `docs/research/di-spike.md` (set by the maintainer before the spike was scored; not raised here) |
