@@ -1,5 +1,11 @@
 # srcatlas
 
+## 0.4.0
+
+### Minor Changes
+
+- d7599f4: NestJS extractor: controllers, routes and the global prefix (N-R1 to N-R5, N-R8 to N-R10).
+
 ## 0.3.0
 
 ### Minor Changes
