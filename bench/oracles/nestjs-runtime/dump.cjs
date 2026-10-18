@@ -2,7 +2,8 @@
 // Usage: node dump.cjs <built-backend-dir> <entry-js relative to it> <ExportName> > oracle.json
 // Boots the app in preview mode (no provider instantiation, no external services) and
 // dumps modules, providers, controllers, injectables and constructor/property deps.
-// Output is runtime ground truth, not srcatlas schema; a scorer maps it. Names only, no paths.
+// Output is runtime ground truth, not srcatlas schema; convert.mjs maps it. Names only, no paths.
+// `scope`, `role` and `path` (controllers) were added for convert.mjs; the spike scorer ignores them.
 const path = require("node:path");
 const { createRequire } = require("node:module");
 
@@ -36,6 +37,18 @@ function stable(w) {
   return t === "<random-id>" ? `<random-id>:${name(w.metatype)}` : t;
 }
 
+// Duck-typed from the prototype, in the extractor's priority order (nestjs.md N-P1).
+const role = (m) => {
+  const p = m && m.prototype;
+  if (!p) return "other";
+  if (typeof p.canActivate === "function") return "guard";
+  if (typeof p.intercept === "function") return "interceptor";
+  if (typeof p.transform === "function") return "pipe";
+  if (typeof p.catch === "function") return "filter";
+  return "service";
+};
+const SCOPES = ["default", "transient", "request"];
+
 function deps(w) {
   const m = w.metatype;
   if (w.inject) return { ctor: w.inject.map((d) => name(d && d.token ? d.token : d)), props: [] };
@@ -62,13 +75,23 @@ function deps(w) {
     abortOnError: false,
     logger: false,
   });
-  const container = app.get(ModulesContainer);
+  // Nest 10 in preview mode returns null for app.get(ModulesContainer); the container itself is there.
+  const container = app.get(ModulesContainer) || app.container.getModules();
   const out = [];
   for (const [token, m] of container) {
     const n = m.metatype ? m.metatype.name : String(token);
     if (n === "InternalCoreModule") continue;
     const list = (map) =>
-      [...map.values()].map((w) => ({ token: stable(w), kind: kind(w), ...deps(w) }));
+      [...map.values()].map((w) => ({
+        token: stable(w),
+        kind: kind(w),
+        scope: SCOPES[w.scope] || "default",
+        role: role(w.metatype),
+        ...(w.metatype && Reflect.getMetadata("path", w.metatype) !== undefined
+          ? { path: Reflect.getMetadata("path", w.metatype) }
+          : {}),
+        ...deps(w),
+      }));
     out.push({
       module: n,
       dynamic: !!m.distance && token !== n && !!m.dynamicMetadata,
