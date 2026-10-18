@@ -1,0 +1,105 @@
+{
+  "base": {},
+  "edges": {
+    "added": [],
+    "changed": [],
+    "removed": []
+  },
+  "head": {},
+  "nodes": {
+    "added": [
+      {
+        "confidence": "certain",
+        "extractor": "nestjs",
+        "framework": "nestjs",
+        "id": "provider:web/Logger",
+        "kind": "provider",
+        "language": "typescript",
+        "meta": {
+          "providerType": "class",
+          "role": "service",
+          "scope": "default"
+        },
+        "module": null,
+        "name": "Logger",
+        "package": "package:web",
+        "source": {
+          "file": "src/logger.ts",
+          "line": 2
+        }
+      }
+    ],
+    "changed": [],
+    "moved": [
+      {
+        "from": {
+          "confidence": "certain",
+          "extractor": "nestjs",
+          "framework": "nestjs",
+          "id": "provider:api/ConfigService@src/legacy",
+          "kind": "provider",
+          "language": "typescript",
+          "meta": {
+            "providerType": "class",
+            "role": "service",
+            "scope": "default"
+          },
+          "module": null,
+          "name": "ConfigService",
+          "package": "package:api",
+          "source": {
+            "file": "src/legacy/config.service.ts",
+            "line": 3
+          }
+        },
+        "to": {
+          "confidence": "certain",
+          "extractor": "nestjs",
+          "framework": "nestjs",
+          "id": "provider:api/ConfigService@src/core",
+          "kind": "provider",
+          "language": "typescript",
+          "meta": {
+            "providerType": "class",
+            "role": "service",
+            "scope": "default"
+          },
+          "module": null,
+          "name": "ConfigService",
+          "package": "package:api",
+          "source": {
+            "file": "src/core/config.service.ts",
+            "line": 3
+          }
+        }
+      }
+    ],
+    "removed": [
+      {
+        "confidence": "certain",
+        "extractor": "nestjs",
+        "framework": "nestjs",
+        "id": "provider:api/Logger",
+        "kind": "provider",
+        "language": "typescript",
+        "meta": {
+          "providerType": "class",
+          "role": "service",
+          "scope": "default"
+        },
+        "module": null,
+        "name": "Logger",
+        "package": "package:api",
+        "source": {
+          "file": "src/logger.ts",
+          "line": 2
+        }
+      }
+    ]
+  },
+  "schemaVersion": 1,
+  "summary": {
+    "modules": 0,
+    "routes": 0
+  }
+}
