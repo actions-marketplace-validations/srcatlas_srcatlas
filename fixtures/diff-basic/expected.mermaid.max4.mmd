@@ -1,0 +1,13 @@
+flowchart LR
+  n0["BillingModule"]:::added
+  n1["AuditService"]:::changed
+  n2["OldCache"]:::removed
+  n3["OrdersService"]:::changed
+  more["+4 more"]:::context
+  n3 ==>|"injects"| n1
+  n3 -.->|"injects"| n2
+  classDef added fill:#d1fae5,stroke:#059669,color:#064e3b
+  classDef removed fill:#fee2e2,stroke:#dc2626,color:#7f1d1d,stroke-dasharray:4 3
+  classDef changed fill:#fef3c7,stroke:#d97706,color:#78350f
+  classDef moved fill:#e0e7ff,stroke:#4f46e5,color:#312e81
+  classDef context fill:#f3f4f6,stroke:#9ca3af,color:#374151
