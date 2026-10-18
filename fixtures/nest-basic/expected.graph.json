@@ -16,7 +16,7 @@
       "module": "module:api/OrdersModule",
       "source": {
         "file": "src/orders/orders.controller.ts",
-        "line": 3
+        "line": 4
       },
       "extractor": "nestjs",
       "confidence": "certain",
@@ -150,7 +150,7 @@
       "module": "module:api/OrdersModule",
       "source": {
         "file": "src/orders/orders.controller.ts",
-        "line": 10
+        "line": 13
       },
       "extractor": "nestjs",
       "confidence": "certain",
@@ -171,7 +171,7 @@
       "module": "module:api/OrdersModule",
       "source": {
         "file": "src/orders/orders.controller.ts",
-        "line": 5
+        "line": 8
       },
       "extractor": "nestjs",
       "confidence": "certain",
@@ -192,7 +192,7 @@
       "module": "module:api/OrdersModule",
       "source": {
         "file": "src/orders/orders.controller.ts",
-        "line": 7
+        "line": 10
       },
       "extractor": "nestjs",
       "confidence": "certain",
@@ -213,7 +213,7 @@
       "module": "module:api/OrdersModule",
       "source": {
         "file": "src/orders/orders.controller.ts",
-        "line": 9
+        "line": 12
       },
       "extractor": "nestjs",
       "confidence": "certain",
@@ -234,7 +234,7 @@
       "module": "module:api/OrdersModule",
       "source": {
         "file": "src/orders/orders.controller.ts",
-        "line": 6
+        "line": 9
       },
       "extractor": "nestjs",
       "confidence": "certain",
@@ -255,7 +255,7 @@
       "module": "module:api/OrdersModule",
       "source": {
         "file": "src/orders/orders.controller.ts",
-        "line": 8
+        "line": 11
       },
       "extractor": "nestjs",
       "confidence": "certain",
@@ -275,7 +275,7 @@
       "sites": [
         {
           "file": "src/orders/orders.controller.ts",
-          "line": 10
+          "line": 13
         }
       ],
       "extractor": "nestjs",
@@ -289,7 +289,7 @@
       "sites": [
         {
           "file": "src/orders/orders.controller.ts",
-          "line": 5
+          "line": 8
         }
       ],
       "extractor": "nestjs",
@@ -303,7 +303,7 @@
       "sites": [
         {
           "file": "src/orders/orders.controller.ts",
-          "line": 7
+          "line": 10
         }
       ],
       "extractor": "nestjs",
@@ -317,7 +317,7 @@
       "sites": [
         {
           "file": "src/orders/orders.controller.ts",
-          "line": 9
+          "line": 12
         }
       ],
       "extractor": "nestjs",
@@ -331,7 +331,7 @@
       "sites": [
         {
           "file": "src/orders/orders.controller.ts",
-          "line": 6
+          "line": 9
         }
       ],
       "extractor": "nestjs",
@@ -345,7 +345,21 @@
       "sites": [
         {
           "file": "src/orders/orders.controller.ts",
-          "line": 8
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:api/OrdersController",
+      "kind": "injects",
+      "to": "provider:api/OrdersService",
+      "sites": [
+        {
+          "file": "src/orders/orders.controller.ts",
+          "line": 6
         }
       ],
       "extractor": "nestjs",

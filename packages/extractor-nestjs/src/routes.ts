@@ -145,10 +145,19 @@ function readController(
   };
 }
 
+/** A controller node, for what other parts need from it (constructor injection, N-P2). */
+export interface ControllerRef {
+  id: string;
+  declaration: ClassDeclaration;
+  /** Index into the module list; absent when no module lists the controller. */
+  module?: number;
+}
+
 export interface Routes {
   nodes: Node[];
   edges: Edge[];
   report: ReportEntry[];
+  controllers: ControllerRef[];
 }
 
 function prefixed(
@@ -238,11 +247,17 @@ export function buildRoutes(input: {
     }
   }
 
+  const refs: ControllerRef[] = [];
   const seen = new Map<string, Site>();
   controllers.forEach((c, i) => {
     const id = ids[i] ?? "";
     const own = owner.get(`${c.file}#${c.name}`);
     const moduleId = own ? (moduleIds[own.module] ?? null) : null;
+    refs.push({
+      id,
+      declaration: c.cls,
+      ...(own ? { module: own.module } : {}),
+    });
     const source = { file: c.file, line: c.line };
     const normalized = (c.bases ?? [""]).map((b) => normalizeRoutePath(b));
     const sorted = [...new Set(normalized)].sort(byCodeUnit);
@@ -335,5 +350,5 @@ export function buildRoutes(input: {
       }
     }
   });
-  return { nodes, edges, report };
+  return { nodes, edges, report, controllers: refs };
 }

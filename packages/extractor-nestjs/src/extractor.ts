@@ -138,18 +138,6 @@ function extract(ctx: ExtractorContext<Project>): ExtractorResult {
       importsOf.set(e.from, [...(importsOf.get(e.from) ?? []), e.to]);
     }
   }
-  const providers = buildProviders({
-    pkg,
-    project: ctx.project,
-    ctx,
-    modules,
-    moduleIds: ids,
-    importsOf,
-  });
-  nodes.push(...providers.nodes);
-  edges.push(...providers.edges);
-  report.push(...providers.report);
-
   const routes = buildRoutes({
     pkg,
     project: ctx.project,
@@ -160,6 +148,19 @@ function extract(ctx: ExtractorContext<Project>): ExtractorResult {
   nodes.push(...routes.nodes);
   edges.push(...routes.edges);
   report.push(...routes.report);
+
+  const providers = buildProviders({
+    pkg,
+    project: ctx.project,
+    ctx,
+    modules,
+    moduleIds: ids,
+    importsOf,
+    controllers: routes.controllers,
+  });
+  nodes.push(...providers.nodes);
+  edges.push(...providers.edges);
+  report.push(...providers.report);
 
   const summary: Record<string, number> = { ...providers.summary };
   if (thirdParty > 0) summary["nest.ignored-third-party-modules"] = thirdParty;

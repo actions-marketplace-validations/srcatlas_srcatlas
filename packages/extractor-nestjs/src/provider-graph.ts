@@ -17,6 +17,7 @@ import {
   type Scope,
   scopeOf,
 } from "./providers.js";
+import type { ControllerRef } from "./routes.js";
 import { buildTokenTable, type Resolution, resolveToken } from "./tokens.js";
 
 // nestjs.md sections 3 and 4.2: provider nodes, their registrations in modules, and what they
@@ -119,6 +120,7 @@ export function buildProviders(input: {
   modules: ModuleInfo[];
   moduleIds: string[];
   importsOf: Map<string, string[]>;
+  controllers?: ControllerRef[];
 }): ProviderGraph {
   const { pkg, project, ctx, modules, moduleIds, importsOf } = input;
   const report: ReportEntry[] = [];
@@ -425,6 +427,12 @@ export function buildProviders(input: {
         if (target) inject(from, target, siteOf(target.node, ctx), own);
       }
     }
+  }
+  // N-P2: a controller injects like a provider, resolved from the module that lists it.
+  for (const c of input.controllers ?? []) {
+    const contexts = c.module === undefined ? [] : [moduleIds[c.module] ?? ""];
+    for (const i of readInjections(c.declaration, ctx))
+      inject(c.id, i.token, i.site, contexts);
   }
   return out;
 }

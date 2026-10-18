@@ -198,7 +198,7 @@ export class OrdersService {
 }
 ```
 
-Expected: `injects` OrdersService to PrismaService and to MailService, resolved with section 3. The site is the parameter.
+Expected: `injects` OrdersService to PrismaService and to MailService, resolved with section 3. The site is the parameter. The injecting class is a provider or a controller (`@Controller` from `@nestjs/common`, matched by import origin): `OrdersController` with `constructor(private readonly orders: OrdersService)` gives `injects` from the controller to OrdersService. A controller that is listed in no module is resolved from anywhere in the package, as an unregistered provider is. Gateways are added with their pattern group.
 
 #### N-P3 Injection by token (P0)
 
