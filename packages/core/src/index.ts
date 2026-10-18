@@ -1,5 +1,6 @@
 export * from "./builder.js";
 export * from "./config.js";
+export * from "./cycles.js";
 export * from "./diff-schema.js";
 export * from "./extractor.js";
 export * from "./ids.js";

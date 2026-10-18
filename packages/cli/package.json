@@ -42,6 +42,7 @@
     "@srcatlas/analyzer": "workspace:*",
     "@srcatlas/core": "workspace:*",
     "@srcatlas/differ": "workspace:*",
-    "@srcatlas/renderer": "workspace:*"
+    "@srcatlas/renderer": "workspace:*",
+    "@srcatlas/rules": "workspace:*"
   }
 }

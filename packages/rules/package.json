@@ -18,6 +18,10 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@srcatlas/core": "workspace:*"
+    "@srcatlas/core": "workspace:*",
+    "picomatch": "4.0.7"
+  },
+  "devDependencies": {
+    "@types/picomatch": "4.0.3"
   }
 }
