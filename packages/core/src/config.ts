@@ -26,7 +26,7 @@ const ruleBase = {
   minConfidence: confidence.optional(),
 };
 
-const Rule = z.discriminatedUnion("type", [
+export const Rule = z.discriminatedUnion("type", [
   z.strictObject({
     ...ruleBase,
     type: z.literal("forbidden-edge"),
@@ -61,6 +61,7 @@ const Rule = z.discriminatedUnion("type", [
     allowSkip: z.boolean().optional(),
   }),
 ]);
+export type Rule = z.infer<typeof Rule>;
 
 const extractorName = z.enum([
   "nestjs",

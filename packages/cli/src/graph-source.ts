@@ -93,7 +93,7 @@ function parseGraph(text: string): GraphFile | undefined {
   }
 }
 
-function readGraphFile(file: string, input: string): GraphFile {
+export function readGraphFile(file: string, input: string): GraphFile {
   const text = readFileSync(file, "utf8");
   let raw: unknown;
   try {
@@ -158,6 +158,13 @@ async function graphOfRef(ref: string, env: SourceEnv): Promise<GraphFile> {
   }
   writeOutputs([{ path: cacheFile, content: serializeGraph(graph) }]);
   return graph;
+}
+
+/** The working directory analysed in place and not written anywhere (`check` without a graph). */
+export function analyzeInMemory(
+  env: Pick<SourceEnv, "root" | "config" | "version">,
+): Promise<GraphFile> {
+  return analyze(env.root, { ...env, outDir: "" }, headCommit(env.root));
 }
 
 /**

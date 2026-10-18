@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { parseArgs } from "node:util";
 import { analyzeCommand } from "./analyze.js";
+import { checkCommand } from "./check.js";
 import { diffCommand } from "./diff.js";
 import { NotImplementedError, UsageError } from "./errors.js";
 import { initCommand } from "./init.js";
@@ -33,6 +34,10 @@ diff flags (srcatlas diff <base> <head>; an input is a git ref, a graph file, or
   --fail-on <cond>      exit 1 on new-cycle, new-cross-module-edge, removed-node, any-change (repeatable)
   --min-confidence <c>  certain, inferred (default), unresolved
   --max-nodes <n>       cap on nodes in the Mermaid graph (default 40)
+
+check flags (srcatlas check [graph]; without a graph, analyses first):
+  --format <f>          text (default), json, github
+  --min-confidence <c>  certain, inferred (default), unresolved
 
 Global flags:
   --config <file>   config file (default: srcatlas.config.ts in the root)
@@ -112,8 +117,11 @@ export async function run(argv: string[], io: Io): Promise<number> {
     if (!COMMANDS.includes(command)) {
       throw new UsageError(`unknown command "${command}"\n\n${HELP}`);
     }
-    // diff takes two inputs where the other commands take a path, so it runs in the working directory.
-    const root = resolve(io.cwd, command === "diff" ? "." : path);
+    // diff and check take inputs where the other commands take a path, so they run in the working directory.
+    const root = resolve(
+      io.cwd,
+      command === "diff" || command === "check" ? "." : path,
+    );
     // init writes the config, so it must work when the existing one is broken (with --force).
     if (command === "init") {
       return await initCommand(
@@ -137,6 +145,16 @@ export async function run(argv: string[], io: Io): Promise<number> {
       return await analyzeCommand(
         root,
         config,
+        { ...values, quiet: values.quiet },
+        version(),
+        io,
+      );
+    }
+    if (command === "check") {
+      return await checkCommand(
+        root,
+        config,
+        positionals.slice(1),
         { ...values, quiet: values.quiet },
         version(),
         io,

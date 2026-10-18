@@ -85,6 +85,9 @@ importers:
       '@srcatlas/renderer':
         specifier: workspace:*
         version: link:../renderer
+      '@srcatlas/rules':
+        specifier: workspace:*
+        version: link:../rules
 
   packages/core:
     dependencies:
@@ -127,6 +130,13 @@ importers:
       '@srcatlas/core':
         specifier: workspace:*
         version: link:../core
+      picomatch:
+        specifier: 4.0.7
+        version: 4.0.7
+    devDependencies:
+      '@types/picomatch':
+        specifier: 4.0.3
+        version: 4.0.3
 
 packages:
 

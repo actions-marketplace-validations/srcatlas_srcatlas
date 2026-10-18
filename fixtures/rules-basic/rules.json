@@ -1,0 +1,64 @@
+[
+  {
+    "edgeKinds": ["reads", "writes"],
+    "except": [
+      {
+        "from": "controller:api/HealthController"
+      },
+      {
+        "from": "controller:api/GhostController"
+      }
+    ],
+    "from": {
+      "kind": "controller"
+    },
+    "id": "controllers-not-direct-db",
+    "message": "Controllers must go through a service.",
+    "to": {
+      "kind": "model"
+    },
+    "type": "forbidden-edge"
+  },
+  {
+    "from": {
+      "module": "Orders*",
+      "role": "service"
+    },
+    "id": "orders-services-not-mail",
+    "severity": "warn",
+    "to": {
+      "file": "src/mail/**"
+    },
+    "type": "forbidden-edge"
+  },
+  {
+    "id": "no-module-cycles",
+    "over": "modules",
+    "type": "no-cycles"
+  },
+  {
+    "id": "no-package-cycles",
+    "over": "packages",
+    "type": "no-cycles"
+  },
+  {
+    "edgeKinds": ["reads"],
+    "from": {
+      "kind": "provider",
+      "package": "a*"
+    },
+    "id": "certain-provider-db",
+    "minConfidence": "certain",
+    "to": {
+      "kind": "model"
+    },
+    "type": "forbidden-edge"
+  },
+  {
+    "edgeKinds": ["calls"],
+    "id": "fan-out",
+    "max": 3,
+    "of": {},
+    "type": "max-fan-out"
+  }
+]

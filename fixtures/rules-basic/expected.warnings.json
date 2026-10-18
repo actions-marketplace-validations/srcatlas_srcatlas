@@ -1,0 +1,4 @@
+[
+  "rule controllers-not-direct-db: stale exception {\"from\":\"controller:api/GhostController\"}",
+  "rule fan-out: type max-fan-out is not supported yet, skipped"
+]

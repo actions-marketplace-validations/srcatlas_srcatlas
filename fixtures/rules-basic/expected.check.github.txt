@@ -1,0 +1,6 @@
+::error file=src/orders/orders.controller.ts,line=21,title=controllers-not-direct-db::Controllers must go through a service.
+::error file=src/orders/orders.controller.ts,line=27,title=controllers-not-direct-db::Controllers must go through a service.
+::warning file=src/orders/orders.service.ts,line=15,title=orders-services-not-mail::provider:api/OrdersService calls provider:api/MailerService is not allowed
+::error file=src/orders/orders.module.ts,line=5,title=no-module-cycles::cycle over modules: module:api/OrdersModule, module:api/UsersModule
+::error file=src/users/users.module.ts,line=6,title=no-module-cycles::cycle over modules: module:api/OrdersModule, module:api/UsersModule
+::error file=src/orders/orders.service.ts,line=11,title=certain-provider-db::provider:api/OrdersService reads model:api/Order is not allowed
