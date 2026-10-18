@@ -1,0 +1,36 @@
+{
+  "gate": "M1 exit check (#29), rules in bench/m1-exit/RULES.md",
+  "outcome": "pass",
+  "target": {
+    "repository": "https://github.com/JustTunya/crwsync",
+    "commit": "030ebf2e8f3288c019ebd1c5c827ebf026778304",
+    "package": "@crwsync/backend",
+    "tier": "C"
+  },
+  "tools": {
+    "srcatlasCommit": "e10f8914e7ae08555dfe14f7113ed1605eb7aabb",
+    "srcatlasVersion": "0.7.0",
+    "node": "v24.11.1",
+    "pnpm": "10.29.3",
+    "nestjs": "11.1.19",
+    "prisma": "7.7.0"
+  },
+  "thresholds": { "moduleRecall": 0.9, "providerRecall": 0.9, "injectsRecall": 0.8 },
+  "measured": {
+    "workingTree": { "moduleRecall": 1, "providerRecall": 1, "injectsRecall": 0.9036, "graphSha256": "693f18ec479e54a150bfd38dc70fef0afb1724dd3f192ac26cbf0b1933b1f09c" },
+    "cleanClone": { "moduleRecall": 1, "providerRecall": 1, "injectsRecall": 0.9036, "graphSha256": "65ced742c114394b19fef75cfb7a87a0b208e33d46bd61ce4803217f8cb2dd9f" }
+  },
+  "ungated": {
+    "controllerRecall": 1,
+    "containsRecall": 1,
+    "importsRecall": 0.4902
+  },
+  "counts": { "oracleNodes": 80, "oracleEdges": 237, "injectsTruth": 83, "injectsFound": 75, "modulesTruth": 22, "providersTruth": 34 },
+  "determinism": {
+    "workflow": ".github/workflows/determinism.yml",
+    "run": 39127059416,
+    "graphSha256": "65ced742c114394b19fef75cfb7a87a0b208e33d46bd61ce4803217f8cb2dd9f",
+    "systems": ["ubuntu-latest", "macos-latest", "windows-latest"],
+    "note": "equal to the local clean-clone graph above"
+  }
+}

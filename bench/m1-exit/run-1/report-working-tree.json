@@ -1,0 +1,239 @@
+{
+  "reportVersion": 1,
+  "counts": {
+    "errors": 0,
+    "warnings": 8,
+    "infos": 13,
+    "parseErrors": 0,
+    "unresolved": 8
+  },
+  "entries": [
+    {
+      "level": "info",
+      "code": "nest.unregistered-provider",
+      "message": "JwtAuthGuard is not listed in any module",
+      "extractor": "nestjs",
+      "site": {
+        "file": "apps/backend/src/common/guards/jwt-auth.guard.ts",
+        "line": 7
+      }
+    },
+    {
+      "level": "info",
+      "code": "nest.unregistered-provider",
+      "message": "OwnershipGuard is not listed in any module",
+      "extractor": "nestjs",
+      "site": {
+        "file": "apps/backend/src/common/guards/ownership.guard.ts",
+        "line": 5
+      }
+    },
+    {
+      "level": "info",
+      "code": "nest.unregistered-provider",
+      "message": "RolesGuard is not listed in any module",
+      "extractor": "nestjs",
+      "site": {
+        "file": "apps/backend/src/common/guards/roles.guard.ts",
+        "line": 7
+      }
+    },
+    {
+      "level": "info",
+      "code": "nest.unregistered-provider",
+      "message": "TimeoutInterceptor is not listed in any module",
+      "extractor": "nestjs",
+      "site": {
+        "file": "apps/backend/src/common/interceptors/timeout.interceptor.ts",
+        "line": 4
+      }
+    },
+    {
+      "level": "info",
+      "code": "nest.unregistered-provider",
+      "message": "HasPendingInviteGuard is not listed in any module",
+      "extractor": "nestjs",
+      "site": {
+        "file": "apps/backend/src/workspace/guards/ws-invite.guard.ts",
+        "line": 8
+      }
+    },
+    {
+      "level": "info",
+      "code": "nest.unregistered-provider",
+      "message": "IsMemberGuard is not listed in any module",
+      "extractor": "nestjs",
+      "site": {
+        "file": "apps/backend/src/workspace/guards/ws-member.guard.ts",
+        "line": 8
+      }
+    },
+    {
+      "level": "info",
+      "code": "nest.unregistered-provider",
+      "message": "WorkspaceRolesGuard is not listed in any module",
+      "extractor": "nestjs",
+      "site": {
+        "file": "apps/backend/src/workspace/guards/ws-roles.guard.ts",
+        "line": 6
+      }
+    },
+    {
+      "level": "warning",
+      "code": "nest.unresolved-provider-token",
+      "message": "module AppModule: a provider could not be named statically",
+      "extractor": "nestjs",
+      "site": {
+        "file": "apps/backend/src/app.module.ts",
+        "line": 88
+      }
+    },
+    {
+      "level": "warning",
+      "code": "nest.unresolved-provider-token",
+      "message": "module AppModule: a provider could not be named statically",
+      "extractor": "nestjs",
+      "site": {
+        "file": "apps/backend/src/app.module.ts",
+        "line": 89
+      }
+    },
+    {
+      "level": "warning",
+      "code": "nest.unresolved-provider-token",
+      "message": "module AppModule: a provider could not be named statically",
+      "extractor": "nestjs",
+      "site": {
+        "file": "apps/backend/src/app.module.ts",
+        "line": 90
+      }
+    },
+    {
+      "level": "warning",
+      "code": "nest.unresolved-provider-token",
+      "message": "token (unevaluable) has no provider",
+      "extractor": "nestjs",
+      "site": {
+        "file": "apps/backend/src/common/guards/ownership.guard.ts",
+        "line": 7
+      }
+    },
+    {
+      "level": "warning",
+      "code": "nest.unresolved-provider-token",
+      "message": "token (unevaluable) has no provider",
+      "extractor": "nestjs",
+      "site": {
+        "file": "apps/backend/src/common/interceptors/timeout.interceptor.ts",
+        "line": 6
+      }
+    },
+    {
+      "level": "info",
+      "code": "prisma.raw-query",
+      "message": "$queryRaw is not turned into an edge",
+      "extractor": "prisma",
+      "site": {
+        "file": "apps/backend/src/search/search.service.ts",
+        "line": 66
+      }
+    },
+    {
+      "level": "info",
+      "code": "prisma.raw-query",
+      "message": "$queryRaw is not turned into an edge",
+      "extractor": "prisma",
+      "site": {
+        "file": "apps/backend/src/search/search.service.ts",
+        "line": 77
+      }
+    },
+    {
+      "level": "info",
+      "code": "prisma.raw-query",
+      "message": "$queryRaw is not turned into an edge",
+      "extractor": "prisma",
+      "site": {
+        "file": "apps/backend/src/search/search.service.ts",
+        "line": 87
+      }
+    },
+    {
+      "level": "info",
+      "code": "prisma.raw-query",
+      "message": "$queryRaw is not turned into an edge",
+      "extractor": "prisma",
+      "site": {
+        "file": "apps/backend/src/search/search.service.ts",
+        "line": 95
+      }
+    },
+    {
+      "level": "info",
+      "code": "prisma.raw-query",
+      "message": "$queryRaw is not turned into an edge",
+      "extractor": "prisma",
+      "site": {
+        "file": "apps/backend/src/workspace/workspace.service.ts",
+        "line": 551
+      }
+    },
+    {
+      "level": "info",
+      "code": "prisma.raw-query",
+      "message": "$queryRaw is not turned into an edge",
+      "extractor": "prisma",
+      "site": {
+        "file": "apps/backend/src/workspace/workspace.service.ts",
+        "line": 572
+      }
+    },
+    {
+      "level": "warning",
+      "code": "prisma.unknown-model-access",
+      "message": "no model matches the delegate logger",
+      "extractor": "prisma",
+      "site": {
+        "file": "apps/backend/src/prisma/prisma.service.ts",
+        "line": 47
+      }
+    },
+    {
+      "level": "warning",
+      "code": "prisma.unknown-model-access",
+      "message": "no model matches the delegate logger",
+      "extractor": "prisma",
+      "site": {
+        "file": "apps/backend/src/prisma/prisma.service.ts",
+        "line": 52
+      }
+    },
+    {
+      "level": "warning",
+      "code": "prisma.unknown-model-access",
+      "message": "no model matches the delegate logger",
+      "extractor": "prisma",
+      "site": {
+        "file": "apps/backend/src/prisma/prisma.service.ts",
+        "line": 56
+      }
+    }
+  ],
+  "summary": {
+    "nest.ignored-third-party-injections": 19,
+    "nest.ignored-third-party-modules": 17
+  },
+  "timings": {
+    "@crwsync/backend": {
+      "nestjs": 911,
+      "prisma": 216
+    },
+    "@crwsync/dash": {},
+    "@crwsync/demo": {},
+    "@crwsync/i18n": {},
+    "@crwsync/styles": {},
+    "@crwsync/templates": {},
+    "@crwsync/types": {},
+    "@crwsync/web": {}
+  }
+}

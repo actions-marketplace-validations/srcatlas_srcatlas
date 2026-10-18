@@ -46,3 +46,7 @@ On one real app (crwsync `apps/backend`, `030ebf2`) the provisional extractor re
 What this does not show: it is a single app, it is the maintainer's own (tier C, not part of any published number), and the extractor was shaped around what that app uses. The 9 missed `injects` edges are known and map to documented patterns: `@InjectQueue` (N-Q2), guards reachable only through `@UseGuards`, and inheritance of constructor injection (N-P9). M1 must handle them, and the tier B gates in `docs/accuracy.md` section 7 still apply to other apps.
 
 Dependency: `ts-morph` approved by the maintainer for the spike (`bench/spike-di`) and for the analyser, as named in CLAUDE.md section 4.
+
+## M1 exit check
+
+The product extractor was scored on the same app and commit under pre-registered rules: module recall 1.00, provider recall 1.00, `injects` recall 0.9036, byte-identical graphs on three systems. See `bench/m1-exit/RESULT.md`.
