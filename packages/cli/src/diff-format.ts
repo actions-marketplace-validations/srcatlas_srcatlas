@@ -2,9 +2,40 @@ import type { DiffFile } from "@srcatlas/core";
 import { formatSummary } from "@srcatlas/differ";
 import { renderMermaid } from "@srcatlas/renderer";
 
+/** Items shown per list in the comment (docs/cli.md 3.4.2). */
+const LIST_CAP = 50;
+
 const hasEntries = (d: DiffFile): boolean =>
   Object.values(d.nodes).some((l) => l.length > 0) ||
   Object.values(d.edges).some((l) => l.length > 0);
+
+/**
+ * A Markdown code span that holds `s` whatever it contains: a delimiter longer than the
+ * longest run of backticks inside, padded when `s` starts or ends with one, and line breaks
+ * turned into spaces. Names from analysed code are untrusted (docs/cli.md 3.4.2).
+ */
+function code(s: string): string {
+  const text = s.replaceAll(/\r\n|\r|\n/g, " ");
+  const longest = Math.max(
+    0,
+    ...[...text.matchAll(/`+/g)].map((m) => m[0].length),
+  );
+  const fence = "`".repeat(longest + 1);
+  const pad = text.startsWith("`") || text.endsWith("`") ? " " : "";
+  return `${fence}${pad}${text}${pad}${fence}`;
+}
+
+/** An edge kind is plain text when it looks like one, a code span otherwise. */
+const kindText = (kind: string): string =>
+  /^[a-z_]+$/.test(kind) ? kind : code(kind);
+
+function list(title: string, items: string[]): string {
+  const shown = items.slice(0, LIST_CAP).map((i) => `- ${i}`);
+  if (items.length > LIST_CAP) {
+    shown.push(`- and ${items.length - LIST_CAP} more`);
+  }
+  return `${title}\n\n${shown.join("\n")}`;
+}
 
 /** `--format text` (docs/cli.md 3.4.2). For people; scripts use json. */
 export function formatText(d: DiffFile): string {
@@ -53,16 +84,22 @@ export function formatMarkdown(d: DiffFile, maxNodes: number): string {
     ].join("\n"),
   ];
   if (d.crossModuleEdges.length > 0) {
-    const items = d.crossModuleEdges.map(
-      (x) => `- \`${x.from}\` ${x.kind} \`${x.to}\``,
+    blocks.push(
+      list(
+        "New cross-module edges:",
+        d.crossModuleEdges.map(
+          (x) => `${code(x.from)} ${kindText(x.kind)} ${code(x.to)}`,
+        ),
+      ),
     );
-    blocks.push(`New cross-module edges:\n\n${items.join("\n")}`);
   }
   if (d.cycles.length > 0) {
-    const items = d.cycles.map(
-      (c) => `- ${c.kind}: ${c.members.map((m) => `\`${m}\``).join(", ")}`,
+    blocks.push(
+      list(
+        "New cycles:",
+        d.cycles.map((c) => `${c.kind}: ${c.members.map(code).join(", ")}`),
+      ),
     );
-    blocks.push(`New cycles:\n\n${items.join("\n")}`);
   }
   blocks.push(`\`\`\`mermaid\n${renderMermaid(d, { maxNodes })}\`\`\``);
   return `${blocks.join("\n\n")}\n`;

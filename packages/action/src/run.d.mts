@@ -3,10 +3,11 @@ import type { PostCommentIo, PullRequestEvent } from "./post-comment.mjs";
 export interface RunIo {
   env: Record<string, string | undefined>;
   readEvent: () => PullRequestEvent;
-  /** Runs a program with an argument list, without a shell. */
+  /** Runs a program with an argument list and the given environment, without a shell. */
   spawn: (
     command: string,
     args: string[],
+    env: Record<string, string | undefined>,
   ) => { status: number | null; stdout: string; error?: Error };
   postComment: (io: PostCommentIo) => Promise<unknown>;
   fetch: PostCommentIo["fetch"];

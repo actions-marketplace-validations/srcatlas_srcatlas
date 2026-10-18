@@ -24,6 +24,7 @@ function setup(over: {
   error?: Error;
 }) {
   const spawned: { command: string; args: string[] }[] = [];
+  const envs: Record<string, string | undefined>[] = [];
   const posted: PostCommentIo[] = [];
   const logs: string[] = [];
   const io: RunIo = {
@@ -34,8 +35,9 @@ function setup(over: {
       ...over.env,
     },
     readEvent: () => over.event ?? event(),
-    spawn: (command, args) => {
+    spawn: (command, args, childEnv) => {
       spawned.push({ command, args });
+      envs.push(childEnv);
       return {
         status: over.status === undefined ? 0 : over.status,
         stdout: over.stdout ?? "BODY",
@@ -50,7 +52,7 @@ function setup(over: {
     appendSummary: () => {},
     log: (l) => logs.push(l),
   };
-  return { io, spawned, posted, logs };
+  return { io, spawned, envs, posted, logs };
 }
 
 describe("runAction", () => {
@@ -111,6 +113,18 @@ describe("runAction", () => {
       "--config-ref",
       BASE,
     ]);
+  });
+
+  it("does not give the token to the command, whose config may run code", async () => {
+    const { io, envs, posted } = setup({
+      env: { GITHUB_TOKEN: "t0k", SRCATLAS_COMMENT: "true" },
+    });
+    await runAction(io);
+    expect(envs).toHaveLength(1);
+    expect(envs[0]).not.toHaveProperty("GITHUB_TOKEN");
+    expect(envs[0]?.SRCATLAS_COMMENT).toBe("true");
+    // The comment step still gets it.
+    expect(posted[0]?.env.GITHUB_TOKEN).toBe("t0k");
   });
 
   it("does not use --config-ref for a pull request from the same repository", async () => {
