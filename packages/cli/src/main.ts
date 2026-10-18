@@ -38,6 +38,9 @@ diff flags (srcatlas diff <base> <head>; an input is a git ref, a graph file, or
 check flags (srcatlas check [graph]; without a graph, analyses first):
   --format <f>          text (default), json, github
   --min-confidence <c>  certain, inferred (default), unresolved
+  --accepted <file>     accepted-violations file (default srcatlas.accepted.json)
+  --accept              write the accepted-violations file: create it, or drop entries that no longer occur
+  --add                 with --accept: also record violations that are not in the file
 
 Global flags:
   --config <file>   config file (default: srcatlas.config.ts in the root)
@@ -93,6 +96,9 @@ export async function run(argv: string[], io: Io): Promise<number> {
         "fail-on": { type: "string", multiple: true },
         "min-confidence": { type: "string" },
         "max-nodes": { type: "string" },
+        accepted: { type: "string" },
+        accept: { type: "boolean" },
+        add: { type: "boolean" },
         yes: { type: "boolean", short: "y" },
         "no-workflow": { type: "boolean" },
         force: { type: "boolean" },
