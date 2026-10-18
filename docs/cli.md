@@ -127,6 +127,18 @@ Semantics are in `docs/schema.md` section 13 (moves, cycles, cross-module edges)
 
 Errors (exit 2): unknown ref, ref not reachable (shallow clone: message tells the user to use `fetch-depth: 0` or pass a graph file), `schemaVersion` mismatch between files.
 
+#### 3.4.1 Mermaid mini-graph
+
+`--format mermaid` prints, and `--format markdown` embeds in a fenced `mermaid` block, a flowchart of the **changed neighbourhood**. The renderer (`renderMermaid(diff, { maxNodes })` in `packages/renderer`) reads only the diff file.
+
+- **Nodes.** Every node in `nodes.added`, `nodes.removed`, `nodes.changed` (the `after` node) and `nodes.moved` (the `to` node), plus every endpoint of an edge in `edges.added`, `edges.removed` and `edges.changed` (the `after` edge). An endpoint that is not in a node list is **context**: the diff file has no record of it beyond its ID, so its label is the ID.
+- **Classes.** `added`, `removed`, `changed`, `moved`, `context`, each with a fixed `classDef`. Labels are the node `name`.
+- **Edges.** `-->` added, `-.->` removed, `==>` changed. The label is the edge kind, in quotes. An edge is drawn only if both endpoints are shown.
+- **Cap.** Each node has a weight: 1 if it is in a node list, plus 1 for every listed edge that touches it. When there are more nodes than `--max-nodes`, the highest weights are kept, ties by node ID in code-unit order, and one extra context node `+N more` (N = nodes left out) is added. Edges to left-out nodes are not drawn.
+- **Names.** Nodes are `n0`, `n1`, … in code-unit order of their IDs, so the text is deterministic. In labels `#`, `&`, `"`, `<`, `>` and `|` are written as Mermaid entity codes (`#35;`, `#amp;`, `#quot;`, `#lt;`, `#gt;`, `#124;`).
+- **Empty diff.** A diff with no node and no edge entries renders as an empty string, so the Action has nothing to post.
+- `--max-nodes` must be a positive integer.
+
 ### 3.5 `srcatlas check [graph]` (P0)
 
 Evaluates the rules from config against a graph (default: analyses first).
