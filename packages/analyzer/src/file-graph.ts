@@ -17,7 +17,7 @@ const isUnder = (path: string, root: string): boolean =>
   root === "." || path.startsWith(`${root}/`);
 
 /** The package that owns a repo-relative path: the one with the longest matching root. */
-function ownerOf(
+export function ownerOf(
   path: string,
   workspace: WorkspacePackage[],
 ): WorkspacePackage | undefined {
