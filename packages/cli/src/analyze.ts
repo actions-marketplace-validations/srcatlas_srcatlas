@@ -1,4 +1,3 @@
-import { execFileSync } from "node:child_process";
 import { relative, resolve } from "node:path";
 import {
   analyzeRepo,
@@ -7,6 +6,7 @@ import {
 } from "@srcatlas/analyzer";
 import { type Config, serializeGraph } from "@srcatlas/core";
 import { UsageError } from "./errors.js";
+import { headCommit } from "./graph-source.js";
 
 export interface AnalyzeFlags {
   out?: string | undefined;
@@ -22,21 +22,6 @@ interface Io {
   out: (s: string) => void;
   err: (s: string) => void;
   env?: Record<string, string | undefined> | undefined;
-}
-
-/** The HEAD commit, or undefined outside git. Local only: no network. */
-function headCommit(root: string): string | undefined {
-  try {
-    const sha = execFileSync("git", ["rev-parse", "HEAD"], {
-      cwd: root,
-      stdio: ["ignore", "pipe", "ignore"],
-    })
-      .toString()
-      .trim();
-    return /^[0-9a-f]{40}$/.test(sha) ? sha : undefined;
-  } catch {
-    return undefined;
-  }
 }
 
 function parseWorkers(flag: string | undefined, env: string | undefined) {
