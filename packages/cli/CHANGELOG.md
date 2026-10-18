@@ -1,5 +1,11 @@
 # srcatlas
 
+## 0.7.0
+
+### Minor Changes
+
+- 8b2a619: The NestJS extractor now emits `injects` edges from controllers to the providers their constructors ask for.
+
 ## 0.6.0
 
 ### Minor Changes
