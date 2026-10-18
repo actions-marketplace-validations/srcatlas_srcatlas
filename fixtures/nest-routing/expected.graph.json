@@ -1,0 +1,1250 @@
+{
+  "schemaVersion": 1,
+  "generator": {
+    "name": "srcatlas",
+    "version": "0.0.0"
+  },
+  "repo": {},
+  "nodes": [
+    {
+      "id": "controller:routing/ArchiveReportsController",
+      "kind": "controller",
+      "name": "ArchiveReportsController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": "module:routing/ReportsModule",
+      "source": {
+        "file": "src/reports/reports.controller.ts",
+        "line": 9
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/reports"
+      }
+    },
+    {
+      "id": "controller:routing/AssetsController",
+      "kind": "controller",
+      "name": "AssetsController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": "module:routing/FleetModule",
+      "source": {
+        "file": "src/fleet/assets.controller.ts",
+        "line": 3
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/assets"
+      }
+    },
+    {
+      "id": "controller:routing/CatalogController",
+      "kind": "controller",
+      "name": "CatalogController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": "module:routing/AppModule",
+      "source": {
+        "file": "src/catalog/catalog.controller.ts",
+        "line": 3
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/catalog",
+        "nestjs.host": "api.example.com"
+      }
+    },
+    {
+      "id": "controller:routing/FleetController",
+      "kind": "controller",
+      "name": "FleetController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": "module:routing/FleetModule",
+      "source": {
+        "file": "src/fleet/fleet.controller.ts",
+        "line": 3
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/fleet",
+        "nestjs.basePaths": ["/fleet", "/vehicles"]
+      }
+    },
+    {
+      "id": "controller:routing/HealthController",
+      "kind": "controller",
+      "name": "HealthController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": "module:routing/AppModule",
+      "source": {
+        "file": "src/health/health.controller.ts",
+        "line": 3
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/"
+      }
+    },
+    {
+      "id": "controller:routing/ListenerController",
+      "kind": "controller",
+      "name": "ListenerController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": "module:routing/ReportsModule",
+      "source": {
+        "file": "src/reports/listener.controller.ts",
+        "line": 4
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/listener"
+      }
+    },
+    {
+      "id": "controller:routing/MixedController",
+      "kind": "controller",
+      "name": "MixedController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": "module:routing/ReportsModule",
+      "source": {
+        "file": "src/reports/mixed.controller.ts",
+        "line": 8
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/mixed"
+      }
+    },
+    {
+      "id": "controller:routing/OrphanController",
+      "kind": "controller",
+      "name": "OrphanController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": null,
+      "source": {
+        "file": "src/orphans/orphan.controller.ts",
+        "line": 4
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/orphans"
+      }
+    },
+    {
+      "id": "controller:routing/ReportsController",
+      "kind": "controller",
+      "name": "ReportsController",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": "module:routing/ReportsModule",
+      "source": {
+        "file": "src/reports/reports.controller.ts",
+        "line": 3
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "basePath": "/reports"
+      }
+    },
+    {
+      "id": "module:routing/AppModule",
+      "kind": "module",
+      "name": "AppModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": null,
+      "source": {
+        "file": "src/app.module.ts",
+        "line": 7
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "module:routing/FleetModule",
+      "kind": "module",
+      "name": "FleetModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": null,
+      "source": {
+        "file": "src/fleet/fleet.module.ts",
+        "line": 5
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "module:routing/ReportsModule",
+      "kind": "module",
+      "name": "ReportsModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": null,
+      "source": {
+        "file": "src/reports/reports.module.ts",
+        "line": 9
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "package:routing",
+      "kind": "package",
+      "name": "routing",
+      "language": "typescript",
+      "framework": "node",
+      "package": "package:routing",
+      "module": null,
+      "source": {
+        "file": "package.json",
+        "line": 1
+      },
+      "extractor": "core",
+      "confidence": "certain",
+      "meta": {
+        "root": ".",
+        "version": "1.0.0"
+      }
+    },
+    {
+      "id": "route:routing/ALL /api/catalog/any",
+      "kind": "route",
+      "name": "ALL /api/catalog/any",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": "module:routing/AppModule",
+      "source": {
+        "file": "src/catalog/catalog.controller.ts",
+        "line": 8
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "handlerName": "any",
+        "method": "ALL",
+        "path": "/api/catalog/any",
+        "type": "handler"
+      }
+    },
+    {
+      "id": "route:routing/GET /api/assets/files/*",
+      "kind": "route",
+      "name": "GET /api/assets/files/*",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": "module:routing/FleetModule",
+      "source": {
+        "file": "src/fleet/assets.controller.ts",
+        "line": 5
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "handlerName": "anyFile",
+        "method": "GET",
+        "path": "/api/assets/files/*",
+        "type": "handler"
+      }
+    },
+    {
+      "id": "route:routing/GET /api/assets/files/*rest",
+      "kind": "route",
+      "name": "GET /api/assets/files/*rest",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": "module:routing/FleetModule",
+      "source": {
+        "file": "src/fleet/assets.controller.ts",
+        "line": 6
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "handlerName": "namedFile",
+        "method": "GET",
+        "path": "/api/assets/files/*rest",
+        "type": "handler"
+      }
+    },
+    {
+      "id": "route:routing/GET /api/catalog",
+      "kind": "route",
+      "name": "GET /api/catalog",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": "module:routing/AppModule",
+      "source": {
+        "file": "src/catalog/catalog.controller.ts",
+        "line": 5
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "handlerName": "list",
+        "method": "GET",
+        "path": "/api/catalog",
+        "type": "handler"
+      }
+    },
+    {
+      "id": "route:routing/GET /api/catalog/events",
+      "kind": "route",
+      "name": "GET /api/catalog/events",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": "module:routing/AppModule",
+      "source": {
+        "file": "src/catalog/catalog.controller.ts",
+        "line": 11
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "handlerName": "events",
+        "method": "GET",
+        "path": "/api/catalog/events",
+        "type": "handler"
+      }
+    },
+    {
+      "id": "route:routing/GET /api/catalog/latest",
+      "kind": "route",
+      "name": "GET /api/catalog/latest",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": "module:routing/AppModule",
+      "source": {
+        "file": "src/catalog/catalog.controller.ts",
+        "line": 7
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "handlerName": "latest",
+        "method": "GET",
+        "path": "/api/catalog/latest",
+        "type": "handler"
+      }
+    },
+    {
+      "id": "route:routing/GET /api/catalog/recent",
+      "kind": "route",
+      "name": "GET /api/catalog/recent",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": "module:routing/AppModule",
+      "source": {
+        "file": "src/catalog/catalog.controller.ts",
+        "line": 7
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "handlerName": "latest",
+        "method": "GET",
+        "path": "/api/catalog/recent",
+        "type": "handler"
+      }
+    },
+    {
+      "id": "route:routing/GET /api/catalog/search/:term",
+      "kind": "route",
+      "name": "GET /api/catalog/search/:term",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": "module:routing/AppModule",
+      "source": {
+        "file": "src/catalog/catalog.controller.ts",
+        "line": 6
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "handlerName": "search",
+        "method": "GET",
+        "path": "/api/catalog/search/:term",
+        "type": "handler"
+      }
+    },
+    {
+      "id": "route:routing/GET /api/fleet/:id",
+      "kind": "route",
+      "name": "GET /api/fleet/:id",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": "module:routing/FleetModule",
+      "source": {
+        "file": "src/fleet/fleet.controller.ts",
+        "line": 6
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "handlerName": "one",
+        "method": "GET",
+        "path": "/api/fleet/:id",
+        "type": "handler"
+      }
+    },
+    {
+      "id": "route:routing/GET /api/fleet/active",
+      "kind": "route",
+      "name": "GET /api/fleet/active",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": "module:routing/FleetModule",
+      "source": {
+        "file": "src/fleet/fleet.controller.ts",
+        "line": 5
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "handlerName": "many",
+        "method": "GET",
+        "path": "/api/fleet/active",
+        "type": "handler"
+      }
+    },
+    {
+      "id": "route:routing/GET /api/fleet/all",
+      "kind": "route",
+      "name": "GET /api/fleet/all",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": "module:routing/FleetModule",
+      "source": {
+        "file": "src/fleet/fleet.controller.ts",
+        "line": 5
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "handlerName": "many",
+        "method": "GET",
+        "path": "/api/fleet/all",
+        "type": "handler"
+      }
+    },
+    {
+      "id": "route:routing/GET /api/listener",
+      "kind": "route",
+      "name": "GET /api/listener",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": "module:routing/ReportsModule",
+      "source": {
+        "file": "src/reports/listener.controller.ts",
+        "line": 6
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "handlerName": "status",
+        "method": "GET",
+        "path": "/api/listener",
+        "type": "handler"
+      }
+    },
+    {
+      "id": "route:routing/GET /api/mixed/aliased",
+      "kind": "route",
+      "name": "GET /api/mixed/aliased",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": "module:routing/ReportsModule",
+      "source": {
+        "file": "src/reports/mixed.controller.ts",
+        "line": 10
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "handlerName": "viaAlias",
+        "method": "GET",
+        "path": "/api/mixed/aliased",
+        "type": "handler"
+      }
+    },
+    {
+      "id": "route:routing/GET /api/orphans",
+      "kind": "route",
+      "name": "GET /api/orphans",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": null,
+      "source": {
+        "file": "src/orphans/orphan.controller.ts",
+        "line": 6
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "handlerName": "list",
+        "method": "GET",
+        "path": "/api/orphans",
+        "type": "handler"
+      }
+    },
+    {
+      "id": "route:routing/GET /api/reports/daily",
+      "kind": "route",
+      "name": "GET /api/reports/daily",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": "module:routing/ReportsModule",
+      "source": {
+        "file": "src/reports/reports.controller.ts",
+        "line": 5
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "handlerName": "daily",
+        "method": "GET",
+        "path": "/api/reports/daily",
+        "type": "handler"
+      }
+    },
+    {
+      "id": "route:routing/GET /api/vehicles/:id",
+      "kind": "route",
+      "name": "GET /api/vehicles/:id",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": "module:routing/FleetModule",
+      "source": {
+        "file": "src/fleet/fleet.controller.ts",
+        "line": 6
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "handlerName": "one",
+        "method": "GET",
+        "path": "/api/vehicles/:id",
+        "type": "handler"
+      }
+    },
+    {
+      "id": "route:routing/GET /api/vehicles/active",
+      "kind": "route",
+      "name": "GET /api/vehicles/active",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": "module:routing/FleetModule",
+      "source": {
+        "file": "src/fleet/fleet.controller.ts",
+        "line": 5
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "handlerName": "many",
+        "method": "GET",
+        "path": "/api/vehicles/active",
+        "type": "handler"
+      }
+    },
+    {
+      "id": "route:routing/GET /api/vehicles/all",
+      "kind": "route",
+      "name": "GET /api/vehicles/all",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": "module:routing/FleetModule",
+      "source": {
+        "file": "src/fleet/fleet.controller.ts",
+        "line": 5
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "handlerName": "many",
+        "method": "GET",
+        "path": "/api/vehicles/all",
+        "type": "handler"
+      }
+    },
+    {
+      "id": "route:routing/GET /health",
+      "kind": "route",
+      "name": "GET /health",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": "module:routing/AppModule",
+      "source": {
+        "file": "src/health/health.controller.ts",
+        "line": 5
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "handlerName": "check",
+        "method": "GET",
+        "path": "/health",
+        "type": "handler"
+      }
+    },
+    {
+      "id": "route:routing/GET /ping",
+      "kind": "route",
+      "name": "GET /ping",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": "module:routing/AppModule",
+      "source": {
+        "file": "src/health/health.controller.ts",
+        "line": 7
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "handlerName": "ping",
+        "method": "GET",
+        "path": "/ping",
+        "type": "handler"
+      }
+    },
+    {
+      "id": "route:routing/HEAD /api/catalog/probe",
+      "kind": "route",
+      "name": "HEAD /api/catalog/probe",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": "module:routing/AppModule",
+      "source": {
+        "file": "src/catalog/catalog.controller.ts",
+        "line": 10
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "handlerName": "probe",
+        "method": "HEAD",
+        "path": "/api/catalog/probe",
+        "type": "handler"
+      }
+    },
+    {
+      "id": "route:routing/OPTIONS /api/catalog/opts",
+      "kind": "route",
+      "name": "OPTIONS /api/catalog/opts",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": "module:routing/AppModule",
+      "source": {
+        "file": "src/catalog/catalog.controller.ts",
+        "line": 9
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "handlerName": "options",
+        "method": "OPTIONS",
+        "path": "/api/catalog/opts",
+        "type": "handler"
+      }
+    },
+    {
+      "id": "route:routing/POST /api/health",
+      "kind": "route",
+      "name": "POST /api/health",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": "module:routing/AppModule",
+      "source": {
+        "file": "src/health/health.controller.ts",
+        "line": 6
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "handlerName": "poke",
+        "method": "POST",
+        "path": "/api/health",
+        "type": "handler"
+      }
+    },
+    {
+      "id": "route:routing/POST /ping",
+      "kind": "route",
+      "name": "POST /ping",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:routing",
+      "module": "module:routing/AppModule",
+      "source": {
+        "file": "src/health/health.controller.ts",
+        "line": 8
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "handlerName": "pong",
+        "method": "POST",
+        "path": "/ping",
+        "type": "handler"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "controller:routing/ArchiveReportsController",
+      "kind": "handles",
+      "to": "route:routing/GET /api/reports/daily",
+      "sites": [
+        {
+          "file": "src/reports/reports.controller.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:routing/AssetsController",
+      "kind": "handles",
+      "to": "route:routing/GET /api/assets/files/*",
+      "sites": [
+        {
+          "file": "src/fleet/assets.controller.ts",
+          "line": 5
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:routing/AssetsController",
+      "kind": "handles",
+      "to": "route:routing/GET /api/assets/files/*rest",
+      "sites": [
+        {
+          "file": "src/fleet/assets.controller.ts",
+          "line": 6
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:routing/CatalogController",
+      "kind": "handles",
+      "to": "route:routing/ALL /api/catalog/any",
+      "sites": [
+        {
+          "file": "src/catalog/catalog.controller.ts",
+          "line": 8
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:routing/CatalogController",
+      "kind": "handles",
+      "to": "route:routing/GET /api/catalog",
+      "sites": [
+        {
+          "file": "src/catalog/catalog.controller.ts",
+          "line": 5
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:routing/CatalogController",
+      "kind": "handles",
+      "to": "route:routing/GET /api/catalog/events",
+      "sites": [
+        {
+          "file": "src/catalog/catalog.controller.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:routing/CatalogController",
+      "kind": "handles",
+      "to": "route:routing/GET /api/catalog/latest",
+      "sites": [
+        {
+          "file": "src/catalog/catalog.controller.ts",
+          "line": 7
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:routing/CatalogController",
+      "kind": "handles",
+      "to": "route:routing/GET /api/catalog/recent",
+      "sites": [
+        {
+          "file": "src/catalog/catalog.controller.ts",
+          "line": 7
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:routing/CatalogController",
+      "kind": "handles",
+      "to": "route:routing/GET /api/catalog/search/:term",
+      "sites": [
+        {
+          "file": "src/catalog/catalog.controller.ts",
+          "line": 6
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:routing/CatalogController",
+      "kind": "handles",
+      "to": "route:routing/HEAD /api/catalog/probe",
+      "sites": [
+        {
+          "file": "src/catalog/catalog.controller.ts",
+          "line": 10
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:routing/CatalogController",
+      "kind": "handles",
+      "to": "route:routing/OPTIONS /api/catalog/opts",
+      "sites": [
+        {
+          "file": "src/catalog/catalog.controller.ts",
+          "line": 9
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:routing/FleetController",
+      "kind": "handles",
+      "to": "route:routing/GET /api/fleet/:id",
+      "sites": [
+        {
+          "file": "src/fleet/fleet.controller.ts",
+          "line": 6
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:routing/FleetController",
+      "kind": "handles",
+      "to": "route:routing/GET /api/fleet/active",
+      "sites": [
+        {
+          "file": "src/fleet/fleet.controller.ts",
+          "line": 5
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:routing/FleetController",
+      "kind": "handles",
+      "to": "route:routing/GET /api/fleet/all",
+      "sites": [
+        {
+          "file": "src/fleet/fleet.controller.ts",
+          "line": 5
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:routing/FleetController",
+      "kind": "handles",
+      "to": "route:routing/GET /api/vehicles/:id",
+      "sites": [
+        {
+          "file": "src/fleet/fleet.controller.ts",
+          "line": 6
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:routing/FleetController",
+      "kind": "handles",
+      "to": "route:routing/GET /api/vehicles/active",
+      "sites": [
+        {
+          "file": "src/fleet/fleet.controller.ts",
+          "line": 5
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:routing/FleetController",
+      "kind": "handles",
+      "to": "route:routing/GET /api/vehicles/all",
+      "sites": [
+        {
+          "file": "src/fleet/fleet.controller.ts",
+          "line": 5
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:routing/HealthController",
+      "kind": "handles",
+      "to": "route:routing/GET /health",
+      "sites": [
+        {
+          "file": "src/health/health.controller.ts",
+          "line": 5
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:routing/HealthController",
+      "kind": "handles",
+      "to": "route:routing/GET /ping",
+      "sites": [
+        {
+          "file": "src/health/health.controller.ts",
+          "line": 7
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:routing/HealthController",
+      "kind": "handles",
+      "to": "route:routing/POST /api/health",
+      "sites": [
+        {
+          "file": "src/health/health.controller.ts",
+          "line": 6
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:routing/HealthController",
+      "kind": "handles",
+      "to": "route:routing/POST /ping",
+      "sites": [
+        {
+          "file": "src/health/health.controller.ts",
+          "line": 8
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:routing/ListenerController",
+      "kind": "handles",
+      "to": "route:routing/GET /api/listener",
+      "sites": [
+        {
+          "file": "src/reports/listener.controller.ts",
+          "line": 6
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:routing/MixedController",
+      "kind": "handles",
+      "to": "route:routing/GET /api/mixed/aliased",
+      "sites": [
+        {
+          "file": "src/reports/mixed.controller.ts",
+          "line": 10
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:routing/OrphanController",
+      "kind": "handles",
+      "to": "route:routing/GET /api/orphans",
+      "sites": [
+        {
+          "file": "src/orphans/orphan.controller.ts",
+          "line": 6
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "controller:routing/ReportsController",
+      "kind": "handles",
+      "to": "route:routing/GET /api/reports/daily",
+      "sites": [
+        {
+          "file": "src/reports/reports.controller.ts",
+          "line": 5
+        },
+        {
+          "file": "src/reports/reports.controller.ts",
+          "line": 6
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:routing/AppModule",
+      "kind": "contains",
+      "to": "controller:routing/CatalogController",
+      "sites": [
+        {
+          "file": "src/app.module.ts",
+          "line": 9
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:routing/AppModule",
+      "kind": "contains",
+      "to": "controller:routing/HealthController",
+      "sites": [
+        {
+          "file": "src/app.module.ts",
+          "line": 9
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:routing/AppModule",
+      "kind": "imports",
+      "to": "module:routing/FleetModule",
+      "sites": [
+        {
+          "file": "src/app.module.ts",
+          "line": 8
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:routing/AppModule",
+      "kind": "imports",
+      "to": "module:routing/ReportsModule",
+      "sites": [
+        {
+          "file": "src/app.module.ts",
+          "line": 8
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:routing/FleetModule",
+      "kind": "contains",
+      "to": "controller:routing/AssetsController",
+      "sites": [
+        {
+          "file": "src/fleet/fleet.module.ts",
+          "line": 5
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:routing/FleetModule",
+      "kind": "contains",
+      "to": "controller:routing/FleetController",
+      "sites": [
+        {
+          "file": "src/fleet/fleet.module.ts",
+          "line": 5
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:routing/ReportsModule",
+      "kind": "contains",
+      "to": "controller:routing/ArchiveReportsController",
+      "sites": [
+        {
+          "file": "src/reports/reports.module.ts",
+          "line": 12
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:routing/ReportsModule",
+      "kind": "contains",
+      "to": "controller:routing/ListenerController",
+      "sites": [
+        {
+          "file": "src/reports/reports.module.ts",
+          "line": 13
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:routing/ReportsModule",
+      "kind": "contains",
+      "to": "controller:routing/MixedController",
+      "sites": [
+        {
+          "file": "src/reports/reports.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:routing/ReportsModule",
+      "kind": "contains",
+      "to": "controller:routing/ReportsController",
+      "sites": [
+        {
+          "file": "src/reports/reports.module.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    }
+  ]
+}

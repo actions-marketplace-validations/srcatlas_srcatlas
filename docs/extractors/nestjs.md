@@ -612,7 +612,9 @@ Each fixture is a small, self-contained NestJS application under `fixtures/<name
 | `nest-dynamic` | N-M5, N-M6, N-M7 | P0 | M1 |
 | `nest-di-custom` | N-P3, N-P4, N-P5, N-P6, N-P7, N-P8, N-P11, roles (N-P1) | P0 | M1 |
 | `nest-di-resolution` | Token resolution order, ambiguity and the three outcomes without a candidate (section 3) | P0 | M1 |
-| `nest-routing` | N-R2, N-R3, N-R4, N-R5, N-R8, N-R9, N-R10 | P0 | M1 |
+| `nest-routing` | N-R2, N-R3, N-R4, N-R5 (prefix and excludes), N-R8, N-R9, N-R10 | P0 | M1 |
+| `nest-routing-prefix-env` | N-R5 failure mode: prefix not evaluable | P0 | M1 |
+| `nest-routing-two-apps` | N-R5 failure mode: more than one `NestFactory.create` | P0 | M1 |
 | `nest-versioning` | N-R6, N-R7 | P1 | M2 |
 | `nest-calls` | N-C2, N-C3, N-C4, N-P9 | P1 | M2 |
 | `nest-gateway` | N-G1, N-G2, N-G3, N-G5 | P1 | M2 |
@@ -640,3 +642,9 @@ Record answers as decisions in `docs/adr/`.
 9. N-P4: `useClass` edges go straight to the class; `inject: [...]` and `useExisting` go through section 3 from the registering module. An `inject` value that cannot be evaluated as an array produces nothing and no report. A provider element that cannot be named (no `provide`, an unevaluable token, none or several of `useValue`/`useClass`/`useFactory`/`useExisting`) gives `nest.unresolved-provider-token`. A `scope` key inside a custom provider object is not read.
 10. Section 3 when a class is registered by several modules (or only reached through `useClass`): the token is resolved from each registering module and the answers are combined; they are certain only if all agree, otherwise inferred with `nest.ambiguous-token` when they differ. Decide whether that is the right reading of "the injecting class's own module".
 11. N-P8: `Scope.DEFAULT` is accepted without a report.
+12. N-R2: a controller with several base paths has `meta.basePath` set to the first one declared and `meta["nestjs.basePaths"]` holding all of them, sorted. A single path gives no `nestjs.basePaths`.
+13. N-R5: an `exclude` entry with no `method` (or `RequestMethod.ALL`) matches every method of an exact path. An entry gives `nest.unresolved-exclude` (site: the entry) when its path contains `*`, `(` or `:`, when its path or method cannot be evaluated, or when it is a plain string.
+14. N-R8: the report entry is placed at each later handler (the first keeps the node) and the message names the first. File order is the order of the declaration within one file; across files it is the sorted repo-relative path, then the line.
+15. N-R5: `nest.ambiguous-app` is one entry per package, placed at the first `NestFactory.create` call by sorted path and line. Routes keep `confidence: inferred` and so do their `handles` edges.
+16. N-R10: `nest.microservice-pattern-ignored` is placed at the decorator, one entry per handler.
+17. N-R2/N-R3: a controller whose path cannot be evaluated is emitted with `confidence: unresolved`, `basePath` `/` and no routes; a handler whose path cannot be evaluated gives no route. Neither has a report code yet.

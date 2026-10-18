@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "code": "nest.unresolved-prefix",
+      "level": "warning",
+      "site": {
+        "file": "src/main.ts",
+        "line": 12
+      }
+    }
+  ],
+  "summary": {}
+}
