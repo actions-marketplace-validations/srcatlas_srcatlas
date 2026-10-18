@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { parseArgs } from "node:util";
 import { analyzeCommand } from "./analyze.js";
+import { diffCommand } from "./diff.js";
 import { NotImplementedError, UsageError } from "./errors.js";
 import { initCommand } from "./init.js";
 import { loadConfig } from "./load-config.js";
@@ -25,6 +26,13 @@ analyze flags:
   --workers <n>     worker pool size (env SRCATLAS_WORKERS)
   --only <name>     run only this extractor (repeatable)
   --json            print the summary as JSON on stdout
+
+diff flags (srcatlas diff <base> <head>; an input is a git ref, a graph file, or WORKTREE as head):
+  -o, --out <file>      diff file path (default .srcatlas/srcatlas.diff.json)
+  --format <f>          text (default), json, markdown, mermaid
+  --fail-on <cond>      exit 1 on new-cycle, new-cross-module-edge, removed-node, any-change (repeatable)
+  --min-confidence <c>  certain, inferred (default), unresolved
+  --max-nodes <n>       cap on nodes in the Mermaid graph (default 40)
 
 Global flags:
   --config <file>   config file (default: srcatlas.config.ts in the root)
@@ -76,6 +84,10 @@ export async function run(argv: string[], io: Io): Promise<number> {
         workers: { type: "string" },
         only: { type: "string", multiple: true },
         json: { type: "boolean" },
+        format: { type: "string" },
+        "fail-on": { type: "string", multiple: true },
+        "min-confidence": { type: "string" },
+        "max-nodes": { type: "string" },
         yes: { type: "boolean", short: "y" },
         "no-workflow": { type: "boolean" },
         force: { type: "boolean" },
@@ -100,7 +112,8 @@ export async function run(argv: string[], io: Io): Promise<number> {
     if (!COMMANDS.includes(command)) {
       throw new UsageError(`unknown command "${command}"\n\n${HELP}`);
     }
-    const root = resolve(io.cwd, path);
+    // diff takes two inputs where the other commands take a path, so it runs in the working directory.
+    const root = resolve(io.cwd, command === "diff" ? "." : path);
     // init writes the config, so it must work when the existing one is broken (with --force).
     if (command === "init") {
       return await initCommand(
@@ -124,6 +137,16 @@ export async function run(argv: string[], io: Io): Promise<number> {
       return await analyzeCommand(
         root,
         config,
+        { ...values, quiet: values.quiet },
+        version(),
+        io,
+      );
+    }
+    if (command === "diff") {
+      return await diffCommand(
+        root,
+        config,
+        positionals.slice(1),
         { ...values, quiet: values.quiet },
         version(),
         io,

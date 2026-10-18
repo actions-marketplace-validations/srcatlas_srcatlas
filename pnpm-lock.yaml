@@ -79,6 +79,12 @@ importers:
       '@srcatlas/core':
         specifier: workspace:*
         version: link:../core
+      '@srcatlas/differ':
+        specifier: workspace:*
+        version: link:../differ
+      '@srcatlas/renderer':
+        specifier: workspace:*
+        version: link:../renderer
 
   packages/core:
     dependencies:

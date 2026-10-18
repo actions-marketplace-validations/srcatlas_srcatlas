@@ -40,6 +40,8 @@
   },
   "devDependencies": {
     "@srcatlas/analyzer": "workspace:*",
-    "@srcatlas/core": "workspace:*"
+    "@srcatlas/core": "workspace:*",
+    "@srcatlas/differ": "workspace:*",
+    "@srcatlas/renderer": "workspace:*"
   }
 }
