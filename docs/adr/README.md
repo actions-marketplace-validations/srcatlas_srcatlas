@@ -15,5 +15,6 @@ One file per decision that is expensive to reverse. Format: `docs/adr/_template.
 | [0009](0009-portfolio-first-scope-and-order.md) | Portfolio first: scope, order of work, definition of done | Accepted |
 | [0010](0010-agent-assisted-working-agreement.md) | Working agreement for agent-assisted development | Proposed |
 | [0011](0011-access-facts-and-link-pass.md) | Extractors emit facts; the link pass turns them into edges | Accepted |
+| [0012](0012-action-analyses-clean-checkouts-and-never-installs.md) | The Action analyses clean checkouts of both sides and never installs dependencies | Proposed |
 
 When to write a new ADR: the decision changes the graph schema, a public interface, a dependency that is hard to swap, or a stated project principle. Not for naming, formatting or single-feature choices.

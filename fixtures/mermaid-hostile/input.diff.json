@@ -1,0 +1,100 @@
+{
+  "base": {},
+  "crossModuleEdges": [
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "provider:api/E`v``il",
+      "kind": "injects",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/x.ts",
+          "line": 2
+        }
+      ],
+      "to": "`Plain`"
+    }
+  ],
+  "cycles": [
+    {
+      "kind": "modules",
+      "members": ["module:api/B", "module:api/`A"]
+    }
+  ],
+  "edges": {
+    "added": [
+      {
+        "confidence": "certain",
+        "extractor": "nestjs",
+        "from": "provider:api/E`v``il",
+        "kind": "injects",
+        "meta": {},
+        "sites": [
+          {
+            "file": "src/x.ts",
+            "line": 2
+          }
+        ],
+        "to": "`Plain`"
+      }
+    ],
+    "changed": [],
+    "removed": []
+  },
+  "head": {},
+  "nodes": {
+    "added": [
+      {
+        "confidence": "certain",
+        "extractor": "nestjs",
+        "framework": "nestjs",
+        "id": "`Plain`",
+        "kind": "provider",
+        "language": "typescript",
+        "meta": {
+          "providerType": "class",
+          "role": "service",
+          "scope": "default"
+        },
+        "module": null,
+        "name": "Plain",
+        "package": "package:api",
+        "source": {
+          "file": "src/x.ts",
+          "line": 1
+        }
+      },
+      {
+        "confidence": "certain",
+        "extractor": "nestjs",
+        "framework": "nestjs",
+        "id": "provider:api/E`v``il",
+        "kind": "provider",
+        "language": "typescript",
+        "meta": {
+          "providerType": "class",
+          "role": "service",
+          "scope": "default"
+        },
+        "module": null,
+        "name": "Evil\n```\n@org/team",
+        "package": "package:api",
+        "source": {
+          "file": "src/x.ts",
+          "line": 1
+        }
+      }
+    ],
+    "changed": [],
+    "moved": [],
+    "removed": []
+  },
+  "schemaVersion": 1,
+  "summary": {
+    "crossModuleEdges": 1,
+    "modules": 0,
+    "newCycles": 1,
+    "routes": 0
+  }
+}

@@ -122,6 +122,7 @@ Compares two graphs.
 | `--fail-on <cond>` | none | Exit 1 when a condition is met. Repeatable. Conditions: `new-cycle`, `new-cross-module-edge`, `removed-node`, `any-change`. |
 | `--min-confidence <c>` | `inferred` | Ignore elements below this level (`certain`, `inferred`, `unresolved`). |
 | `--max-nodes <n>` | 40 | Cap on nodes in the Mermaid mini-graph; the rest are summarised as "+N more". |
+| `--config-ref <ref>` | none | Load the configuration from this git ref instead of the working directory, which then is not executed (section 3.4.2). Not valid with `--config`. |
 
 Semantics are in `docs/schema.md` section 13 (moves, cycles, cross-module edges). The summary line is fixed: `+1 module, +4 routes, +2 cross-module edges, 0 new cycles`.
 
@@ -138,7 +139,8 @@ Errors (exit 2): unknown ref, ref not reachable (shallow clone: message tells th
 - **`--min-confidence`.** Applied to both graphs before comparing: nodes and edges below the level are dropped, and so are edges whose endpoint was dropped. Order: `certain` > `inferred` > `unresolved`.
 - **Output.** The diff file is always written to `--out`. The chosen `--format` is printed to stdout: `json` is the diff file's bytes; `mermaid` is section 3.4.1; `text` and `markdown` below. Progress and warnings go to stderr.
 - **`text`.** First line is the summary line, then one line per added (`+`), removed (`-`), changed (`~`) and moved (`>`) node and edge, then new cross-module edges and new cycles. Not stable; scripts use `json`.
-- **`markdown`.** Empty when the diff has no node or edge entry, so the Action posts nothing. Otherwise: a heading, the summary line, a table of counts (added, removed, changed, moved) for nodes and edges, the new cycles and new cross-module edges as lists when there are any, and the Mermaid mini-graph in a fenced `mermaid` block. The "Moved" cell of the edges row is `-`.
+- **`markdown`.** Empty when the diff has no node or edge entry, so the Action posts nothing. Otherwise: a heading, the summary line, a table of counts (added, removed, changed, moved) for nodes and edges, the new cycles and new cross-module edges as lists when there are any, and the Mermaid mini-graph in a fenced `mermaid` block. The "Moved" cell of the edges row is `-`. Every name taken from analysed code is untrusted: it appears only in a code span or in the Mermaid block. A code span uses a delimiter longer than any run of backticks in the name, and line breaks in the name become spaces. Each list shows at most 50 items and then `- and N more`.
+- **`--config-ref`.** The ref is resolved as for an input (an unknown ref is exit 2). The configuration is loaded in a temporary worktree of that commit, below the same sub-directory as the working directory, and the worktree is removed afterwards. The working directory's own configuration is never loaded or executed. Because the worktree has no installed dependencies, a configuration that imports anything other than `srcatlas` and files in the repository fails with exit 2. `--config` together with `--config-ref` is exit 2. Used for pull requests from forks (`docs/action.md` 4).
 - **`--fail-on`.** Exit 1 when any given condition holds: `new-cycle` (`cycles` is not empty), `new-cross-module-edge` (`crossModuleEdges` is not empty), `removed-node` (`nodes.removed` is not empty; a move is not a removal), `any-change` (any node or edge entry). An unknown condition is exit 2.
 
 #### 3.4.1 Mermaid mini-graph
@@ -149,7 +151,7 @@ Errors (exit 2): unknown ref, ref not reachable (shallow clone: message tells th
 - **Classes.** `added`, `removed`, `changed`, `moved`, `context`, each with a fixed `classDef`. Labels are the node `name`.
 - **Edges.** `-->` added, `-.->` removed, `==>` changed. The label is the edge kind, in quotes. An edge is drawn only if both endpoints are shown.
 - **Cap.** Each node has a weight: 1 if it is in a node list, plus 1 for every listed edge that touches it. When there are more nodes than `--max-nodes`, the highest weights are kept, ties by node ID in code-unit order, and one extra context node `+N more` (N = nodes left out) is added. Edges to left-out nodes are not drawn.
-- **Names.** Nodes are `n0`, `n1`, … in code-unit order of their IDs, so the text is deterministic. In labels `#`, `&`, `"`, `<`, `>` and `|` are written as Mermaid entity codes (`#35;`, `#amp;`, `#quot;`, `#lt;`, `#gt;`, `#124;`).
+- **Names.** Nodes are `n0`, `n1`, … in code-unit order of their IDs, so the text is deterministic. In labels `#`, `&`, `"`, `<`, `>`, `|` and the backtick are written as Mermaid entity codes (`#35;`, `#amp;`, `#quot;`, `#lt;`, `#gt;`, `#124;`, `#96;`), and a line break becomes a space, so a name from analysed code cannot end the fenced block or the label.
 - **Empty diff.** A diff with no node and no edge entries renders as an empty string, so the Action has nothing to post.
 - `--max-nodes` must be a positive integer.
 
