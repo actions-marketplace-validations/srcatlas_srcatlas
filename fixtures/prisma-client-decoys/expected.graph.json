@@ -1,0 +1,273 @@
+{
+  "schemaVersion": 1,
+  "generator": {
+    "name": "srcatlas",
+    "version": "0.0.0"
+  },
+  "repo": {},
+  "nodes": [
+    {
+      "id": "model:widgetshop/Widget",
+      "kind": "model",
+      "name": "Widget",
+      "language": "prisma",
+      "framework": "prisma",
+      "package": "package:widgetshop",
+      "module": null,
+      "source": {
+        "file": "prisma/schema.prisma",
+        "line": 10
+      },
+      "extractor": "prisma",
+      "confidence": "certain",
+      "meta": {
+        "fieldCount": 1,
+        "schemaFile": "prisma/schema.prisma"
+      }
+    },
+    {
+      "id": "module:widgetshop/ShopModule",
+      "kind": "module",
+      "name": "ShopModule",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:widgetshop",
+      "module": null,
+      "source": {
+        "file": "src/shop.module.ts",
+        "line": 9
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      }
+    },
+    {
+      "id": "package:widgetshop",
+      "kind": "package",
+      "name": "widgetshop",
+      "language": "typescript",
+      "framework": "node",
+      "package": "package:widgetshop",
+      "module": null,
+      "source": {
+        "file": "package.json",
+        "line": 1
+      },
+      "extractor": "core",
+      "confidence": "certain",
+      "meta": {
+        "root": ".",
+        "version": "1.0.0"
+      }
+    },
+    {
+      "id": "provider:widgetshop/FakeService",
+      "kind": "provider",
+      "name": "FakeService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:widgetshop",
+      "module": "module:widgetshop/ShopModule",
+      "source": {
+        "file": "src/fake.service.ts",
+        "line": 4
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:widgetshop/LiteralService",
+      "kind": "provider",
+      "name": "LiteralService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:widgetshop",
+      "module": "module:widgetshop/ShopModule",
+      "source": {
+        "file": "src/literal.service.ts",
+        "line": 3
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:widgetshop/PoolService",
+      "kind": "provider",
+      "name": "PoolService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:widgetshop",
+      "module": "module:widgetshop/ShopModule",
+      "source": {
+        "file": "src/pool.service.ts",
+        "line": 4
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:widgetshop/QueryService",
+      "kind": "provider",
+      "name": "QueryService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:widgetshop",
+      "module": "module:widgetshop/ShopModule",
+      "source": {
+        "file": "src/query.service.ts",
+        "line": 3
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:widgetshop/RepoService",
+      "kind": "provider",
+      "name": "RepoService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:widgetshop",
+      "module": "module:widgetshop/ShopModule",
+      "source": {
+        "file": "src/repo.service.ts",
+        "line": 3
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    },
+    {
+      "id": "provider:widgetshop/StoreService",
+      "kind": "provider",
+      "name": "StoreService",
+      "language": "typescript",
+      "framework": "nestjs",
+      "package": "package:widgetshop",
+      "module": "module:widgetshop/ShopModule",
+      "source": {
+        "file": "src/store.service.ts",
+        "line": 3
+      },
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "module:widgetshop/ShopModule",
+      "kind": "contains",
+      "to": "provider:widgetshop/FakeService",
+      "sites": [
+        {
+          "file": "src/shop.module.ts",
+          "line": 11
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:widgetshop/ShopModule",
+      "kind": "contains",
+      "to": "provider:widgetshop/LiteralService",
+      "sites": [
+        {
+          "file": "src/shop.module.ts",
+          "line": 12
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:widgetshop/ShopModule",
+      "kind": "contains",
+      "to": "provider:widgetshop/PoolService",
+      "sites": [
+        {
+          "file": "src/shop.module.ts",
+          "line": 15
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:widgetshop/ShopModule",
+      "kind": "contains",
+      "to": "provider:widgetshop/QueryService",
+      "sites": [
+        {
+          "file": "src/shop.module.ts",
+          "line": 13
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:widgetshop/ShopModule",
+      "kind": "contains",
+      "to": "provider:widgetshop/RepoService",
+      "sites": [
+        {
+          "file": "src/shop.module.ts",
+          "line": 14
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    },
+    {
+      "from": "module:widgetshop/ShopModule",
+      "kind": "contains",
+      "to": "provider:widgetshop/StoreService",
+      "sites": [
+        {
+          "file": "src/shop.module.ts",
+          "line": 16
+        }
+      ],
+      "extractor": "nestjs",
+      "confidence": "certain",
+      "meta": {}
+    }
+  ]
+}

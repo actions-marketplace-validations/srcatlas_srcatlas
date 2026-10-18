@@ -35,12 +35,13 @@
     },
     {
       // Fixtures copy real NestJS code: parameter decorators, constructor-injected members that are
-      // never read, and dynamic modules that are classes with only static methods.
+      // never read, `any`-typed members that the Prisma name fallback is tested with, and dynamic modules that are classes with only static methods.
       "includes": ["fixtures/**"],
       "javascript": { "parser": { "unsafeParameterDecoratorsEnabled": true } },
       "linter": {
         "rules": {
           "complexity": { "noStaticOnlyClass": "off" },
+          "suspicious": { "noExplicitAny": "off" },
           "correctness": {
             "noUnusedFunctionParameters": "off",
             "noUnusedPrivateClassMembers": "off"

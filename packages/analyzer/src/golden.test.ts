@@ -21,6 +21,8 @@ const FIXTURES = [
   "nest-decoys",
   "prisma-schema",
   "prisma-schema-errors",
+  "prisma-client",
+  "prisma-client-decoys",
 ];
 
 // Runs in this thread: the worker file only exists after a build.

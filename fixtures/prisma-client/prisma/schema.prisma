@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator archive {
+  provider = "prisma-client"
+  output   = "../src/generated/archive"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Invoice {
+  id    Int     @id
+  total Decimal
+}
+
+model Payment {
+  id        Int @id
+  invoiceId Int
+}
+
+model Customer {
+  id   Int    @id
+  name String
+}
+
+model Refund {
+  id Int @id
+}
+
+model Receipt {
+  id Int @id
+}
