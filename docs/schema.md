@@ -300,6 +300,43 @@ The differ compares two valid graphs and writes `srcatlas.diff.json`.
 - **Cycles.** The differ computes strongly connected components over `imports` edges between modules, and over `depends_on` edges between packages, in both graphs. A cycle that exists in the head graph but not in the base graph is reported as new.
 - **Cross-module edges.** An edge whose endpoints have different non-null `module` values, and which was not present in the base graph, is reported as a new cross-module dependency.
 
+### 13.1 Diff file
+
+`srcatlas.diff.json` is written with the same canonical rules as the graph (section 9). It holds no timestamps, paths outside the repository, or ref names.
+
+```ts
+interface DiffFile {
+  schemaVersion: number;                  // of the two graphs, which must be equal
+  base: { commit?: string };              // copied from graph.repo
+  head: { commit?: string };
+  summary: { modules: number; routes: number }; // added minus removed, by node kind
+  nodes: {
+    added: Node[];                        // sorted by id
+    removed: Node[];                      // sorted by id
+    changed: { before: Node; after: Node }[]; // same id; sorted by id
+    moved: { from: Node; to: Node }[];    // sorted by to.id
+  };
+  edges: {
+    added: Edge[];                        // sorted by from, kind, to
+    removed: Edge[];
+    changed: { before: Edge; after: Edge }[];
+  };
+}
+```
+
+- A node in `moved` appears in neither `added` nor `removed`.
+- A move needs exactly one removed and exactly one added node with the same `kind`, `name` and `package`. If more than one removed or more than one added node share that triple, the differ reports none of them as moved. It does not guess.
+- Edges are not rewritten for moves: edges of a moved node appear as removed (old ID) and added (new ID).
+- Two graphs with different `schemaVersion` values are an error, not a diff.
+
+### 13.2 Summary line
+
+The summary line is fixed: `+1 module, +4 routes, +2 cross-module edges, 0 new cycles`.
+
+- Node counts are signed net counts (added minus removed): `+1 module`, `-2 routes`, `0 modules`. The noun is singular only for an absolute count of 1.
+- `cross-module edges` is the count of new cross-module edges, signed with `+` when above zero. `new cycles` is the count of new cycles, without a sign.
+- The cross-module and cycle segments are present only when the diff file carries those counts, which arrive with the cycle and cross-module issue. Until then the line has the first two segments.
+
 ## 14. Open questions
 
 Record answers as decisions in `docs/adr/` when resolved.
@@ -307,3 +344,4 @@ Record answers as decisions in `docs/adr/` when resolved.
 1. Should `exports` edges stay P1, or be part of the first release? They are cheap to extract and make module-boundary rules possible.
 2. Should a `guard`/`interceptor` become its own node kind when boundary rules need to reference them? Revisit after M4.
 3. Should `job` nodes be emitted once the BullMQ extractor ships? Today job names live in edge `meta.jobNames`.
+4. Should moved nodes rewrite the edges that touch them, so a moved provider does not show as removed and added edges? Section 13.1 leaves edges as they are.

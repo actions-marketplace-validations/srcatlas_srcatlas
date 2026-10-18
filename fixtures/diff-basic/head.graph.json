@@ -1,0 +1,277 @@
+{
+  "edges": [
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "module:api/AppModule",
+      "kind": "imports",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/app.module.ts",
+          "line": 7
+        }
+      ],
+      "to": "module:api/BillingModule"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "module:api/AppModule",
+      "kind": "imports",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/app.module.ts",
+          "line": 5
+        },
+        {
+          "file": "src/app.module.ts",
+          "line": 6
+        }
+      ],
+      "to": "module:api/OrdersModule"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "module:api/BillingModule",
+      "kind": "contains",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/billing/billing.module.ts",
+          "line": 6
+        }
+      ],
+      "to": "provider:api/BillingService"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "module:api/OrdersModule",
+      "kind": "contains",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/orders/orders.module.ts",
+          "line": 9
+        }
+      ],
+      "to": "provider:api/AuditService"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "module:api/OrdersModule",
+      "kind": "contains",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/orders/orders.module.ts",
+          "line": 11
+        }
+      ],
+      "to": "provider:api/OrdersService"
+    },
+    {
+      "confidence": "inferred",
+      "extractor": "nestjs",
+      "from": "provider:api/OrdersService",
+      "kind": "injects",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/orders/services/orders.service.ts",
+          "line": 8
+        }
+      ],
+      "to": "provider:api/AuditService"
+    }
+  ],
+  "generator": {
+    "name": "srcatlas",
+    "version": "0.1.0"
+  },
+  "nodes": [
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "module:api/AppModule",
+      "kind": "module",
+      "language": "typescript",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      },
+      "module": null,
+      "name": "AppModule",
+      "package": "package:api",
+      "source": {
+        "file": "src/app.module.ts",
+        "line": 6
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "module:api/BillingModule",
+      "kind": "module",
+      "language": "typescript",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      },
+      "module": null,
+      "name": "BillingModule",
+      "package": "package:api",
+      "source": {
+        "file": "src/billing/billing.module.ts",
+        "line": 5
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "module:api/OrdersModule",
+      "kind": "module",
+      "language": "typescript",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      },
+      "module": null,
+      "name": "OrdersModule",
+      "package": "package:api",
+      "source": {
+        "file": "src/orders/orders.module.ts",
+        "line": 8
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "core",
+      "framework": "node",
+      "id": "package:api",
+      "kind": "package",
+      "language": "typescript",
+      "meta": {
+        "root": "."
+      },
+      "module": null,
+      "name": "api",
+      "package": "package:api",
+      "source": {
+        "file": "package.json",
+        "line": 1
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "provider:api/AuditService",
+      "kind": "provider",
+      "language": "typescript",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "request"
+      },
+      "module": "module:api/OrdersModule",
+      "name": "AuditService",
+      "package": "package:api",
+      "source": {
+        "file": "src/audit.service.ts",
+        "line": 3
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "provider:api/BillingService",
+      "kind": "provider",
+      "language": "typescript",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      },
+      "module": "module:api/BillingModule",
+      "name": "BillingService",
+      "package": "package:api",
+      "source": {
+        "file": "src/billing/billing.service.ts",
+        "line": 4
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "provider:api/OrdersService",
+      "kind": "provider",
+      "language": "typescript",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      },
+      "module": "module:api/OrdersModule",
+      "name": "OrdersService",
+      "package": "package:api",
+      "source": {
+        "file": "src/orders/services/orders.service.ts",
+        "line": 6
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "route:api/GET /orders",
+      "kind": "route",
+      "language": "typescript",
+      "meta": {
+        "method": "GET",
+        "path": "/orders",
+        "type": "handler"
+      },
+      "module": "module:api/OrdersModule",
+      "name": "GET /orders",
+      "package": "package:api",
+      "source": {
+        "file": "src/orders/orders.controller.ts",
+        "line": 12
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "route:api/POST /orders",
+      "kind": "route",
+      "language": "typescript",
+      "meta": {
+        "method": "POST",
+        "path": "/orders",
+        "type": "handler"
+      },
+      "module": "module:api/OrdersModule",
+      "name": "POST /orders",
+      "package": "package:api",
+      "source": {
+        "file": "src/orders/orders.controller.ts",
+        "line": 17
+      }
+    }
+  ],
+  "repo": {
+    "commit": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  },
+  "schemaVersion": 1
+}

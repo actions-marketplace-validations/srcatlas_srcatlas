@@ -1,0 +1,234 @@
+{
+  "edges": [
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "module:api/AppModule",
+      "kind": "imports",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/app.module.ts",
+          "line": 5
+        }
+      ],
+      "to": "module:api/OrdersModule"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "module:api/OrdersModule",
+      "kind": "contains",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/orders/orders.module.ts",
+          "line": 9
+        }
+      ],
+      "to": "provider:api/AuditService"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "module:api/OrdersModule",
+      "kind": "contains",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/orders/orders.module.ts",
+          "line": 10
+        }
+      ],
+      "to": "provider:api/OldCache"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "module:api/OrdersModule",
+      "kind": "contains",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/orders/orders.module.ts",
+          "line": 11
+        }
+      ],
+      "to": "provider:api/OrdersService"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "provider:api/OrdersService",
+      "kind": "injects",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/orders/orders.service.ts",
+          "line": 8
+        }
+      ],
+      "to": "provider:api/AuditService"
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "from": "provider:api/OrdersService",
+      "kind": "injects",
+      "meta": {},
+      "sites": [
+        {
+          "file": "src/orders/orders.service.ts",
+          "line": 9
+        }
+      ],
+      "to": "provider:api/OldCache"
+    }
+  ],
+  "generator": {
+    "name": "srcatlas",
+    "version": "0.1.0"
+  },
+  "nodes": [
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "module:api/AppModule",
+      "kind": "module",
+      "language": "typescript",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      },
+      "module": null,
+      "name": "AppModule",
+      "package": "package:api",
+      "source": {
+        "file": "src/app.module.ts",
+        "line": 4
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "module:api/OrdersModule",
+      "kind": "module",
+      "language": "typescript",
+      "meta": {
+        "dynamic": false,
+        "global": false
+      },
+      "module": null,
+      "name": "OrdersModule",
+      "package": "package:api",
+      "source": {
+        "file": "src/orders/orders.module.ts",
+        "line": 8
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "core",
+      "framework": "node",
+      "id": "package:api",
+      "kind": "package",
+      "language": "typescript",
+      "meta": {
+        "root": "."
+      },
+      "module": null,
+      "name": "api",
+      "package": "package:api",
+      "source": {
+        "file": "package.json",
+        "line": 1
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "provider:api/AuditService",
+      "kind": "provider",
+      "language": "typescript",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      },
+      "module": "module:api/OrdersModule",
+      "name": "AuditService",
+      "package": "package:api",
+      "source": {
+        "file": "src/audit.service.ts",
+        "line": 3
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "provider:api/OldCache",
+      "kind": "provider",
+      "language": "typescript",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      },
+      "module": "module:api/OrdersModule",
+      "name": "OldCache",
+      "package": "package:api",
+      "source": {
+        "file": "src/orders/old-cache.ts",
+        "line": 2
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "provider:api/OrdersService",
+      "kind": "provider",
+      "language": "typescript",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      },
+      "module": "module:api/OrdersModule",
+      "name": "OrdersService",
+      "package": "package:api",
+      "source": {
+        "file": "src/orders/orders.service.ts",
+        "line": 6
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "route:api/GET /orders",
+      "kind": "route",
+      "language": "typescript",
+      "meta": {
+        "method": "GET",
+        "path": "/orders",
+        "type": "handler"
+      },
+      "module": "module:api/OrdersModule",
+      "name": "GET /orders",
+      "package": "package:api",
+      "source": {
+        "file": "src/orders/orders.controller.ts",
+        "line": 12
+      }
+    }
+  ],
+  "repo": {
+    "commit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "schemaVersion": 1
+}

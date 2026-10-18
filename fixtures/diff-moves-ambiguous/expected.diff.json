@@ -1,0 +1,102 @@
+{
+  "base": {},
+  "edges": {
+    "added": [],
+    "changed": [],
+    "removed": []
+  },
+  "head": {},
+  "nodes": {
+    "added": [
+      {
+        "confidence": "certain",
+        "extractor": "nestjs",
+        "framework": "nestjs",
+        "id": "provider:api/ConfigService@src/c",
+        "kind": "provider",
+        "language": "typescript",
+        "meta": {
+          "providerType": "class",
+          "role": "service",
+          "scope": "default"
+        },
+        "module": null,
+        "name": "ConfigService",
+        "package": "package:api",
+        "source": {
+          "file": "src/c/config.service.ts",
+          "line": 3
+        }
+      },
+      {
+        "confidence": "certain",
+        "extractor": "nestjs",
+        "framework": "nestjs",
+        "id": "provider:api/ConfigService@src/d",
+        "kind": "provider",
+        "language": "typescript",
+        "meta": {
+          "providerType": "class",
+          "role": "service",
+          "scope": "default"
+        },
+        "module": null,
+        "name": "ConfigService",
+        "package": "package:api",
+        "source": {
+          "file": "src/d/config.service.ts",
+          "line": 3
+        }
+      }
+    ],
+    "changed": [],
+    "moved": [],
+    "removed": [
+      {
+        "confidence": "certain",
+        "extractor": "nestjs",
+        "framework": "nestjs",
+        "id": "provider:api/ConfigService@src/a",
+        "kind": "provider",
+        "language": "typescript",
+        "meta": {
+          "providerType": "class",
+          "role": "service",
+          "scope": "default"
+        },
+        "module": null,
+        "name": "ConfigService",
+        "package": "package:api",
+        "source": {
+          "file": "src/a/config.service.ts",
+          "line": 3
+        }
+      },
+      {
+        "confidence": "certain",
+        "extractor": "nestjs",
+        "framework": "nestjs",
+        "id": "provider:api/ConfigService@src/b",
+        "kind": "provider",
+        "language": "typescript",
+        "meta": {
+          "providerType": "class",
+          "role": "service",
+          "scope": "default"
+        },
+        "module": null,
+        "name": "ConfigService",
+        "package": "package:api",
+        "source": {
+          "file": "src/b/config.service.ts",
+          "line": 3
+        }
+      }
+    ]
+  },
+  "schemaVersion": 1,
+  "summary": {
+    "modules": 0,
+    "routes": 0
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "edges": [],
+  "generator": {
+    "name": "srcatlas",
+    "version": "0.1.0"
+  },
+  "nodes": [
+    {
+      "confidence": "certain",
+      "extractor": "core",
+      "framework": "node",
+      "id": "package:api",
+      "kind": "package",
+      "language": "typescript",
+      "meta": {
+        "root": "."
+      },
+      "module": null,
+      "name": "api",
+      "package": "package:api",
+      "source": {
+        "file": "package.json",
+        "line": 1
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "core",
+      "framework": "node",
+      "id": "package:web",
+      "kind": "package",
+      "language": "typescript",
+      "meta": {
+        "root": "."
+      },
+      "module": null,
+      "name": "web",
+      "package": "package:web",
+      "source": {
+        "file": "package.json",
+        "line": 1
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "provider:api/ConfigService@src/legacy",
+      "kind": "provider",
+      "language": "typescript",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      },
+      "module": null,
+      "name": "ConfigService",
+      "package": "package:api",
+      "source": {
+        "file": "src/legacy/config.service.ts",
+        "line": 3
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "provider:api/ConfigService@src/shared",
+      "kind": "provider",
+      "language": "typescript",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      },
+      "module": null,
+      "name": "ConfigService",
+      "package": "package:api",
+      "source": {
+        "file": "src/shared/config.service.ts",
+        "line": 3
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "provider:api/Logger",
+      "kind": "provider",
+      "language": "typescript",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      },
+      "module": null,
+      "name": "Logger",
+      "package": "package:api",
+      "source": {
+        "file": "src/logger.ts",
+        "line": 2
+      }
+    }
+  ],
+  "repo": {},
+  "schemaVersion": 1
+}

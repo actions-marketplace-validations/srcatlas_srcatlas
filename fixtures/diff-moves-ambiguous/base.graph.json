@@ -1,0 +1,69 @@
+{
+  "edges": [],
+  "generator": {
+    "name": "srcatlas",
+    "version": "0.1.0"
+  },
+  "nodes": [
+    {
+      "confidence": "certain",
+      "extractor": "core",
+      "framework": "node",
+      "id": "package:api",
+      "kind": "package",
+      "language": "typescript",
+      "meta": {
+        "root": "."
+      },
+      "module": null,
+      "name": "api",
+      "package": "package:api",
+      "source": {
+        "file": "package.json",
+        "line": 1
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "provider:api/ConfigService@src/a",
+      "kind": "provider",
+      "language": "typescript",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      },
+      "module": null,
+      "name": "ConfigService",
+      "package": "package:api",
+      "source": {
+        "file": "src/a/config.service.ts",
+        "line": 3
+      }
+    },
+    {
+      "confidence": "certain",
+      "extractor": "nestjs",
+      "framework": "nestjs",
+      "id": "provider:api/ConfigService@src/b",
+      "kind": "provider",
+      "language": "typescript",
+      "meta": {
+        "providerType": "class",
+        "role": "service",
+        "scope": "default"
+      },
+      "module": null,
+      "name": "ConfigService",
+      "package": "package:api",
+      "source": {
+        "file": "src/b/config.service.ts",
+        "line": 3
+      }
+    }
+  ],
+  "repo": {},
+  "schemaVersion": 1
+}
