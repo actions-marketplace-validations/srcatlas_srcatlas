@@ -117,7 +117,10 @@ await import(${JSON.stringify(pathToFileURL(bin).href)});`;
   };
   result.withinBudget = result.seconds <= budgetSeconds && result.peakMb <= budgetMb;
   const text = `${JSON.stringify(result, null, 2)}\n`;
-  if (out) fs.writeFileSync(path.resolve(repoRoot, out), text);
+  if (out) {
+    fs.mkdirSync(path.dirname(path.resolve(repoRoot, out)), { recursive: true });
+    fs.writeFileSync(path.resolve(repoRoot, out), text);
+  }
   process.stdout.write(text);
   if (!result.withinBudget) process.exitCode = 1;
 } finally {
