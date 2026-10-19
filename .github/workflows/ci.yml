@@ -44,3 +44,26 @@ jobs:
           npm init -y >/dev/null
           npm install "$RUNNER_TEMP"/pack/srcatlas-*.tgz
           npx srcatlas --version
+
+  # Performance gate (ADR 0002): 500 files under 20 s, 5,000 files under 2 GB. The Linux runner
+  # has 4 cores; the CLI uses cores - 1 workers. The script exits 1 when a budget is missed.
+  perf:
+    name: performance
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: node bench/perf/run.mjs --files 500 --out bench/results/perf-500.json
+      - run: node bench/perf/run.mjs --files 5000 --out bench/results/perf-5000.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: perf-results
+          path: bench/results/perf-*.json
+          if-no-files-found: ignore
