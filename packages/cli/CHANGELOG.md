@@ -1,5 +1,11 @@
 # srcatlas
 
+## 0.13.0
+
+### Minor Changes
+
+- edf610c: `srcatlas init` writes a workflow that uses the `srcatlas/srcatlas@v0` Action (one pull request comment) instead of running `analyze`.
+
 ## 0.12.0
 
 ### Minor Changes
