@@ -86,3 +86,26 @@ test("kinds outside the scope are ignored", () => {
   const actual = graph([A, node("route", "R")]);
   assert.equal(score(truth, actual).all.total.extra.length, 0);
 });
+
+test("f1: 1 for perfect, 0 for all wrong, null for empty actual, harmonic mean for partial", () => {
+  assert.equal(score(truth, truth).all.total.f1, 1);
+  assert.equal(score(truth, graph([node("module", "X")])).all.total.f1, 0);
+  assert.equal(score(truth, graph([])).all.total.f1, null);
+  const partial = graph([A, B, node("provider", "Z")], [edge(A.id, "contains", B.id)]);
+  assert.equal(score(truth, partial).all.total.f1, 0.6); // p 0.75, r 0.5
+});
+
+test("calibration: precision per confidence level, null when a level is empty", () => {
+  const actual = graph([A, B, { ...C, confidence: "inferred" }, { ...node("provider", "Z"), confidence: "inferred" }]);
+  const { calibration } = score(truth, actual);
+  assert.equal(calibration.certain.precision, 1);
+  assert.equal(calibration.inferred.precision, 0.5);
+  assert.equal(calibration.unresolved.precision, null);
+});
+
+test("coverage: emitted / (emitted + reported unresolved); null without a report", () => {
+  const actual = graph([A, B, C]);
+  assert.equal(score(truth, actual).coverage, null);
+  assert.equal(score(truth, actual, { report: { counts: { unresolved: 1 } } }).coverage, 0.75);
+  assert.equal(score(truth, graph([]), { report: { counts: { unresolved: 0 } } }).coverage, null);
+});
