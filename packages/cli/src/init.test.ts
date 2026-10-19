@@ -134,8 +134,11 @@ describe("srcatlas init", () => {
     await init(["--yes"]);
     expect(read(".gitignore")).toBe("node_modules\n.srcatlas/\n");
     const wf = read(".github/workflows/srcatlas.yml");
-    expect(wf).toMatch(/npx --yes srcatlas@\d+\.\d+\.\d+ analyze/);
+    expect(wf).toMatch(/uses: srcatlas\/srcatlas@v0\n/);
+    expect(wf).toMatch(/version: \d+\.\d+\.\d+\n/);
+    expect(wf).toContain("fetch-depth: 0");
     expect(wf).toContain("contents: read");
+    expect(wf).toContain("pull-requests: write");
   });
 
   it(".gitignore is not touched when it already ignores .srcatlas", async () => {

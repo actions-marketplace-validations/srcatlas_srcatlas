@@ -45,7 +45,7 @@ Behaviour:
 1. Find `package.json` files (workspaces: pnpm, npm, yarn, Turborepo, Nx).
 2. Detect frameworks by dependencies: `@nestjs/core` → nestjs, `next` → nextjs, `prisma` / `@prisma/client` → prisma. Later: `bullmq` / `@nestjs/bullmq`, `socket.io`.
 3. Write `srcatlas.config.ts` with the detected packages and extractors, with comments for every option left at its default.
-4. After confirmation, write `.github/workflows/srcatlas.yml` (PR comment workflow, using only `GITHUB_TOKEN`) and add `.srcatlas/` to `.gitignore`.
+4. After confirmation, write `.github/workflows/srcatlas.yml` (PR comment workflow with the Action, using only `GITHUB_TOKEN`) and add `.srcatlas/` to `.gitignore`.
 5. Print the next command: `srcatlas analyze`.
 
 Refuses to overwrite files without `--force` (exit 2). With `--yes`, existing files are still never overwritten without `--force`.
@@ -54,7 +54,7 @@ v1 details:
 - Nothing is written before every refusal has been checked: an existing `srcatlas.config.ts` or workflow file with no `--force` is exit 2 and leaves the directory as it was. `.gitignore` is only appended to, and not at all when it already ignores `.srcatlas`.
 - Questions are asked on a terminal. With no terminal and no `--yes`, `init` writes the config and skips the optional files, saying so.
 - Next.js is detected, but while its extractor is not available the package is listed without it and a comment says so.
-- Until the GitHub Action exists (M2), the workflow runs `npx srcatlas@<version> analyze` on pull requests and uploads `.srcatlas` as an artifact, with `contents: read` only. It is replaced by the PR comment workflow with the Action.
+- The workflow runs `srcatlas/srcatlas@v0` on pull requests with `version` pinned to the CLI that wrote it, and with `contents: read` and `pull-requests: write` (`docs/action.md`).
 - The config imports `defineConfig` from `srcatlas`; the config loader resolves that import to the running CLI, so it works when srcatlas is not installed in the project.
 
 ### 3.2 `srcatlas analyze [path]` (P0)

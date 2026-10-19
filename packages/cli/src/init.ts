@@ -103,7 +103,7 @@ function configText(found: Detected[]): string {
 
 function workflowText(version: string): string {
   return [
-    "# Written by `srcatlas init`: analyses every pull request and keeps the graph as an artifact.",
+    "# Written by `srcatlas init`: keeps one pull request comment with the architecture changes (docs/action.md).",
     "name: srcatlas",
     "",
     "on:",
@@ -111,20 +111,18 @@ function workflowText(version: string): string {
     "",
     "permissions:",
     "  contents: read",
+    "  pull-requests: write",
     "",
     "jobs:",
-    "  analyze:",
+    "  diff:",
     "    runs-on: ubuntu-latest",
     "    steps:",
     "      - uses: actions/checkout@v4",
-    "      - uses: actions/setup-node@v4",
     "        with:",
-    "          node-version: 22",
-    `      - run: npx --yes srcatlas@${version} analyze`,
-    "      - uses: actions/upload-artifact@v4",
+    "          fetch-depth: 0 # the base commit must exist",
+    "      - uses: srcatlas/srcatlas@v0",
     "        with:",
-    "          name: srcatlas",
-    "          path: .srcatlas",
+    `          version: ${version}`,
     "",
   ].join("\n");
 }
