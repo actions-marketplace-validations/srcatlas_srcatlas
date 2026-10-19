@@ -1,6 +1,6 @@
 // First piece of the scorer of docs/accuracy.md section 6: compares an actual graph with a
 // ground-truth graph by exact ids (section 1). Deterministic, no network.
-// Usage: node score.mjs <truth.graph.json> <actual.graph.json> [--package <name>]
+// Usage: node score.mjs <truth.graph.json> <actual.graph.json> [--report <srcatlas.report.json>] [--package <name>]
 //          [--nodes module,provider,controller] [--edges imports,contains,injects]
 // Prints JSON. A ratio with an empty denominator is null, never 1.
 import fs from "node:fs";
@@ -8,6 +8,9 @@ import { pathToFileURL } from "node:url";
 
 const cmp = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
 const ratio = (n, d) => (d === 0 ? null : +(n / d).toFixed(4));
+
+// Harmonic mean of precision and recall; null when either is undefined, 0 when nothing is correct.
+const f1 = (c, emitted, truth) => (emitted === 0 || truth === 0 ? null : c === 0 ? 0 : +((2 * c) / (emitted + truth)).toFixed(4));
 
 const nodeKey = (n) => `${n.kind} ${n.id}`;
 const edgeKey = (e) => `${e.from} -${e.kind}-> ${e.to}`;
@@ -38,6 +41,7 @@ function compare(truth, actual) {
     correct: correct.length,
     precision: ratio(correct.length, have.size),
     recall: ratio(correct.length, want.size),
+    f1: f1(correct.length, have.size, want.size),
     missing,
     extra,
   };
@@ -62,10 +66,24 @@ export function score(truthGraph, actualGraph, opts = {}) {
       kinds.map((k) => [k, compare(truth.filter((t) => t.kind === k), items.filter((a) => a.kind === k))]),
     ),
   });
+  const want = new Set(truth.map((t) => t.key));
+  // accuracy.md section 4: precision among the elements of each confidence level.
+  const calibration = {};
+  for (const level of ["certain", "inferred", "unresolved"]) {
+    const keys = new Set(actual.filter((a) => a.confidence === level).map((a) => a.key));
+    const correct = [...keys].filter((k) => want.has(k)).length;
+    calibration[level] = { emitted: keys.size, correct, precision: ratio(correct, keys.size) };
+  }
+  // accuracy.md section 4: emitted / (emitted + reported unresolved). The report counts constructs
+  // that were never emitted, so it is only meaningful for the whole scope, not per kind.
+  const emitted = new Set(actual.map((a) => a.key)).size;
+  const unresolved = opts.report?.counts?.unresolved;
   return {
     scope,
     all: run(actual),
     certainOnly: run(actual.filter((a) => a.confidence === "certain")),
+    calibration,
+    coverage: unresolved === undefined ? null : ratio(emitted, emitted + unresolved),
   };
 }
 
@@ -76,14 +94,15 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
     return i < 0 ? undefined : argv.splice(i, 2)[1];
   };
   const pkg = flag("--package");
+  const reportPath = flag("--report");
   const nodes = flag("--nodes")?.split(",");
   const edges = flag("--edges")?.split(",");
   const [truthPath, actualPath] = argv;
   if (!actualPath) {
-    console.error("usage: score.mjs <truth.graph.json> <actual.graph.json> [--package name] [--nodes a,b] [--edges a,b]");
+    console.error("usage: score.mjs <truth.graph.json> <actual.graph.json> [--report file] [--package name] [--nodes a,b] [--edges a,b]");
     process.exit(2);
   }
   const load = (p) => JSON.parse(fs.readFileSync(p, "utf8"));
-  const result = score(load(truthPath), load(actualPath), { package: pkg, nodes, edges });
+  const result = score(load(truthPath), load(actualPath), { package: pkg, nodes, edges, report: reportPath && load(reportPath) });
   process.stdout.write(`${JSON.stringify(result, null, 2)}\n`);
 }
