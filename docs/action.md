@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: srcatlas/srcatlas@v1
+      - uses: srcatlas/srcatlas@v0
 ```
 
 `fetch-depth: 0` is needed so that the base commit exists. The step needs Node 20 or newer, which `ubuntu-latest` has. Do not run an install step for srcatlas's sake: the Action does not use it (ADR 0012).
@@ -31,7 +31,7 @@ Inputs:
 
 | Input | Default | Meaning |
 |---|---|---|
-| `version` | `latest` | The `srcatlas` npm version to run. Pin it for reproducible runs. |
+| `version` | `latest` | The `srcatlas` npm version to run. Pin it for reproducible runs (`srcatlas init` does). |
 | `fail-on` | none | Conditions for `srcatlas diff --fail-on`, one per line. The step fails after the comment is posted. |
 | `max-nodes` | `40` | `--max-nodes`. |
 | `comment` | `true` | `false` writes the job summary only. |
@@ -63,4 +63,9 @@ A pull request is from a fork when `github.event.pull_request.head.repo.full_nam
 
 ## 7. Out of scope for this version
 
-`check` annotations, committing `docs/architecture.svg` on the default branch (#63), and the `init` workflow template, which moves to this Action once a release tag exists.
+`check` annotations and committing `docs/architecture.svg` on the default branch (#63).
+
+## 8. Versions
+
+- Tags: `v0.1.0` is the first release and `v0` moves with compatible releases. The inputs may change before `v1`. The tag and the Marketplace listing are maintainer steps (`CLAUDE.md` section 10).
+- The `version` default stays `latest`: the Action script and the CLI release together and the Action has no lockfile of its own. Reproducible runs pin `version`; the `srcatlas init` workflow does, to the CLI version that wrote it.
