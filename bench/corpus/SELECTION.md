@@ -1,6 +1,6 @@
 # Tier B corpus selection: stage 1 (NestJS)
 
-Status: draft, not yet approved. Rules below are fixed before any repository is chosen and before srcatlas is run on any candidate (`docs/accuracy.md` section 3). Changing a rule after the candidate list exists needs its own commit with the reason.
+Status: approved by the maintainer on 2026-10-21. Rules below are fixed before any repository is chosen and before srcatlas is run on any candidate (`docs/accuracy.md` section 3). Changing a rule after the candidate list exists needs its own commit with the reason.
 
 ## Scope
 
@@ -11,10 +11,10 @@ Stage 1 is 5 NestJS repositories. Stage 2 (3 Next.js, 2 full-stack) gets its own
 Applied mechanically on the GitHub search API, on the date recorded in `candidates.md` when the list is generated:
 
 ```
-language:TypeScript stars:500..5000 pushed:>=<date minus 12 months> archived:false fork:false
+language:TypeScript topic:nestjs stars:500..5000 pushed:>=<date minus 12 months> archived:false fork:false
 ```
 
-plus a content filter: `package.json` at the root or in a workspace package lists `@nestjs/core` in `dependencies`.
+plus a content filter, applied to the returned list (the search API returns at most 1,000 results, so `topic:nestjs` keeps the cap from being filled with non-NestJS repositories; query changed on 2026-10-21 before any list was generated): `package.json` at the root or in a workspace package lists `@nestjs/core` in `dependencies`.
 
 Results are sorted by stars descending. The full result list, as returned, is committed as `candidates.md` (name, stars, last push, licence, SHA of the default branch at that moment).
 
