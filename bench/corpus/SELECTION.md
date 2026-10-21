@@ -24,7 +24,7 @@ Each candidate is checked in list order, top to bottom. The first 5 that pass al
 
 1. Licence permits use and redistribution of a SHA reference (OSI-approved licence file present). The corpus stores URL + SHA + labels, never code.
 2. At least 5,000 lines of TypeScript and at least 20 files the NestJS extractor targets (files with `@Module`, `@Controller` or `@Injectable`).
-3. The repository contains a NestJS application (a `NestFactory.create` call), not only a library.
+3. The repository contains a NestJS application of its own: a `NestFactory.create` call in its source outside `integration/`, `example/`, `examples/`, `test/` and `e2e/` directories. A library whose only `NestFactory.create` calls sit in those directories fails this rule. (Clarified 2026-10-21 before the list was finalised; the maintainer chose the strict reading over the literal one.)
 4. No more than 3 selected repositories above 50,000 lines of TypeScript. Once 3 are selected, a larger candidate is skipped.
 5. At least 2 selected repositories are ones the maintainer has never read. The maintainer marks these in `candidates.md` before the tool is run; if fewer than 2 qualify, later qualifying candidates replace the last selected ones until the rule holds.
 

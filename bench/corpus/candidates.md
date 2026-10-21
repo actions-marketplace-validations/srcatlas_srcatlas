@@ -74,3 +74,14 @@ Generated 2026-10-21 by the query in `SELECTION.md`, sorted by stars descending,
 | 68 | nestjs/serve-static | 517 | 2026-10-21 | MIT | 6185be1e14eef0ae83a8aaddaf79bceca5786000 | no | - | - | - |  |
 | 69 | b310-digital/teammapper | 513 | 2026-10-07 | MIT | 9fab9e31c34974c1f5bdd2ada0e0dde4cae4d636 | yes | - | - | - |  |
 | 70 | sergey-telpuk/nestjs-rbac | 508 | 2026-05-21 | NOASSERTION | edbfebd19a49a6e97b532d10ccff4cd6d431ab8d | no | - | - | - |  |
+
+## Selection (rules 1 to 4, strict reading of rule 3)
+
+Selected, in list order: #1 brocoders/nestjs-boilerplate, #4 pezzolabs/pezzo, #5 juicycleff/ultimate-backend, #8 laudspeaker/laudspeaker, #10 buqiyuan/nest-admin.
+
+Skipped: #2 nestjsx/crud, #6 golevelup/nestjs and #7 zhangyuang/ssr fail rule 3 (`NestFactory.create` only under `integration/` or `example/`). #3, #9, #11, #13, #15, #16 fail the content filter.
+
+Notes:
+- #8 laudspeaker: GitHub reports NOASSERTION because the `LICENSE` file is a header over the full AGPL-3.0 text (OSI-approved), with `packages/server/src/ee/` under a separate enterprise licence. At the pinned SHA that directory holds only its `LICENSE` file and no TypeScript, so every analysed file is under the AGPL-3.0. Rule 1 passes. Its `main.ts` is `packages/server/src/main.ts`.
+- Rule 4: one selected repository is above 50,000 lines (#8, 73,139); the limit is three.
+- Rule 5 is open: the maintainer marks at least 2 of the 5 as never read in the last column before the tool is run.
