@@ -28,6 +28,10 @@ Each candidate is checked in list order, top to bottom. The first 5 that pass al
 4. No more than 3 selected repositories above 50,000 lines of TypeScript. Once 3 are selected, a larger candidate is skipped.
 5. At least 2 selected repositories are ones the maintainer has never read. The maintainer marks these in `candidates.md` before the tool is run; if fewer than 2 qualify, later qualifying candidates replace the last selected ones until the rule holds.
 
+## Replacement for ground-truth availability
+
+A selected repository that the runtime oracle cannot judge (it does not boot in a clean checkout, or one run cannot cover its root modules) is replaced by the next qualifying candidate in list order, and the reason is recorded in `candidates.md` under "Replacements". This is a documented, non-accuracy reason in the sense of the next section. It is decided before labels are written and before srcatlas runs on the repository. Added 2026-10-21, after the oracle had been run on the first selection and before any label or srcatlas run.
+
 ## Fixed afterwards
 
 - Each selected repository is pinned to the SHA recorded in `candidates.md`.
