@@ -4,16 +4,16 @@ Generated 2026-10-21 by the query in `SELECTION.md`, sorted by stars descending,
 
 | # | Repository | Stars | Last push | Licence | SHA | Filter | TS lines | Targets | Factory | Read by maintainer |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 1 | brocoders/nestjs-boilerplate | 4418 | 2026-10-20 | MIT | 9620f159eefe38f47747d02ab162852367c5472c | yes | 9026 | 65 | 3 |  |
+| 1 | brocoders/nestjs-boilerplate | 4418 | 2026-10-20 | MIT | 9620f159eefe38f47747d02ab162852367c5472c | yes | 9026 | 65 | 3 | yes (pilot fork, `docs/pilot.md`) |
 | 2 | nestjsx/crud | 4320 | 2026-10-13 | MIT | d6d3c4ebd844d543ab71b494d424660c448a9d42 | yes | 10546 | 42 | 1 |  |
 | 3 | ts-rest/ts-rest | 3343 | 2026-02-06 | MIT | dd7239bc950d1e254d9c9cd6df7dbccc529c33cb | no | - | - | - |  |
-| 4 | pezzolabs/pezzo | 3280 | 2026-08-21 | Apache-2.0 | 0787e3c037ad24544c2d3e6842507c3e7461a1de | yes | 9751 | 50 | 3 |  |
-| 5 | juicycleff/ultimate-backend | 2906 | 2026-02-16 | MIT | 0ae62a4b894c0e46baf75228ec88fae98f6abe06 | yes | 41619 | 130 | 9 |  |
+| 4 | pezzolabs/pezzo | 3280 | 2026-08-21 | Apache-2.0 | 0787e3c037ad24544c2d3e6842507c3e7461a1de | yes | 9751 | 50 | 3 | no |
+| 5 | juicycleff/ultimate-backend | 2906 | 2026-02-16 | MIT | 0ae62a4b894c0e46baf75228ec88fae98f6abe06 | yes | 41619 | 130 | 9 | no |
 | 6 | golevelup/nestjs | 2749 | 2026-10-21 | MIT | 503972ed78192ced08d8d5b16fa3f99ab6210736 | yes | 23590 | 53 | 2 |  |
 | 7 | zhangyuang/ssr | 2687 | 2026-08-17 | MIT | eb0d0fdc4d6e7415303d01420d5b0a3d5244f4ae | yes | 15221 | 54 | 5 |  |
-| 8 | laudspeaker/laudspeaker | 2629 | 2026-07-10 | NOASSERTION | 26d2699e0a04c7a89dbf8312231c8c7a757c55af | yes | 73139 | 125 | 1 |  |
+| 8 | laudspeaker/laudspeaker | 2629 | 2026-07-10 | NOASSERTION | 26d2699e0a04c7a89dbf8312231c8c7a757c55af | yes | 73139 | 125 | 1 | no |
 | 9 | stephenh/ts-proto | 2596 | 2026-10-18 | Apache-2.0 | 1b195c06af8cd399b0fe21a453780ddee2cec37b | no | - | - | - |  |
-| 10 | buqiyuan/nest-admin | 2272 | 2026-03-30 | MIT | 2eeccc4cb699d1aedbe04b4437a9d095cde02c74 | yes | 13128 | 100 | 1 |  |
+| 10 | buqiyuan/nest-admin | 2272 | 2026-03-30 | MIT | 2eeccc4cb699d1aedbe04b4437a9d095cde02c74 | yes | 13128 | 100 | 1 | no |
 | 11 | nestjs/nest-cli | 2206 | 2026-10-21 | NOASSERTION | ac1794b9a2a0e4dce330c34cf5627a30d772ea28 | no | - | - | - |  |
 | 12 | samchon/nestia | 2176 | 2026-10-21 | MIT | a0c4ad6dbee2342210262388bc392ea4c8b83183 | yes | 105772 | 690 | 78 |  |
 | 13 | nestjs/typeorm | 2166 | 2026-10-20 | MIT | 95c0460361768cfe4b681f4102aca8e51cd15b39 | no | - | - | - |  |
@@ -84,4 +84,5 @@ Skipped: #2 nestjsx/crud, #6 golevelup/nestjs and #7 zhangyuang/ssr fail rule 3 
 Notes:
 - #8 laudspeaker: GitHub reports NOASSERTION because the `LICENSE` file is a header over the full AGPL-3.0 text (OSI-approved), with `packages/server/src/ee/` under a separate enterprise licence. At the pinned SHA that directory holds only its `LICENSE` file and no TypeScript, so every analysed file is under the AGPL-3.0. Rule 1 passes. Its `main.ts` is `packages/server/src/main.ts`.
 - Rule 4: one selected repository is above 50,000 lines (#8, 73,139); the limit is three.
-- Rule 5 is open: the maintainer marks at least 2 of the 5 as never read in the last column before the tool is run.
+- Rule 5: marked by the assistant on the maintainer's instruction ("based on your best judgment"), 2026-10-21, from repository evidence only. #1 is marked read because the pilot (`docs/pilot.md`) ran on a fork of it. #4, #5, #8 and #10 appear nowhere in this repository or in the maintainer's other local projects, so they are marked unread. That gives 4 unread, above the minimum of 2. The maintainer should correct any row before the tool is run.
+- Disclosure: srcatlas ran on a fork of #1 during the pilot, before this list existed. It was not run on any other selected repository.
