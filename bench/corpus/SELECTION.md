@@ -1,6 +1,6 @@
 # Tier B corpus selection: stage 1 (NestJS)
 
-Status: draft, not yet approved. Rules below are fixed before any repository is chosen and before srcatlas is run on any candidate (`docs/accuracy.md` section 3). Changing a rule after the candidate list exists needs its own commit with the reason.
+Status: approved by the maintainer on 2026-10-21. Rules below are fixed before any repository is chosen and before srcatlas is run on any candidate (`docs/accuracy.md` section 3). Changing a rule after the candidate list exists needs its own commit with the reason.
 
 ## Scope
 
@@ -11,10 +11,10 @@ Stage 1 is 5 NestJS repositories. Stage 2 (3 Next.js, 2 full-stack) gets its own
 Applied mechanically on the GitHub search API, on the date recorded in `candidates.md` when the list is generated:
 
 ```
-language:TypeScript stars:500..5000 pushed:>=<date minus 12 months> archived:false fork:false
+language:TypeScript topic:nestjs stars:500..5000 pushed:>=<date minus 12 months> archived:false fork:false
 ```
 
-plus a content filter: `package.json` at the root or in a workspace package lists `@nestjs/core` in `dependencies`.
+plus a content filter, applied to the returned list (the search API returns at most 1,000 results, so `topic:nestjs` keeps the cap from being filled with non-NestJS repositories; query changed on 2026-10-21 before any list was generated): `package.json` at the root or in a workspace package lists `@nestjs/core` in `dependencies`.
 
 Results are sorted by stars descending. The full result list, as returned, is committed as `candidates.md` (name, stars, last push, licence, SHA of the default branch at that moment).
 
@@ -24,7 +24,7 @@ Each candidate is checked in list order, top to bottom. The first 5 that pass al
 
 1. Licence permits use and redistribution of a SHA reference (OSI-approved licence file present). The corpus stores URL + SHA + labels, never code.
 2. At least 5,000 lines of TypeScript and at least 20 files the NestJS extractor targets (files with `@Module`, `@Controller` or `@Injectable`).
-3. The repository contains a NestJS application (a `NestFactory.create` call), not only a library.
+3. The repository contains a NestJS application of its own: a `NestFactory.create` call in its source outside `integration/`, `example/`, `examples/`, `test/` and `e2e/` directories. A library whose only `NestFactory.create` calls sit in those directories fails this rule. (Clarified 2026-10-21 before the list was finalised; the maintainer chose the strict reading over the literal one.)
 4. No more than 3 selected repositories above 50,000 lines of TypeScript. Once 3 are selected, a larger candidate is skipped.
 5. At least 2 selected repositories are ones the maintainer has never read. The maintainer marks these in `candidates.md` before the tool is run; if fewer than 2 qualify, later qualifying candidates replace the last selected ones until the rule holds.
 
