@@ -47,9 +47,11 @@ Inputs:
 
 A pull request is from a fork when `github.event.pull_request.head.repo.full_name` differs from `github.repository`, or the head repository is gone.
 
-- The `GITHUB_TOKEN` of such a run is read-only, so no comment is written. The Markdown goes to the job summary (`$GITHUB_STEP_SUMMARY`).
+- GitHub gives the `GITHUB_TOKEN` of a `pull_request` run from a fork read-only access, whatever the `permissions` block says. The Action does not try to comment on a fork pull request: it makes no GitHub API call and writes the Markdown to the job summary (`$GITHUB_STEP_SUMMARY`) instead. The contributor and the maintainers find the result on the run page, not on the pull request. An empty diff writes nothing.
 - The configuration is loaded from the base commit with `srcatlas diff --config-ref <base-sha>`; the fork's `srcatlas.config.ts` is never executed. The base is loaded in a temporary worktree without installed dependencies, so a config that imports packages other than `srcatlas` and files in the repository fails with exit code 2.
-- If a comment write is refused (403) on any pull request, the Action falls back to the job summary and says so in the log.
+- Nothing from the fork is installed or run: the Action never installs dependencies (ADR 0012), and `pull_request_target`, the usual way to give fork runs a write token, is refused (section 3).
+- If a comment write is refused (403) on any pull request, the Action falls back to the job summary and says so in the log. This also covers a workflow that does not grant `pull-requests: write`. Any other API failure fails the step.
+- With `comment: false`, or without a token, every pull request gets the job summary only.
 
 ## 5. The comment
 
@@ -59,7 +61,14 @@ A pull request is from a fork when `github.event.pull_request.head.repo.full_nam
 
 ## 6. Permissions
 
-`contents: read` and `pull-requests: write`. Nothing else: no artifacts, no `actions: read`, no secrets. The Action makes network calls to the GitHub API for the comment and, through `npx`, to the npm registry to fetch srcatlas; analysis itself makes none (`SECURITY.md`).
+`contents: read` and `pull-requests: write`. Nothing else: no artifacts, no `actions: read`, no secrets.
+
+| Permission | Why |
+|---|---|
+| `contents: read` | `actions/checkout` needs it to fetch the repository. srcatlas reads the checkout and the base commit's history (`fetch-depth: 0`); it never pushes. |
+| `pull-requests: write` | To create the comment and to update it later. Without it the write is refused (403) and the Action falls back to the job summary (section 4). |
+
+The Action makes network calls to the GitHub API for the comment and, through `npx`, to the npm registry to fetch srcatlas; analysis itself makes none (`SECURITY.md`). It runs `srcatlas diff` without `GITHUB_TOKEN` in that process's environment, because the analysed project's config may run code (ADR 0006); only the Action's own script uses the token, and only for the comment. The comment is found by its marker and a bot author, so a person's comment is never edited (section 5).
 
 ## 7. Out of scope for this version
 
