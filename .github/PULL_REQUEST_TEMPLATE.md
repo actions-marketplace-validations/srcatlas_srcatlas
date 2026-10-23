@@ -1,6 +1,8 @@
-## What and why
+## Summary
 
-<!-- One or two sentences. Link the issue. -->
+<!-- One or two sentences: what changed and why. -->
+
+Closes #
 
 ## Type
 
@@ -21,6 +23,18 @@
 - [ ] `pnpm lint && pnpm typecheck && pnpm test` pass
 - [ ] Changeset added for user-visible changes
 - [ ] Commits are signed off (`git commit -s`)
+
+## Checks run
+
+<!-- Exact commands and results, e.g. "pnpm lint: pass". Write "not run" for anything skipped. -->
+
+## Changeset
+
+<!-- yes / no / n/a (docs, tests or internal only) -->
+
+## Out-of-scope findings
+
+<!-- Things noticed but not fixed here. Otherwise write "none". -->
 
 ## Golden file changes
 
