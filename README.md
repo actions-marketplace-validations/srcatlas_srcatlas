@@ -37,6 +37,8 @@ npx srcatlas serve
 | [`docs/extractors/prisma.md`](docs/extractors/prisma.md) | Prisma pattern catalogue |
 | [`docs/cli.md`](docs/cli.md) | Commands, flags, exit codes |
 | [`docs/config.md`](docs/config.md) | `srcatlas.config.ts` reference |
+| [`docs/action.md`](docs/action.md) | GitHub Action: usage, permissions, fork pull requests |
+| [`docs/maintenance.md`](docs/maintenance.md) | Report triage, supported versions, schema compatibility |
 | [`docs/accuracy.md`](docs/accuracy.md) | How accuracy is measured and what may be claimed |
 | [`docs/research/landscape.md`](docs/research/landscape.md) | Alternatives and positioning |
 | [`docs/adr/`](docs/adr/README.md) | Architecture decision records |
